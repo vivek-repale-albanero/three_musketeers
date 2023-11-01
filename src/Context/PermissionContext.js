@@ -1,15 +1,13 @@
 // PermissionContext.js
 import React, { createContext, useEffect, useState } from 'react';
 
-// import Papa from 'papaparse';
 export const userData = [
-  { id: 1, name: 'User 1', password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false },
-  { id: 2, name: 'User 2', password: 'password2', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 3, name: 'User 3', password: 'password3', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 4, name: 'User 4', password: 'password4', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 5, name: 'User 5', password: 'password5', gamePermission: false, csvPermission: false,csvDownlodPermission: false ,startGamePermission:false,resetGamePermission:false },
+  { id: 1, user:{userName: "Pritam2000",firstName:"Pritam",lastName:"Halder",},age:"25", email:"user1@gmail.com", password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false },
+  { id: 2, user:{userName: "Shoaib@1998",firstName:"Shoaib",lastName:"Mansoori"},age:"26", email:"user2@gmail.com", password: 'password2', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
+  { id: 3, user:{userName: "Eswar@0110",firstName:"Eswar",lastName:"M"},age:"23", email:"user3@gmail.com", password: 'password3', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
+  { id: 4, user:{userName: "Gopal_R",firstName:"Ram",lastName:"Gopal"},age:"32", email:"user4@gmail.com",  password: 'password4', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
+  { id: 5, user:{userName: "Abc",firstName:"Abc",lastName:"Def"},age:"46", email:"user5@gmail.com", password: 'password5', gamePermission: false, csvPermission: false,csvDownlodPermission: false ,startGamePermission:false,resetGamePermission:false },
 ];
-
 export const PermissionContext = createContext();
 
  const PermissionProvider = ({ children }) => {
@@ -20,7 +18,6 @@ export const PermissionContext = createContext();
   const [downloadPermission,setDownloadPermission]=useState(false)
   const [startTicTac,setStartTicTac]=useState(false)
   const [resetTicTac,setResetTicTac]=useState(false)
-
   //csv states
   const [csvData, setCsvData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,7 +39,7 @@ export const PermissionContext = createContext();
       )
     }
     );
-    // console.log("users",users)
+
   };
   useEffect(() => {
     if (loggedUser) {
@@ -110,13 +107,11 @@ const handleSaveClick = () => {
   setIsEditing(false);
   setEditedFile(createEditedFile());
 };
-
 const handleCancelEdit = () => {
   setIsEditing(false);
   // Revert editedData to its original state (csvData)
   setEditedData([...csvData]);
 };
-
 const handleInputChange = (e, rowIndex, columnName) => {
   const updatedData = [...editedData];
   updatedData[rowIndex][columnName] = e.target.value;
