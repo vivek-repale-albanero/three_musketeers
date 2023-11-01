@@ -1,0 +1,16 @@
+
+.loginCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: aliceblue;
+    .tile{
+        padding: 75px;
+        .button{
+            margin-top: 25px;
+        }
+    }
+    
+}
+
