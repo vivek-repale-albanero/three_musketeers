@@ -2,26 +2,9 @@ import React, { useContext } from 'react';
 import CsvUploader from '../components/CsvUploader';
 import CsvTable from '../components/CsvTable';
 import CsvEditButtons from '../components/CsvEditButtons';
-import {styled, Button, Typography, Paper } from '@material-ui/core';
-// import { styled } from '@mui/system';
+import { Button, Typography, Paper } from '@material-ui/core';
 import { PermissionContext } from '../Context/PermissionContext';
-
-const AddButton = styled(Button)({
-  backgroundColor: '#00bbd1',
-  color: 'white',
-  '&:hover': {
-    color: '#00bbd1',
-    backgroundColor: '#191919',
-  }
-});
-
-const AppContainer = styled(Paper)({
-  display: 'flex',
-  width:"80vw",
-  flexDirection: 'column',
-  margin: '16px',
-  padding: '16px',
-});
+import './CsvPage.scss'; // Import your SCSS file
 
 const CsvPage = () => {
   const {
@@ -41,21 +24,25 @@ const CsvPage = () => {
   } = useContext(PermissionContext);
 
   return (
-    <AppContainer>
-      <div style={{display:"flex",justifyContent:"space-between"}}>
-      <Typography variant="h5">CSV List</Typography>
-      <AddButton variant="contained" style={{color:"rgb(224 224 224)",background:'rgb(21 22 22)'}} onClick={handleOpen}>
-        Add File
-      </AddButton>
+    <div className="csv-page-container">
+      <div className="header">
+        <Typography variant="h5">CSV List</Typography>
+        <Button
+          variant="contained"
+          className="add-button"
+          onClick={handleOpen}
+        >
+          Add File
+        </Button>
       </div>
-      <CsvUploader/>
+      <CsvUploader />
       {showTable && (
-        <div style={{ marginTop: '16px' }}>
-          <CsvTable/>
-          <CsvEditButtons/>
+        <div className="table-container">
+          <CsvTable />
+          <CsvEditButtons />
         </div>
       )}
-    </AppContainer>
+    </div>
   );
 };
 

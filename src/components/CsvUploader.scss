@@ -1,0 +1,76 @@
+.modalContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 0; /* Remove top and bottom padding */
+  background-color: #fff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}
+
+.modalTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.modalHeading {
+  font-size: 24px;
+  color: teal;
+}
+
+.dottedBorder {
+  border: 2px dotted teal;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.subHeading {
+  font-size: 16px;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+  width: 100%;
+  margin-top: auto; /* Pushes button to the bottom */
+}
+
+.fileInput {
+  display: none;
+}
+
+.chooseFileButton {
+  background:teal; /* Black button background */
+  color: #fff; /* White button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.uploadButton {
+  background: teal; /* Black button background */
+  color: #fff; /* White button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}

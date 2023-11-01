@@ -1,11 +1,13 @@
+import React from 'react';
+
 import { useContext } from "react"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, Card } from '@mui/material';
-import {PermissionContext} from "../Context/PermissionContext"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, Card } from '@material-ui/core';
+// import {PermissionContext} from "../Context/PermissionContext"
 
 
 function UsersPage () {
-  const {users} = useContext(PermissionContext) 
-  const isLoggedUser = JSON.parse(localStorage.getItem("useLogedId"));
+  // const {users} = useContext(PermissionContext) 
+  // const isLoggedUser = JSON.parse(localStorage.getItem("useLogedId"));
     return(
       <>
       <h1>Users List & Access</h1>
@@ -24,7 +26,7 @@ function UsersPage () {
             </TableRow>
            </TableHead>
            <TableBody>
-            {users.map((user) =>(
+            {/* {users.map((user) =>(
               <TableRow key={user.id}>
                 <TableCell>{user.id}</TableCell>
                 <TableCell>{user.name}</TableCell>
@@ -47,7 +49,7 @@ function UsersPage () {
                   {(isLoggedUser.id===user.id)? "Online":"Offline"}
                   </TableCell>
               </TableRow>
-            ))}
+            ))} */}
            </TableBody>
         </Table>
         </TableContainer>

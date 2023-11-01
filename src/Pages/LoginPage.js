@@ -1,40 +1,40 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { PermissionContext } from '../Context/PermissionContext';
-import {TextField,Button,Container} from '@material-ui/core'
-
+import {TextField,Button,Container,Card} from '@material-ui/core'
+// import "../styles/LoginPage.scss"
 function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
-  const { setGameAuth, setCsvAuth, gameAuth, csvAuth, users } = useContext(PermissionContext);
-
+  let history = useHistory();
+  const { users } = useContext(PermissionContext);
   const handleLogin = () => {
-    const user = users.find((user) => user.name === username && user.password === password);
+    const user = users.find((user) => user.email === userEmail && user.password === password);
     if (user) {
       localStorage.setItem("useLogedId", JSON.stringify(user));
-      setGameAuth(user.gamePermission);
-      setCsvAuth(user.csvPermission);
-      console.log("gameAuth", gameAuth);
-      console.log("csvAuth", csvAuth);
-      navigate("/authorization");
+      // setGameAuth(user.gamePermission);
+      // setCsvAuth(user.csvPermission);
+      // console.log("gameAuth", gameAuth);
+      // console.log("csvAuth", csvAuth);
+      alert('login sucessfull');
+      history.push("/authorization");
     } else {
       alert('Invalid credentials. Please try again.');
     }
   }
-
   return (
-    <Container maxWidth="xs">
-      <h1 className="">THREE MUSKETEERS</h1>
-      <div>
-        <h1>Login</h1>
+    <div className='loginCard'>
+      <Card sx={{ minWidth: 275 }} className='tile'>
+    <Container maxWidth="xs"  >    
+      <div >
+      <h1>THREE MUSKETEERS</h1>
         <form>
           <TextField
-            label="Username"
+            label="Email"
             variant="outlined"
             fullWidth
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
             margin="normal"
           />
           <TextField
@@ -50,6 +50,7 @@ function LoginPage() {
             variant="contained"
             color="primary"
             fullWidth
+            className='button'
             onClick={handleLogin}
           >
             Log In
@@ -57,7 +58,8 @@ function LoginPage() {
         </form>
       </div>
     </Container>
+    </Card>
+    </div>
   );
 }
-
 export default LoginPage;
