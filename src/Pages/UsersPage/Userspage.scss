@@ -1,0 +1,18 @@
+.title{
+    margin: 55px 30px 30px 15px;
+    display: flex;
+    justify-content: space-between;
+    .addBtn{
+        background-color: #1d2e3b;
+        color: white;
+        &:hover{
+            background-color: rgb(50, 192, 69);
+            color: black;
+        }
+    }
+}
+.tableContent{
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+}

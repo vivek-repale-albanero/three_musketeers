@@ -2,13 +2,14 @@
 import React, { createContext, useEffect, useState } from 'react';
 
 export const userData = [
-  { id: 1, userName: "Pritam", email:"user1@gmail.com",firstName:"Pritam",lastName:"Halder", password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false },
-  { id: 2, userName: "Shoaib", email:"user2@gmail.com",firstName:"Shoaib",lastName:"Mansoori", password: 'password2', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 3, userName: "Eswar", email:"user3@gmail.com",firstName:"Eswar",lastName:"M", password: 'password3', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 4, userName: "Vivek", email:"user4@gmail.com",firstName:"Vivek",lastName:"Ram", password: 'password4', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 5, userName: "Abc", email:"user5@gmail.com",firstName:"Abc",lastName:"Def", password: 'password5', gamePermission: false, csvPermission: false,csvDownlodPermission: false ,startGamePermission:false,resetGamePermission:false },
+  { id: 1, user:{userName: "Pritam2000",firstName:"Pritam",lastName:"Halder",},age:"25", email:"user1@gmail.com", password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false },
+  { id: 2, user:{userName: "Shoaib@1998",firstName:"Shoaib",lastName:"Mansoori"},age:"26", email:"user2@gmail.com", password: 'password2', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
+  { id: 3, user:{userName: "Eswar@0110",firstName:"Eswar",lastName:"M"},age:"23", email:"user3@gmail.com", password: 'password3', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
+  { id: 4, user:{userName: "Gopal_R",firstName:"Ram",lastName:"Gopal"},age:"32", email:"user4@gmail.com",  password: 'password4', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
+  { id: 5, user:{userName: "Abc",firstName:"Abc",lastName:"Def"},age:"46", email:"user5@gmail.com", password: 'password5', gamePermission: false, csvPermission: false,csvDownlodPermission: false ,startGamePermission:false,resetGamePermission:false },
 ];
 export const PermissionContext = createContext();
+
  const PermissionProvider = ({ children }) => {
   const [users, setUsers] = useState(userData);
 //permission
