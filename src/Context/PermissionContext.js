@@ -1,5 +1,6 @@
 // PermissionContext.js
 import React, { createContext, useEffect, useState } from 'react';
+
 export const userData = [
   { id: 1, userName: "Pritam", email:"user1@gmail.com",firstName:"Pritam",lastName:"Halder", password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false },
   { id: 2, userName: "Shoaib", email:"user2@gmail.com",firstName:"Shoaib",lastName:"Mansoori", password: 'password2', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
@@ -52,6 +53,7 @@ export const PermissionContext = createContext();
     }
   }, [users])
   console.log("users",users)
+  
  //function for csv
  const handleOpen = () => {
   setIsModalOpen(true);
@@ -66,18 +68,23 @@ const handleFileChange = (e) => {
     setAvailFile(file);
     setSelectedFileName(file.name);
     setUploading(true);
+
     const reader = new FileReader();
+
     reader.onload = function (event) {
       const csvContent = event.target.result;
       processData(csvContent);
       setUploading(false);
     };
+
     reader.readAsText(file);
   }
 };
+
 const processData = (csvContent) => {
   const lines = csvContent.split("\n");
   const headers = lines[0].split(",");
+
   const data = [];
   for (let i = 0; i < lines.length; i++) {
     const values = lines[i].split(",");
@@ -87,13 +94,18 @@ const processData = (csvContent) => {
     }
     data.push(entry);
   }
+
   // Remove the first entry if it's empty (often caused by an extra newline at the end of the file)
   if (Object.keys(data[0]).length === 1 && data[0].hasOwnProperty("")) {
     data.shift();
   }
+
   setCsvData(data);
   setEditedData(data);
 };
+
+
+
 const showTableFn = () => {
   if (availFile) {
     setShowTable(true);
@@ -131,7 +143,7 @@ const createEditedFile = () => {
   const csvBlob = new Blob([csv], { type: 'text/csv' });
   return URL.createObjectURL(csvBlob);
 };
-console.log("contextr",downloadPermission)
+console.log("contextr",csvAuth)
   return (
     <PermissionContext.Provider value={{ users, updateUserPermissions, gameAuth, setGameAuth, csvAuth, setCsvAuth,csvData,
       setCsvData,

@@ -12,8 +12,12 @@ function LoginPage() {
     const user = users.find((user) => user.email === userEmail && user.password === password);
     if (user) {
       localStorage.setItem("useLogedId", JSON.stringify(user));
-      // alert('login sucessfull');
-      history.push("/id/main");
+      // setGameAuth(user.gamePermission);
+      // setCsvAuth(user.csvPermission);
+      // console.log("gameAuth", gameAuth);
+      // console.log("csvAuth", csvAuth);
+      alert('login sucessfull');
+      history.push("/authorization");
     } else {
       alert('Invalid credentials. Please try again.');
     }

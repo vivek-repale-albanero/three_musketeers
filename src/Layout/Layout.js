@@ -4,15 +4,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer,List,ListItem,ListItemIcon,ListItemText,Card,Avatar,Icon } from '@material-ui/core';
 import "../styles/Layout.scss"
-// import {HomeIcon,DashboardIcon,SettingsIcon} from ''
-// import Drawer from '@mui/material/Drawer';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import HomeIcon from '@mui/icons-material/Home';
-// import DashboardIcon from '@mui/icons-material/Dashboard';
-// import SettingsIcon from '@mui/icons-material/Settings';
 
 const Layout = ({children}) => {
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
@@ -22,7 +13,7 @@ const Layout = ({children}) => {
         <Card className='userCard' style={{background:"teal"}}>
           <div className='userInfo'>
           <Avatar>
-          {loggedUser.userName[0]}
+          {(!loggedUser)?loggedUser.userName[0]:"User"}
           </Avatar>
           <div>
           {loggedUser.userName}
