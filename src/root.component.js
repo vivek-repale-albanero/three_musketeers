@@ -9,6 +9,7 @@ import PermissionPage from "./Pages/PermissionPage";
 
 import Login from "./Components/Login";
 import TicTacPage from "./Pages/TicTacToe";
+import GamePageRedirect from "./Pages/GamePageRedirect";
 
 export default function Root() {
   return (
@@ -30,6 +31,8 @@ export default function Root() {
           <Route exact path="/authorization" render={() => (<PermissionPage />)} />
           <Route exact path="/auth/login" render={() => <Login />} />
           <Route exact path="/game" render={() => <TicTacPage />} />
+          <Route exact path="/gameredirect" render={() => <GamePageRedirect />} />
+
 
           {/* <Route
             exact

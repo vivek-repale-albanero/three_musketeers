@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Cell from "./Cell.js";
 import { Button, Grid } from "@material-ui/core";
-import CustomButton from "./CustomButton";
 import Title from './Title.js'
 import X from '../../assests/x.png'
 import O from '../../assests/o.png'
 import React from 'react'
 import '../../styles/Gameboard.scss'
 import CalculatingRounds from "./CalculatingRounds.js";
+import CustomButton from "./CustomButton.js";
 
 const GameBoard = () => {
   const [UserCellsInput, setseconduserAndcell] = useState(JSON.parse(localStorage.getItem('gamedetails')) || '');

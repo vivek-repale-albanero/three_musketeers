@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Tictac.scss'
-import GameBoard from '../Components/TicTactoe/Gameboard'
-import Gameplayer from '../Components/TicTactoe/Gameplayer'
+import GameBoard from '../components/TicTactoe/Gameboard'
+import Gameplayer from '../components/TicTactoe/Gameplayer'
 
 
 function TicTacPage() {
