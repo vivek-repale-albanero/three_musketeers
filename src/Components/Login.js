@@ -4,7 +4,7 @@ import GamePageRedirect from "../Pages/GamePageRedirect";
 
 function Login() {
   return <div className="">
-    <GamePageRedirect />
+  
     </div>;
 }
 
