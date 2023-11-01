@@ -1,0 +1,16 @@
+.userCard{
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    &:global(.MuiPaper-root){
+        background-color: teal;
+    }
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        div{
+            color: white;
+        }
+    }
+    
+}
