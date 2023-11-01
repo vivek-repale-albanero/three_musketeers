@@ -5,6 +5,7 @@ import CsvEditButtons from '../components/CsvEditButtons';
 import { Button, Typography, Paper } from '@material-ui/core';
 import { PermissionContext } from '../Context/PermissionContext';
 import './CsvPage.scss'; // Import your SCSS file
+import Layout from '../Layout/Layout';
 
 const CsvPage = () => {
   const {
@@ -24,6 +25,7 @@ const CsvPage = () => {
   } = useContext(PermissionContext);
 
   return (
+    <Layout>
     <div className="csv-page-container">
       <div className="header">
         <Typography variant="h5">CSV List</Typography>
@@ -43,6 +45,7 @@ const CsvPage = () => {
         </div>
       )}
     </div>
+    </Layout>
   );
 };
 
