@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { PermissionContext } from '../Context/PermissionContext';
 import {TextField,Button,Container} from '@material-ui/core'
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
+  let history = useHistory();
   const { setGameAuth, setCsvAuth, gameAuth, csvAuth, users } = useContext(PermissionContext);
 
   const handleLogin = () => {
@@ -17,7 +17,8 @@ function LoginPage() {
       setCsvAuth(user.csvPermission);
       console.log("gameAuth", gameAuth);
       console.log("csvAuth", csvAuth);
-      navigate("/authorization");
+      alert('login sucessfull');
+      history.push("/authorization");
     } else {
       alert('Invalid credentials. Please try again.');
     }

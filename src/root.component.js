@@ -5,6 +5,7 @@ import Layout from "./Layout/Layout";
 import LoginPage from "./Pages/LoginPage";
 import CsvPage from "./Pages/CsvPage";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute";
+import PermissionPage from "./Pages/PermissionPage";
 export default function Root() {
   return (
     <BrowserRouter>
@@ -18,7 +19,11 @@ export default function Root() {
           <Route exact path="/csv" render={() => <PrivateCsvEditRoute>
           <CsvPage />
         </PrivateCsvEditRoute>} />
+        <Route exact path="/csv" render={() => <PrivateCsvEditRoute>
+          <CsvPage />
+        </PrivateCsvEditRoute>} />
           <Route exact path="/id/main" render={()=>(<Layout/>)}/>
+          <Route exact path="/authorization" render={()=>(<PermissionPage />)}/>
           {/* <Route
             exact
             path="/auth/404"
