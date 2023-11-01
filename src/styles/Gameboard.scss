@@ -1,0 +1,78 @@
+.GameBoardDiv {
+
+    border: 1px solid red;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .TicTactoe {
+        border: 1px solid black;
+        width: 65%;
+        margin: auto;
+
+        .PlayerTurnDiv {
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+            background: teal;
+            width: 50%;
+            color: white;
+            border-radius: 5px;
+            margin: 15px auto 15px;
+            padding: 7px;
+            font-family: 'Segoe UI';
+        }
+
+        .GameButtonDiv {
+            display: flex;
+            justify-content: space-evenly;
+            height: 70px;
+            align-items: center;
+        }
+
+        .CustomGameButton {
+
+            background: linear-gradient(45deg, #009688, #1976d2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: linear-gradient(45deg, #1976d2, #009688);
+            }
+
+        }
+
+        .GameCell {
+            height: 120px;
+            width: 130px;
+            cursor: pointer;
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: space-evenly;
+
+        }
+
+        .CellImage {
+            display: block;
+
+        }
+    }
+
+    .Rounds {
+        margin: auto;
+        .RoundsCalculating {
+            border: 1px solid green;
+            width: 35%;
+            
+        }
+
+    }
+
+}
