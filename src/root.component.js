@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
-
-import LoginPage from "./Pages/LoginPage";
-import Layout from "./Layout/Layout";
-import UsersPage from "./Pages/UsersPage";
+import "../src/styles/overrides.scss";
+import "../src/styles/styles.scss"
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import UsersPage from "./Pages/UsersPage/UsersPage";
 
 export default function Root() {
   return (
@@ -16,19 +16,15 @@ export default function Root() {
             <Redirect to="/auth/login" />
           </Route>
           <Route exact path="/auth/login" render={() => <LoginPage />} />
-          <Route path="/users" render={()=> <UsersPage/>}/>
-          <Route exact path="/id/main" render={()=>(
-          <Layout>
-            {/* <Switch>
-              <Route exact path="/users" render={()=> <UsersPage/>}/>
-            </Switch> */}
-          </Layout>  
-            )}/>
-          {/* <Route
-            exact
-            path="/auth/404"
-            render={() => <Page404 />}
-          /> */}
+          <Route exact path="/users" render={()=> <UsersPage/>}/>
+          {/* <Route exact path="/id/main" render={()=>(
+          
+           
+             
+            
+          
+            )}/> */}
+         
         </Switch>
       </React.Suspense>
     </BrowserRouter>

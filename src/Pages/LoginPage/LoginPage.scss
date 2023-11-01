@@ -4,7 +4,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: #1d2e3b;
+    .MuiCard-root{
+        background-color: white;
+    }
     .tile{
         padding: 75px;
         .button{

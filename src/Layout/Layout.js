@@ -2,8 +2,9 @@
 import React from 'react';
 // import { Outlet } from "react-router-dom"
 import { Link } from 'react-router-dom';
-import { Drawer,List,ListItem,ListItemIcon,ListItemText,Card,Avatar,Icon } from '@material-ui/core';
-import "../styles/Layout.scss"
+import { useHistory } from "react-router-dom";
+import { Drawer,List,ListItem,ListItemIcon,ListItemText,Card,Avatar,Icon,Button } from '@material-ui/core';
+import "./Layout.scss"
 // import {HomeIcon,DashboardIcon,SettingsIcon} from ''
 // import Drawer from '@mui/material/Drawer';
 // import List from '@mui/material/List';
@@ -16,49 +17,54 @@ import "../styles/Layout.scss"
 
 const Layout = ({children}) => {
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
+  let history = useHistory();
+  const handleLogout = () => {
+    history.push("/");
+     localStorage.removeItem("useLogedId")
+  }
   return (
     <div >
       <Drawer variant="permanent">
-        <Card className='userCard' style={{background:"teal"}}>
+        <Card className='userCard' >
           <div className='userInfo'>
           <Avatar>
-          {loggedUser.userName[0]}
+          {loggedUser.user.userName[0]}
           </Avatar>
           <div>
-          {loggedUser.userName}
+          {loggedUser.user.firstName}
           </div>
+          <Button color='secondary'onClick={handleLogout} >Logout</Button>
           </div>         
         </Card>
           
         <List>
           <ListItem button component={Link} to="/users">
             <ListItemIcon>
-              {/* <HomeIcon /> */}
-              <Icon>home</Icon>
+              <Icon>group</Icon>
             </ListItemIcon>
             <ListItemText primary="Users" />
           </ListItem>
-          <ListItem button component={Link} to="/authorization">
+          {/* <ListItem button component={Link} to="/authorization">
             <ListItemIcon>
-              {/* <DashboardIcon /> */}
+            <Icon>key_vertical</Icon>
             </ListItemIcon>
             <ListItemText primary="Permissions" />
-          </ListItem>
+          </ListItem> */}
           <ListItem button component={Link} to="/csv">
             <ListItemIcon>
-              {/* <DashboardIcon /> */}
+            <Icon>backup_table</Icon>
             </ListItemIcon>
             <ListItemText primary="Csv-Upload" />
           </ListItem>
           <ListItem button component={Link} to="/game">
             <ListItemIcon>
-              {/* <SettingsIcon /> */}
+            <Icon>casino</Icon>
             </ListItemIcon>
             <ListItemText primary="TicTacToe" />
           </ListItem>
         </List>
       </Drawer>
-      <div style={{ marginLeft: '240px' }}>
+      <div style={{ marginLeft: '200px' }}>
         {/* <Outlet /> */}
         {children}
         </div>

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { PermissionContext } from '../Context/PermissionContext';
+import { PermissionContext } from '../../Context/PermissionContext';
 import {TextField,Button,Container,Card} from '@material-ui/core'
-import "../styles/LoginPage.scss"
+import "./LoginPage.scss"
 function LoginPage() {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,14 +13,14 @@ function LoginPage() {
     if (user) {
       localStorage.setItem("useLogedId", JSON.stringify(user));
       // alert('login sucessfull');
-      history.push("/id/main");
+      history.push("/users");
     } else {
       alert('Invalid credentials. Please try again.');
     }
   }
   return (
     <div className='loginCard'>
-      <Card sx={{ minWidth: 275 }} className='tile'>
+      <Card sx={{ minWidth: 275 }} className='tile' style={{backgroundColor:"white"}}>
     <Container maxWidth="xs"  >    
       <div >
       <h1>THREE MUSKETEERS</h1>

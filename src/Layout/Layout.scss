@@ -2,12 +2,14 @@
     padding: 40px;
     display: flex;
     justify-content: center;
-    &:global(.MuiPaper-root){
-        background-color: teal;
-    }
+    // .MuiPaper-root{
+    //     background-color: teal;
+    // }
     .userInfo{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         div{
             color: white;
         }
