@@ -56,7 +56,7 @@ const Layout = ({children}) => {
             </ListItemIcon>
             <ListItemText primary="Csv-Upload" />
           </ListItem>
-          <ListItem button component={Link} to="/game">
+          <ListItem button component={Link} to="/gameredirect">
             <ListItemIcon>
             <Icon>casino</Icon>
             </ListItemIcon>

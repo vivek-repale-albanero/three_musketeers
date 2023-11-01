@@ -5,6 +5,8 @@ import "../src/styles/overrides.scss";
 import "../src/styles/styles.scss"
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import UsersPage from "./Pages/UsersPage/UsersPage";
+import GamePageRedirect from "./Pages/GamePageRedirect";
+import TicTacPage from "./Pages/TicTacToe";
 
 export default function Root() {
   return (
@@ -17,6 +19,8 @@ export default function Root() {
           </Route>
           <Route exact path="/auth/login" render={() => <LoginPage />} />
           <Route exact path="/users" render={()=> <UsersPage/>}/>
+          <Route exact path="/gameredirect" render={()=> <GamePageRedirect/>} />
+          <Route exact path="/game" render={()=> <TicTacPage/>} />
           {/* <Route exact path="/id/main" render={()=>(
           
            
