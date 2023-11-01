@@ -6,6 +6,10 @@ import LoginPage from "./Pages/LoginPage";
 import CsvPage from "./Pages/CsvPage";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute";
 import PermissionPage from "./Pages/PermissionPage";
+
+import Login from "./Components/Login";
+import TicTacPage from "./Pages/TicTacToe";
+
 export default function Root() {
   return (
     <BrowserRouter>
@@ -17,13 +21,16 @@ export default function Root() {
           </Route>
           <Route exact path="/auth/login" render={() => <LoginPage />} />
           <Route exact path="/csv" render={() => <PrivateCsvEditRoute>
-          <CsvPage />
-        </PrivateCsvEditRoute>} />
-        <Route exact path="/csv" render={() => <PrivateCsvEditRoute>
-          <CsvPage />
-        </PrivateCsvEditRoute>} />
-          <Route exact path="/id/main" render={()=>(<Layout/>)}/>
-          <Route exact path="/authorization" render={()=>(<PermissionPage />)}/>
+            <CsvPage />
+          </PrivateCsvEditRoute>} />
+          <Route exact path="/csv" render={() => <PrivateCsvEditRoute>
+            <CsvPage />
+          </PrivateCsvEditRoute>} />
+          <Route exact path="/id/main" render={() => (<Layout />)} />
+          <Route exact path="/authorization" render={() => (<PermissionPage />)} />
+          <Route exact path="/auth/login" render={() => <Login />} />
+          <Route exact path="/game" render={() => <TicTacPage />} />
+
           {/* <Route
             exact
             path="/auth/404"
