@@ -1,40 +1,92 @@
 .user-permission-container {
+  display: flex;
+  flex-direction: column; /* Change to row */
+  align-items: flex-start; /* Align items to the top */
+
+  .permission-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-    .permission-group {
+    flex-direction: column; /* Change to column */
+    align-items: flex-start; /* Align items to the top */
+    margin: 10px;
+
+    .nested-permissions {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin: 10px;
-  
-      .nested-permissions {
-        display: flex;
-        flex-direction: column;
-        margin-left: 20px;
-      }
+      flex-direction: column; /* Change to column */
+      align-items: flex-start; /* Align items to the top */
+      margin-left: 20px;
     }
-  
-    .MuiFormGroup-root {
+  }
+
+  .MuiFormGroup-root {
+    display: flex;
+    align-items: center;
+
+    .MuiFormControlLabel-root {
       display: flex;
       align-items: center;
-  
-      .MuiFormControlLabel-root {
-        display: flex;
-        align-items: center;
-        label {
-          margin-left: 10px;
-        }
+      label {
+        margin-left: 10px;
       }
-  
-      .MuiCheckbox-root {
+    }
+
+    .MuiCheckbox-root {
+      color: #00bbd1;
+
+      &.Mui-checked {
         color: #00bbd1;
-  
-        &.Mui-checked {
-          color: #00bbd1;
-        }
       }
     }
   }
-  
+}
+
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+.cancel-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+}
+
+.modal-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.save-button {
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px; 
+  right: 10px; 
+}
+

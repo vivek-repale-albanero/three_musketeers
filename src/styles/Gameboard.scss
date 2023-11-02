@@ -1,14 +1,14 @@
 .GameBoardDiv {
 
     border: 1px solid red;
-    width: 80%;
+    // width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .TicTactoe {
         border: 1px solid black;
-        width: 65%;
+        // width: 65%;
         margin: auto;
 
         .PlayerTurnDiv {
@@ -48,9 +48,22 @@
 
         }
 
+        .Column{
+            // border: 1px solid black;
+            width: 20px;
+            margin: auto;
+            
+        }
+        .Row{
+            // border: 1px solid red;
+            margin: auto;
+            width: 70%;
+           
+            gap: 5px;
+        }
         .GameCell {
             height: 120px;
-            width: 130px;
+            // width: 130px;
             cursor: pointer;
             display: flex;
             margin: auto;
@@ -67,10 +80,11 @@
 
     .Rounds {
         margin: auto;
+
         .RoundsCalculating {
             border: 1px solid green;
-            width: 35%;
-            
+
+
         }
 
     }

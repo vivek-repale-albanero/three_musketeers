@@ -26,6 +26,7 @@ const CsvPage = () => {
 
   return (
     <Layout>
+
     <div className="csv-page-container">
       <div className="header">
         <Typography variant="h5">CSV List</Typography>
@@ -33,7 +34,7 @@ const CsvPage = () => {
           variant="contained"
           className="add-button"
           onClick={handleOpen}
-        >
+          >
           Add File
         </Button>
       </div>

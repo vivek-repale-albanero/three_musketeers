@@ -1,8 +1,68 @@
 {
-    "users": [
-        {
-            "name": "John",
-            "age": 23
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "user": {
+        "userName": "Pritam2000",
+        "firstName": "Pritam",
+        "lastName": "Halder"
+      },
+      "age": "25",
+      "email": "user1@gmail.com",
+      "password": "password1",
+      "permission": [
+        "gamepage",
+        "gamestart",
+        "missing"
+      ]
+    },
+    {
+      "id": 2,
+      "user": {
+        "userName": "Shoaib@1998",
+        "firstName": "Shoaib",
+        "lastName": "Mansoori"
+      },
+      "age": "26",
+      "email": "user2@gmail.com",
+      "password": "password2",
+      "permission": []
+    },
+    {
+      "id": 3,
+      "user": {
+        "userName": "Eswar@0110",
+        "firstName": "Eswar",
+        "lastName": "M"
+      },
+      "age": "23",
+      "email": "user3@gmail.com",
+      "password": "password3",
+      "permission": []
+    },
+    {
+      "id": 4,
+      "user": {
+        "userName": "Gopal_R",
+        "firstName": "Ram",
+        "lastName": "Gopal"
+      },
+      "age": "32",
+      "email": "user4@gmail.com",
+      "password": "password4",
+      "permission": []
+    },
+    {
+      "id": 5,
+      "user": {
+        "userName": "Abc",
+        "firstName": "Abc",
+        "lastName": "Def"
+      },
+      "age": "46",
+      "email": "user5@gmail.com",
+      "password": "password5",
+      "permission": []
+    }
+  ]
 }

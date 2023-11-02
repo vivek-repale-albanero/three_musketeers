@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Typography } from "@material-ui/core";
 
-const Title = () => {
+const Title = ({children}) => {
  
 
     return (
@@ -18,7 +18,7 @@ const Title = () => {
                 fontSize:"60px"
             }}
         >
-            Tic Tac Toe Game
+            {children}
         </Typography>
     );
 };

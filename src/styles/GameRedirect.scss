@@ -1,7 +1,38 @@
-.parent{
-
-    .child{
+.parent {
+    width: 40%;
+    display: flex;
+    border: 1px solid red;
+    margin: auto;
+    padding: 150px;
+    font-family:'Courier New', Courier, monospace;
+    margin-top: 100px;
+    font-size: large;
+    background-image:url('https://c1.wallpaperflare.com/preview/744/204/43/art-color-abstract-design.jpg');
+    border-radius: 25px;;
+    .child {
         display: grid;
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(1, 1fr);
+        border: 1px solid black;
+        padding: 40px;
+        margin: auto;
+        background-color: white;
+        border-radius: 25px;
     }
+    select{
+        padding: 20px;
+        margin: 10px;
+    }
+    input{
+     padding: 15px;
+     margin: 10px;
+    }
+
+    button{
+        padding: 15px;
+        margin: 10px;
+        border-radius: 25px;
+        color: white;
+        background-color: teal;
+    }
+
 }
