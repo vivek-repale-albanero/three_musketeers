@@ -61,6 +61,7 @@ const UserPermission = () => {
       newPermissions[mainKey].checked = atLeastOneNestedChecked;
   
       return newPermissions;
+      
     });
   };
   
