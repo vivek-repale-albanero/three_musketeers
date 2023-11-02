@@ -28,6 +28,13 @@ export const PermissionContext = createContext();
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState([]);
   const [editedFile, setEditedFile] = useState(null);
+  //EditForm
+  const [editFormModal,setEditFormModal] = useState(false);
+
+  const handleEditClose = () =>{
+    setEditFormModal(false)
+  }
+
 //data from local storage
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"))
   // console.log(loggedUser)
@@ -146,8 +153,11 @@ const createEditedFile = () => {
 };
 console.log("contextr",csvAuth)
   return (
-    <PermissionContext.Provider value={{ users, updateUserPermissions, gameAuth, setGameAuth, csvAuth, setCsvAuth,csvData,
+    <PermissionContext.Provider value={{ users,setUsers, updateUserPermissions, gameAuth, setGameAuth, csvAuth, setCsvAuth,csvData,
       setCsvData,
+      editFormModal,
+      setEditFormModal,
+      handleEditClose,
       isModalOpen,
       setIsModalOpen,
       selectedFileName,
