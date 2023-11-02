@@ -1,0 +1,30 @@
+.csv-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  background-color: #f2f2f2; /* Set your background color */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  .MuiTypography-h5 {
+    font-size: 24px;
+    color: #333; /* Set your text color */
+  }
+
+  .add-button {
+    background: teal;
+    color: #fff;
+  }
+}
+
+.table-container {
+  margin-top: 16px;
+}

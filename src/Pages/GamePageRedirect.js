@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import '../styles/GameRedirect.scss'
+import Layout from '../Layout/Layout';
 
 const userData = [
   { id: 1, name: 'User 1', password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false, startGamePermission: false, resetGamePermission: false },
@@ -34,6 +35,7 @@ const GamePageRedirect = () => {
   console.log(secondUsername,FirstUsername,cellCount)
 
   return (
+    <Layout>
     <div className='parent'>
       <div className='child'>
         <h3>Hey, welcome {username.name}</h3>
@@ -61,6 +63,7 @@ const GamePageRedirect = () => {
         <button onClick={handleStartGame}>Start New Game</button>
       </div>
     </div>
+    </Layout>
   );
 };
 

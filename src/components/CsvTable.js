@@ -1,13 +1,7 @@
 import React, { useContext } from 'react';
-import { Table, TableBody, styled,TableRow, TableCell, TextField } from '@material-ui/core';
-// import { styled } from '@mui/system';
+import { Table, TableBody, TableRow, TableCell, TextField } from '@material-ui/core';
 import { PermissionContext } from '../Context/PermissionContext';
-
-const StyledTableContainer = styled('div')({
-  overflow: 'auto',
-  maxHeight: '600px',
-  maxWidth: '100%',
-});
+import './CsvTable.scss'; // Import your SCSS file
 
 const CsvTable = () => {
   const {
@@ -16,9 +10,9 @@ const CsvTable = () => {
     isEditing,
     handleInputChange,
   } = useContext(PermissionContext);
-console.log(csvData)
+
   return (
-    <StyledTableContainer>
+    <div className="csvTableContainer">
       <Table>
         <TableBody>
           {csvData.map((row, rowIndex) => (
@@ -39,7 +33,7 @@ console.log(csvData)
           ))}
         </TableBody>
       </Table>
-    </StyledTableContainer>
+    </div>
   );
 };
 

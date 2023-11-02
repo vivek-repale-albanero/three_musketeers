@@ -15,8 +15,8 @@ const GameBoard = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [winner, setWinner] = useState(null);
   const [username, setUsername] = useState(JSON.parse(localStorage.getItem('useLogedId')) || '');
-  const [turn, setturn] = useState(true)
   const [rounds, setrounds] = useState([])
+  const [game,setgame]=useState(false)
   // Function to handle a cell click
 
   const handleCellClick = (row, col) => {
