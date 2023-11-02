@@ -1,17 +1,10 @@
 // PermissionContext.js
 import React, { createContext, useEffect, useState } from 'react';
 
-export const userData = [
-  { id: 1, user:{userName: "Pritam2000",firstName:"Pritam",lastName:"Halder",},age:"25", email:"user1@gmail.com", password: 'password1', gamePermission: false, csvPermission: false, csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false },
-  { id: 2, user:{userName: "Shoaib@1998",firstName:"Shoaib",lastName:"Mansoori"},age:"26", email:"user2@gmail.com", password: 'password2', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 3, user:{userName: "Eswar@0110",firstName:"Eswar",lastName:"M"},age:"23", email:"user3@gmail.com", password: 'password3', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 4, user:{userName: "Gopal_R",firstName:"Ram",lastName:"Gopal"},age:"32", email:"user4@gmail.com",  password: 'password4', gamePermission: false, csvPermission: false,csvDownlodPermission: false,startGamePermission:false,resetGamePermission:false  },
-  { id: 5, user:{userName: "Abc",firstName:"Abc",lastName:"Def"},age:"46", email:"user5@gmail.com", password: 'password5', gamePermission: false, csvPermission: false,csvDownlodPermission: false ,startGamePermission:false,resetGamePermission:false },
-];
 export const PermissionContext = createContext();
 
  const PermissionProvider = ({ children }) => {
-  const [users, setUsers] = useState(userData);
+  const [users, setUsers] = useState([]);
 //permission
   const [gameAuth, setGameAuth] = useState(false);
   const [csvAuth, setCsvAuth] = useState(false);
@@ -28,33 +21,65 @@ export const PermissionContext = createContext();
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState([]);
   const [editedFile, setEditedFile] = useState(null);
+
+
+
+  const [isPermissionModalOpen, setIsPermissionModalOpen] = useState(false);
+  
+//get user data
+useEffect(() => {
+  // Make a GET request to fetch user data
+  fetch('http://localhost:3000/users')
+    .then((response) => response.json())
+    .then((data) => {
+      // Update the state with the fetched user data
+      setUsers(data);
+    })
+    .catch((error) => {
+      // Handle network or other errors here
+      console.error('Error:', error);
+    });
+}, []);
+
 //data from local storage
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"))
+
   // console.log(loggedUser)
   const updateUserPermissions = (userId, route, value) => {
-    // console.log("loggedUser",loggedUser.id)
     setUsers((prevUsers) => {
       return prevUsers.map((user) =>
         user.id === userId ? { ...user, [`${route}Permission`]: value } : user
-      )
-    }
-    );
+      );
+    });
   };
+
   useEffect(() => {
     if (loggedUser) {
-      users.map(el => {
-        if (el.name === loggedUser.name) {
-          setCsvAuth(el.csvPermission)
-          setGameAuth(el.gamePermission)
-          setDownloadPermission(el.csvDownlodPermission)
-          setStartTicTac(el.startGamePermission)
-          setResetTicTac(el.resetGamePermission)
-        }
-      })
+      if(loggedUser.permission.includes("csvpage")){
+        setCsvAuth(true);
+      }
+          // setGameAuth(el.gamePermission);
+          // setDownloadPermission(el.csvDownlodPermission);
+          // setStartTicTac(el.startGamePermission);
+          // setResetTicTac(el.resetGamePermission);
+          console.log(loggedUser.permission)
     }
-  }, [users])
-  console.log("users",users)
-  
+  }, [users]);
+  // console.log("users",users)
+
+
+
+
+
+
+  //permission
+  const handlePermissionModalOpen = () => {
+    setIsPermissionModalOpen(true);
+  };
+
+  const handlePermissionCloseFn = () => {
+    setIsPermissionModalOpen(false);
+  };
  //function for csv
  const handleOpen = () => {
   setIsModalOpen(true);
@@ -144,9 +169,15 @@ const createEditedFile = () => {
   const csvBlob = new Blob([csv], { type: 'text/csv' });
   return URL.createObjectURL(csvBlob);
 };
-console.log("contextr",csvAuth)
   return (
-    <PermissionContext.Provider value={{ users, updateUserPermissions, gameAuth, setGameAuth, csvAuth, setCsvAuth,csvData,
+    <PermissionContext.Provider value={{ 
+      users, 
+      updateUserPermissions, 
+      gameAuth, 
+      setGameAuth, 
+      csvAuth, 
+      setCsvAuth, 
+      csvData,
       setCsvData,
       isModalOpen,
       setIsModalOpen,
@@ -163,7 +194,22 @@ console.log("contextr",csvAuth)
       editedData,
       setEditedData,
       editedFile,
-      setEditedFile,handleOpen,handleFileChange,showTableFn,handleEditClick,handleInputChange,handleSaveClick,handleCancelEdit,handleClose,downloadPermission,startTicTac,resetTicTac}}>
+      setEditedFile,
+      handleOpen,
+      handlePermissionModalOpen,
+      handlePermissionCloseFn,
+      handleFileChange,
+      showTableFn,
+      handleEditClick,
+      handleInputChange,
+      isPermissionModalOpen,
+      handleSaveClick,
+      handleCancelEdit,
+      handleClose,
+      downloadPermission,
+      startTicTac,
+      resetTicTac
+    }}>
       {children}
     </PermissionContext.Provider>
   );
