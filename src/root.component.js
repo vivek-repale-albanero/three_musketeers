@@ -23,8 +23,9 @@ export default function Root() {
 
           <Route exact path="/csv" render={() => 
           // <PrivateCsvEditRoute>
+
           <CsvPage />
-        // </PrivateCsvEditRoute>
+        //  {/* </PrivateCsvEditRoute> */}
       } 
         />
           <Route exact path="/authorization" render={()=>(<PermissionPage />)}/>
