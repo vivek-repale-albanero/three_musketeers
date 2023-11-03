@@ -15,7 +15,7 @@ function Gamplayer() {
         {userdetails.firstUser}
           {/* <img  className='user'src={one} /> */}
         </div>
-        <img className="vs"src='https://media3.giphy.com/media/pE33F8QYDb7XGemuen/giphy.gif?cid=ecf05e4797cf539cprl9ltv4no8si4nmo0ewwcj84cnfnjkj&ep=v1_stickers_search&rid=giphy.gif&ct=s' />
+        <img className="vs"src='https://media3.giphy.com/media/WT9IlKpENSEJoX6e0V/giphy.gif?cid=ecf05e4781cexe4spdnra18d9ancxu8t9cjhj8h90xofd4av&ep=v1_gifs_related&rid=giphy.gif&ct=s' />
         <div>{userdetails.secondUser}
          {/* <img className='user' src={two} /> */}
         </div>
