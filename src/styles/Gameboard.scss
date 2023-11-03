@@ -1,74 +1,95 @@
 .GameBoardDiv {
 
-    border: 1px solid red;
-    // width: 80%;
+    // border: 1px solid red;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 50px auto;
+
 
     .TicTactoe {
-        border: 1px solid black;
-        // width: 65%;
+        // border: 1px solid black;
+        width: 700px;
+        height: 750px;
         margin: auto;
-
-        .PlayerTurnDiv {
-            font-size: 20px;
-            text-align: center;
-            padding: 10px;
-            background: teal;
-            width: 50%;
-            color: white;
-            border-radius: 5px;
-            margin: 15px auto 15px;
-            padding: 7px;
-            font-family: 'Segoe UI';
-        }
-
-        .GameButtonDiv {
-            display: flex;
-            justify-content: space-evenly;
-            height: 70px;
-            align-items: center;
-        }
-
-        .CustomGameButton {
-
-            background: linear-gradient(45deg, #009688, #1976d2);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            transition: background 0.3s ease;
-
-            &:hover {
-                background: linear-gradient(45deg, #1976d2, #009688);
+        padding: 15px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-image: url('https://media3.giphy.com/media/l3vRnoppYtfEbemBO/giphy.gif?cid=ecf05e47pv1fqklbwsq0u2l0g3fujbeg8if0u16atitawsnb&ep=v1_gifs_related&rid=giphy.gif&ct=g');
+        border-radius: 50px;
+        .tictocdiv {
+            .PlayerTurnDiv {
+                font-size: 20px;
+                text-align: center;
+                padding: 10px;
+                background: teal;
+                width: 50%;
+                color: white;
+                border-radius: 5px;
+                margin: 15px auto 15px;
+                padding: 7px;
             }
 
+            .GameButtonDiv {
+                display: flex;
+                justify-content: space-evenly;
+                height: 70px;
+                align-items: center;
+            }
+
+            .CustomGameButton {
+
+                background: linear-gradient(45deg, #009688, #1976d2);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                display: block;
+                transition: background 0.3s ease;
+
+                &:hover {
+                    background: linear-gradient(45deg, #1976d2, #009688);
+                }
+
+            }
         }
 
-        .Column{
+        .MainGridDiv {}
+
+        .Column {
             // border: 1px solid black;
-            width: 20px;
-            margin: auto;
-            
+            // margin: auto;
+            // border: 1px dotted black;
+
+            text-align: center;
+
+
         }
-        .Row{
+
+        .Row {
             // border: 1px solid red;
-            margin: auto;
-            width: 70%;
-           
-            gap: 5px;
-        }
-        .GameCell {
-            height: 120px;
-            // width: 130px;
-            cursor: pointer;
+            height: 50px;
             display: flex;
+            justify-content: center;
             margin: auto;
+            justify-content: center;
+
+        }
+
+        .GameCell {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border: 1px dotted black;
+            display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: center;
+
 
         }
 
@@ -80,13 +101,116 @@
 
     .Rounds {
         margin: auto;
-
+        width: 400px;
+        height: 750px;
+        padding: 0;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+        // border:1px solid black;
         .RoundsCalculating {
-            border: 1px solid green;
+            overflow-y: auto; /* Adds a vertical scrollbar */
+            height: 600px;
+
+        }
+        
+        .roundtitle{
+        //    border: 1px solid pink;
+           
+        }
+
+        span{
+            background-color: #FAF9F6;
+            // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 5px;
+            
+            display: block;
+            width: 50%;
+            font-size: 15px;
+            margin:  auto
+            
+        }
+        .roundimgdiv{
+            display: flex;
+            align-items: center;
+            // border: 1px solid black;
+            height: 500px;
+        }
+        .roundimg{
+            display: block;
+            margin: auto;
+            width: 30%;
+        }
+        
+        .roundcardparent{  margin:4px, 4px;
+            padding:4px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align:justify;
+
+        }
+        .Roundcard {
+
+            border: 1px solid black;
+            padding: 15px;
+            margin: 20px;
+            color: white;
+            background-color: rgb(0, 128, 128);
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-evenly;
+            background-image: url('https://media3.giphy.com/media/1nbweFkb6kqVhNCwJ4/giphy.gif?cid=ecf05e47d616zdh02paqhenddj3ul7ijt5xlq7olhzn6pr9r&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+
 
 
         }
 
+    }
+
+    .UserCards {
+        width: 400px;
+        // border: 1px solid pink;
+        height: 750px;
+
+        padding: 15px;
+        margin: 15px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        .Card1 {
+            text-align: center;
+            border: 1px solid gray;
+            padding: 15px;
+            color: white;
+            border-radius: 50px;
+            background-color: rgb(0, 128, 128);
+
+            background-image: url('https://media3.giphy.com/media/lKpQLzEwqAQLtLv1O5/200w.webp?cid=ecf05e47ir4fwpo8hwnty7uxm59hkwjopeo45w0e9mxuadz9&ep=v1_gifs_related&rid=200w.webp&ct=s')
+        }
+
+        .Card2 {
+            text-align: left;
+            border: 1px solid gray;
+            padding: 15px;
+            text-align: center;
+            background-color: rgb(0, 128, 128);
+            color: white;
+            border-radius: 50px;
+            background-image: url('https://media3.giphy.com/media/lKpQLzEwqAQLtLv1O5/200w.webp?cid=ecf05e47ir4fwpo8hwnty7uxm59hkwjopeo45w0e9mxuadz9&ep=v1_gifs_related&rid=200w.webp&ct=s');
+
+        }
+
+        .Titleclass {
+            margin: 10px auto;
+            // border:1px solid blue;
+            border-radius: 30px;
+            padding: 20px;
+            
+        }
+
+        .vs {
+            width: 150px;
+            display: block;
+            height: 120px;
+            margin: auto;
+        }
     }
 
 }

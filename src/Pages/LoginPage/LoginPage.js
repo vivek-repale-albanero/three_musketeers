@@ -9,6 +9,7 @@ function LoginPage() {
   let history = useHistory();
   const { users } = useContext(PermissionContext);
   const handleLogin = () => {
+    
     const user = users.find((user) => user.email === userEmail && user.password === password);
     if (user) {
       localStorage.setItem("useLogedId", JSON.stringify(user));

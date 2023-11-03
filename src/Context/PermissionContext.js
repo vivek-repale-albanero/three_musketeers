@@ -62,7 +62,7 @@ useEffect(() => {
           // setDownloadPermission(el.csvDownlodPermission);
           // setStartTicTac(el.startGamePermission);
           // setResetTicTac(el.resetGamePermission);
-          console.log(loggedUser.permission)
+          
     }
   }, [users]);
   // console.log("users",users)
@@ -172,9 +172,7 @@ const createEditedFile = () => {
   return (
     <PermissionContext.Provider value={{ users,setUsers, updateUserPermissions, gameAuth, setGameAuth, csvAuth, setCsvAuth,csvData,
       setCsvData,
-      editFormModal,
-      setEditFormModal,
-      handleEditClose,
+  
       isModalOpen,
       setIsModalOpen,
       selectedFileName,

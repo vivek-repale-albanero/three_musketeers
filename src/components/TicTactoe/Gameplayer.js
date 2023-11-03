@@ -1,24 +1,43 @@
 import React, { useState } from 'react'
-import one from'../../assests/1.png'
-import two from'../../assests/2.jpg'
-
-function Gamplayer() {
-
-    const[userdetails,setuserdetails]=useState(JSON.parse(localStorage.getItem('gamedetails')))
-
-    console.log("details",userdetails)
+import one from '../../assests/1.png'
+import two from '../../assests/2.jpg'
+import vs  from '../../assests/vs.png'
+import Title from './Title'
+function Gamplayer({ userdetails }) {
+  const [user1, user2] = userdetails
+  console.log("dettt",userdetails)
+  console.log("details", user1, "user2",user2)
 
   return (
     <div className='GameplayerDiv'>
-      <h1>Let`s Go Players</h1>
-        <div>
-        {userdetails.firstUser}
-          {/* <img  className='user'src={one} /> */}
-        </div>
-        <img className="vs"src='https://media3.giphy.com/media/WT9IlKpENSEJoX6e0V/giphy.gif?cid=ecf05e4781cexe4spdnra18d9ancxu8t9cjhj8h90xofd4av&ep=v1_gifs_related&rid=giphy.gif&ct=s' />
-        <div>{userdetails.secondUser}
-         {/* <img className='user' src={two} /> */}
-        </div>
+      <div className='Titleclass'>
+
+      <Title>Let`s Go</Title>
+      </div>
+      <div className='Card1'>
+        <h3>
+          Name: {`${user1.user.firstName} ${user1.user.lastName}`}
+        </h3>
+        <p>Username: {user1.user.userName}</p>
+
+        <p>Email: {user1.email}</p>
+        <p>Age: {user1.age}</p>
+
+
+        { }
+
+        {/* <img  className='user'src={one} /> */}
+      </div>
+      <img className="vs" src={vs} />
+      <div className='Card2'>
+        <h3>
+        Name:{`${user2.user.firstName} ${user2.user.lastName}`}
+        </h3>
+        <p>Username: {user2.user.userName}</p>
+        <p>Email: {user2.email}</p>
+        <p>Age: {user2.age}</p>
+        {/* <img className='user' src={two} /> */}
+      </div>
     </div>
   )
 }

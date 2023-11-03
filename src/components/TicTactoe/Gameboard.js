@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import Cell from "./Cell.js";
-import { Button, Grid } from "@material-ui/core";
 import Title from './Title.js'
-import X from '../../assests/x.png'
-import O from '../../assests/o.png'
 import React from 'react'
 import '../../styles/Gameboard.scss'
 import CalculatingRounds from "./CalculatingRounds.js";
 import CustomButton from "./CustomButton.js";
+import Gamplayer from "./Gameplayer.js";
 
 const GameBoard = () => {
   const [UserCellsInput, setseconduserAndcell] = useState(JSON.parse(localStorage.getItem('gamedetails')) || '');
@@ -16,10 +14,12 @@ const GameBoard = () => {
   const [winner, setWinner] = useState(null);
   const [username, setUsername] = useState(JSON.parse(localStorage.getItem('useLogedId')) || '');
   const [rounds, setrounds] = useState([])
-  const [game, setgame] = useState("Not started")
-  const[roundcount, setroundcount]=useState(1)
+  const [game, setgame] = useState("Not Started")
+  const [roundcount, setroundcount] = useState(1)
+  const{userdetails}=UserCellsInput
+  const[a,b]=userdetails
 
-
+  console.log(a.user.firstName,b.user.firstName)
   const handleCellClick = (row, col) => {
     const cellsCopy = [...cells];
     if (cellsCopy[row][col] || winner) {
@@ -30,8 +30,8 @@ const GameBoard = () => {
     setCells(cellsCopy);
     setXIsNext(!xIsNext);
     setgame("in Progress")
-
   };
+
 
 
 
@@ -46,14 +46,13 @@ const GameBoard = () => {
 
   const calculateWinner = (squares) => {
     const size = squares.length;
-    console.log(squares)
     // Rows
     for (let i = 0; i < size; i++) {
       let row = '';
       for (let j = 0; j < size; j++) {
         row += squares[i][j];
       }
-      console.log(row)
+
       if (row === "X".repeat(size) || row === "O".repeat(size)) {
         return squares[i][0];
       }
@@ -103,21 +102,20 @@ const GameBoard = () => {
   useEffect(() => {
     const winner = calculateWinner(cells);
     const isDraw = cells.every(cell => cell.every(subcell => subcell !== null));
-    console.log("winner", winner)
     if (winner) {
       setWinner(winner);
       alert(`Hurray! Winner is ${winner}`);
       setCells((generateCells(Number(UserCellsInput.cellCount))));
       setWinner(null);
       setgame(`hey the Winner is ${winner}`)
-      setrounds((prev)=>[...prev,{status:`winner ${winner}`,round:`Round${roundcount}`}])
+      setrounds((prev) => [...prev, { status: `winner ${winner}`, round: `Round${roundcount}` }])
       setgame("Not Started")
-      setroundcount(roundcount+1)
+      setroundcount(roundcount + 1)
     }
     else if (isDraw) {
       alert("Game Over! It's a Draw.");
       setCells((generateCells(Number(UserCellsInput.cellCount))));
-      setrounds((prev)=>[...prev,{status:"Draw",round:`Round${roundcount}`}])
+      setrounds((prev) => [...prev, { status: "Draw", round: `Round${roundcount}` }])
       setWinner(null);
     }
 
@@ -125,36 +123,42 @@ const GameBoard = () => {
 
 
   // Display winner or current player's turn
-  let status = winner ? `Winner: ${winner}` : `${xIsNext ? "X" : "O"}`;
+  let status = winner ? `Winner: ${winner}` : `${xIsNext ? a.user.firstName : b.user.firstName}`;
 
-
-
+   console.log(status,"winner winner chicken dinner")
+  console.log("de", UserCellsInput)
   return (
     <div className={`GameBoardDiv size-${UserCellsInput.cellCount}`}>
+      <div className="UserCards">
+        <Gamplayer userdetails={UserCellsInput.userdetails} />
+      </div>
       <div className="TicTactoe">
-        <Title>Tic Tac Toe Game</Title>
-        <div className="PlayerTurnDiv">Next Turn: <div>{status}</div></div>
-        <Grid container spacing={3} >
-          {cells?.map((row, rowIndex) => (
-            <Grid className="Row"container key={rowIndex} spacing={2}>
-              {row?.map((cell, colIndex) => (
-                <Grid className="Column"item xs={Math.floor(1/ UserCellsInput.cellCount)} key={colIndex}>
-                  <Cell cell={cell} onClick={() => handleCellClick(rowIndex, colIndex)} />
-                </Grid>
-              ))}
-            </Grid>
-          ))}
-        </Grid>
-        <div className="GameButtonDiv">
-          <CustomButton onClick={handleResetGame}>Reset Game</CustomButton>
-          <CustomButton  >Undo</CustomButton>
-          {/* <CustomButton  >redu </CustomButton> */}
+        <div className="tictocdiv">
+          <Title>Tic Tac Toe Game</Title>
+          <div className="PlayerTurnDiv">Next Turn: <div>{status}</div></div>
+          <div className="MainGridDiv"  >
+            {cells?.map((row, rowIndex) => (
+              <div className="Row" key={rowIndex} spacing={2}>
+                {row?.map((cell, colIndex) => (
+                  <div className="Column" key={colIndex}>
+                    <Cell cell={cell} onClick={() => handleCellClick(rowIndex, colIndex)} />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="GameButtonDiv">
+            <CustomButton onClick={handleResetGame}>Reset Game</CustomButton>
+            <CustomButton  >Undo</CustomButton>
+            {/* <CustomButton  >redu </CustomButton> */}
 
+          </div>
         </div>
       </div>
       <div className="Rounds">
-        <CalculatingRounds Rounds = {rounds} roundCount={roundcount} progress={game} />
+        <CalculatingRounds Rounds={rounds} roundCount={roundcount} progress={game} />
       </div>
+
     </div>
   );
 };
