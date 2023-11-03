@@ -40,7 +40,7 @@ const GamePageRedirect = () => {
 
     if (PlayingDetails.secondUsername && PlayingDetails.cellCount && PlayingDetails.FirstUsername) {
       let UsersDetails = userData.filter((item) =>item.user.userName==PlayingDetails.FirstUsername || item.user.userName==PlayingDetails.secondUsername)
-      console.log(UsersDetails,"redurect")
+  
       localStorage.setItem('gamedetails', JSON.stringify({ userdetails: UsersDetails, cellCount: PlayingDetails.cellCount }))
       setPlayingDetails({FirstUsername:"",secondUsername:"",cellCount:0})
       window.location.href = '/game'

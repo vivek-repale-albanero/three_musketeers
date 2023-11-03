@@ -19,7 +19,6 @@ const GameBoard = () => {
   const{userdetails}=UserCellsInput
   const[a,b]=userdetails
 
-  console.log(a.user.firstName,b.user.firstName)
   const handleCellClick = (row, col) => {
     const cellsCopy = [...cells];
     if (cellsCopy[row][col] || winner) {
@@ -103,12 +102,14 @@ const GameBoard = () => {
     const winner = calculateWinner(cells);
     const isDraw = cells.every(cell => cell.every(subcell => subcell !== null));
     if (winner) {
-      setWinner(winner);
-      alert(`Hurray! Winner is ${winner}`);
+      const realwinner = a.user.firstName == status ? b.user.firstName :a.user.firstName
+      console.log(realwinner,"realwinner")
+      setWinner(realwinner);
+      alert(`Hurray! Winner is ${realwinner}`);
       setCells((generateCells(Number(UserCellsInput.cellCount))));
       setWinner(null);
-      setgame(`hey the Winner is ${winner}`)
-      setrounds((prev) => [...prev, { status: `winner ${winner}`, round: `Round${roundcount}` }])
+      setgame(`hey the Winner is ${realwinner}`)
+      setrounds((prev) => [...prev, { status: `winner ${realwinner}`, round: `Round${roundcount}` }])
       setgame("Not Started")
       setroundcount(roundcount + 1)
     }
@@ -126,7 +127,6 @@ const GameBoard = () => {
   let status = winner ? `Winner: ${winner}` : `${xIsNext ? a.user.firstName : b.user.firstName}`;
 
    console.log(status,"winner winner chicken dinner")
-  console.log("de", UserCellsInput)
   return (
     <div className={`GameBoardDiv size-${UserCellsInput.cellCount}`}>
       <div className="UserCards">

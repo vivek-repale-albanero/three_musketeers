@@ -5,8 +5,7 @@ import vs  from '../../assests/vs.png'
 import Title from './Title'
 function Gamplayer({ userdetails }) {
   const [user1, user2] = userdetails
-  console.log("dettt",userdetails)
-  console.log("details", user1, "user2",user2)
+  
 
   return (
     <div className='GameplayerDiv'>
