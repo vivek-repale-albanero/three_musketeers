@@ -55,9 +55,9 @@ useEffect(() => {
 
   useEffect(() => {
     if (loggedUser) {
-      if(loggedUser.permission.includes("csvpage")){
-        setCsvAuth(true);
-      }
+      // if(loggedUser.permission.includes("csvpage")){
+      //   setCsvAuth(true);
+      // }
           // setGameAuth(el.gamePermission);
           // setDownloadPermission(el.csvDownlodPermission);
           // setStartTicTac(el.startGamePermission);
@@ -172,9 +172,6 @@ const createEditedFile = () => {
   return (
     <PermissionContext.Provider value={{ users,setUsers, updateUserPermissions, gameAuth, setGameAuth, csvAuth, setCsvAuth,csvData,
       setCsvData,
-      editFormModal,
-      setEditFormModal,
-      handleEditClose,
       isModalOpen,
       setIsModalOpen,
       selectedFileName,
