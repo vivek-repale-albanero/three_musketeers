@@ -141,14 +141,9 @@ function UsersPage() {
         body: JSON.stringify(updatedUsersList[0]),
       })
         .then(response =>  afterEdit())
-        // .then(editedUser => {
-        //   console.log('User edited:', JSON.stringify(editedUser));
-        // })
         .catch(error => {
           console.error('Error:', error);
         });
-      
-      // setUsers(updatedUsersList);  
     }
     closeModal()
   }
