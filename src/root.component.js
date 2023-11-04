@@ -168,7 +168,7 @@ export default function Root() {
   // };
 
   const permission = useMemo(() => {
-    return {users,gameAuth}
+    return {users,gameAuth,setUsers}
   }, [users])
 // console.log(users)
 // console.log("ok")

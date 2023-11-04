@@ -5,7 +5,7 @@
       "user": {
         "userName": "pritam0001",
         "firstName": "Pritam",
-        "lastName": "Halder"
+        "lastName": "Hald"
       },
       "age": "25",
       "email": "user1@gmail.com",
@@ -119,6 +119,114 @@
         }
       ],
       "id": 3
+    },
+    {
+      "user": {
+        "userName": "AbiBachan123",
+        "firstName": "Abishek",
+        "lastName": "Bachan"
+      },
+      "age": "26",
+      "email": "AbiBachan123@gmail.com",
+      "password": "password1",
+      "permission": [
+        {
+          "name": "csvPermission",
+          "allow": false,
+          "subModules": [
+            {
+              "name": "csvPagePermission",
+              "allow": false
+            },
+            {
+              "name": "csvEditPermission",
+              "allow": false
+            },
+            {
+              "name": "vsvDownloadPermission",
+              "allow": false
+            }
+          ]
+        },
+        {
+          "name": "gamePermission",
+          "allow": false,
+          "subModules": [
+            {
+              "name": "gamePagePermission",
+              "allow": false
+            },
+            {
+              "name": "gameStartPermission",
+              "allow": false
+            },
+            {
+              "name": "gameResetPermission",
+              "allow": false
+            }
+          ]
+        },
+        {
+          "name": "missing",
+          "allow": false,
+          "subModules": []
+        }
+      ],
+      "id": 4
+    },
+    {
+      "user": {
+        "userName": " ddfv",
+        "firstName": "a adf",
+        "lastName": " da da"
+      },
+      "age": "rs",
+      "email": "fr",
+      "password": "fvf",
+      "permission": [
+        {
+          "name": "csvPermission",
+          "allow": false,
+          "subModules": [
+            {
+              "name": "csvPagePermission",
+              "allow": false
+            },
+            {
+              "name": "csvEditPermission",
+              "allow": false
+            },
+            {
+              "name": "vsvDownloadPermission",
+              "allow": false
+            }
+          ]
+        },
+        {
+          "name": "gamePermission",
+          "allow": false,
+          "subModules": [
+            {
+              "name": "gamePagePermission",
+              "allow": false
+            },
+            {
+              "name": "gameStartPermission",
+              "allow": false
+            },
+            {
+              "name": "gameResetPermission",
+              "allow": false
+            }
+          ]
+        },
+        {
+          "name": "missing",
+          "allow": false,
+          "subModules": []
+        }
+      ],
+      "id": 5
     }
   ]
 }

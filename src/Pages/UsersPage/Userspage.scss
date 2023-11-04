@@ -1,8 +1,12 @@
-.title{
-    margin: 55px 30px 30px 15px;
+.MuiContainer-root{
+    // margin: 55px0 30px 30px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1%;
+    padding: 1%;
+    border: 1px black solid;
+    border-radius: 5px;
     .addBtn{
         background-color: teal;
         color: white;
