@@ -1,17 +1,16 @@
 
 import React,{ useContext, useEffect, useState } from "react"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Icon,Checkbox, Card } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Icon,Checkbox, Card, Link } from '@material-ui/core';
 import Layout from '../../Layout/Layout';
 import "./Userspage.scss"
 import BreadCrumb from '../../components/Breadcrumbs/BreadCrumb';
 import EditForm from "../../components/EditForm/EditForm";
-import UserPermission from "../../components/UserPermissionTable";
 import { PermissionContext } from "../../Context";
 
 
 function UsersPage() {
 
-  const { users,setUsers,handlePermissionModalOpen} = useContext(PermissionContext)
+  const { users,setUsers,currentUser} = useContext(PermissionContext)
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
 
     //Form Modal
@@ -161,7 +160,7 @@ function UsersPage() {
         });
 
    }
-  
+  // console.log(currentUser)
   return (
     <>
       <Layout>
@@ -229,8 +228,8 @@ function UsersPage() {
                         saveUserData={saveUserData}/>
                         :
                         null}
-                        <button className='actionBtn' onClick={handlePermissionModalOpen}><Icon>key</Icon></button>
-                        <UserPermission/>
+                        <Link href={currentUser&& currentUser.id==user.id?`/authorization/${user.id}`:"#"} disabled={currentUser&& currentUser.id==user.id} className='actionBtn'><Icon>key</Icon></Link>
+                       {/* {currentUser &&.id==user.id? <Link href={`/authorization/${user.id}`} className='actionBtn'><Icon>key</Icon></Link>:alert("non authorized")} */}
                         {/* <button className='actionBtn'><Icon>delete</Icon></button> */}
                         <button className='actionBtn' onClick={()=>deleteUser(user.id)}><Icon>delete</Icon></button>
 

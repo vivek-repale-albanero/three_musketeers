@@ -1,13 +1,14 @@
 import React,{ useContext } from "react";
 
-import { PermissionContext } from "../Context/PermissionContext";
 import {Redirect} from "react-router-dom"
+import { PermissionContext } from "../Context";
 
 function PrivateCsvEditRoute({children}) {
-    const { csvAuth } = useContext(PermissionContext);
-    if(!csvAuth){
-        alert("Please Athorize for Csv Edit Permission")
-        return(<Redirect to="/authorization" />
+
+    const { currentUser} = useContext(PermissionContext);
+    if(!currentUser.Permission.csvPermission.subModules.csvPagePermission){
+        alert("Please Athorize for Csv Page Permission")
+        return(<Redirect to="/users" />
         )
     }
 

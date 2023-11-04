@@ -1,10 +1,15 @@
 
-import { PermissionContext } from "../Context/PermissionContext";
-import { useContext } from "react";
-
+import React,{ useContext } from "react";
+import { PermissionContext } from "../Context";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 function PrivateGameRoute({children}) {
-    const { gameAuth } = useContext(PermissionContext);
-    
+  const { currentUser} = useContext(PermissionContext);
+  if(!currentUser.Permission.gamePermission.subModules.gamePagePermission){
+    alert("Please Athorize for Game Page Permission")
+    return(<Redirect to="/users" />
+    )
+}
+
     return children
   }
   export default PrivateGameRoute;

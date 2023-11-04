@@ -3,56 +3,34 @@
     {
       "id": 1,
       "user": {
-        "userName": "pritam0001",
+        "userName": "Pritam2000",
         "firstName": "Pritam",
         "lastName": "Halder"
       },
       "age": "25",
       "email": "user1@gmail.com",
       "password": "password1",
-      "Permission": [
-        {
-          "name": "csvPermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "csvPagePermission",
-              "allow": false
-            },
-            {
-              "name": "csvEditPermission",
-              "allow": false
-            },
-            {
-              "name": "vsvDownloadPermission",
-              "allow": false
-            }
-          ]
+      "Permission": {
+        "csvPermission": {
+          "allow": true,
+          "subModules": {
+            "csvPagePermission": true,
+            "csvEditPermission": true,
+            "csvDownloadPermission": true
+          }
         },
-        {
-          "name": "gamePermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "gamePagePermission",
-              "allow": false
-            },
-            {
-              "name": "gameStartPermission",
-              "allow": false
-            },
-            {
-              "name": "gameResetPermission",
-              "allow": false
-            }
-          ]
+        "gamePermission": {
+          "allow": true,
+          "subModules": {
+            "gamePagePermission": true,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
         },
-        {
-          "name": "missing",
-          "allow": false,
-          "subModules": []
+        "missing": {
+          "allow": false
         }
-      ]
+      }
     },
     {
       "id": 2,
@@ -75,49 +53,27 @@
       "age": "a",
       "email": "a",
       "password": "a",
-      "permission": [
-        {
-          "name": "csvPermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "csvPagePermission",
-              "allow": false
-            },
-            {
-              "name": "csvEditPermission",
-              "allow": false
-            },
-            {
-              "name": "vsvDownloadPermission",
-              "allow": false
-            }
-          ]
+      "Permission": {
+        "csvPermission": {
+          "allow": true,
+          "subModules": {
+            "csvPagePermission": true,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
         },
-        {
-          "name": "gamePermission",
+        "gamePermission": {
           "allow": false,
-          "subModules": [
-            {
-              "name": "gamePagePermission",
-              "allow": false
-            },
-            {
-              "name": "gameStartPermission",
-              "allow": false
-            },
-            {
-              "name": "gameResetPermission",
-              "allow": false
-            }
-          ]
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
         },
-        {
-          "name": "missing",
-          "allow": false,
-          "subModules": []
+        "missing": {
+          "allow": false
         }
-      ],
+      },
       "id": 3
     }
   ]

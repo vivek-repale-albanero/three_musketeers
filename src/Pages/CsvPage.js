@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import "./CsvPage.scss"
-import { CSVContext } from '../Context';
+import { CSVContext, PermissionContext } from '../Context';
 import {
   Button,
   Typography,
@@ -12,40 +12,43 @@ import {
 import CsvUploader from "../components/CsvUploader"
 import CsvTable from '../components/CsvTable';
 import Layout from "../Layout/Layout"
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+
 const CsvPage = () => {
-    const [csvData, setCsvData] = useState([]);
+  const [csvData, setCsvData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showTable, setShowTable] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState('');
   const [uploading, setUploading] = useState(false);
-      const [availFile, setAvailFile] = useState('');
-          const [editedData, setEditedData] = useState([]);
-              const [editedFile, setEditedFile] = useState(null);
-              const [editRowIndex, setEditRowIndex] = useState(-1);
-              const [showDownloadButton, setShowDownloadButton] = useState(false);
+  const [availFile, setAvailFile] = useState('');
+  const [editedData, setEditedData] = useState([]);
+  const [editedFile, setEditedFile] = useState(null);
+  const [editRowIndex, setEditRowIndex] = useState(-1);
+  const [showDownloadButton, setShowDownloadButton] = useState(false);
+  const { currentUser} = useContext(PermissionContext);
   const handleOpen = () => {
     setIsModalOpen(true);
   };
-   const handleFileChange = (e) => {
+  const handleFileChange = (e) => {
     setShowTable(false);
     const file = e.target.files[0];
     if (file) {
       setAvailFile(file);
       setSelectedFileName(file.name);
       setUploading(true);
-  
+
       const reader = new FileReader();
-  
+
       reader.onload = function (event) {
         const csvContent = event.target.result;
         processData(csvContent);
         setUploading(false);
       };
-  
+
       reader.readAsText(file);
     }
   };
-    const showTableFn = () => {
+  const showTableFn = () => {
     if (availFile) {
       setShowTable(true);
       setIsModalOpen(false);
@@ -54,13 +57,13 @@ const CsvPage = () => {
       setSelectedFileName('');
     }
   };
-    const handleClose = () => {
+  const handleClose = () => {
     setIsModalOpen(false);
   };
-   const processData = (csvContent) => {
+  const processData = (csvContent) => {
     const lines = csvContent.split("\n");
     const headers = lines[0].split(",");
-  
+
     const data = [];
     for (let i = 0; i < lines.length; i++) {
       const values = lines[i].split(",");
@@ -70,11 +73,11 @@ const CsvPage = () => {
       }
       data.push(entry);
     }
-  
+
     if (Object.keys(data[0]).length === 1 && data[0].hasOwnProperty("")) {
       data.shift();
     }
-  
+
     setCsvData(data);
     setEditedData(data);
   };
@@ -84,19 +87,24 @@ const CsvPage = () => {
         .map((value) => (value))
         .join(',')
     );
-    const csv =rows.join('\n');
+    const csv = rows.join('\n');
     const csvBlob = new Blob([csv], { type: 'text/csv' });
     // console.log(csv)
     return URL.createObjectURL(csvBlob);
   };
 
   const handleEditClick = (rowIndex) => {
+    if(!currentUser.Permission.csvPermission.subModules.csvEditPermission){
+      alert("Please Athorize for Edit CsvPermission")
+    return(<Redirect to="/users" />
+    )
+    }
     setShowDownloadButton(false)
     setEditRowIndex(rowIndex);
   };
 
   const handleCancelEdit = () => {
-    if(editedFile){
+    if (editedFile) {
       setShowDownloadButton(true)
     }
     setEditRowIndex(-1);
@@ -105,7 +113,7 @@ const CsvPage = () => {
   const handleSaveClick = (rowData) => {
     const updatedData = [...editedData];
     updatedData[editRowIndex] = rowData;
-  
+
     if (updatedData[editRowIndex].length < csvData[0].length) {
       const diff = csvData[0].length - updatedData[editRowIndex].length;
       for (let i = 0; i < diff; i++) {
@@ -114,18 +122,23 @@ const CsvPage = () => {
     } else if (updatedData[editRowIndex].length > csvData[0].length) {
       updatedData[editRowIndex] = updatedData[editRowIndex].slice(0, csvData[0].length);
     }
-  // console.log("updatedData",updatedData)
-    setCsvData(updatedData); 
+    // console.log("updatedData",updatedData)
+    setCsvData(updatedData);
     setEditedData(updatedData);
-    setEditedFile(createEditedFile(updatedData)); 
+    setEditedFile(createEditedFile(updatedData));
     setEditRowIndex(-1);
     setShowDownloadButton(true);
     handleCancelEdit()
   };
-  
+
   // console.log("editedFile",editedFile)
 
   const handleDownloadClick = () => {
+    if(!currentUser.Permission.csvPermission.subModules.csvDownloadPermission){
+      alert("Please Athorize for Download CsvPermission")
+    return(<Redirect to="/users" />
+    )
+    }
     if (editedFile) {
       const a = document.createElement('a');
       a.href = editedFile;
@@ -137,8 +150,8 @@ const CsvPage = () => {
     }
   };
   const csv = useMemo(() => {
-    return { isModalOpen,handleFileChange,showTableFn,handleClose,selectedFileName,uploading,availFile,csvData,editedData,setCsvData,setEditedData,setEditedFile,editedFile,editRowIndex,setEditRowIndex,showDownloadButton,setShowDownloadButton,createEditedFile,handleEditClick,handleCancelEdit,handleSaveClick,handleDownloadClick}
-  }, [isModalOpen,handleFileChange,showTableFn,handleClose,selectedFileName,uploading,availFile,csvData,editedData,setCsvData,setEditedData,setEditedFile,editedFile,editRowIndex,setEditRowIndex,showDownloadButton,setShowDownloadButton,,createEditedFile,handleEditClick,handleCancelEdit,handleSaveClick,handleDownloadClick])
+    return { isModalOpen, handleFileChange, showTableFn, handleClose, selectedFileName, uploading, availFile, csvData, editedData, setCsvData, setEditedData, setEditedFile, editedFile, editRowIndex, setEditRowIndex, showDownloadButton, setShowDownloadButton, createEditedFile, handleEditClick, handleCancelEdit, handleSaveClick, handleDownloadClick }
+  }, [isModalOpen, handleFileChange, showTableFn, handleClose, selectedFileName, uploading, availFile, csvData, editedData, setCsvData, setEditedData, setEditedFile, editedFile, editRowIndex, setEditRowIndex, showDownloadButton, setShowDownloadButton, , createEditedFile, handleEditClick, handleCancelEdit, handleSaveClick, handleDownloadClick])
   return (
     <Layout>
       <CSVContext.Provider value={csv}>
