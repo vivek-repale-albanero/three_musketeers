@@ -43,7 +43,7 @@ const GamePageRedirect = () => {
       return
     }
 
-    
+    console.log('hy')
 
     
     if (PlayingDetails.secondUsername && PlayingDetails.cellCount && PlayingDetails.FirstUsername) {
