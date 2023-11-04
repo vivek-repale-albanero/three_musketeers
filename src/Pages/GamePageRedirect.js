@@ -45,6 +45,9 @@ const GamePageRedirect = () => {
 
     console.log('hy')
 
+
+
+
     
     if (PlayingDetails.secondUsername && PlayingDetails.cellCount && PlayingDetails.FirstUsername) {
       let UsersDetails = userData.filter((item) =>item.user.userName==PlayingDetails.FirstUsername || item.user.userName==PlayingDetails.secondUsername)
