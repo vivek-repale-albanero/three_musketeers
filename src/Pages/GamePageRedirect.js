@@ -77,7 +77,7 @@ const GamePageRedirect = () => {
             value={PlayingDetails.cellCount}
             onChange={(e) =>setPlayingDetails({...PlayingDetails,cellCount:e.target.value})}
             type="number"
-            max='9'
+            maxLength="1"
 
           />
           <button onClick={handleStartGame}>Start New Game</button>

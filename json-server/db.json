@@ -3,9 +3,9 @@
     {
       "id": 1,
       "user": {
-        "userName": "Pritam2000",
+        "userName": "pritam0001",
         "firstName": "Pritam",
-        "lastName": "Halder"
+        "lastName": "girl"
       },
       "age": "25",
       "email": "user1@gmail.com",
@@ -63,6 +63,60 @@
       "email": "user5@gmail.com",
       "password": "password5",
       "permission": []
+    },
+    {
+      "user": {
+        "userName": "a",
+        "firstName": "a",
+        "lastName": "a"
+      },
+      "age": "a",
+      "email": "a",
+      "password": "a",
+      "permission": [
+        {
+          "name": "csvPermission",
+          "allow": false,
+          "subModules": [
+            {
+              "name": "csvPagePermission",
+              "allow": false
+            },
+            {
+              "name": "csvEditPermission",
+              "allow": false
+            },
+            {
+              "name": "vsvDownloadPermission",
+              "allow": false
+            }
+          ]
+        },
+        {
+          "name": "gamePermission",
+          "allow": false,
+          "subModules": [
+            {
+              "name": "gamePagePermission",
+              "allow": false
+            },
+            {
+              "name": "gameStartPermission",
+              "allow": false
+            },
+            {
+              "name": "gameResetPermission",
+              "allow": false
+            }
+          ]
+        },
+        {
+          "name": "missing",
+          "allow": false,
+          "subModules": []
+        }
+      ],
+      "id": 6
     }
   ]
 }

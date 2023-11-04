@@ -3,7 +3,7 @@ import React from 'react';
 // import { Outlet } from "react-router-dom"
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import { Drawer,List,ListItem,ListItemIcon,ListItemText,Card,Avatar,Icon,Button } from '@material-ui/core';
+import { AddCircleOutlineIcon,Drawer,List,ListItem,ListItemIcon,ListItemText,Card,Avatar,Icon,Button } from '@material-ui/core';
 import "./Layout.scss"
 // import {HomeIcon,DashboardIcon,SettingsIcon} from ''
 // import Drawer from '@mui/material/Drawer';
@@ -62,9 +62,16 @@ const Layout = ({children}) => {
             </ListItemIcon>
             <ListItemText primary="TicTacToe" />
           </ListItem>
+
+          <ListItem button component={Link} to="/missing">
+            <ListItemIcon>
+            <Icon>AddCircleOutlineIcon</Icon>
+            </ListItemIcon>
+            <ListItemText primary="Missing Page" />
+          </ListItem>
         </List>
       </Drawer>
-      <div style={{ marginLeft: '200px' }}>
+      <div style={{ marginLeft: '15%' }}>
         {/* <Outlet /> */}
         {children}
         </div>

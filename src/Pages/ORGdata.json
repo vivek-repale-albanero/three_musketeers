@@ -1,0 +1,1277 @@
+ [
+    {
+        "id": 1,
+        "OrgName": "Albanero",
+        "country": [
+            {
+                "india": [
+                    {
+                        "rajasthan": [
+                            "Rajsamand",
+                            "Udaipur",
+                            "Chittorgarh",
+                            "Jaipur",
+                            "Ajmer"
+                        ]
+                    },
+                    {
+                        "bangal": [
+                            "Kolkata",
+                            "Durgapur",
+                            "Khadakpur",
+                            "Asansol",
+                            "Siliguri"
+                        ]
+                    },
+                    {
+                        "Telangana": [
+                            "Hyderabad",
+                            "Warangal",
+                            "Nizamabad",
+                            "Khammam",
+                            "Karimnagar"
+                        ]
+                    },
+                    {
+                        "Bihar": [
+                            "Munger",
+                            "Madhubani",
+                            "Muzaffarpur",
+                            "Jehanabad",
+                            "Aurangabad"
+                        ]
+                    },
+                    {
+                        "Maharashtra": [
+                            "Mumbai",
+                            "Pune",
+                            "Nagpur",
+                            "Nashik",
+                            "Thane"
+                        ]
+                    }
+                ]
+            },
+            {
+                "unitedStates": [
+                    {
+                        "california": [
+                            "Los Angeles",
+                            "San Francisco",
+                            "San Diego",
+                            "Sacramento",
+                            "San Jose"
+                        ]
+                    },
+                    {
+                        "newYork": [
+                            "New York City",
+                            "Buffalo",
+                            "Albany",
+                            "Rochester",
+                            "Syracuse"
+                        ]
+                    },
+                    {
+                        "texas": [
+                            "Houston",
+                            "Dallas",
+                            "Austin",
+                            "San Antonio",
+                            "Fort Worth"
+                        ]
+                    },
+                    {
+                        "florida": [
+                            "Miami",
+                            "Orlando",
+                            "Tampa",
+                            "Jacksonville",
+                            "Fort Lauderdale"
+                        ]
+                    },
+                    {
+                        "illinois": [
+                            "Chicago",
+                            "Springfield",
+                            "Rockford",
+                            "Aurora",
+                            "Naperville"
+                        ]
+                    }
+                ]
+            },
+            {
+                "unitedKingdom": [
+                    {
+                        "england": [
+                            "London",
+                            "Manchester",
+                            "Birmingham",
+                            "Liverpool",
+                            "Leeds"
+                        ]
+                    },
+                    {
+                        "scotland": [
+                            "Glasgow",
+                            "Edinburgh",
+                            "Aberdeen",
+                            "Dundee",
+                            "Inverness"
+                        ]
+                    },
+                    {
+                        "wales": [
+                            "Cardiff",
+                            "Swansea",
+                            "Newport",
+                            "Wrexham",
+                            "Barry"
+                        ]
+                    },
+                    {
+                        "northernIreland": [
+                            "Belfast",
+                            "Derry",
+                            "Lisburn",
+                            "Newry",
+                            "Armagh"
+                        ]
+                    },
+                    {
+                        "isleOfMan": [
+                            "Douglas",
+                            "Peel",
+                            "Ramsey",
+                            "Castletown",
+                            "Port Erin"
+                        ]
+                    }
+                ]
+            },
+            {
+                "australia": [
+                    {
+                        "newSouthWales": [
+                            "Sydney",
+                            "Newcastle",
+                            "Wollongong",
+                            "Central Coast",
+                            "Blue Mountains"
+                        ]
+                    },
+                    {
+                        "victoria": [
+                            "Melbourne",
+                            "Geelong",
+                            "Ballarat",
+                            "Bendigo",
+                            "Shepparton"
+                        ]
+                    },
+                    {
+                        "queensland": [
+                            "Brisbane",
+                            "Gold Coast",
+                            "Sunshine Coast",
+                            "Townsville",
+                            "Cairns"
+                        ]
+                    },
+                    {
+                        "westernAustralia": [
+                            "Perth",
+                            "Mandurah",
+                            "Bunbury",
+                            "Geraldton",
+                            "Kalgoorlie"
+                        ]
+                    },
+                    {
+                        "southAustralia": [
+                            "Adelaide",
+                            "Mount Gambier",
+                            "Whyalla",
+                            "Murray Bridge",
+                            "Port Lincoln"
+                        ]
+                    }
+                ]
+            },
+            {
+                "canada": [
+                    {
+                        "ontario": [
+                            "Toronto",
+                            "Ottawa",
+                            "Mississauga",
+                            "Hamilton",
+                            "London"
+                        ]
+                    },
+                    {
+                        "quebec": [
+                            "Montreal",
+                            "Quebec City",
+                            "Laval",
+                            "Gatineau",
+                            "Longueuil"
+                        ]
+                    },
+                    {
+                        "britishColumbia": [
+                            "Vancouver",
+                            "Surrey",
+                            "Burnaby",
+                            "Richmond",
+                            "Abbotsford"
+                        ]
+                    },
+                    {
+                        "alberta": [
+                            "Calgary",
+                            "Edmonton",
+                            "Red Deer",
+                            "Lethbridge",
+                            "Medicine Hat"
+                        ]
+                    },
+                    {
+                        "manitoba": [
+                            "Winnipeg",
+                            "Brandon",
+                            "Steinbach",
+                            "Portage la Prairie",
+                            "Thompson"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "OrgName": "Cashify",
+        "country": [
+            {
+                "countryName": "United Kingdom",
+                "states": [
+                    {
+                        "England": [
+                            "London",
+                            "Manchester",
+                            "Birmingham",
+                            "Liverpool",
+                            "Leeds"
+                        ]
+                    },
+                    {
+                        "Scotland": [
+                            "Glasgow",
+                            "Edinburgh",
+                            "Aberdeen",
+                            "Dundee",
+                            "Inverness"
+                        ]
+                    },
+                    {
+                        "Wales": [
+                            "Cardiff",
+                            "Swansea",
+                            "Newport",
+                            "Wrexham",
+                            "Barry"
+                        ]
+                    },
+                    {
+                        "Northern Ireland": [
+                            "Belfast",
+                            "Derry",
+                            "Lisburn",
+                            "Newry",
+                            "Armagh"
+                        ]
+                    },
+                    {
+                        "Isle of Man": [
+                            "Douglas",
+                            "Peel",
+                            "Ramsey",
+                            "Castletown",
+                            "Port Erin"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "United States",
+                "states": [
+                    {
+                        "California": [
+                            "Los Angeles",
+                            "San Francisco",
+                            "San Diego",
+                            "Sacramento",
+                            "San Jose"
+                        ]
+                    },
+                    {
+                        "New York": [
+                            "New York City",
+                            "Buffalo",
+                            "Albany",
+                            "Rochester",
+                            "Syracuse"
+                        ]
+                    },
+                    {
+                        "Texas": [
+                            "Houston",
+                            "Dallas",
+                            "Austin",
+                            "San Antonio",
+                            "Fort Worth"
+                        ]
+                    },
+                    {
+                        "Florida": [
+                            "Miami",
+                            "Orlando",
+                            "Tampa",
+                            "Jacksonville",
+                            "Fort Lauderdale"
+                        ]
+                    },
+                    {
+                        "Illinois": [
+                            "Chicago",
+                            "Springfield",
+                            "Rockford",
+                            "Aurora",
+                            "Naperville"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Canada",
+                "states": [
+                    {
+                        "Ontario": [
+                            "Toronto",
+                            "Ottawa",
+                            "Mississauga",
+                            "Hamilton",
+                            "London"
+                        ]
+                    },
+                    {
+                        "Quebec": [
+                            "Montreal",
+                            "Quebec City",
+                            "Laval",
+                            "Gatineau",
+                            "Longueuil"
+                        ]
+                    },
+                    {
+                        "British Columbia": [
+                            "Vancouver",
+                            "Surrey",
+                            "Burnaby",
+                            "Richmond",
+                            "Abbotsford"
+                        ]
+                    },
+                    {
+                        "Alberta": [
+                            "Calgary",
+                            "Edmonton",
+                            "Red Deer",
+                            "Lethbridge",
+                            "Medicine Hat"
+                        ]
+                    },
+                    {
+                        "Manitoba": [
+                            "Winnipeg",
+                            "Brandon",
+                            "Steinbach",
+                            "Portage la Prairie",
+                            "Thompson"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Australia",
+                "states": [
+                    {
+                        "New South Wales": [
+                            "Sydney",
+                            "Newcastle",
+                            "Wollongong",
+                            "Central Coast",
+                            "Blue Mountains"
+                        ]
+                    },
+                    {
+                        "Victoria": [
+                            "Melbourne",
+                            "Geelong",
+                            "Ballarat",
+                            "Bendigo",
+                            "Shepparton"
+                        ]
+                    },
+                    {
+                        "Queensland": [
+                            "Brisbane",
+                            "Gold Coast",
+                            "Sunshine Coast",
+                            "Townsville",
+                            "Cairns"
+                        ]
+                    },
+                    {
+                        "Western Australia": [
+                            "Perth",
+                            "Mandurah",
+                            "Bunbury",
+                            "Geraldton",
+                            "Kalgoorlie"
+                        ]
+                    },
+                    {
+                        "South Australia": [
+                            "Adelaide",
+                            "Mount Gambier",
+                            "Whyalla",
+                            "Murray Bridge",
+                            "Port Lincoln"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Germany",
+                "states": [
+                    {
+                        "Berlin": [
+                            "Berlin",
+                            "Potsdam",
+                            "Oranienburg",
+                            "Strausberg",
+                            "Bernau"
+                        ]
+                    },
+                    {
+                        "Bavaria": [
+                            "Munich",
+                            "Nuremberg",
+                            "Augsburg",
+                            "Regensburg",
+                            "Ingolstadt"
+                        ]
+                    },
+                    {
+                        "Baden-Württemberg": [
+                            "Stuttgart",
+                            "Karlsruhe",
+                            "Mannheim",
+                            "Freiburg",
+                            "Heidelberg"
+                        ]
+                    },
+                    {
+                        "North Rhine-Westphalia": [
+                            "Cologne",
+                            "Düsseldorf",
+                            "Dortmund",
+                            "Essen",
+                            "Duisburg"
+                        ]
+                    },
+                    {
+                        "Lower Saxony": [
+                            "Hanover",
+                            "Braunschweig",
+                            "Osnabrück",
+                            "Oldenburg",
+                            "Wolfsburg"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "OrgName": "IBM",
+        "country": [
+            {
+                "countryName": "France",
+                "states": [
+                    {
+                        "Île-de-France": [
+                            "Paris",
+                            "Versailles",
+                            "Boulogne-Billancourt",
+                            "Saint-Denis",
+                            "Argenteuil"
+                        ]
+                    },
+                    {
+                        "Provence-Alpes-Côte d'Azur": [
+                            "Marseille",
+                            "Nice",
+                            "Toulon",
+                            "Avignon",
+                            "Antibes"
+                        ]
+                    },
+                    {
+                        "Auvergne-Rhône-Alpes": [
+                            "Lyon",
+                            "Grenoble",
+                            "Saint-Étienne",
+                            "Clermont-Ferrand",
+                            "Villeurbanne"
+                        ]
+                    },
+                    {
+                        "Occitanie": [
+                            "Toulouse",
+                            "Montpellier",
+                            "Nîmes",
+                            "Perpignan",
+                            "Béziers"
+                        ]
+                    },
+                    {
+                        "Nouvelle-Aquitaine": [
+                            "Bordeaux",
+                            "Limoges",
+                            "Pau",
+                            "La Rochelle",
+                            "Angoulême"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "China",
+                "states": [
+                    {
+                        "Beijing": [
+                            "Beijing",
+                            "Chaoyang",
+                            "Haidian",
+                            "Fengtai",
+                            "Dongcheng"
+                        ]
+                    },
+                    {
+                        "Shanghai": [
+                            "Shanghai",
+                            "Huangpu",
+                            "Xuhui",
+                            "Changning",
+                            "Jing'an"
+                        ]
+                    },
+                    {
+                        "Guangdong": [
+                            "Guangzhou",
+                            "Shenzhen",
+                            "Dongguan",
+                            "Foshan",
+                            "Zhuhai"
+                        ]
+                    },
+                    {
+                        "Jiangsu": [
+                            "Nanjing",
+                            "Suzhou",
+                            "Wuxi",
+                            "Changzhou",
+                            "Nantong"
+                        ]
+                    },
+                    {
+                        "Zhejiang": [
+                            "Hangzhou",
+                            "Ningbo",
+                            "Wenzhou",
+                            "Jiaxing",
+                            "Huzhou"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Brazil",
+                "states": [
+                    {
+                        "São Paulo": [
+                            "São Paulo",
+                            "Guarulhos",
+                            "Campinas",
+                            "São Bernardo do Campo",
+                            "Santo André"
+                        ]
+                    },
+                    {
+                        "Rio de Janeiro": [
+                            "Rio de Janeiro",
+                            "Nova Iguaçu",
+                            "Duque de Caxias",
+                            "Niterói",
+                            "Belford Roxo"
+                        ]
+                    },
+                    {
+                        "Minas Gerais": [
+                            "Belo Horizonte",
+                            "Uberlândia",
+                            "Contagem",
+                            "Betim",
+                            "Juiz de Fora"
+                        ]
+                    },
+                    {
+                        "Bahia": [
+                            "Salvador",
+                            "Feira de Santana",
+                            "Vitória da Conquista",
+                            "Camaçari",
+                            "Itabuna"
+                        ]
+                    },
+                    {
+                        "Paraná": [
+                            "Curitiba",
+                            "Londrina",
+                            "Maringá",
+                            "Ponta Grossa",
+                            "Cascavel"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Japan",
+                "states": [
+                    {
+                        "Tokyo": [
+                            "Tokyo",
+                            "Yokohama",
+                            "Osaka",
+                            "Nagoya",
+                            "Sapporo"
+                        ]
+                    },
+                    {
+                        "Kanagawa": [
+                            "Yokohama",
+                            "Kawasaki",
+                            "Sagamihara",
+                            "Yokosuka",
+                            "Fujisawa"
+                        ]
+                    },
+                    {
+                        "Osaka": [
+                            "Osaka",
+                            "Sakai",
+                            "Higashiosaka",
+                            "Kishiwada",
+                            "Suita"
+                        ]
+                    },
+                    {
+                        "Aichi": [
+                            "Nagoya",
+                            "Toyota",
+                            "Okazaki",
+                            "Ichinomiya",
+                            "Toyohashi"
+                        ]
+                    },
+                    {
+                        "Hokkaido": [
+                            "Sapporo",
+                            "Asahikawa",
+                            "Hakodate",
+                            "Tomakomai",
+                            "Obihiro"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Russia",
+                "states": [
+                    {
+                        "Moscow": [
+                            "Moscow",
+                            "Saint Petersburg",
+                            "Novosibirsk",
+                            "Yekaterinburg",
+                            "Nizhny Novgorod"
+                        ]
+                    },
+                    {
+                        "Saint Petersburg": [
+                            "Saint Petersburg",
+                            "Novosibirsk",
+                            "Yekaterinburg",
+                            "Nizhny Novgorod",
+                            "Kazan"
+                        ]
+                    },
+                    {
+                        "Novosibirsk Oblast": [
+                            "Novosibirsk",
+                            "Berdkul",
+                            "Cherepanovo",
+                            "Karasuk",
+                            "Iskitim"
+                        ]
+                    },
+                    {
+                        "Sverdlovsk Oblast": [
+                            "Yekaterinburg",
+                            "Nizhny Tagil",
+                            "Kamensk-Uralsky",
+                            "Serov",
+                            "Polevskoy"
+                        ]
+                    },
+                    {
+                        "Nizhny Novgorod Oblast": [
+                            "Nizhny Novgorod",
+                            "Dzerzhinsk",
+                            "Bor",
+                            "Kstovo",
+                            "Pavlovo"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "OrgName": "Flipcart",
+        "country": [
+            {
+                "countryName": "South Africa",
+                "states": [
+                    {
+                        "Gauteng": [
+                            "Johannesburg",
+                            "Pretoria",
+                            "Soweto",
+                            "Vereeniging",
+                            "Germiston"
+                        ]
+                    },
+                    {
+                        "Western Cape": [
+                            "Cape Town",
+                            "Stellenbosch",
+                            "George",
+                            "Paarl",
+                            "Worcester"
+                        ]
+                    },
+                    {
+                        "KwaZulu-Natal": [
+                            "Durban",
+                            "Pietermaritzburg",
+                            "Richards Bay",
+                            "Ladysmith",
+                            "Newcastle"
+                        ]
+                    },
+                    {
+                        "Eastern Cape": [
+                            "Port Elizabeth",
+                            "East London",
+                            "Uitenhage",
+                            "Mdantsane",
+                            "Queenstown"
+                        ]
+                    },
+                    {
+                        "Mpumalanga": [
+                            "Nelspruit",
+                            "Mbombela",
+                            "Witbank",
+                            "Secunda",
+                            "Middelburg"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Italy",
+                "states": [
+                    {
+                        "Lazio": [
+                            "Rome",
+                            "Latina",
+                            "Frosinone",
+                            "Viterbo",
+                            "Rieti"
+                        ]
+                    },
+                    {
+                        "Lombardy": [
+                            "Milan",
+                            "Bergamo",
+                            "Brescia",
+                            "Pavia",
+                            "Cremona"
+                        ]
+                    },
+                    {
+                        "Sicily": [
+                            "Palermo",
+                            "Catania",
+                            "Messina",
+                            "Syracuse",
+                            "Marsala"
+                        ]
+                    },
+                    {
+                        "Campania": [
+                            "Naples",
+                            "Salerno",
+                            "Torre del Greco",
+                            "Giugliano in Campania",
+                            "Pozzuoli"
+                        ]
+                    },
+                    {
+                        "Veneto": [
+                            "Venice",
+                            "Verona",
+                            "Padua",
+                            "Vicenza",
+                            "Treviso"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Mexico",
+                "states": [
+                    {
+                        "Mexico City": [
+                            "Mexico City",
+                            "Ecatepec",
+                            "Nezahualcóyotl",
+                            "Naucalpan",
+                            "Toluca"
+                        ]
+                    },
+                    {
+                        "Jalisco": [
+                            "Guadalajara",
+                            "Zapopan",
+                            "Tlaquepaque",
+                            "Tonalá",
+                            "Puerto Vallarta"
+                        ]
+                    },
+                    {
+                        "Nuevo León": [
+                            "Monterrey",
+                            "Guadalupe",
+                            "San Nicolás de los Garza",
+                            "Apodaca",
+                            "General Escobedo"
+                        ]
+                    },
+                    {
+                        "Puebla": [
+                            "Puebla",
+                            "Tehuacán",
+                            "San Martín Texmelucan",
+                            "Cholula",
+                            "Izúcar de Matamoros"
+                        ]
+                    },
+                    {
+                        "Guanajuato": [
+                            "León",
+                            "Irapuato",
+                            "Salamanca",
+                            "Celaya",
+                            "Acámbaro"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Argentina",
+                "states": [
+                    {
+                        "Buenos Aires": [
+                            "Buenos Aires",
+                            "La Plata",
+                            "Mar del Plata",
+                            "Bahía Blanca",
+                            "Lomas de Zamora"
+                        ]
+                    },
+                    {
+                        "Córdoba": [
+                            "Córdoba",
+                            "Villa María",
+                            "Río Cuarto",
+                            "Alta Gracia",
+                            "Bell Ville"
+                        ]
+                    },
+                    {
+                        "Santa Fe": [
+                            "Rosario",
+                            "Santa Fe",
+                            "Venado Tuerto",
+                            "Rafaela",
+                            "Santo Tomé"
+                        ]
+                    },
+                    {
+                        "Mendoza": [
+                            "Mendoza",
+                            "San Rafael",
+                            "San Martín",
+                            "Malargüe",
+                            "Tunuyán"
+                        ]
+                    },
+                    {
+                        "Tucumán": [
+                            "San Miguel de Tucumán",
+                            "Concepción",
+                            "Banda del Río Salí",
+                            "Tafí Viejo",
+                            "Aguilares"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Spain",
+                "states": [
+                    {
+                        "Madrid": [
+                            "Madrid",
+                            "Móstoles",
+                            "Alcalá de Henares",
+                            "Fuenlabrada",
+                            "Leganés"
+                        ]
+                    },
+                    {
+                        "Catalonia": [
+                            "Barcelona",
+                            "L'Hospitalet de Llobregat",
+                            "Badalona",
+                            "Terrassa",
+                            "Sabadell"
+                        ]
+                    },
+                    {
+                        "Andalusia": [
+                            "Seville",
+                            "Málaga",
+                            "Córdoba",
+                            "Granada",
+                            "Jerez de la Frontera"
+                        ]
+                    },
+                    {
+                        "Valencia": [
+                            "Valencia",
+                            "Alicante",
+                            "Elche",
+                            "Castellón de la Plana",
+                            "Torrevieja"
+                        ]
+                    },
+                    {
+                        "Galicia": [
+                            "Vigo",
+                            "A Coruña",
+                            "Ourense",
+                            "Lugo",
+                            "Pontevedra"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "OrgName": "Amazon",
+        "country": [
+            {
+                "countryName": "India",
+                "states": [
+                    {
+                        "Maharashtra": [
+                            "Mumbai",
+                            "Pune",
+                            "Nagpur",
+                            "Nashik",
+                            "Thane"
+                        ]
+                    },
+                    {
+                        "Uttar Pradesh": [
+                            "Lucknow",
+                            "Kanpur",
+                            "Agra",
+                            "Varanasi",
+                            "Prayagraj"
+                        ]
+                    },
+                    {
+                        "Karnataka": [
+                            "Bengaluru",
+                            "Mysuru",
+                            "Hubli-Dharwad",
+                            "Mangaluru",
+                            "Belagavi"
+                        ]
+                    },
+                    {
+                        "Gujarat": [
+                            "Ahmedabad",
+                            "Surat",
+                            "Vadodara",
+                            "Rajkot",
+                            "Bhavnagar"
+                        ]
+                    },
+                    {
+                        "West Bengal": [
+                            "Kolkata",
+                            "Asansol",
+                            "Siliguri",
+                            "Durgapur",
+                            "Howrah"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Japan",
+                "states": [
+                    {
+                        "Tokyo": [
+                            "Tokyo",
+                            "Yokohama",
+                            "Osaka",
+                            "Nagoya",
+                            "Sapporo"
+                        ]
+                    },
+                    {
+                        "Kanagawa": [
+                            "Yokohama",
+                            "Kawasaki",
+                            "Sagamihara",
+                            "Yokosuka",
+                            "Fujisawa"
+                        ]
+                    },
+                    {
+                        "Osaka": [
+                            "Osaka",
+                            "Sakai",
+                            "Higashiosaka",
+                            "Kishiwada",
+                            "Suita"
+                        ]
+                    },
+                    {
+                        "Aichi": [
+                            "Nagoya",
+                            "Toyota",
+                            "Okazaki",
+                            "Ichinomiya",
+                            "Toyohashi"
+                        ]
+                    },
+                    {
+                        "Hokkaido": [
+                            "Sapporo",
+                            "Asahikawa",
+                            "Hakodate",
+                            "Tomakomai",
+                            "Obihiro"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Brazil",
+                "states": [
+                    {
+                        "São Paulo": [
+                            "São Paulo",
+                            "Guarulhos",
+                            "Campinas",
+                            "São Bernardo do Campo",
+                            "Santo André"
+                        ]
+                    },
+                    {
+                        "Rio de Janeiro": [
+                            "Rio de Janeiro",
+                            "Nova Iguaçu",
+                            "Duque de Caxias",
+                            "Niterói",
+                            "Belford Roxo"
+                        ]
+                    },
+                    {
+                        "Minas Gerais": [
+                            "Belo Horizonte",
+                            "Uberlândia",
+                            "Contagem",
+                            "Betim",
+                            "Juiz de Fora"
+                        ]
+                    },
+                    {
+                        "Bahia": [
+                            "Salvador",
+                            "Feira de Santana",
+                            "Vitória da Conquista",
+                            "Camaçari",
+                            "Itabuna"
+                        ]
+                    },
+                    {
+                        "Paraná": [
+                            "Curitiba",
+                            "Londrina",
+                            "Maringá",
+                            "Ponta Grossa",
+                            "Cascavel"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "United States",
+                "states": [
+                    {
+                        "California": [
+                            "Los Angeles",
+                            "San Francisco",
+                            "San Diego",
+                            "Sacramento",
+                            "San Jose"
+                        ]
+                    },
+                    {
+                        "New York": [
+                            "New York City",
+                            "Buffalo",
+                            "Albany",
+                            "Rochester",
+                            "Syracuse"
+                        ]
+                    },
+                    {
+                        "Texas": [
+                            "Houston",
+                            "Dallas",
+                            "Austin",
+                            "San Antonio",
+                            "Fort Worth"
+                        ]
+                    },
+                    {
+                        "Florida": [
+                            "Miami",
+                            "Orlando",
+                            "Tampa",
+                            "Jacksonville",
+                            "Fort Lauderdale"
+                        ]
+                    },
+                    {
+                        "Illinois": [
+                            "Chicago",
+                            "Springfield",
+                            "Rockford",
+                            "Aurora",
+                            "Naperville"
+                        ]
+                    }
+                ]
+            },
+            {
+                "countryName": "Russia",
+                "states": [
+                    {
+                        "Moscow": [
+                            "Moscow",
+                            "Saint Petersburg",
+                            "Novosibirsk",
+                            "Yekaterinburg",
+                            "Nizhny Novgorod"
+                        ]
+                    },
+                    {
+                        "Saint Petersburg": [
+                            "Saint Petersburg",
+                            "Novosibirsk",
+                            "Yekaterinburg",
+                            "Nizhny Novgorod",
+                            "Kazan"
+                        ]
+                    },
+                    {
+                        "Novosibirsk Oblast": [
+                            "Novosibirsk",
+                            "Berdkul",
+                            "Cherepanovo",
+                            "Karasuk",
+                            "Iskitim"
+                        ]
+                    },
+                    {
+                        "Sverdlovsk Oblast": [
+                            "Yekaterinburg",
+                            "Nizhny Tagil",
+                            "Kamensk-Uralsky",
+                            "Serov",
+                            "Polevskoy"
+                        ]
+                    },
+                    {
+                        "Nizhny Novgorod Oblast": [
+                            "Nizhny Novgorod",
+                            "Dzerzhinsk",
+                            "Bor",
+                            "Kstovo",
+                            "Pavlovo"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
