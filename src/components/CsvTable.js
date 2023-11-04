@@ -1,40 +1,72 @@
-import React, { useContext } from 'react';
-import { Table, TableBody, TableRow, TableCell, TextField } from '@material-ui/core';
-import { PermissionContext } from '../Context/PermissionContext';
-import './CsvTable.scss'; // Import your SCSS file
-
+import React, { useContext, useState } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+  Button,
+  TableFooter,
+} from '@material-ui/core';
+import EditableRow from './EditableRow';
+import "./CsvTable.scss"
+import { CSVContext } from '../Context';
 const CsvTable = () => {
-  const {
-    csvData,
-    editedData,
-    isEditing,
-    handleInputChange,
-  } = useContext(PermissionContext);
+  const { csvData,editRowIndex,showDownloadButton,handleEditClick,handleCancelEdit,handleSaveClick,handleDownloadClick } = useContext(
+    CSVContext)
 
   return (
-    <div className="csvTableContainer">
+    <TableContainer component={Paper}>
       <Table>
         <TableBody>
           {csvData.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
-              {Object.keys(row).map((columnName) => (
-                <TableCell key={columnName}>
-                  {isEditing ? (
-                    <TextField
-                      value={editedData[rowIndex][columnName] || ''}
-                      onChange={(e) => handleInputChange(e, rowIndex, columnName)}
-                    />
-                  ) : (
-                    row[columnName]
-                  )}
+            rowIndex === editRowIndex ? (
+              <EditableRow
+                key={rowIndex}
+                data={row}
+                onSave={(rowData) => handleSaveClick(rowData)}
+                onCancel={handleCancelEdit}
+              />
+            ) : (
+              <TableRow key={rowIndex}>
+                {Object.values(row).map((value, columnIndex) => (
+                  <TableCell key={columnIndex}>{value}</TableCell>
+                ))}
+                <TableCell>
+                  <Button
+                  variant="contained"
+                    className="edit-button"
+                    style={{backgroundColor:"teal",color:"white"}}
+                    onClick={() => handleEditClick(rowIndex)}
+                  >
+                    Edit
+                  </Button>
                 </TableCell>
-              ))}
-            </TableRow>
+              </TableRow>
+            )
           ))}
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={csvData[0] && Array.isArray(csvData[0]) ? csvData[0].length + 1 : 1}>
+              {showDownloadButton && (
+                <Button
+                  variant="contained"
+                  className="download-button"
+                  style={{backgroundColor:"teal",color:"white"}}
+                  onClick={handleDownloadClick}
+                >
+                  Download Edited File
+                </Button>
+              )}
+            </TableCell>
+          </TableRow>
+        </TableFooter>
       </Table>
-    </div>
+    </TableContainer>
   );
-};
+              }
+  
 
 export default CsvTable;

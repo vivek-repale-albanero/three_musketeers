@@ -1,18 +1,18 @@
 .user-permission-container {
   display: flex;
-  flex-direction: column; /* Change to row */
-  align-items: flex-start; /* Align items to the top */
+  flex-direction: column; 
+  align-items: flex-start; 
 
   .permission-group {
     display: flex;
-    flex-direction: column; /* Change to column */
-    align-items: flex-start; /* Align items to the top */
+    flex-direction: column; 
+    align-items: flex-start; 
     margin: 10px;
 
     .nested-permissions {
       display: flex;
-      flex-direction: column; /* Change to column */
-      align-items: flex-start; /* Align items to the top */
+      flex-direction: column; 
+      align-items: flex-start; 
       margin-left: 20px;
     }
   }
@@ -45,17 +45,17 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: white;
 }
 
 .modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 80%;
   max-width: 400px;
   position: relative;
+  // border: 1px solid red;
 }
 
 .modal-header {
@@ -86,7 +86,7 @@
   border-radius: 4px;
   cursor: pointer;
   position: absolute;
-  bottom: 10px; 
-  right: 10px; 
+  bottom: 20px; 
+  right: 20px; 
 }
 

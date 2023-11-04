@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Checkbox, FormGroup, FormControlLabel, Modal } from '@material-ui/core';
-import { PermissionContext } from '../Context/PermissionContext';
 import './UserPermission.scss';
-
-const user = JSON.parse(localStorage.getItem("useLogedId"));
+import { PermissionContext } from '../Context';
 
 const UserPermission = () => {
   const {
@@ -11,79 +9,59 @@ const UserPermission = () => {
     handlePermissionCloseFn,
   } = useContext(PermissionContext);
 
-  const [permissions, setPermissions] = useState({
-    csvPermission: {
-      label: 'CSV Permission',
-      checked: false,
-      nested: {
-        csvPagePermission: { label: 'CSV Page Permission', value: "csvpage", checked: false },
-        csvEditPermission: { label: 'CSV Edit Permission', value: "csvedit", checked: false },
-        csvDownloadPermission: { label: 'CSV Download Permission', value: "csvdownload", checked: false },
-      },
-    },
-    gamePermission: {
-      label: 'Game Permission',
-      checked: false,
-      nested: {
-        gamePagePermission: { label: 'Game Page Permission', value: "gamepage", checked: false },
-        gameStartPermission: { label: 'Game Start Permission', value: "gamestart", checked: false },
-        gameResetPermission: { label: 'Game Reset Permission', value: "gamereset", checked: false },
-      },
-    },
-    missing: {
-      label: 'Missing',
-      checked: false,
-      value: "missing",
-      nested: {},
-    },
-  });
+  const [permissions, setPermissions] = useState([]);
 
-  const handleMainCheckboxChange = (mainKey) => {
+  useEffect(() => {
+    // local storage
+    const user = JSON.parse(localStorage.getItem("useLogedId"));
+
+    if (user && user.Permission) {
+      setPermissions(user.Permission);
+    }
+  }, []);
+
+  const handleMainCheckboxChange = (mainIndex) => {
     setPermissions((prevPermissions) => {
-      const newPermissions = { ...prevPermissions };
-      newPermissions[mainKey].checked = !newPermissions[mainKey].checked;
+      const newPermissions = [...prevPermissions];
+      newPermissions[mainIndex] = {
+        ...newPermissions[mainIndex],
+        allow: !newPermissions[mainIndex].allow,
+      };
 
-      for (const nestedKey in newPermissions[mainKey].nested) {
-        newPermissions[mainKey].nested[nestedKey].checked = newPermissions[mainKey].checked;
-      }
+      newPermissions[mainIndex].subModules.forEach((nestedModule) => {
+        nestedModule.allow = newPermissions[mainIndex].allow;
+      });
 
       return newPermissions;
     });
   };
 
-  const handleNestedCheckboxChange = (mainKey, nestedKey) => {
+  const handleNestedCheckboxChange = (mainIndex, nestedIndex) => {
     setPermissions((prevPermissions) => {
-      const newPermissions = { ...prevPermissions };
-      newPermissions[mainKey].nested[nestedKey].checked = !newPermissions[mainKey].nested[nestedKey].checked;
-  
-      const atLeastOneNestedChecked = Object.values(newPermissions[mainKey].nested).some((nested) => nested.checked);
-  
-      newPermissions[mainKey].checked = atLeastOneNestedChecked;
-  
+      const newPermissions = [...prevPermissions];
+      newPermissions[mainIndex].subModules[nestedIndex] = {
+        ...newPermissions[mainIndex].subModules[nestedIndex],
+        allow: !newPermissions[mainIndex].subModules[nestedIndex].allow,
+      };
+
+      newPermissions[mainIndex].allow = newPermissions[mainIndex].subModules.some(nestedModule => nestedModule.allow);
+
       return newPermissions;
-      
     });
   };
-  
 
   const handleSaveClick = () => {
-    const checkedPermissions = [];
+    const user = JSON.parse(localStorage.getItem("useLogedId"));
+    const updatedUser = { ...user };
+    updatedUser.Permission = [...permissions];
 
-    for (const mainKey in permissions) {
-      if (permissions[mainKey].checked) {
-        checkedPermissions.push(mainKey);
-      } else {
-        for (const nestedKey in permissions[mainKey].nested) {
-          if (permissions[mainKey].nested[nestedKey].checked) {
-            checkedPermissions.push(permissions[mainKey].nested[nestedKey].value);
-          }
-        }
-      }
-    }
 
-    user.permission = checkedPermissions;
-    localStorage.setItem("useLogedId", JSON.stringify(user));
-    // Add your fetch request here to update the user permissions on the server.
+    console.log(updatedUser);
+
+    localStorage.setItem("useLogedId", JSON.stringify(updatedUser));
+    handlePermissionCloseFn()
+
+
   };
 
   return (
@@ -97,30 +75,30 @@ const UserPermission = () => {
           </div>
           <div className="modal-title">User Permission</div>
           <div className="user-permission-container">
-            {Object.entries(permissions).map(([mainKey, mainPermission]) => (
-              <div key={mainKey} className="permission-group">
+            {permissions.map((mainPermission, mainIndex) => (
+              <div key={mainIndex} className="permission-group">
                 <FormGroup>
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={mainPermission.checked}
-                        onChange={() => handleMainCheckboxChange(mainKey)}
+                        checked={mainPermission.allow}
+                        onChange={() => handleMainCheckboxChange(mainIndex)}
                       />
                     }
-                    label={mainPermission.label}
+                    label={mainPermission.name}
                   />
                 </FormGroup>
                 <div className="nested-permissions">
-                  {Object.entries(mainPermission.nested).map(([nestedKey, nestedPermission]) => (
-                    <FormGroup key={nestedKey}>
+                  {mainPermission.subModules.map((nestedPermission, nestedIndex) => (
+                    <FormGroup key={nestedIndex}>
                       <FormControlLabel
                         control={
                           <Checkbox
-                            checked={nestedPermission.checked}
-                            onChange={() => handleNestedCheckboxChange(mainKey, nestedKey)}
+                            checked={nestedPermission.allow}
+                            onChange={() => handleNestedCheckboxChange(mainIndex, nestedIndex)}
                           />
                         }
-                        label={nestedPermission.label}
+                        label={nestedPermission.name}
                       />
                     </FormGroup>
                   ))}

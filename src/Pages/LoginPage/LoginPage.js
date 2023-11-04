@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { PermissionContext } from '../../Context/PermissionContext';
 import {TextField,Button,Container,Card} from '@material-ui/core'
 import "./LoginPage.scss"
+import { PermissionContext } from '../../Context';
 function LoginPage() {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');

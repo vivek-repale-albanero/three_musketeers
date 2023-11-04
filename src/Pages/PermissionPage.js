@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import UserPermission from '../components/UserPermissionTable';
 import Layout from '../Layout/Layout';
-import { PermissionContext } from '../Context/PermissionContext';
+import { PermissionContext } from '../Context';
 
 
 
