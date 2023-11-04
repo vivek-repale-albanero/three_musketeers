@@ -42,6 +42,7 @@ const GamePageRedirect = () => {
       alert("you wanted to play with your self ? no right!!! so why are you selected same username !!!")
       return
     }
+    
 
     if (PlayingDetails.secondUsername && PlayingDetails.cellCount && PlayingDetails.FirstUsername) {
       let UsersDetails = userData.filter((item) =>item.user.userName==PlayingDetails.FirstUsername || item.user.userName==PlayingDetails.secondUsername)
