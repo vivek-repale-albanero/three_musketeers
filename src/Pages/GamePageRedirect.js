@@ -43,11 +43,14 @@ const GamePageRedirect = () => {
       return
     }
 
+
+    
+
     console.log('hy')
 
 
 
-    
+
 
 
 
