@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../Layout/Layout'
-import '../styles/Missing.scss'
+import '../styles/MissingPage.scss'
 import data from './ORGdata.json'
+
 import Organization from '../components/MissingPage/Organization'
+import { useMemo } from 'react'
+import { MissingPageContext } from '../Context'
 function MissingPage() {
-    // console.log(data)
+
+    const [orgdata,setorgdata]=useState(data)
+    const OrganizationData=useMemo(()=>{
+        return {orgdata,setorgdata}
+    },[orgdata,setorgdata])
+
     return (
         <>
-            <Layout />
-            <div className='MissingPageMainDiv'>
-                <Organization />
-            </div>
-            <Layout />
+            <MissingPageContext.Provider value={OrganizationData}>
+                <Layout />
+                <div className='MissingPageMainDiv'>
+                    <Organization />
+                </div>
+                <Layout />
+            </MissingPageContext.Provider>
         </>
 
     )

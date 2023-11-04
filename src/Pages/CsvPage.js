@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, {  useMemo, useState } from 'react';
 import "./CsvPage.scss"
 import { CSVContext } from '../Context';
 import {
@@ -13,7 +13,8 @@ import CsvUploader from "../components/CsvUploader"
 import CsvTable from '../components/CsvTable';
 import Layout from "../Layout/Layout"
 const CsvPage = () => {
-    const [csvData, setCsvData] = useState([]);
+  
+  const [csvData, setCsvData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showTable, setShowTable] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState('');
