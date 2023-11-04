@@ -4,3 +4,4 @@ export const MainContex=createContext()
 export const PermissionContext = createContext();
 export const GameContext = createContext();
 export const CSVContext = createContext();
+export const MissingPageContext = createContext()

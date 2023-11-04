@@ -1,7 +1,7 @@
 
 import React,{ useContext } from "react";
 import { PermissionContext } from "../Context";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import {Redirect} from "react-router-dom";
 function PrivateGameRoute({children}) {
   const { currentUser} = useContext(PermissionContext);
   if(!currentUser.Permission.gamePermission.subModules.gamePagePermission){

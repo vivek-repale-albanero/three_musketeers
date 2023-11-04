@@ -23,7 +23,7 @@
           "allow": true,
           "subModules": {
             "gamePagePermission": true,
-            "gameStartPermission": false,
+            "gameStartPermission": true,
             "gameResetPermission": false
           }
         },

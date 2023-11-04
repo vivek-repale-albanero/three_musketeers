@@ -10,9 +10,12 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import UsersPage from "./Pages/UsersPage/UsersPage";
 import GamePageRedirect from "./Pages/GamePageRedirect";
 import TicTacPage from "./Pages/TicTacToe";
+import MissingPage from "./Pages/MissingPage";
+
 import { PermissionContext } from "./Context";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";
+
 
 
 
@@ -62,6 +65,8 @@ export default function Root() {
           <Route exact path="/gameredirect" render={()=> 
           <PrivateGameRoute><GamePageRedirect/></PrivateGameRoute>} />
           <Route exact path="/game" render={()=> <TicTacPage/>} />
+          <Route exact path="/missing" render={()=> <MissingPage/>} />
+
          
 
         </Switch>
