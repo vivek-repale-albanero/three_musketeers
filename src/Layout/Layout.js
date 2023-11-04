@@ -64,7 +64,7 @@ const Layout = ({children}) => {
           </ListItem>
         </List>
       </Drawer>
-      <div style={{ marginLeft: '200px' }}>
+      <div style={{ marginLeft: '15%' }}>
         {/* <Outlet /> */}
         {children}
         </div>

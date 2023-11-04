@@ -1,37 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Modal, TextField, Button, Paper, Typography, IconButton, Icon } from "@material-ui/core";
 import "./EditForm.scss"
 
 
 
-function EditForm({userDetails,userFormModal,closeEditModal,saveEditedUserData}) {
+function EditForm({userFormModal,closeModal,saveUserData}) {
     
+   const [editUserData,setEditUserData] = useState(userFormModal.data)
    
     //add or edit
     // useEffect(()=>(),[])
     // function handleChange(e){
          
-    // }
-    // function handleEdit(){
-    //     setUsers([])
-    // }
+    
      const handleSave=()=>{
-        saveEditedUserData(userDetails)
+      saveUserData(editUserData)
      }
     return (
         <Modal
             open={userFormModal.status}
-            onClose={closeEditModal}
+            onClose={closeModal}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
             <Paper className="modalContainer">
                 <div className="modalTitleContainer">
                     <Typography variant="h6" className="modalHeading">
-                        User Details
+                      { userFormModal.edit?"Edit Details":"Add User" }  
                     </Typography>
                     <IconButton className="closeIcon"
-                     onClick={closeEditModal}
+                     onClick={closeModal}
                      >
                         <Icon>
                             close
@@ -42,43 +40,43 @@ function EditForm({userDetails,userFormModal,closeEditModal,saveEditedUserData})
                     <TextField
                         id="outlined-helperText"
                         label="First Name"
-                        value={userDetails.user.firstName}
+                        value={editUserData.user.firstName}
                         onChange={(e) =>
-                            saveEditedUserData({
-                              ...userDetails,
-                              user: { ...userDetails.user, firstName: e.target.value },
+                          setEditUserData({
+                              ...editUserData,
+                              user: { ...editUserData.user, firstName: e.target.value },
                             })
                           }
                     />
                     <TextField
                         id="outlined-helperText"
                         label="Last Name"
-                        value={userDetails.user.lastName}
+                        value={editUserData.user.lastName}
                         onChange={(e) =>
-                            saveEditedUserData({
-                              ...userDetails,
-                              user: { ...userDetails.user, lastName: e.target.value },
+                          setEditUserData({
+                              ...editUserData,
+                              user: { ...editUserData.user, lastName: e.target.value },
                             })
                           }
                        />
                     <TextField
                         id="outlined-helperText"
                         label="UserName"
-                        value={userDetails.user.userName}
+                        value={editUserData.user.userName}
                         onChange={(e) =>
-                            saveEditedUserData({
-                              ...userDetails,
-                              user: { ...userDetails.user, userName: e.target.value },
+                          setEditUserData({
+                              ...editUserData,
+                              user: { ...editUserData.user, userName: e.target.value },
                             })
                           }
                        />
                     <TextField
                         id="outlined-helperText"
                         label="Email-Id"
-                        value={userDetails.email}
+                        value={editUserData.email}
                         onChange={(e) =>
-                            saveEditedUserData({
-                              ...userDetails,
+                          setEditUserData({
+                              ...editUserData,
                               email: e.target.value ,
                             })
                           }
@@ -86,10 +84,10 @@ function EditForm({userDetails,userFormModal,closeEditModal,saveEditedUserData})
                     <TextField
                         id="outlined-helperText"
                         label="password"
-                        value={userDetails.password}
+                        value={editUserData.password}
                         onChange={(e) =>
-                            saveEditedUserData({
-                              ...userDetails,
+                          setEditUserData({
+                              ...editUserData,
                               password: e.target.value ,
                             })
                           }
@@ -97,10 +95,10 @@ function EditForm({userDetails,userFormModal,closeEditModal,saveEditedUserData})
                     <TextField
                         id="outlined-helperText"
                         label="Age"
-                        value={userDetails.age}
+                        value={editUserData.age}
                         onChange={(e) =>
-                            saveEditedUserData({
-                              ...userDetails,
+                          setEditUserData({
+                              ...editUserData,
                               age: e.target.value ,
                             })
                           }
@@ -108,7 +106,7 @@ function EditForm({userDetails,userFormModal,closeEditModal,saveEditedUserData})
                     <br />
                     <div className="buttonContainer">
                     <Button className="cancelBtn" 
-                    onClick={closeEditModal}
+                    onClick={closeModal}
                     >
                         Cancel
                     </Button>

@@ -4,12 +4,8 @@
     justify-content: space-between;
     align-items: center;
     .addBtn{
-        background-color: #1d2e3b;
+        background-color: teal;
         color: white;
-        &:hover{
-            background-color: rgb(50, 192, 69);
-            color: black;
-        }
     }
 }
 .tableContent{
