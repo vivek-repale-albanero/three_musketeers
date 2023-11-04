@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Modal, TextField, Button, Paper, Typography, IconButton, Icon } from "@material-ui/core";
-import { PermissionContext } from "../../Context/PermissionContext";
 import "./EditForm.scss"
 
 

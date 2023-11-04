@@ -2,10 +2,11 @@
 import React,{ useContext, useEffect, useState } from "react"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Icon,Checkbox, Card } from '@material-ui/core';
 import Layout from '../../Layout/Layout';
-import { PermissionContext } from "../../Context/PermissionContext"
 import "./Userspage.scss"
 import BreadCrumb from '../../components/Breadcrumbs/BreadCrumb';
 import EditForm from "../../components/EditForm/EditForm";
+import UserPermission from "../../components/UserPermissionTable";
+import { PermissionContext } from "../../Context";
 
 
 function UsersPage() {
@@ -229,7 +230,10 @@ function UsersPage() {
                         :
                         null}
                         <button className='actionBtn' onClick={handlePermissionModalOpen}><Icon>key</Icon></button>
+                        <UserPermission/>
+                        {/* <button className='actionBtn'><Icon>delete</Icon></button> */}
                         <button className='actionBtn' onClick={()=>deleteUser(user.id)}><Icon>delete</Icon></button>
+
                         </>
                         {/* :
                         null} */}

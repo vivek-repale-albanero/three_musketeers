@@ -1,19 +1,12 @@
 import React, { useContext } from 'react';
 import { Button, Typography, Paper, Modal, IconButton,Icon } from '@material-ui/core';
-import { PermissionContext } from '../Context/PermissionContext';
 import './CsvUploader.scss';
+import {CSVContext} from "../Context"
 
 const CsvUploader = () => {
   const {
-    isModalOpen,
-    handleOpen,
-    handleClose,
-    selectedFileName,
-    uploading,
-    handleFileChange,
-    showTableFn,
-  } = useContext(PermissionContext);
-
+    isModalOpen,handleClose,handleFileChange,selectedFileName,showTableFn,uploading,
+  } = useContext(CSVContext);
   return (
     <Modal
       open={isModalOpen}
