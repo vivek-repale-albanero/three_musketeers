@@ -6,6 +6,7 @@ function AddButton({children ,onClick,style}) {
   return (
     
         <Button className="AddButton" style={style}variant='contained' color='teal'onClick={onClick}>{children}</Button>
+        
     
   )
 }
