@@ -13,6 +13,7 @@ import TicTacPage from "./Pages/TicTacToe";
 import MissingPage from "./Pages/MissingPage";
 
 import { PermissionContext } from "./Context";
+import HomePage from "./Pages/HomePage/HomePage";
 
 
 
@@ -185,7 +186,7 @@ export default function Root() {
           <Route exact path="/">
             <Redirect to="/auth/login" />
           </Route>
-
+          <Route exact path="/home" render={() =>(<HomePage/>)} />
           <Route exact path="/csv" render={() => 
           // <PrivateCsvEditRoute>
           

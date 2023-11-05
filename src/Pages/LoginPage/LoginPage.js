@@ -14,7 +14,7 @@ function LoginPage() {
     if (user) {
       localStorage.setItem("useLogedId", JSON.stringify(user));
       // alert('login sucessfull');
-      history.push("/users");
+      history.push("/home");
     } else {
       alert('Invalid credentials. Please try again.');
     }

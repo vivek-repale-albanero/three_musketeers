@@ -7,7 +7,7 @@ import BreadCrumb from '../../components/Breadcrumbs/BreadCrumb';
 import EditForm from "../../components/EditForm/EditForm";
 import UserPermission from "../../components/UserPermissionTable";
 
-import { PermissionContext,UsersContext } from "../../Context";
+import { PermissionContext, UsersContext } from "../../Context";
 function UsersPage() {
 
   const { users, setUsers, handlePermissionModalOpen } = useContext(PermissionContext)
@@ -119,7 +119,7 @@ function UsersPage() {
         },
         body: JSON.stringify(editedUserData),
       })
-        .then(response =>afterEdit())
+        .then(response => afterEdit())
         .catch(error => {
           console.error('Error:', error);
         });
@@ -166,24 +166,22 @@ function UsersPage() {
       <Layout>
         <UsersContext.Provider value={userPageValue}>
 
-          <Container maxWidth="100%" style={{ display: "flex" }}>
-            <div>
+          <Container maxWidth="100%" className="title" style={{ display: "flex" }}>
               {/* <h1 >Users</h1> */}
               <BreadCrumb />
-            </div>
             <Button
-          variant="contained"
-          className='addBtn'
-          onClick={openAddModal}
-        > 
-            Add Users
+              variant="contained"
+              className='addBtn'
+              onClick={openAddModal}
+            >
+              Add Users
             </Button>
-            {(userFormModal.status && (!userFormModal.edit) ? 
-                       <EditForm /> 
-                        :
-                        null)}
+            {(userFormModal.status && (!userFormModal.edit) ?
+              <EditForm />
+              :
+              null)}
           </Container>
-          <div className='tableContent'>
+          <Container maxWidth="100%" className='tableContent'>
             <TableContainer component={Paper}>
               <Table>
                 <TableHead style={{ background: 'rgb(21 22 22)' }}>
@@ -200,41 +198,41 @@ function UsersPage() {
                 <TableBody>
                   {users.map((user) => (
                     <TableRow key={user.id}>
-                    <TableCell style={{ textAlign: "center" }}>{user.id}</TableCell>
-                    <TableCell style={{ textAlign: "center" }}>{`${user.user.firstName+" "+user.user.lastName}`}</TableCell>
-                    <TableCell style={{ textAlign: "center" }}>
-                    {user.email }
-                    </TableCell>
-                    <TableCell style={{  textAlign: "center" }}>
-                    {user.age }
-                    </TableCell>
-                    <TableCell style={{ textAlign: "center" }}>
-                    {user.user.userName }
-                    </TableCell>
-                    <TableCell style={{ color: (loggedUser.id === user.id) ? "green" : "red", textAlign: "center" }}>
-                    {(loggedUser.id === user.id) ? "Online" : "Offline"}
-                    </TableCell>
-                    <TableCell style={{ textAlign: "center" }}>
-                    <>
-                    <button className='actionBtn' onClick={()=>openEditModaL(user)}><Icon>edit_note</Icon></button>
-                    {(userFormModal.status && userFormModal.edit)
-                        ?
-                        <EditForm />
-                        :
-                        null}
-                        <button className='actionBtn' onClick={handlePermissionModalOpen}><Icon>key</Icon></button>
-                        <UserPermission/>
-                        <button className='actionBtn' onClick={()=>deleteUser(user.id)}><Icon>delete</Icon></button>
-                        
+                      <TableCell style={{ textAlign: "center" }}>{user.id}</TableCell>
+                      <TableCell style={{ textAlign: "center" }}>{`${user.user.firstName + " " + user.user.lastName}`}</TableCell>
+                      <TableCell style={{ textAlign: "center" }}>
+                        {user.email}
+                      </TableCell>
+                      <TableCell style={{ textAlign: "center" }}>
+                        {user.age}
+                      </TableCell>
+                      <TableCell style={{ textAlign: "center" }}>
+                        {user.user.userName}
+                      </TableCell>
+                      <TableCell style={{ color: (loggedUser.id === user.id) ? "green" : "red", textAlign: "center" }}>
+                        {(loggedUser.id === user.id) ? "Online" : "Offline"}
+                      </TableCell>
+                      <TableCell style={{ textAlign: "center" }}>
+                        <>
+                          <button className='actionBtn' onClick={() => openEditModaL(user)}><Icon>edit_note</Icon></button>
+                          {(userFormModal.status && userFormModal.edit)
+                            ?
+                            <EditForm />
+                            :
+                            null}
+                          <button className='actionBtn' onClick={handlePermissionModalOpen}><Icon>key</Icon></button>
+                          <UserPermission />
+                          <button className='actionBtn' onClick={() => deleteUser(user.id)}><Icon>delete</Icon></button>
+
                         </>
-                        
-                        </TableCell>
-                        </TableRow>
-                        ))}
+
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>
-          </div>
+          </Container>
 
         </UsersContext.Provider >
       </Layout>

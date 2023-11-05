@@ -1,7 +1,10 @@
-
+.MuiContainer-maxWidthLg{
+  max-width:100%;
+}
 .TableContainer {
   margin: 20px;
   padding: 20px;
+  // max-width:100%;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
