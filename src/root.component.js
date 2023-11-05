@@ -54,7 +54,7 @@ export default function Root() {
     console.log("currentUser",currentUser)
   
   const permission = useMemo(() => {
-    return {users,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg}
+    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg}
   }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg])
   return (
     <BrowserRouter>

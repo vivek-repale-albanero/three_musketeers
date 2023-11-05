@@ -13,6 +13,7 @@ function UsersPage() {
   const { setUnAuthMsg } = useContext(PermissionContext)
   const history = useHistory()
   const { users, setUsers, handlePermissionModalOpen, currentUser } = useContext(PermissionContext)
+  console.log("user",setUsers)
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
 
   //Form Modal
