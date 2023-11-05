@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+
 import '../styles/GameRedirect.scss'
 import Layout from '../Layout/Layout';
 import Title from '../components/TicTactoe/Title';

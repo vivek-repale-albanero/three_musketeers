@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom/cjs/react-router-dom";
 import { Breadcrumbs,Typography } from "@material-ui/core";
+import "./BreadCrumb.scss"
 
 function BreadCrumb (){
     const location = useLocation();
@@ -13,7 +14,9 @@ function BreadCrumb (){
 
             return(
                 (end)? (
-                    <Typography key={to}>
+                    <Typography key={to}
+                    style={{fontSize:"25px"}}
+                    >
                         {path}
                     </Typography>
                 ) : (

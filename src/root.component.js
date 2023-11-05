@@ -17,6 +17,8 @@ import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";
 import axios from "axios";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
+import HomePage from "./Pages/HomePage/HomePage";
+
 
 
 
@@ -55,7 +57,7 @@ export default function Root() {
     return {users,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg}
   }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg])
   return (
-    <BrowserRouter>users
+    <BrowserRouter>
     <PermissionContext.Provider  value={permission}>
 
       <CssBaseline />
@@ -64,7 +66,7 @@ export default function Root() {
           <Route exact path="/">
             <Redirect to="/auth/login" />
           </Route>
-
+          <Route exact path="/home" render={() =>(<HomePage/>)} />
           <Route exact path="/csv" render={() => 
           <PrivateCsvEditRoute>
           
