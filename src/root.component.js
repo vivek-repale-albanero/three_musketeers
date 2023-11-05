@@ -10,7 +10,10 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import UsersPage from "./Pages/UsersPage/UsersPage";
 import GamePageRedirect from "./Pages/GamePageRedirect";
 import TicTacPage from "./Pages/TicTacToe";
+import MissingPage from "./Pages/MissingPage";
+
 import { PermissionContext } from "./Context";
+
 
 
 
@@ -196,6 +199,8 @@ export default function Root() {
           <Route exact path="/users" render={()=> <UsersPage/>}/>
           <Route exact path="/gameredirect" render={()=> <GamePageRedirect/>} />
           <Route exact path="/game" render={()=> <TicTacPage/>} />
+          <Route exact path="/missing" render={()=> <MissingPage/>} />
+
          
 
         </Switch>

@@ -9,7 +9,6 @@ function Cell({ cell, onClick }) {
       className="GameCell"
       variant="outlined"
       onClick={onClick}
-      style={{width:"100px", height:"100px"}}
     >
       {/* <img className="CellImage"src={cell} /> */}
       {cell}

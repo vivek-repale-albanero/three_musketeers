@@ -9,7 +9,6 @@ function TicTacPage() {
   return (
     <Layout>
       <div className='Main'>
-        <Gameplayer />
         <GameBoard />
     
       </div>
