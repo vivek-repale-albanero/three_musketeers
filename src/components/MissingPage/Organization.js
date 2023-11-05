@@ -12,12 +12,12 @@ import OrganizationTable from './OrganizationTable'
 
 // "Bangal,"Bihar","Telangana","Maharashtra"
 function Organization() {
-    const { orgdata, setorgdata } = useContext(MissingPageContext)
-    console.log(orgdata)
+
+    
     return (
         <div>
 
-            Main component
+           
             <div className="ButtonDiv">
                 <BasicModal />
                 <OrganizationTable />
