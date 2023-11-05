@@ -1,17 +1,19 @@
-import React,{ useContext } from "react";
-
-import {Redirect} from "react-router-dom"
+import React, { useContext } from "react";
+import { Redirect } from "react-router-dom";
 import { PermissionContext } from "../Context";
 
-function PrivateCsvEditRoute({children}) {
+function PrivateCsvEditRoute({ children }) {
+    const {setUnAuthMsg}=useContext(PermissionContext)
+  const { currentUser } = useContext(PermissionContext);
+  console.log("currentUser from csv", currentUser);
 
-    const { currentUser} = useContext(PermissionContext);
-    if(!currentUser.Permission.csvPermission.subModules.csvPagePermission){
-        alert("Please Athorize for Csv Page Permission")
-        return(<Redirect to="/users" />
-        )
-    }
-
-      return children
+  // Check if currentUser and required permissions exist
+  if (!currentUser || !currentUser.Permission || !currentUser.Permission.csvPermission || !currentUser.Permission.csvPermission.subModules || !currentUser.Permission.csvPermission.subModules.csvPagePermission) {
+    setUnAuthMsg("Please Authorize for Csv Page Permission");
+    return <Redirect to="/unauth" />;
   }
-  export default PrivateCsvEditRoute;
+
+  return children;
+}
+
+export default PrivateCsvEditRoute;

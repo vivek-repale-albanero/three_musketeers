@@ -6,10 +6,12 @@ import "./Userspage.scss"
 import BreadCrumb from '../../components/Breadcrumbs/BreadCrumb';
 import EditForm from "../../components/EditForm/EditForm";
 import { PermissionContext } from "../../Context";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function UsersPage() {
-
+  const {setUnAuthMsg}=useContext(PermissionContext)
+  const history=useHistory()
   const { users,setUsers,currentUser} = useContext(PermissionContext)
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
 
@@ -160,6 +162,10 @@ function UsersPage() {
         });
 
    }
+   const authMsgFn=()=>{
+    setUnAuthMsg("Please Login First")
+      return "/unauth"
+   }
   // console.log(currentUser)
   return (
     <>
@@ -228,7 +234,7 @@ function UsersPage() {
                         saveUserData={saveUserData}/>
                         :
                         null}
-                        <Link href={currentUser&& currentUser.id==user.id?`/authorization/${user.id}`:"#"} disabled={currentUser&& currentUser.id==user.id} className='actionBtn'><Icon>key</Icon></Link>
+                        <Link href={currentUser&& currentUser.id==user.id?`/authorization/${user.id}`:authMsgFn()} disabled={currentUser&& currentUser.id==user.id} className='actionBtn'><Icon>key</Icon></Link>
                        {/* {currentUser &&.id==user.id? <Link href={`/authorization/${user.id}`} className='actionBtn'><Icon>key</Icon></Link>:alert("non authorized")} */}
                         {/* <button className='actionBtn'><Icon>delete</Icon></button> */}
                         <button className='actionBtn' onClick={()=>deleteUser(user.id)}><Icon>delete</Icon></button>

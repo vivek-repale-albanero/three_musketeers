@@ -15,33 +15,47 @@ import MissingPage from "./Pages/MissingPage";
 import { PermissionContext } from "./Context";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";
+import axios from "axios";
+import UnauthorizedPage from "./Pages/UnauthorizedPage";
 
 
 
 
 export default function Root() {
-  const currentUser = JSON.parse(localStorage.getItem("useLogedId"))
+  const [currentUser,setCurrentUser]=useState({})
   const [users, setUsers] = useState([]);
-    
+  const [local,setLocal]=useState(false)
+  const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
   useEffect(() => {
     fetch('http://localhost:3000/users')
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    .then((res) => res.json())
+    .then((data) => {
+      setUsers(data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }, []);
+  async function getCurrentUser(currentUserId){
+    const response = await axios.get(`http://localhost:3000/users/${currentUserId.id}`)
+    const data = response.data;
+    setCurrentUser(data)
+   
+  }
+  useEffect(()=>{
+    let currentUserId=JSON.parse(localStorage.getItem("useLogedId"))
+    setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")))
+
+  },[local])
   
   // //data from local storage
     console.log("currentUser",currentUser)
   
   const permission = useMemo(() => {
-    return {users,currentUser}
-  }, [users,currentUser])
+    return {users,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg}
+  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg])
   return (
-    <BrowserRouter>
+    <BrowserRouter>users
     <PermissionContext.Provider  value={permission}>
 
       <CssBaseline />
@@ -67,7 +81,7 @@ export default function Root() {
           <Route exact path="/game" render={()=> <TicTacPage/>} />
           <Route exact path="/missing" render={()=> <MissingPage/>} />
 
-         
+          <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
 
         </Switch>
       </React.Suspense>

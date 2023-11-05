@@ -1,6 +1,10 @@
-import React, {  useContext, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import "./CsvPage.scss"
 import { CSVContext, PermissionContext } from '../Context';
+import csv1 from "../assests/csv1.png"
+import csv2 from "../assests/csv2.png"
+import csv3 from "../assests/csv3.png"
+import csv4 from "../assests/csv4.png"
 import {
   Button,
   Typography,
@@ -8,13 +12,20 @@ import {
   Modal,
   IconButton,
   Icon,
+  makeStyles
 } from '@material-ui/core';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CsvUploader from "../components/CsvUploader"
 import CsvTable from '../components/CsvTable';
 import Layout from "../Layout/Layout"
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Container, Card, CardContent } from '@material-ui/core';
+
 
 const CsvPage = () => {
+  const {setUnAuthMsg}=useContext(PermissionContext)
+  let history = useHistory();
   const [csvData, setCsvData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showTable, setShowTable] = useState(false);
@@ -25,7 +36,9 @@ const CsvPage = () => {
   const [editedFile, setEditedFile] = useState(null);
   const [editRowIndex, setEditRowIndex] = useState(-1);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
-  const { currentUser} = useContext(PermissionContext);
+  const { currentUser } = useContext(PermissionContext);
+  
+  
   const handleOpen = () => {
     setIsModalOpen(true);
   };
@@ -94,10 +107,9 @@ const CsvPage = () => {
   };
 
   const handleEditClick = (rowIndex) => {
-    if(!currentUser.Permission.csvPermission.subModules.csvEditPermission){
-      alert("Please Athorize for Edit CsvPermission")
-    return(<Redirect to="/users" />
-    )
+    if (!currentUser.Permission.csvPermission.subModules.csvEditPermission) {
+      setUnAuthMsg("Please Athorize for Edit CsvPermission")
+      history.push("/unauth");
     }
     setShowDownloadButton(false)
     setEditRowIndex(rowIndex);
@@ -134,10 +146,10 @@ const CsvPage = () => {
   // console.log("editedFile",editedFile)
 
   const handleDownloadClick = () => {
-    if(!currentUser.Permission.csvPermission.subModules.csvDownloadPermission){
-      alert("Please Athorize for Download CsvPermission")
-    return(<Redirect to="/users" />
-    )
+    if (!currentUser.Permission.csvPermission.subModules.csvDownloadPermission) {
+
+      setUnAuthMsg("Please Athorize for Download CsvPermission")
+      return (<Redirect to="/unauth" />)
     }
     if (editedFile) {
       const a = document.createElement('a');
@@ -155,7 +167,6 @@ const CsvPage = () => {
   return (
     <Layout>
       <CSVContext.Provider value={csv}>
-
         <div className="csv-page-container">
           <div className="header">
             <Typography variant="h5">CSV List</Typography>
@@ -168,11 +179,48 @@ const CsvPage = () => {
             </Button>
           </div>
           <CsvUploader />
-          {showTable && (
+          {showTable ?
             <div className="table-container">
               <CsvTable />
             </div>
-          )}
+            : <>
+                <div className="hero-content">
+                <Card className="upload-container">
+                <CardContent>
+                  <Typography variant="h5">Welcome to CSV Analyzer</Typography>
+                  <Typography variant="body1">Analyze your CSV files with ease</Typography>
+                  <Typography variant="h6" style={{color:"#f50057"}}>Please Upload A cSV File</Typography>
+                  </CardContent>
+                  </Card>
+                </div>
+                <div className="hero-section">
+  <Carousel showThumbs={false} showArrows={true} centerMode={true} centerSlidePercentage={33.33} infiniteLoop={true} autoPlay={true}
+    stopOnHover={true} swipeable={true}
+    interval={1000}>
+    <div className="carousel-item">
+      <img src={csv1} alt="Sample Image 1" />
+    </div>
+    <div className="carousel-item">
+      <img src={csv2} alt="Sample Image 2" />
+    </div>
+    <div className="carousel-item">
+      <img src={csv3} alt="Sample Image 3" />
+    </div>
+    <div className="carousel-item">
+      <img src={csv4} alt="Sample Image 4" />
+    </div>
+    {/* Add more images as needed */}
+  </Carousel>
+</div>
+              <Card className="upload-container">
+                <CardContent >
+                  <Typography variant="h5">Upload CSV</Typography>
+                  <Typography variant="body2">Upload a CSV file to view its contents in a table.</Typography>
+                  <Typography variant="body2">Supported file formats: .csv</Typography>
+                </CardContent>
+              </Card>
+            </>
+          }
         </div>
       </CSVContext.Provider>
     </Layout>

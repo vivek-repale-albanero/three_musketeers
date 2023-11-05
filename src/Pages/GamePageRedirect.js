@@ -1,14 +1,18 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import '../styles/GameRedirect.scss'
 import Layout from '../Layout/Layout';
 import Title from '../components/TicTactoe/Title';
 import '@babel/polyfill';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { PermissionContext } from '../Context';
 
 
 const GamePageRedirect = () => {
+  const {setUnAuthMsg}=useContext(PermissionContext)
+  const {currentUser}=useContext(PermissionContext)
   const [userData, setUserData]=useState([])
   const [PlayingDetails, setPlayingDetails] = useState({FirstUsername:"",secondUsername:"",cellCount:null});
   async function FetchUsers() {
@@ -32,7 +36,10 @@ const GamePageRedirect = () => {
 
 
   const handleStartGame = () => {
-   
+    if(!currentUser.Permission.gamePermission.subModules.gameStartPermission){
+      setUnAuthMsg("Please Athorize for Game Start Permission")
+      return (<Redirect to="/unauth" />)
+  }
     if (PlayingDetails.cellCount < 3) {
       alert('Please select at least 3 cell')
       return
@@ -42,18 +49,7 @@ const GamePageRedirect = () => {
       alert("you wanted to play with your self ? no right!!! so why are you selected same username !!!")
       return
     }
-
-
-    
-
     console.log('hy')
-
-
-
-
-
-
-
     if (PlayingDetails.secondUsername && PlayingDetails.cellCount && PlayingDetails.FirstUsername) {
       let UsersDetails = userData.filter((item) =>item.user.userName==PlayingDetails.FirstUsername || item.user.userName==PlayingDetails.secondUsername)
   
@@ -94,7 +90,6 @@ const GamePageRedirect = () => {
             onChange={(e) =>setPlayingDetails({...PlayingDetails,cellCount:e.target.value})}
             type="number"
             maxLength="1"
-
           />
           <button onClick={handleStartGame}>Start New Game</button>
         </div>

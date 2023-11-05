@@ -1,3 +1,4 @@
+
 .csv-page-container {
   display: flex;
   flex-direction: column;
@@ -7,12 +8,17 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  // border:1px solid red;
+  height: 100vh;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+  padding-left:2%;
+  padding-right:2%;
+  margin-top:1%;
 
   .MuiTypography-h5 {
     font-size: 24px;
@@ -27,4 +33,60 @@
 
 .table-container {
   margin-top: 16px;
+}
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 40px;
+  background-color: #f2f2f2;
+  
+
+  .carousel {
+    margin-bottom: 20px;
+  }
+
+  .hero-content {
+    h2 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.table-container,
+.upload-container {
+  margin-top: 20px;
+  text-align: center;
+
+  h5 {
+    font-size: 1.5rem;
+  }
+}
+.hero-section {
+  .carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width:100%;
+    margin: 0 auto;
+  }
+
+  .carousel-item {
+    flex: 0 0 33.33%; /* Display three images at a time */
+    padding: 10px;
+  }
+
+  .carousel img {
+    max-width: 100%; /* Adjust image size as needed */
+    height: auto;
+  }
 }

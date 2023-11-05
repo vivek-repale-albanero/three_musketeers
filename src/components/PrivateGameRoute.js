@@ -3,10 +3,11 @@ import React,{ useContext } from "react";
 import { PermissionContext } from "../Context";
 import {Redirect} from "react-router-dom";
 function PrivateGameRoute({children}) {
-  const { currentUser} = useContext(PermissionContext);
+  
+  const { currentUser,setUnAuthMsg} = useContext(PermissionContext);
   if(!currentUser.Permission.gamePermission.subModules.gamePagePermission){
-    alert("Please Athorize for Game Page Permission")
-    return(<Redirect to="/users" />
+    setUnAuthMsg("Please Athorize for Game Page Permission")
+    return(<Redirect to="/unauth" />
     )
 }
 

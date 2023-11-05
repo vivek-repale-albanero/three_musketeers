@@ -7,12 +7,15 @@ function LoginPage() {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();
-  const { users } = useContext(PermissionContext);
+  const { users,setLocal,local } = useContext(PermissionContext);
+  // console.log("users",users)
   const handleLogin = () => {
-    
     const user = users.find((user) => user.email === userEmail && user.password === password);
+    // console.log("user",user)
     if (user) {
+      // console.log(user)
       localStorage.setItem("useLogedId", JSON.stringify(user));
+      setLocal(!local)
       // alert('login sucessfull');
       history.push("/users");
     } else {
