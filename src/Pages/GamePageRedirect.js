@@ -69,17 +69,16 @@ const GamePageRedirect = () => {
 
   return (
     <Layout>
-      <Box className="title" >
-        <Box>
-          <Typography style={{fontSize:"24px"}}>
-            Welcome to Game
-          </Typography>
-          <BreadCrumb />
-        </Box>
-      </Box>
+     <BreadCrumb />
       <div className='parent'>
+      
         <div className='child'>
-          <Title>Welcome </Title>
+       
+
+          <Title>Welcome to </Title>
+          <Title>
+            Tic Tac Toe
+          </Title>
           <select value={PlayingDetails.FirstUsername} onChange={(e) => setPlayingDetails({ ...PlayingDetails, FirstUsername: e.target.value })}>
             <option>Player 1</option>
             {userData.map((item) => {
