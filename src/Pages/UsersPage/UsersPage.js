@@ -1,7 +1,7 @@
 
 
 import React, { useContext, useMemo, useState } from "react"
-import { Table,Link, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Icon, Container, Checkbox, Card } from '@material-ui/core';
+import { Table,Link, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Icon, Container, Checkbox, Card, Typography, Box } from '@material-ui/core';
 import Layout from '../../Layout/Layout';
 import "./Userspage.scss"
 import BreadCrumb from '../../components/Breadcrumbs/BreadCrumb';
@@ -156,25 +156,24 @@ function UsersPage() {
       <Layout>
         <UsersContext.Provider value={userPageValue}>
 
-          <Container maxWidth="100%" className="title" style={{ display: "flex" }}>
-            {/* <h1 >Users</h1> */}
-            <BreadCrumb />
+           <Box className="title" style={{ display: "flex" }}>
+            <Typography style={{fontSize:"24px"}}>Users List <BreadCrumb /></Typography>
             <Button
               variant="contained"
               className='addBtn'
               onClick={openAddModal}
-            >
+              >
               Add Users
             </Button>
             {(userFormModal.status && (!userFormModal.edit) ?
               <EditForm />
               :
               null)}
-          </Container>
+              </Box> 
           <Container maxWidth="100%" className='tableContent'>
             <TableContainer component={Paper}>
               <Table>
-                <TableHead style={{ background: 'rgb(21 22 22)' }}>
+                <TableHead style={{ background: 'rgb(42 139 139)' }}>
                   <TableRow>
                     <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Id</TableCell>
                     <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Name</TableCell>
@@ -204,14 +203,16 @@ function UsersPage() {
                       </TableCell>
                       <TableCell style={{ textAlign: "center" }}>
                         <>
-                          <button className='actionBtn' onClick={() => openEditModaL(user)}><Icon>edit_note</Icon></button>
+                          <Button className='actionBtn' onClick={() => openEditModaL(user)}><Icon>edit_note</Icon></Button>
                           {(userFormModal.status && userFormModal.edit)
                             ?
                             <EditForm />
                             :
                             null}
-                          <Link className='actionBtn' href={currentUser && currentUser.id == user.id ? `/authorization/${user.id}` : authMsgFn()} disabled={currentUser && currentUser.id == user.id}><Icon>key</Icon></Link>
-                          <button className='actionBtn' onClick={() => deleteUser(user.id)}><Icon>delete</Icon></button>
+                          <Link  href={currentUser && currentUser.id == user.id ? `/users/authorization/${user.id}` : authMsgFn()} disabled={currentUser && currentUser.id == user.id}>
+                            <Button className='actionBtn'><Icon>key</Icon></Button>
+                            </Link>
+                          <Button className='actionBtn' onClick={() => deleteUser(user.id)}><Icon>delete</Icon></Button>
                         </>
 
                       </TableCell>

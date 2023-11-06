@@ -18,7 +18,7 @@ const CsvTable = () => {
   const { csvData,editRowIndex,showDownloadButton,handleEditClick,handleCancelEdit,handleSaveClick,handleDownloadClick } = useContext(
     CSVContext)
   return (
-    <TableContainer maxWidth="100%" component={Paper}>
+    <TableContainer maxWidth="100%" className='table' component={Paper}>
       <Table>
         <TableBody>
           {csvData.map((row, rowIndex) => (

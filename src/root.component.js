@@ -74,13 +74,13 @@ export default function Root() {
            </PrivateCsvEditRoute>
         } 
         />
-          <Route exact path="/authorization/:id" render={()=>(<PermissionPage />)}/>
+          <Route exact path="/users/authorization/:id" render={()=>(<PermissionPage />)}/>
           
           <Route exact path="/auth/login" render={() => <LoginPage />} />
           <Route exact path="/users" render={()=> <UsersPage/>}/>
           <Route exact path="/gameredirect" render={()=> 
           <PrivateGameRoute><GamePageRedirect/></PrivateGameRoute>} />
-          <Route exact path="/game" render={()=> <TicTacPage/>} />
+          <Route exact path="/gameredirect/game" render={()=> <TicTacPage/>} />
           <Route exact path="/missing" render={()=> <MissingPage/>} />
 
           <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />

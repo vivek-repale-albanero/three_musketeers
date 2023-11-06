@@ -3,12 +3,14 @@ import {
   Checkbox, FormGroup, FormControlLabel, Link, Accordion,
   AccordionSummary,
   AccordionDetails,
+  Box,
 } from '@material-ui/core';
 import './PermissionPage.scss';
 import { PermissionContext } from '../Context';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Layout from '../Layout/Layout';
 import axios from "axios"
+import BreadCrumb from '../components/Breadcrumbs/BreadCrumb';
 const PermissionPage = () => {
   const [permissions, setPermissions] = useState({});
   const { local, setLocal } = useContext(PermissionContext)
@@ -138,60 +140,67 @@ const PermissionPage = () => {
 
   return (
     <Layout>
+
       <div className="page-container">
         <div className="page-content">
-          <div className="page-header">
-            <h1>User Permission</h1>
+          <Box className="page-header">
+            <div>
+              <h1>User Permission</h1>
+              <BreadCrumb />
+            </div>
             <Link href="/users">
               <button className="save-button" style={{ backgroundColor: 'teal', color: 'white', padding: '10px', border: '0', borderRadius: '5px' }}>
                 Back to Home
               </button>
             </Link>
-          </div>
-          <div style={{ display: "flex",justifyContent:"space-around" }}>
-            <div className="user-permission-container">
-              {Object.entries(permissions).map(([mainKey, mainPermission]) => (
-                <Accordion key={mainKey} style={{ width: "500px" }}>
-                  <AccordionSummary>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={mainPermission.checked}
-                            onChange={() => handleMainCheckboxChange(mainKey)}
-                          />
-                        }
-                        label={mainPermission.label}
-                      />
-                    </FormGroup>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className="nested-permissions">
-                      {Object.entries(mainPermission.nested).map(([nestedKey, nestedPermission]) => (
-                        <FormGroup key={nestedKey}>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={nestedPermission.checked}
-                                onChange={() => handleNestedCheckboxChange(mainKey, nestedKey)}
-                              />
-                            }
-                            label={nestedPermission.label}
-                          />
-                        </FormGroup>
-                      ))}
-                    </div>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
+          </Box>
+
+          <Box style={{padding:"1%"}}>
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+              <div className="user-permission-container">
+                {Object.entries(permissions).map(([mainKey, mainPermission]) => (
+                  <Accordion key={mainKey} style={{ width: "500px" }}>
+                    <AccordionSummary>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={mainPermission.checked}
+                              onChange={() => handleMainCheckboxChange(mainKey)}
+                            />
+                          }
+                          label={mainPermission.label}
+                        />
+                      </FormGroup>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <div className="nested-permissions">
+                        {Object.entries(mainPermission.nested).map(([nestedKey, nestedPermission]) => (
+                          <FormGroup key={nestedKey}>
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  checked={nestedPermission.checked}
+                                  onChange={() => handleNestedCheckboxChange(mainKey, nestedKey)}
+                                />
+                              }
+                              label={nestedPermission.label}
+                            />
+                          </FormGroup>
+                        ))}
+                      </div>
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
+              </div>
+              <img style={{ height: "200px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAOh3JxJXqEMid94udZTV-4Mhw_OV1v0lSgocVrfCtamb5DzsKr0XQGRFmJ8EIyIAP3b0&usqp=CAU" />
             </div>
-            <img style={{ height: "200px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAOh3JxJXqEMid94udZTV-4Mhw_OV1v0lSgocVrfCtamb5DzsKr0XQGRFmJ8EIyIAP3b0&usqp=CAU" />
-          </div>
-          <div className="modal-footer">
-            <button className="save-button" onClick={handleSaveClick} style={{ backgroundColor: 'teal', color: 'white', padding: '10px', border: '0', borderRadius: '5px' }}>
-              Save Permission
-            </button>
-          </div>
+            <div className="modal-footer">
+              <button className="save-button" onClick={handleSaveClick} style={{ backgroundColor: 'teal', color: 'white', padding: '10px', border: '0', borderRadius: '5px' }}>
+                Save Permission
+              </button>
+            </div>
+          </Box>
         </div>
       </div>
     </Layout>
