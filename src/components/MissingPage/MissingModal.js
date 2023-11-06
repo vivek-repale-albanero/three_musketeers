@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Box, Input, Typography, Modal, Select, SelectChangeEvent, FormControl, MenuItem, InputLabel } from '@material-ui/core';
+import React, { useState, useContext } from 'react';
+import { Box, Input, Typography, Modal, Select, SelectChangeEvent, FormControl, MenuItem, InputLabel, Icon } from '@material-ui/core';
 import AddButton from './AddButton';
 import '../../styles/MissingPage.scss'
+import { MissingPageContext } from '../../Context';
+import EyeComponent from './EyeComponent';
 
 const style = {
     position: 'absolute',
@@ -21,7 +23,8 @@ export default function BasicModal() {
     const handleClose = () => setOpen(false);
     const [Address, setAddress] = useState({ Name: "", Country: "", State: "", City: "" });
     const [Memberdetails, setMemberdetails] = useState({ MemberName: "", Role: "" })
-
+    const { orgdata, setorgdata, singleorg, setsingleorg, Allmember, setAllMember } = React.useContext(MissingPageContext)
+    const [id, setid] = useState(6)
 
 
     const handleChange = (event) => {
@@ -34,14 +37,31 @@ export default function BasicModal() {
     }
 
     const handleclick = () => {
-        console.log(Address, Memberdetails)
+        const object = {
+            id: id,
+            OrgName: Address.Name,
+            countryName: Address.Country,
+            stateName: Address.State,
+            city: Address.City,
+            See: <EyeComponent data={{ id, OrgName:Address.Name,  countryName: Address.Country, stateName: Address.State, city: Address.City, }} />,
+            Delete: <Icon>delete</Icon>,
+            // Memberscount:Allmember.length
+        }
+        console.log(object,"obj")
+        setid(id+1)
+        setAllMember((prev) => [...prev, Memberdetails])
+ 
+        console.log(Memberdetails,Allmember,"asdfadsfadsfd")
+        setsingleorg((prev) => [...prev, object])
+        setOpen(false)
+
     }
+    console.log(Memberdetails,Allmember,"asdfadsfadsfd")
 
 
     return (
         <div>
             <AddButton onClick={handleOpen}>Add Organization</AddButton>
-
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -123,20 +143,15 @@ export default function BasicModal() {
                                     value={Memberdetails.Role}
                                     label="Role"
                                     name="Role"
-                                    onChange={HandleMemberChange}
-                                >
+                                    onChange={HandleMemberChange}>
                                     <MenuItem value="SDE-1">SDE-1</MenuItem>
                                     <MenuItem value="SDE-2">SDE-2</MenuItem>
                                     <MenuItem value="SDE-3">SDE-3</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
-
                     </Box>
-
                     <AddButton onClick={handleclick} style={{ backgroundColor: "teal", color: "white", display: "block", margin: "20px auto" }}>Add Details</AddButton>
-
-
                 </Box>
             </Modal>
         </div>

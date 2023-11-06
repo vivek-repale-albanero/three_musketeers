@@ -42,6 +42,7 @@ const GamePageRedirect = () => {
       alert("you wanted to play with your self ? no right!!! so why are you selected same username !!!")
       return
     }
+    
 
 
     

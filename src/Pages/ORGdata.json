@@ -1,12 +1,14 @@
- [
+[
     {
         "id": 1,
         "OrgName": "Albanero",
         "country": [
             {
-                "india": [
+                "countryName": "India",
+                "states": [
                     {
-                        "rajasthan": [
+                        "stateName": "Rajasthan",
+                        "cities": [
                             "Rajsamand",
                             "Udaipur",
                             "Chittorgarh",
@@ -15,7 +17,8 @@
                         ]
                     },
                     {
-                        "bangal": [
+                        "stateName": "West Bengal",
+                        "cities": [
                             "Kolkata",
                             "Durgapur",
                             "Khadakpur",
@@ -24,7 +27,8 @@
                         ]
                     },
                     {
-                        "Telangana": [
+                        "stateName": "Telangana",
+                        "cities": [
                             "Hyderabad",
                             "Warangal",
                             "Nizamabad",
@@ -33,7 +37,8 @@
                         ]
                     },
                     {
-                        "Bihar": [
+                        "stateName": "Bihar",
+                        "cities": [
                             "Munger",
                             "Madhubani",
                             "Muzaffarpur",
@@ -42,7 +47,8 @@
                         ]
                     },
                     {
-                        "Maharashtra": [
+                        "stateName": "Maharashtra",
+                        "cities": [
                             "Mumbai",
                             "Pune",
                             "Nagpur",
@@ -53,9 +59,11 @@
                 ]
             },
             {
-                "unitedStates": [
+                "countryName": "unitedStates",
+                "states": [
                     {
-                        "california": [
+                        "stateName": "California",
+                        "cities": [
                             "Los Angeles",
                             "San Francisco",
                             "San Diego",
@@ -64,7 +72,8 @@
                         ]
                     },
                     {
-                        "newYork": [
+                        "stateName": "New York",
+                        "cities": [
                             "New York City",
                             "Buffalo",
                             "Albany",
@@ -73,7 +82,8 @@
                         ]
                     },
                     {
-                        "texas": [
+                        "stateName": "Texas",
+                        "cities": [
                             "Houston",
                             "Dallas",
                             "Austin",
@@ -82,7 +92,8 @@
                         ]
                     },
                     {
-                        "florida": [
+                        "stateName": "Florida",
+                        "cities": [
                             "Miami",
                             "Orlando",
                             "Tampa",
@@ -91,7 +102,8 @@
                         ]
                     },
                     {
-                        "illinois": [
+                        "stateName": "Illinois",
+                        "cities": [
                             "Chicago",
                             "Springfield",
                             "Rockford",
@@ -102,9 +114,11 @@
                 ]
             },
             {
-                "unitedKingdom": [
+                "countryName": "United Kingdom",
+                "states": [
                     {
-                        "england": [
+                        "stateName": "England",
+                        "cities": [
                             "London",
                             "Manchester",
                             "Birmingham",
@@ -113,7 +127,8 @@
                         ]
                     },
                     {
-                        "scotland": [
+                        "stateName": "Scotland",
+                        "cities": [
                             "Glasgow",
                             "Edinburgh",
                             "Aberdeen",
@@ -122,7 +137,8 @@
                         ]
                     },
                     {
-                        "wales": [
+                        "stateName": "Wales",
+                        "cities": [
                             "Cardiff",
                             "Swansea",
                             "Newport",
@@ -131,7 +147,8 @@
                         ]
                     },
                     {
-                        "northernIreland": [
+                        "stateName": "Northern Ireland",
+                        "cities": [
                             "Belfast",
                             "Derry",
                             "Lisburn",
@@ -140,7 +157,8 @@
                         ]
                     },
                     {
-                        "isleOfMan": [
+                        "stateName": "Isle of Man",
+                        "cities": [
                             "Douglas",
                             "Peel",
                             "Ramsey",
@@ -151,9 +169,11 @@
                 ]
             },
             {
-                "australia": [
+                "countryName": "Australia",
+                "states": [
                     {
-                        "newSouthWales": [
+                        "stateName": "New South Wales",
+                        "cities": [
                             "Sydney",
                             "Newcastle",
                             "Wollongong",
@@ -162,7 +182,8 @@
                         ]
                     },
                     {
-                        "victoria": [
+                        "stateName": "Victoria",
+                        "cities": [
                             "Melbourne",
                             "Geelong",
                             "Ballarat",
@@ -171,7 +192,8 @@
                         ]
                     },
                     {
-                        "queensland": [
+                        "stateName": "Queensland",
+                        "cities": [
                             "Brisbane",
                             "Gold Coast",
                             "Sunshine Coast",
@@ -180,7 +202,8 @@
                         ]
                     },
                     {
-                        "westernAustralia": [
+                        "stateName": "Western Australia",
+                        "cities": [
                             "Perth",
                             "Mandurah",
                             "Bunbury",
@@ -189,7 +212,8 @@
                         ]
                     },
                     {
-                        "southAustralia": [
+                        "stateName": "South Australia",
+                        "cities": [
                             "Adelaide",
                             "Mount Gambier",
                             "Whyalla",
@@ -200,9 +224,11 @@
                 ]
             },
             {
-                "canada": [
+                "countryName": "Canada",
+                "states": [
                     {
-                        "ontario": [
+                        "stateName": "Ontario",
+                        "cities": [
                             "Toronto",
                             "Ottawa",
                             "Mississauga",
@@ -211,7 +237,8 @@
                         ]
                     },
                     {
-                        "quebec": [
+                        "stateName": "Quebec",
+                        "cities": [
                             "Montreal",
                             "Quebec City",
                             "Laval",
@@ -220,7 +247,8 @@
                         ]
                     },
                     {
-                        "britishColumbia": [
+                        "stateName": "British Columbia",
+                        "cities": [
                             "Vancouver",
                             "Surrey",
                             "Burnaby",
@@ -229,7 +257,8 @@
                         ]
                     },
                     {
-                        "alberta": [
+                        "stateName": "Alberta",
+                        "cities": [
                             "Calgary",
                             "Edmonton",
                             "Red Deer",
@@ -238,7 +267,8 @@
                         ]
                     },
                     {
-                        "manitoba": [
+                        "stateName": "Manitoba",
+                        "cities": [
                             "Winnipeg",
                             "Brandon",
                             "Steinbach",
@@ -258,7 +288,8 @@
                 "countryName": "United Kingdom",
                 "states": [
                     {
-                        "England": [
+                        "stateName": "England",
+                        "cities": [
                             "London",
                             "Manchester",
                             "Birmingham",
@@ -267,7 +298,8 @@
                         ]
                     },
                     {
-                        "Scotland": [
+                        "stateName": "Scotland",
+                        "cities": [
                             "Glasgow",
                             "Edinburgh",
                             "Aberdeen",
@@ -276,7 +308,8 @@
                         ]
                     },
                     {
-                        "Wales": [
+                        "stateName": "Wales",
+                        "cities": [
                             "Cardiff",
                             "Swansea",
                             "Newport",
@@ -285,7 +318,8 @@
                         ]
                     },
                     {
-                        "Northern Ireland": [
+                        "stateName": "Northern Ireland",
+                        "cities": [
                             "Belfast",
                             "Derry",
                             "Lisburn",
@@ -294,7 +328,8 @@
                         ]
                     },
                     {
-                        "Isle of Man": [
+                        "stateName": "Isle of Man",
+                        "cities": [
                             "Douglas",
                             "Peel",
                             "Ramsey",
@@ -308,7 +343,8 @@
                 "countryName": "United States",
                 "states": [
                     {
-                        "California": [
+                        "stateName": "California",
+                        "cities": [
                             "Los Angeles",
                             "San Francisco",
                             "San Diego",
@@ -317,7 +353,8 @@
                         ]
                     },
                     {
-                        "New York": [
+                        "stateName": "New York",
+                        "cities": [
                             "New York City",
                             "Buffalo",
                             "Albany",
@@ -326,7 +363,8 @@
                         ]
                     },
                     {
-                        "Texas": [
+                        "stateName": "Texas",
+                        "cities": [
                             "Houston",
                             "Dallas",
                             "Austin",
@@ -335,7 +373,8 @@
                         ]
                     },
                     {
-                        "Florida": [
+                        "stateName": "Florida",
+                        "cities": [
                             "Miami",
                             "Orlando",
                             "Tampa",
@@ -344,7 +383,8 @@
                         ]
                     },
                     {
-                        "Illinois": [
+                        "stateName": "Illinois",
+                        "cities": [
                             "Chicago",
                             "Springfield",
                             "Rockford",
@@ -358,7 +398,8 @@
                 "countryName": "Canada",
                 "states": [
                     {
-                        "Ontario": [
+                        "stateName": "Ontario",
+                        "cities": [
                             "Toronto",
                             "Ottawa",
                             "Mississauga",
@@ -367,7 +408,8 @@
                         ]
                     },
                     {
-                        "Quebec": [
+                        "stateName": "Quebec",
+                        "cities": [
                             "Montreal",
                             "Quebec City",
                             "Laval",
@@ -376,7 +418,8 @@
                         ]
                     },
                     {
-                        "British Columbia": [
+                        "stateName": "British Columbia",
+                        "cities": [
                             "Vancouver",
                             "Surrey",
                             "Burnaby",
@@ -385,7 +428,8 @@
                         ]
                     },
                     {
-                        "Alberta": [
+                        "stateName": "Alberta",
+                        "cities": [
                             "Calgary",
                             "Edmonton",
                             "Red Deer",
@@ -394,7 +438,8 @@
                         ]
                     },
                     {
-                        "Manitoba": [
+                        "stateName": "Manitoba",
+                        "cities": [
                             "Winnipeg",
                             "Brandon",
                             "Steinbach",
@@ -408,7 +453,8 @@
                 "countryName": "Australia",
                 "states": [
                     {
-                        "New South Wales": [
+                        "stateName": "New South Wales",
+                        "cities": [
                             "Sydney",
                             "Newcastle",
                             "Wollongong",
@@ -417,7 +463,8 @@
                         ]
                     },
                     {
-                        "Victoria": [
+                        "stateName": "Victoria",
+                        "cities": [
                             "Melbourne",
                             "Geelong",
                             "Ballarat",
@@ -426,7 +473,8 @@
                         ]
                     },
                     {
-                        "Queensland": [
+                        "stateName": "Queensland",
+                        "cities": [
                             "Brisbane",
                             "Gold Coast",
                             "Sunshine Coast",
@@ -435,7 +483,8 @@
                         ]
                     },
                     {
-                        "Western Australia": [
+                        "stateName": "Western Australia",
+                        "cities": [
                             "Perth",
                             "Mandurah",
                             "Bunbury",
@@ -444,7 +493,8 @@
                         ]
                     },
                     {
-                        "South Australia": [
+                        "stateName": "South Australia",
+                        "cities": [
                             "Adelaide",
                             "Mount Gambier",
                             "Whyalla",
@@ -458,7 +508,8 @@
                 "countryName": "Germany",
                 "states": [
                     {
-                        "Berlin": [
+                        "stateName": "Berlin",
+                        "cities": [
                             "Berlin",
                             "Potsdam",
                             "Oranienburg",
@@ -467,7 +518,8 @@
                         ]
                     },
                     {
-                        "Bavaria": [
+                        "stateName": "Bavaria",
+                        "cities": [
                             "Munich",
                             "Nuremberg",
                             "Augsburg",
@@ -476,7 +528,8 @@
                         ]
                     },
                     {
-                        "Baden-Württemberg": [
+                        "stateName": "Baden-Württemberg",
+                        "cities": [
                             "Stuttgart",
                             "Karlsruhe",
                             "Mannheim",
@@ -485,7 +538,8 @@
                         ]
                     },
                     {
-                        "North Rhine-Westphalia": [
+                        "stateName": "North Rhine-Westphalia",
+                        "cities": [
                             "Cologne",
                             "Düsseldorf",
                             "Dortmund",
@@ -494,7 +548,8 @@
                         ]
                     },
                     {
-                        "Lower Saxony": [
+                        "stateName": "Lower Saxony",
+                        "cities": [
                             "Hanover",
                             "Braunschweig",
                             "Osnabrück",
@@ -514,7 +569,8 @@
                 "countryName": "France",
                 "states": [
                     {
-                        "Île-de-France": [
+                        "stateName": "Île-de-France",
+                        "cities": [
                             "Paris",
                             "Versailles",
                             "Boulogne-Billancourt",
@@ -523,7 +579,8 @@
                         ]
                     },
                     {
-                        "Provence-Alpes-Côte d'Azur": [
+                        "stateName": "Provence-Alpes-Côte d'Azur",
+                        "cities": [
                             "Marseille",
                             "Nice",
                             "Toulon",
@@ -532,7 +589,8 @@
                         ]
                     },
                     {
-                        "Auvergne-Rhône-Alpes": [
+                        "stateName": "Auvergne-Rhône-Alpes",
+                        "cities": [
                             "Lyon",
                             "Grenoble",
                             "Saint-Étienne",
@@ -541,7 +599,8 @@
                         ]
                     },
                     {
-                        "Occitanie": [
+                        "stateName": "Occitanie",
+                        "cities": [
                             "Toulouse",
                             "Montpellier",
                             "Nîmes",
@@ -550,7 +609,8 @@
                         ]
                     },
                     {
-                        "Nouvelle-Aquitaine": [
+                        "stateName": "Nouvelle-Aquitaine",
+                        "cities": [
                             "Bordeaux",
                             "Limoges",
                             "Pau",
@@ -564,7 +624,8 @@
                 "countryName": "China",
                 "states": [
                     {
-                        "Beijing": [
+                        "stateName": "Beijing",
+                        "cities": [
                             "Beijing",
                             "Chaoyang",
                             "Haidian",
@@ -573,7 +634,8 @@
                         ]
                     },
                     {
-                        "Shanghai": [
+                        "stateName": "Shanghai",
+                        "cities": [
                             "Shanghai",
                             "Huangpu",
                             "Xuhui",
@@ -582,7 +644,8 @@
                         ]
                     },
                     {
-                        "Guangdong": [
+                        "stateName": "Guangdong",
+                        "cities": [
                             "Guangzhou",
                             "Shenzhen",
                             "Dongguan",
@@ -591,7 +654,8 @@
                         ]
                     },
                     {
-                        "Jiangsu": [
+                        "stateName": "Jiangsu",
+                        "cities": [
                             "Nanjing",
                             "Suzhou",
                             "Wuxi",
@@ -600,7 +664,8 @@
                         ]
                     },
                     {
-                        "Zhejiang": [
+                        "stateName": "Zhejiang",
+                        "cities": [
                             "Hangzhou",
                             "Ningbo",
                             "Wenzhou",
@@ -614,7 +679,8 @@
                 "countryName": "Brazil",
                 "states": [
                     {
-                        "São Paulo": [
+                        "stateName": "São Paulo",
+                        "cities": [
                             "São Paulo",
                             "Guarulhos",
                             "Campinas",
@@ -623,7 +689,8 @@
                         ]
                     },
                     {
-                        "Rio de Janeiro": [
+                        "stateName": "Rio de Janeiro",
+                        "cities": [
                             "Rio de Janeiro",
                             "Nova Iguaçu",
                             "Duque de Caxias",
@@ -632,7 +699,8 @@
                         ]
                     },
                     {
-                        "Minas Gerais": [
+                        "stateName": "Minas Gerais",
+                        "cities": [
                             "Belo Horizonte",
                             "Uberlândia",
                             "Contagem",
@@ -641,7 +709,8 @@
                         ]
                     },
                     {
-                        "Bahia": [
+                        "stateName": "Bahia",
+                        "cities": [
                             "Salvador",
                             "Feira de Santana",
                             "Vitória da Conquista",
@@ -650,7 +719,8 @@
                         ]
                     },
                     {
-                        "Paraná": [
+                        "stateName": "Paraná",
+                        "cities": [
                             "Curitiba",
                             "Londrina",
                             "Maringá",
@@ -664,7 +734,8 @@
                 "countryName": "Japan",
                 "states": [
                     {
-                        "Tokyo": [
+                        "stateName": "Tokyo",
+                        "cities": [
                             "Tokyo",
                             "Yokohama",
                             "Osaka",
@@ -673,7 +744,8 @@
                         ]
                     },
                     {
-                        "Kanagawa": [
+                        "stateName": "Kanagawa",
+                        "cities": [
                             "Yokohama",
                             "Kawasaki",
                             "Sagamihara",
@@ -682,7 +754,8 @@
                         ]
                     },
                     {
-                        "Osaka": [
+                        "stateName": "Osaka",
+                        "cities": [
                             "Osaka",
                             "Sakai",
                             "Higashiosaka",
@@ -691,7 +764,8 @@
                         ]
                     },
                     {
-                        "Aichi": [
+                        "stateName": "Aichi",
+                        "cities": [
                             "Nagoya",
                             "Toyota",
                             "Okazaki",
@@ -700,7 +774,8 @@
                         ]
                     },
                     {
-                        "Hokkaido": [
+                        "stateName": "Hokkaido",
+                        "cities": [
                             "Sapporo",
                             "Asahikawa",
                             "Hakodate",
@@ -714,7 +789,8 @@
                 "countryName": "Russia",
                 "states": [
                     {
-                        "Moscow": [
+                        "stateName": "Moscow",
+                        "cities": [
                             "Moscow",
                             "Saint Petersburg",
                             "Novosibirsk",
@@ -723,7 +799,8 @@
                         ]
                     },
                     {
-                        "Saint Petersburg": [
+                        "stateName": "Saint Petersburg",
+                        "cities": [
                             "Saint Petersburg",
                             "Novosibirsk",
                             "Yekaterinburg",
@@ -732,7 +809,8 @@
                         ]
                     },
                     {
-                        "Novosibirsk Oblast": [
+                        "stateName": "Novosibirsk Oblast",
+                        "cities": [
                             "Novosibirsk",
                             "Berdkul",
                             "Cherepanovo",
@@ -741,7 +819,8 @@
                         ]
                     },
                     {
-                        "Sverdlovsk Oblast": [
+                        "stateName": "Sverdlovsk Oblast",
+                        "cities": [
                             "Yekaterinburg",
                             "Nizhny Tagil",
                             "Kamensk-Uralsky",
@@ -750,7 +829,8 @@
                         ]
                     },
                     {
-                        "Nizhny Novgorod Oblast": [
+                        "stateName": "Nizhny Novgorod Oblast",
+                        "cities": [
                             "Nizhny Novgorod",
                             "Dzerzhinsk",
                             "Bor",
@@ -764,13 +844,14 @@
     },
     {
         "id": 4,
-        "OrgName": "Flipcart",
+        "OrgName": "Flipkart",
         "country": [
             {
                 "countryName": "South Africa",
                 "states": [
                     {
-                        "Gauteng": [
+                        "stateName": "Gauteng",
+                        "cities": [
                             "Johannesburg",
                             "Pretoria",
                             "Soweto",
@@ -779,7 +860,8 @@
                         ]
                     },
                     {
-                        "Western Cape": [
+                        "stateName": "Western Cape",
+                        "cities": [
                             "Cape Town",
                             "Stellenbosch",
                             "George",
@@ -788,7 +870,8 @@
                         ]
                     },
                     {
-                        "KwaZulu-Natal": [
+                        "stateName": "KwaZulu-Natal",
+                        "cities": [
                             "Durban",
                             "Pietermaritzburg",
                             "Richards Bay",
@@ -797,7 +880,8 @@
                         ]
                     },
                     {
-                        "Eastern Cape": [
+                        "stateName": "Eastern Cape",
+                        "cities": [
                             "Port Elizabeth",
                             "East London",
                             "Uitenhage",
@@ -806,7 +890,8 @@
                         ]
                     },
                     {
-                        "Mpumalanga": [
+                        "stateName": "Mpumalanga",
+                        "cities": [
                             "Nelspruit",
                             "Mbombela",
                             "Witbank",
@@ -820,7 +905,8 @@
                 "countryName": "Italy",
                 "states": [
                     {
-                        "Lazio": [
+                        "stateName": "Lazio",
+                        "cities": [
                             "Rome",
                             "Latina",
                             "Frosinone",
@@ -829,7 +915,8 @@
                         ]
                     },
                     {
-                        "Lombardy": [
+                        "stateName": "Lombardy",
+                        "cities": [
                             "Milan",
                             "Bergamo",
                             "Brescia",
@@ -838,7 +925,8 @@
                         ]
                     },
                     {
-                        "Sicily": [
+                        "stateName": "Sicily",
+                        "cities": [
                             "Palermo",
                             "Catania",
                             "Messina",
@@ -847,7 +935,8 @@
                         ]
                     },
                     {
-                        "Campania": [
+                        "stateName": "Campania",
+                        "cities": [
                             "Naples",
                             "Salerno",
                             "Torre del Greco",
@@ -856,7 +945,8 @@
                         ]
                     },
                     {
-                        "Veneto": [
+                        "stateName": "Veneto",
+                        "cities": [
                             "Venice",
                             "Verona",
                             "Padua",
@@ -870,7 +960,8 @@
                 "countryName": "Mexico",
                 "states": [
                     {
-                        "Mexico City": [
+                        "stateName": "Mexico City",
+                        "cities": [
                             "Mexico City",
                             "Ecatepec",
                             "Nezahualcóyotl",
@@ -879,7 +970,8 @@
                         ]
                     },
                     {
-                        "Jalisco": [
+                        "stateName": "Jalisco",
+                        "cities": [
                             "Guadalajara",
                             "Zapopan",
                             "Tlaquepaque",
@@ -888,7 +980,8 @@
                         ]
                     },
                     {
-                        "Nuevo León": [
+                        "stateName": "Nuevo León",
+                        "cities": [
                             "Monterrey",
                             "Guadalupe",
                             "San Nicolás de los Garza",
@@ -897,7 +990,8 @@
                         ]
                     },
                     {
-                        "Puebla": [
+                        "stateName": "Puebla",
+                        "cities": [
                             "Puebla",
                             "Tehuacán",
                             "San Martín Texmelucan",
@@ -906,7 +1000,8 @@
                         ]
                     },
                     {
-                        "Guanajuato": [
+                        "stateName": "Guanajuato",
+                        "cities": [
                             "León",
                             "Irapuato",
                             "Salamanca",
@@ -920,7 +1015,8 @@
                 "countryName": "Argentina",
                 "states": [
                     {
-                        "Buenos Aires": [
+                        "stateName": "Buenos Aires",
+                        "cities": [
                             "Buenos Aires",
                             "La Plata",
                             "Mar del Plata",
@@ -929,7 +1025,8 @@
                         ]
                     },
                     {
-                        "Córdoba": [
+                        "stateName": "Córdoba",
+                        "cities": [
                             "Córdoba",
                             "Villa María",
                             "Río Cuarto",
@@ -938,7 +1035,8 @@
                         ]
                     },
                     {
-                        "Santa Fe": [
+                        "stateName": "Santa Fe",
+                        "cities": [
                             "Rosario",
                             "Santa Fe",
                             "Venado Tuerto",
@@ -947,7 +1045,8 @@
                         ]
                     },
                     {
-                        "Mendoza": [
+                        "stateName": "Mendoza",
+                        "cities": [
                             "Mendoza",
                             "San Rafael",
                             "San Martín",
@@ -956,7 +1055,8 @@
                         ]
                     },
                     {
-                        "Tucumán": [
+                        "stateName": "Tucumán",
+                        "cities": [
                             "San Miguel de Tucumán",
                             "Concepción",
                             "Banda del Río Salí",
@@ -970,7 +1070,8 @@
                 "countryName": "Spain",
                 "states": [
                     {
-                        "Madrid": [
+                        "stateName": "Madrid",
+                        "cities": [
                             "Madrid",
                             "Móstoles",
                             "Alcalá de Henares",
@@ -979,7 +1080,8 @@
                         ]
                     },
                     {
-                        "Catalonia": [
+                        "stateName": "Catalonia",
+                        "cities": [
                             "Barcelona",
                             "L'Hospitalet de Llobregat",
                             "Badalona",
@@ -988,7 +1090,8 @@
                         ]
                     },
                     {
-                        "Andalusia": [
+                        "stateName": "Andalusia",
+                        "cities": [
                             "Seville",
                             "Málaga",
                             "Córdoba",
@@ -997,7 +1100,8 @@
                         ]
                     },
                     {
-                        "Valencia": [
+                        "stateName": "Valencia",
+                        "cities": [
                             "Valencia",
                             "Alicante",
                             "Elche",
@@ -1006,7 +1110,8 @@
                         ]
                     },
                     {
-                        "Galicia": [
+                        "stateName": "Galicia",
+                        "cities": [
                             "Vigo",
                             "A Coruña",
                             "Ourense",
@@ -1026,7 +1131,8 @@
                 "countryName": "India",
                 "states": [
                     {
-                        "Maharashtra": [
+                        "stateName": "Maharashtra",
+                        "cities": [
                             "Mumbai",
                             "Pune",
                             "Nagpur",
@@ -1035,7 +1141,8 @@
                         ]
                     },
                     {
-                        "Uttar Pradesh": [
+                        "stateName": "Uttar Pradesh",
+                        "cities": [
                             "Lucknow",
                             "Kanpur",
                             "Agra",
@@ -1044,7 +1151,8 @@
                         ]
                     },
                     {
-                        "Karnataka": [
+                        "stateName": "Karnataka",
+                        "cities": [
                             "Bengaluru",
                             "Mysuru",
                             "Hubli-Dharwad",
@@ -1053,7 +1161,8 @@
                         ]
                     },
                     {
-                        "Gujarat": [
+                        "stateName": "Gujarat",
+                        "cities": [
                             "Ahmedabad",
                             "Surat",
                             "Vadodara",
@@ -1062,7 +1171,8 @@
                         ]
                     },
                     {
-                        "West Bengal": [
+                        "stateName": "West Bengal",
+                        "cities": [
                             "Kolkata",
                             "Asansol",
                             "Siliguri",
@@ -1076,7 +1186,8 @@
                 "countryName": "Japan",
                 "states": [
                     {
-                        "Tokyo": [
+                        "stateName": "Tokyo",
+                        "cities": [
                             "Tokyo",
                             "Yokohama",
                             "Osaka",
@@ -1085,7 +1196,8 @@
                         ]
                     },
                     {
-                        "Kanagawa": [
+                        "stateName": "Kanagawa",
+                        "cities": [
                             "Yokohama",
                             "Kawasaki",
                             "Sagamihara",
@@ -1094,7 +1206,8 @@
                         ]
                     },
                     {
-                        "Osaka": [
+                        "stateName": "Osaka",
+                        "cities": [
                             "Osaka",
                             "Sakai",
                             "Higashiosaka",
@@ -1103,7 +1216,8 @@
                         ]
                     },
                     {
-                        "Aichi": [
+                        "stateName": "Aichi",
+                        "cities": [
                             "Nagoya",
                             "Toyota",
                             "Okazaki",
@@ -1112,7 +1226,8 @@
                         ]
                     },
                     {
-                        "Hokkaido": [
+                        "stateName": "Hokkaido",
+                        "cities": [
                             "Sapporo",
                             "Asahikawa",
                             "Hakodate",
@@ -1126,7 +1241,8 @@
                 "countryName": "Brazil",
                 "states": [
                     {
-                        "São Paulo": [
+                        "stateName": "São Paulo",
+                        "cities": [
                             "São Paulo",
                             "Guarulhos",
                             "Campinas",
@@ -1135,7 +1251,8 @@
                         ]
                     },
                     {
-                        "Rio de Janeiro": [
+                        "stateName": "Rio de Janeiro",
+                        "cities": [
                             "Rio de Janeiro",
                             "Nova Iguaçu",
                             "Duque de Caxias",
@@ -1144,7 +1261,8 @@
                         ]
                     },
                     {
-                        "Minas Gerais": [
+                        "stateName": "Minas Gerais",
+                        "cities": [
                             "Belo Horizonte",
                             "Uberlândia",
                             "Contagem",
@@ -1153,7 +1271,8 @@
                         ]
                     },
                     {
-                        "Bahia": [
+                        "stateName": "Bahia",
+                        "cities": [
                             "Salvador",
                             "Feira de Santana",
                             "Vitória da Conquista",
@@ -1162,7 +1281,8 @@
                         ]
                     },
                     {
-                        "Paraná": [
+                        "stateName": "Paraná",
+                        "cities": [
                             "Curitiba",
                             "Londrina",
                             "Maringá",
@@ -1176,7 +1296,8 @@
                 "countryName": "United States",
                 "states": [
                     {
-                        "California": [
+                        "stateName": "California",
+                        "cities": [
                             "Los Angeles",
                             "San Francisco",
                             "San Diego",
@@ -1185,7 +1306,8 @@
                         ]
                     },
                     {
-                        "New York": [
+                        "stateName": "New York",
+                        "cities": [
                             "New York City",
                             "Buffalo",
                             "Albany",
@@ -1194,7 +1316,8 @@
                         ]
                     },
                     {
-                        "Texas": [
+                        "stateName": "Texas",
+                        "cities": [
                             "Houston",
                             "Dallas",
                             "Austin",
@@ -1203,7 +1326,8 @@
                         ]
                     },
                     {
-                        "Florida": [
+                        "stateName": "Florida",
+                        "cities": [
                             "Miami",
                             "Orlando",
                             "Tampa",
@@ -1212,7 +1336,8 @@
                         ]
                     },
                     {
-                        "Illinois": [
+                        "stateName": "Illinois",
+                        "cities": [
                             "Chicago",
                             "Springfield",
                             "Rockford",
@@ -1226,7 +1351,8 @@
                 "countryName": "Russia",
                 "states": [
                     {
-                        "Moscow": [
+                        "stateName": "Moscow",
+                        "cities": [
                             "Moscow",
                             "Saint Petersburg",
                             "Novosibirsk",
@@ -1235,7 +1361,8 @@
                         ]
                     },
                     {
-                        "Saint Petersburg": [
+                        "stateName": "Saint Petersburg",
+                        "cities": [
                             "Saint Petersburg",
                             "Novosibirsk",
                             "Yekaterinburg",
@@ -1244,7 +1371,8 @@
                         ]
                     },
                     {
-                        "Novosibirsk Oblast": [
+                        "stateName": "Novosibirsk Oblast",
+                        "cities": [
                             "Novosibirsk",
                             "Berdkul",
                             "Cherepanovo",
@@ -1253,7 +1381,8 @@
                         ]
                     },
                     {
-                        "Sverdlovsk Oblast": [
+                        "stateName": "Sverdlovsk Oblast",
+                        "cities": [
                             "Yekaterinburg",
                             "Nizhny Tagil",
                             "Kamensk-Uralsky",
@@ -1262,7 +1391,8 @@
                         ]
                     },
                     {
-                        "Nizhny Novgorod Oblast": [
+                        "stateName": "Nizhny Novgorod Oblast",
+                        "cities": [
                             "Nizhny Novgorod",
                             "Dzerzhinsk",
                             "Bor",
