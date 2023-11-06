@@ -1,15 +1,9 @@
 .table{
-  max-width: 100%;
+width:100%;
 }
 .csv-page-container {
  
   flex-direction: column;
-  width: 100%;
-
-  // background-color: #f2f2f2; 
-  // border: 1px solid #ddd;
-  // border-radius: 8px;
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -38,9 +32,9 @@
   margin-top: 16px;
 }
 .main-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  // max-width: 800px;
+  // margin: 0 auto;
+  // padding: 20px;
 }
 
 .hero-section {

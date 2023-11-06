@@ -7,6 +7,8 @@ import {
   TableRow,
   Paper,
   Button,
+  TableHead,
+  Box,
 } from '@material-ui/core';
 import "./CsvTable.scss"
 import { CSVContext } from '../Context';
@@ -93,70 +95,86 @@ const CsvTable = () => {
   };
 
   return (
-    <TableContainer maxWidth="100%" className='table' component={Paper}>
-      <Table>
-        <TableBody>
-          {csvDataState.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
-              {Object.values(row).map((value, columnIndex) => (
-                <TableCell key={columnIndex}>{value}</TableCell>
+    <>
+      <TableContainer maxWidth="100%" className='table' component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {csvDataState.map((row, rowIndex) => (
+
+                Object.values(row).map((value, columnIndex) => { return rowIndex === 0 && <TableCell key={columnIndex}>{value}</TableCell> })
+
               ))}
-              <TableCell>
-                {rowIndex !== 0 && (
-                  <Button
-                    variant="contained"
-                    className="edit-button"
-                    style={{ backgroundColor: "teal", color: "white" }}
-                    onClick={() => openEditModal(rowIndex)} // Open edit modal
-                  >
-                    Edit
-                  </Button>
-                )}
-              </TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {csvDataState.map((row, rowIndex) => {
+              return <>
+                {rowIndex !== 0 && <TableRow key={rowIndex}>
+                  {rowIndex !== 0 && Object.values(row).map((value, columnIndex) => (
+                    <TableCell key={columnIndex}>{value}</TableCell>
+                  ))}
+                  <TableCell>
+                    {rowIndex !== 0 && (
+                      <Button
+                        variant="contained"
+                        className="edit-button"
+                        style={{ backgroundColor: "teal", color: "white" }}
+                        onClick={() => openEditModal(rowIndex)}
+                      >
+                        Edit
+                      </Button>
+                    )}
+                  </TableCell>
+                </TableRow>}
+              </>
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Box style={{display:"flex",justifyContent:"flex-end"}}>
 
-      <Button
-        variant="contained"
-        className="add-row-button"
-        style={{ backgroundColor: "teal", color: "white",marginRight:"10px" }}
-        onClick={openAddModal}
-      >
-        Add Row
-      </Button>
-      {csvFormModal.status && csvFormModal.edit && (
-        <EditTable
-          open={csvFormModal.status && csvFormModal.edit}
-          data={csvFormModal.data}
-          onSave={(newData) => saveData(newData, false)}
-          onCancel={closeCsvModal}
-          isAdding={false}
-        />
-      )}
-
-      {csvFormModal.status && (!csvFormModal.edit) && (
-        <EditTable
-          open={csvFormModal.status}
-          data={csvFormModal.data}
-          onSave={(newData) => saveData(newData, true)}
-          onCancel={closeCsvModal}
-          isAdding={true}
-        />
-      )}
-
-      {showDownload && (
         <Button
           variant="contained"
-          className="download-button"
-          style={{ backgroundColor: "teal", color: "white" }}
-          onClick={handleDownloadEditedFile}
+          className="add-row-button"
+          style={{ backgroundColor: "teal", color: "white", marginRight: "10px", margin: "10px" }}
+          onClick={openAddModal}
         >
-          Download Edited File
+          Add Row
         </Button>
-      )}
-    </TableContainer>
+        {csvFormModal.status && csvFormModal.edit && (
+          <EditTable
+            open={csvFormModal.status && csvFormModal.edit}
+            data={csvFormModal.data}
+            onSave={(newData) => saveData(newData, false)}
+            onCancel={closeCsvModal}
+            isAdding={false}
+          />
+        )}
+
+        {csvFormModal.status && (!csvFormModal.edit) && (
+          <EditTable
+            open={csvFormModal.status}
+            data={csvFormModal.data}
+            onSave={(newData) => saveData(newData, true)}
+            onCancel={closeCsvModal}
+            isAdding={true}
+          />
+        )}
+
+        {showDownload && (
+          <Button
+            variant="contained"
+            className="download-button"
+            style={{ backgroundColor: "teal", color: "white", marginRight: "10px", margin: "10px"  }}
+            onClick={handleDownloadEditedFile}
+          >
+            Download Edited File
+          </Button>
+        )}
+      </Box>
+    </>
   );
 }
 
