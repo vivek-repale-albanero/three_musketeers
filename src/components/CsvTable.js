@@ -93,7 +93,7 @@ const CsvTable = () => {
   };
 
   return (
-    <TableContainer maxWidth="100%" component={Paper}>
+    <TableContainer maxWidth="100%" className='table' component={Paper}>
       <Table>
         <TableBody>
           {csvDataState.map((row, rowIndex) => (

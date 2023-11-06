@@ -1,4 +1,6 @@
-
+.table{
+  max-width: 100%;
+}
 .csv-page-container {
  
   flex-direction: column;
@@ -17,9 +19,8 @@
   border: 1px black solid;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 16px;
-  padding-left:2%;
-  padding-right:2%;
   margin-top:1%;
 
   .MuiTypography-h5 {

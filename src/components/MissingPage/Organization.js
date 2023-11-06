@@ -8,6 +8,8 @@ import { MissingPageContext } from '../../Context'
 import AddButton from './AddButton'
 import BasicModal from './MissingModal'
 import OrganizationTable from './OrganizationTable'
+import { Container } from '@material-ui/core'
+import BreadCrumb from '../Breadcrumbs/BreadCrumb'
 
 
 // "Bangal,"Bihar","Telangana","Maharashtra"
@@ -15,13 +17,17 @@ function Organization() {
     const { orgdata, setorgdata } = useContext(MissingPageContext)
     console.log(orgdata)
     return (
-        <div>
-
-            Main component
+        <div >
+        <Container maxWidth="100%" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                    <BreadCrumb/>
             <div className="ButtonDiv">
-                <BasicModal />
-                <OrganizationTable />
             </div>
+        </Container>
+        <Container maxWidth="100%">
+            
+                <BasicModal />
+                <OrganizationTable/>
+        </Container>
 
         </div >
     )
