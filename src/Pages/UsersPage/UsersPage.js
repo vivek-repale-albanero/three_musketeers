@@ -1,19 +1,34 @@
-
-
-import React, { useContext, useMemo, useState } from "react"
-import { Table,Link, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Icon, Container, Checkbox, Card, Typography, Box } from '@material-ui/core';
-import Layout from '../../Layout/Layout';
-import "./Userspage.scss"
-import BreadCrumb from '../../components/Breadcrumbs/BreadCrumb';
+import React, { useContext, useMemo, useState } from "react";
+import {
+  Table,
+  Link,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Icon,
+  Container,
+  Checkbox,
+  Card,
+  Typography,
+  Box,
+} from "@material-ui/core";
+import Layout from "../../Layout/Layout";
+import "./Userspage.scss";
+import BreadCrumb from "../../components/Breadcrumbs/BreadCrumb";
 import EditForm from "../../components/EditForm/EditForm";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 import { PermissionContext, UsersContext } from "../../Context";
 function UsersPage() {
-  const { setUnAuthMsg } = useContext(PermissionContext)
-  const history = useHistory()
-  const { users, setUsers, handlePermissionModalOpen, currentUser } = useContext(PermissionContext)
-  console.log("user",setUsers)
+  const { setUnAuthMsg } = useContext(PermissionContext);
+  const history = useHistory();
+  const { users, setUsers, handlePermissionModalOpen, currentUser } =
+    useContext(PermissionContext);
+  console.log("user", setUsers);
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
 
   //Form Modal
@@ -21,7 +36,7 @@ function UsersPage() {
     user: {
       userName: "",
       firstName: "",
-      lastName: ""
+      lastName: "",
     },
     age: "",
     email: "",
@@ -32,44 +47,44 @@ function UsersPage() {
         subModules: {
           csvPagePermission: false,
           csvEditPermission: false,
-          csvDownloadPermission: false
-        }
+          csvDownloadPermission: false,
+        },
       },
       gamePermission: {
         allow: false,
         subModules: {
           gamePagePermission: false,
           gameStartPermission: false,
-          gameResetPermission: false
-        }
+          gameResetPermission: false,
+        },
       },
       missing: {
         allow: false,
-        subModules: {}
-      }
-    }
-  }
+        subModules: {},
+      },
+    },
+  };
 
   const [userFormModal, setUserFormModal] = useState({
     status: false,
     edit: false,
-    data: {}
-  })
+    data: {},
+  });
 
   const closeModal = () => {
     setUserFormModal({
       ...userFormModal,
       status: false,
       edit: false,
-      data: {}
-    })
-  }
+      data: {},
+    });
+  };
 
   const afterEdit = () => {
-    fetch('http://localhost:3000/users')
+    fetch("http://localhost:3000/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
-  }
+  };
 
   //Add Form
   const openAddModal = () => {
@@ -77,9 +92,9 @@ function UsersPage() {
       ...userFormModal,
       status: true,
       edit: false,
-      data: userData
-    })
-  }
+      data: userData,
+    });
+  };
 
   //Edit Form
 
@@ -88,107 +103,163 @@ function UsersPage() {
       ...userFormModal,
       status: true,
       edit: true,
-      data: user
-    })
-  }
+      data: user,
+    });
+  };
   const saveUserData = (editedUserData) => {
-    console.log("editedUserData", editedUserData)
+    console.log("editedUserData", editedUserData);
     if (!userFormModal.edit) {
-      fetch('http://localhost:3000/users', {
-        method: 'POST',
+      fetch("http://localhost:3000/users", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(editedUserData),
       })
-        .then(response => afterEdit())
-        .catch(error => {
-          console.error('Error:', error);
+        .then((response) => afterEdit())
+        .catch((error) => {
+          console.error("Error:", error);
         });
       // const updatedUsers = [...users,editedUserData]
       //    setUsers(updatedUsers)
     } else {
-      const updateduser = (editedUserData)
-      const updatedUsersList = users.map((user) => user.id === updateduser.id ? { ...updateduser } : user).filter((user) => user.id === updateduser.id)
+      const updateduser = editedUserData;
+      const updatedUsersList = users
+        .map((user) => (user.id === updateduser.id ? { ...updateduser } : user))
+        .filter((user) => user.id === updateduser.id);
       fetch(`http://localhost:3000/users/${updatedUsersList[0].id}`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedUsersList[0]),
       })
-        .then(response => afterEdit())
-        .catch(error => {
-          console.error('Error:', error);
+        .then((response) => afterEdit())
+        .catch((error) => {
+          console.error("Error:", error);
         });
     }
-    closeModal()
-  }
+    closeModal();
+  };
   //Delete User
   const deleteUser = (userId) => {
     //  const userList = users.filter((user)=> user.id !==userId)
     //  setUsers(userList)
     fetch(`http://localhost:3000/users/${userId}`, {
-      method: "DELETE"
+      method: "DELETE",
     })
-      .then(res => afterEdit())
-      .catch(error => {
-        console.error('Error:', error);
+      .then((res) => afterEdit())
+      .catch((error) => {
+        console.error("Error:", error);
       });
-
-  }
-
-
+  };
 
   const authMsgFn = () => {
-    setUnAuthMsg("Please Login First")
-    return "/unauth"
-  }
+    setUnAuthMsg("Please Login First");
+    return "/unauth";
+  };
   // console.log(currentUser)
 
-  const userPageValue = useMemo((() => {
-    return { users, setUsers, handlePermissionModalOpen, loggedUser, userData, userFormModal, setUserFormModal, closeModal, afterEdit, openAddModal, openEditModaL, saveUserData, deleteUser }
-  }
-  ), [users, setUsers, handlePermissionModalOpen, loggedUser, userData, userFormModal, setUserFormModal, closeModal, afterEdit, openAddModal, openEditModaL, saveUserData, deleteUser]);
+  const userPageValue = useMemo(() => {
+    return {
+      users,
+      setUsers,
+      handlePermissionModalOpen,
+      loggedUser,
+      userData,
+      userFormModal,
+      setUserFormModal,
+      closeModal,
+      afterEdit,
+      openAddModal,
+      openEditModaL,
+      saveUserData,
+      deleteUser,
+    };
+  }, [
+    users,
+    setUsers,
+    handlePermissionModalOpen,
+    loggedUser,
+    userData,
+    userFormModal,
+    setUserFormModal,
+    closeModal,
+    afterEdit,
+    openAddModal,
+    openEditModaL,
+    saveUserData,
+    deleteUser,
+  ]);
 
   return (
     <>
       <Layout>
         <UsersContext.Provider value={userPageValue}>
-
-           <Box className="title" style={{ display: "flex" }}>
-            <Typography style={{fontSize:"24px"}}>Users List <BreadCrumb /></Typography>
+          <Box className="title" style={{ display: "flex" }}>
+            <Typography style={{ fontSize: "24px" }}>
+              Users List <BreadCrumb />
+            </Typography>
             <Button
               variant="contained"
-              className='addBtn'
+              className="addBtn"
               onClick={openAddModal}
-              >
+            >
               Add Users
             </Button>
-            {(userFormModal.status && (!userFormModal.edit) ?
-              <EditForm />
-              :
-              null)}
-              </Box> 
-          <Container maxWidth="100%" className='tableContent'>
+            {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
+          </Box>
+          <Container maxWidth="100%" className="tableContent">
             <TableContainer component={Paper}>
               <Table>
-                <TableHead style={{ background: 'rgb(42 139 139)' }}>
+                <TableHead style={{ background: "rgb(42 139 139)" }}>
                   <TableRow>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Id</TableCell>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Name</TableCell>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>E-mail</TableCell>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Age</TableCell>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>User Name</TableCell>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Is Logged</TableCell>
-                    <TableCell style={{ color: "rgb(224 224 224)", textAlign: "center" }}>Actions</TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      Id
+                    </TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      Name
+                    </TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      E-mail
+                    </TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      Age
+                    </TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      User Name
+                    </TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      Is Logged
+                    </TableCell>
+                    <TableCell
+                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
+                    >
+                      Actions
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {users.map((user) => (
                     <TableRow key={user.id}>
-                      <TableCell style={{ textAlign: "center" }}>{user.id}</TableCell>
-                      <TableCell style={{ textAlign: "center" }}>{`${user.user.firstName + " " + user.user.lastName}`}</TableCell>
+                      <TableCell style={{ textAlign: "center" }}>
+                        {user.id}
+                      </TableCell>
+                      <TableCell style={{ textAlign: "center" }}>{`${
+                        user.user.firstName + " " + user.user.lastName
+                      }`}</TableCell>
                       <TableCell style={{ textAlign: "center" }}>
                         {user.email}
                       </TableCell>
@@ -198,23 +269,44 @@ function UsersPage() {
                       <TableCell style={{ textAlign: "center" }}>
                         {user.user.userName}
                       </TableCell>
-                      <TableCell style={{ color: (loggedUser.id === user.id) ? "green" : "red", textAlign: "center" }}>
-                        {(loggedUser.id === user.id) ? "Online" : "Offline"}
+                      <TableCell
+                        style={{
+                          color: loggedUser.id === user.id ? "green" : "red",
+                          textAlign: "center",
+                        }}
+                      >
+                        {loggedUser.id === user.id ? "Online" : "Offline"}
                       </TableCell>
                       <TableCell style={{ textAlign: "center" }}>
                         <>
-                          <Button className='actionBtn' onClick={() => openEditModaL(user)}><Icon>edit_note</Icon></Button>
-                          {(userFormModal.status && userFormModal.edit)
-                            ?
+                          <Button
+                            className="actionBtn"
+                            onClick={() => openEditModaL(user)}
+                          >
+                            <Icon>edit_note</Icon>
+                          </Button>
+                          {userFormModal.status && userFormModal.edit ? (
                             <EditForm />
-                            :
-                            null}
-                          <Link  href={currentUser && currentUser.id == user.id ? `/users/authorization/${user.id}` : authMsgFn()} disabled={currentUser && currentUser.id == user.id}>
-                            <Button className='actionBtn'><Icon>key</Icon></Button>
-                            </Link>
-                          <Button className='actionBtn' onClick={() => deleteUser(user.id)}><Icon>delete</Icon></Button>
+                          ) : null}
+                          <Link
+                            href={
+                              currentUser && currentUser.id == user.id
+                                ? `/users/authorization/${user.id}`
+                                : authMsgFn()
+                            }
+                            disabled={currentUser && currentUser.id == user.id}
+                          >
+                            <Button className="actionBtn">
+                              <Icon>key</Icon>
+                            </Button>
+                          </Link>
+                          <Button
+                            className="actionBtn"
+                            onClick={() => deleteUser(user.id)}
+                          >
+                            <Icon>delete</Icon>
+                          </Button>
                         </>
-
                       </TableCell>
                     </TableRow>
                   ))}
@@ -222,11 +314,10 @@ function UsersPage() {
               </Table>
             </TableContainer>
           </Container>
-
-        </UsersContext.Provider >
+        </UsersContext.Provider>
       </Layout>
     </>
-  )
+  );
 }
 
-export default UsersPage
+export default UsersPage;
