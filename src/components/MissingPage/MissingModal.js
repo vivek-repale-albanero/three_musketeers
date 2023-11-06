@@ -37,7 +37,6 @@ export default function BasicModal() {
     }
 
     const handleclick = () => {
-        setAllMember((prev) => [...prev, Memberdetails])
         const object = {
             id: id,
             OrgName: Address.Name,
@@ -46,10 +45,11 @@ export default function BasicModal() {
             city: Address.City,
             See: <EyeComponent data={{ id, OrgName:Address.Name,  countryName: Address.Country, stateName: Address.State, city: Address.City, }} />,
             Delete: <Icon>delete</Icon>,
-            Memberscount:Allmember.length
+            // Memberscount:Allmember.length
         }
         console.log(object,"obj")
         setid(id+1)
+        setAllMember((prev) => [...prev, Memberdetails])
  
         console.log(Memberdetails,Allmember,"asdfadsfadsfd")
         setsingleorg((prev) => [...prev, object])

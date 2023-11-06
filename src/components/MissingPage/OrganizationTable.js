@@ -99,6 +99,14 @@ export default function ColumnGroupingTable() {
   }
   console.log("All Memmbers", Allmember)
 
+  const handleAllmembersdata=(Allmember)=>{
+
+    let newobj={
+      
+    }
+
+
+  }
 
   React.useEffect(() => {
     let Rows = GetRows(orgdata, Allmember)
