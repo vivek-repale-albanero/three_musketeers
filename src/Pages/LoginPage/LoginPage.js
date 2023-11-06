@@ -8,7 +8,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   let history = useHistory();
   const { users,setLocal,local } = useContext(PermissionContext);
-  // console.log("users",users)
+  console.log("users",users)
   const handleLogin = () => {
     const user = users.find((user) => user.email === userEmail && user.password === password);
     // console.log("user",user)

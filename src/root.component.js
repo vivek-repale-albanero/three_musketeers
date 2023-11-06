@@ -38,14 +38,8 @@ export default function Root() {
       console.error('Error:', error);
     });
   }, []);
-  async function getCurrentUser(currentUserId){
-    const response = await axios.get(`http://localhost:3000/users/${currentUserId.id}`)
-    const data = response.data;
-    setCurrentUser(data)
-   
-  }
+
   useEffect(()=>{
-    let currentUserId=JSON.parse(localStorage.getItem("useLogedId"))
     setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")))
 
   },[local])
