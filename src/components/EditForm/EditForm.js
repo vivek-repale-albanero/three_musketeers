@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Modal, TextField, Button, Paper, Typography, IconButton, Icon } from "@material-ui/core";
 import "./EditForm.scss"
+import { UsersContext } from "../../Context";
 
 
 
-function EditForm({userFormModal,closeModal,saveUserData}) {
-    
+function EditForm() {
+    const {userFormModal,saveUserData,closeModal}=useContext(UsersContext)
    const [editUserData,setEditUserData] = useState(userFormModal.data)
    
     //add or edit

@@ -1,4 +1,17 @@
-
+.title{
+    // margin: 55px0 30px 30px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1%;
+    padding: 1%;
+    border: 1px black solid;
+    border-radius: 5px;
+    .addBtn{
+        background-color: teal;
+        color: white;
+    }
+}
 
     /* background-image: url('https://elements-video-cover-images-0.imgix.net/files/77526968-0339-435f-b56e-ebd788abcbe5/inline_image_preview.jpg?auto=compress%2Cformat&fit=min&h=394&w=700&s=8451475881f7660bebe0ba42a1dbb175'); */
     .Main {

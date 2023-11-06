@@ -3,7 +3,7 @@ import React from 'react';
 // import { Outlet } from "react-router-dom"
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import { AddCircleOutlineIcon,Drawer,List,ListItem,ListItemIcon,ListItemText,Card,Avatar,Icon,Button } from '@material-ui/core';
+import { AddCircleOutlineIcon, Drawer, List, ListItem, ListItemIcon, ListItemText, Card, Avatar, Icon, Button } from '@material-ui/core';
 import "./Layout.scss"
 // import {HomeIcon,DashboardIcon,SettingsIcon} from ''
 // import Drawer from '@mui/material/Drawer';
@@ -15,66 +15,74 @@ import "./Layout.scss"
 // import DashboardIcon from '@mui/icons-material/Dashboard';
 // import SettingsIcon from '@mui/icons-material/Settings';
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
   let history = useHistory();
   const handleLogout = () => {
     history.push("/");
-     localStorage.removeItem("useLogedId")
+    localStorage.removeItem("useLogedId")
   }
   return (
     <div >
       <Drawer variant="permanent">
         <Card className='userCard' >
           <div className='userInfo'>
-          <Avatar>
-          {loggedUser.user.userName[0]}
-          </Avatar>
-          <div>
-          {loggedUser.user.firstName}
+            <Avatar>
+              {loggedUser.user.userName[0]}
+            </Avatar>
+            <div>
+              {loggedUser.user.firstName}
+            </div>
+            <Button color='secondary' onClick={handleLogout} >Logout</Button>
           </div>
-          <Button color='secondary'onClick={handleLogout} >Logout</Button>
-          </div>         
         </Card>
-          
+
         <List>
+        <ListItem button component={Link} to="/home">
+            <ListItemIcon>
+              <Icon>home</Icon>
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
           <ListItem button component={Link} to="/users">
             <ListItemIcon>
               <Icon>group</Icon>
             </ListItemIcon>
             <ListItemText primary="Users" />
           </ListItem>
-          {/* <ListItem button component={Link} to="/authorization">
-            <ListItemIcon>
-            <Icon>key_vertical</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Permissions" />
-          </ListItem> */}
-          <ListItem button component={Link} to="/csv">
-            <ListItemIcon>
-            <Icon>backup_table</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Csv-Upload" />
-          </ListItem>
-          <ListItem button component={Link} to="/gameredirect">
-            <ListItemIcon>
-            <Icon>casino</Icon>
-            </ListItemIcon>
-            <ListItemText primary="TicTacToe" />
-          </ListItem>
-
-          <ListItem button component={Link} to="/missing">
-            <ListItemIcon>
-            <Icon>AddCircleOutlineIcon</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Missing Page" />
-          </ListItem>
+          {(loggedUser.Permission.csvPermission.allow) ?
+            <ListItem button component={Link} to="/csv">
+              <ListItemIcon>
+                <Icon>backup_table</Icon>
+              </ListItemIcon>
+              <ListItemText primary="Csv-Upload" />
+            </ListItem>
+            : null
+          }
+          {(loggedUser.Permission.gamePermission.allow) ?
+            <ListItem button component={Link} to="/gameredirect">
+              <ListItemIcon>
+                <Icon>casino</Icon>
+              </ListItemIcon>
+              <ListItemText primary="TicTacToe" />
+            </ListItem> :
+            null
+          }
+          {(loggedUser.Permission.missing.allow) ?
+            <ListItem button component={Link} to="/missing">
+              <ListItemIcon>
+                <Icon>corporate_fare</Icon>
+              </ListItemIcon>
+              <ListItemText primary="Organisation Info" />
+            </ListItem> :
+            null
+          }
         </List>
       </Drawer>
       <div style={{ marginLeft: '15%' }}>
         {/* <Outlet /> */}
         {children}
-        </div>
+      </div>
     </div>
   );
 };

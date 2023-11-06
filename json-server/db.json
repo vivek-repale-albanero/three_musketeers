@@ -5,120 +5,132 @@
       "user": {
         "userName": "pritam0001",
         "firstName": "Pritam",
-        "lastName": "girl"
-      },
-      "age": "25",
-      "email": "user1@gmail.com",
-      "password": "password1",
-      "Permission": [
-        {
-          "name": "csvPermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "csvPagePermission",
-              "allow": false
-            },
-            {
-              "name": "csvEditPermission",
-              "allow": false
-            },
-            {
-              "name": "vsvDownloadPermission",
-              "allow": false
-            }
-          ]
-        },
-        {
-          "name": "gamePermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "gamePagePermission",
-              "allow": false
-            },
-            {
-              "name": "gameStartPermission",
-              "allow": false
-            },
-            {
-              "name": "gameResetPermission",
-              "allow": false
-            }
-          ]
-        },
-        {
-          "name": "missing",
-          "allow": false,
-          "subModules": []
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "user": {
-        "userName": "Abc",
-        "firstName": "Abc",
-        "lastName": "Def"
-      },
-      "age": "46",
-      "email": "user5@gmail.com",
-      "password": "password5",
-      "permission": []
-    },
-    {
-      "user": {
-        "userName": "a",
-        "firstName": "a",
-        "lastName": "a"
+        "lastName": "Halder"
       },
       "age": "a",
       "email": "a",
       "password": "a",
-      "permission": [
-        {
-          "name": "csvPermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "csvPagePermission",
-              "allow": false
-            },
-            {
-              "name": "csvEditPermission",
-              "allow": false
-            },
-            {
-              "name": "vsvDownloadPermission",
-              "allow": false
-            }
-          ]
+      "Permission": {
+        "csvPermission": {
+          "allow": true,
+          "subModules": {
+            "csvPagePermission": true,
+            "csvEditPermission": true,
+            "csvDownloadPermission": true
+          }
         },
-        {
-          "name": "gamePermission",
-          "allow": false,
-          "subModules": [
-            {
-              "name": "gamePagePermission",
-              "allow": false
-            },
-            {
-              "name": "gameStartPermission",
-              "allow": false
-            },
-            {
-              "name": "gameResetPermission",
-              "allow": false
-            }
-          ]
+        "gamePermission": {
+          "allow": true,
+          "subModules": {
+            "gamePagePermission": true,
+            "gameStartPermission": true,
+            "gameResetPermission": true
+          }
         },
-        {
-          "name": "missing",
-          "allow": false,
-          "subModules": []
+        "missing": {
+          "allow": true,
+          "subModules": {}
         }
-      ],
+      }
+    },
+    {
+      "user": {
+        "userName": "b",
+        "firstName": "sai",
+        "lastName": "praveen"
+      },
+      "age": "24",
+      "email": "b",
+      "password": "b",
+      "Permission": {
+        "csvPermission": {
+          "allow": true,
+          "subModules": {
+            "csvPagePermission": true,
+            "csvEditPermission": true,
+            "csvDownloadPermission": true
+          }
+        },
+        "gamePermission": {
+          "allow": true,
+          "subModules": {
+            "gamePagePermission": true,
+            "gameStartPermission": true,
+            "gameResetPermission": true
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 2
+    },
+    {
+      "user": {
+        "userName": "Shoaib@1998",
+        "firstName": "shoaib",
+        "lastName": "Mansoori"
+      },
+      "age": "25",
+      "email": "Shoaib@1998gmail.com",
+      "password": "password1",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": true,
+          "subModules": {
+            "gamePagePermission": true,
+            "gameStartPermission": true,
+            "gameResetPermission": true
+          }
+        },
+        "missing": {
+          "allow": true,
+          "subModules": {}
+        }
+      },
       "id": 3
+    },
+    {
+      "user": {
+        "userName": "Eswar@0110",
+        "firstName": "Eswar",
+        "lastName": "M"
+      },
+      "age": "26",
+      "email": "ewar0110@gmail.com",
+      "password": "password1",
+      "Permission": {
+        "csvPermission": {
+          "allow": true,
+          "subModules": {
+            "csvPagePermission": true,
+            "csvEditPermission": true,
+            "csvDownloadPermission": true
+          }
+        },
+        "gamePermission": {
+          "allow": true,
+          "subModules": {
+            "gamePagePermission": true,
+            "gameStartPermission": true,
+            "gameResetPermission": true
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 4
     }
   ]
 }

@@ -1,0 +1,74 @@
+.page-content{
+  height: 100vh;
+  background-color: #ffffff;
+}
+.user-permission-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  // border:1px solid red;
+    
+
+    .nested-permissions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 20px;
+    }
+
+    .MuiFormGroup-root {
+      display: flex;
+      align-items: center;
+
+      .MuiFormControlLabel-root {
+        display: flex;
+        align-items: center;
+
+        label {
+          margin-left: 10px;
+        }
+      }
+
+      .MuiCheckbox-root {
+        color: #00bbd1;
+
+        &.Mui-checked {
+          color: #00bbd1;
+        }
+      }
+    }
+  }
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.page-content {
+  background-color: #f5f5f5;
+  // padding: 30px;
+  border-radius: 4px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1%;
+  padding: 1%;
+  border: 1px black solid;
+  border-radius: 5px;
+
+  h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+}
+.modal-footer{
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}

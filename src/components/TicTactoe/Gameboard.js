@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Cell from "./Cell.js";
 import Title from './Title.js'
 import React from 'react'
@@ -6,8 +6,12 @@ import '../../styles/Gameboard.scss'
 import CalculatingRounds from "./CalculatingRounds.js";
 import CustomButton from "./CustomButton.js";
 import Gamplayer from "./Gameplayer.js";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min.js";
+import { PermissionContext } from "../../Context.js";
 
 const GameBoard = () => {
+  const {setUnAuthMsg}=useContext(PermissionContext)
+  const { currentUser} = useContext(PermissionContext);
   const [UserCellsInput, setseconduserAndcell] = useState(JSON.parse(localStorage.getItem('gamedetails')) || '');
   const [cells, setCells] = useState((generateCells(Number(UserCellsInput.cellCount))));;
   const [xIsNext, setXIsNext] = useState(true);
@@ -90,6 +94,11 @@ const GameBoard = () => {
 
   // Function to reset the current game
   const handleResetGame = () => {
+    if(!currentUser.Permission.gamePermission.subModules.gameResetPermission){
+      setUnAuthMsg("Please Athorize for Game Reset Permission")
+      return(<Redirect to="/unauth" />
+      )
+  }
     setCells((generateCells(Number(UserCellsInput.cellCount))));
     setWinner(null);
     setXIsNext(true);
