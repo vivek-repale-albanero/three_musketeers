@@ -42,7 +42,10 @@ function LoginPage() {
         <Container maxWidth="xs">
           <div>
             <Typography>THREE MUSKETEERS</Typography>
-            <AlbaButton>Test</AlbaButton>
+            <AlbaButton variant="success">Test</AlbaButton>
+            <AlbaButton variant="danger">Test</AlbaButton>
+            <AlbaButton variant="primary">Test</AlbaButton>
+            <AlbaButton variant="secondary">Test</AlbaButton>
             <form>
               <TextField
                 label="Email"
