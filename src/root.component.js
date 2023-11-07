@@ -18,6 +18,7 @@ import PrivateGameRoute from "./components/PrivateGameRoute";
 import axios from "axios";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
+import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 
 
 
@@ -78,6 +79,8 @@ export default function Root() {
           <Route exact path="/missing" render={()=> <MissingPage/>} />
 
           <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
+          <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />
+
 
         </Switch>
       </React.Suspense>

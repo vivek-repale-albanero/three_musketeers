@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
         </Card>
 
         <List>
-        <ListItem button component={Link} to="/home">
+          <ListItem button component={Link} to="/home">
             <ListItemIcon>
               <Icon>home</Icon>
             </ListItemIcon>
@@ -77,6 +77,13 @@ const Layout = ({ children }) => {
             </ListItem> :
             null
           }
+
+          <ListItem button component={Link} to="/Compo">
+            <ListItemIcon>
+              <Icon>corporate_fare</Icon>
+            </ListItemIcon>
+            <ListItemText primary="Organisation Info" />
+          </ListItem>
         </List>
       </Drawer>
       <div style={{ marginLeft: '15%' }}>
