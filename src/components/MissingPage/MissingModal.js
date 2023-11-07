@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Box, Input, Typography, Modal, Select, SelectChangeEvent, FormControl, MenuItem, InputLabel, Icon } from '@material-ui/core';
+import { Box, Input, Typography, Modal, Select, SelectChangeEvent, FormControl, MenuItem, InputLabel, Icon, Button } from '@material-ui/core';
 import AddButton from './AddButton';
 import '../../styles/MissingPage.scss'
 import { MissingPageContext } from '../../Context';
@@ -17,18 +17,18 @@ const style = {
     p: 4,
 };
 
-const arr =[ 'SDE-1', "SDE-2","SDE-3"]
+const arr = ['SDE-1', "SDE-2", "SDE-3"]
 
 export default function BasicModal() {
     const [open, setOpen] = useState(false);
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [Address, setAddress] = useState({ Name: "", Country: "", State: "", City: "", MemberDetails: [] });
-    const [NewMemberdetails, setMemberdetails] = useState({ MemberName: "", Role: "" })
+    const [NewMemberdetails, setMemberdetails] = useState({ MemberName: "", Role: "", object: {}, id: 6 })
     const [AllofMember, SetAllofMember] = useState([])
     const { orgdata, setorgdata, singleorg, setsingleorg, Allmember, setAllMember } = React.useContext(MissingPageContext)
-    const [id, setid] = useState(6)
-    const [obj, setobj] = useState()
+
 
 
     const handleChange = (event) => {
@@ -36,52 +36,63 @@ export default function BasicModal() {
         setAddress({ ...Address, [name]: value })
 
     };
-   
+
     const HandleMemberChange = (e) => {
         const { name, value } = e.target
         setMemberdetails({ ...NewMemberdetails, [name]: value })
-       
+
 
     }
 
 
-    console.log(NewMemberdetails)
     const handleclick = () => {
         let object = {
-            id: id,
+            id: NewMemberdetails.id,
             OrgName: Address.Name,
             countryName: Address.Country,
             stateName: Address.State,
             city: Address.City,
-            See: <EyeComponent data={{ id, OrgName: Address.Name, countryName: Address.Country, stateName: Address.State, city: Address.City, }} />,
+            See: <EyeComponent data={{ id: NewMemberdetails.id, OrgName: Address.Name, countryName: Address.Country, stateName: Address.State, city: Address.City, }} />,
             Delete: <Icon>delete</Icon>,
             MemberDetails: []
         }
 
-        SetAllofMember((prev) => [...prev, NewMemberdetails])
-        setobj(object)
-        setMemberdetails({ MemberName: "", Role: "" })
-        setid(id + 1)
+        SetAllofMember((prev) => [...prev, {id:NewMemberdetails.id,...NewMemberdetails}])
+        setMemberdetails({ MemberName: "", Role: "", object, id: ++NewMemberdetails.id })
 
-        
+    }
+
+    console.log(AllofMember)
+
+    const HandleEditDataOfOldMember=(e,id)=>{
+
+        const {name,value} = e.target
+
+        let Newdata=AllofMember.map((item)=>{
+            if(item.id===id){
+               return {...item,[name]:value}
+            }else{
+                return item
+            }
+        })
+
+        SetAllofMember(Newdata)
+
+        console.log(Newdata)
+        console.log(e.target.value,id)
 
     }
 
 
-    
 
 
     const HandleMemberClick = () => {
-        setsingleorg((prev) => [...prev, { ...obj, MemberDetails: AllofMember }])
+        setsingleorg((prev) => [...prev, { ...NewMemberdetails.object, MemberDetails: AllofMember }])
+        setAddress({ Name: "", Country: "", State: "", City: "", MemberDetails: [] })
+        SetAllofMember([])
         setOpen(false)
     }
 
-    const NewChangeValue=(e)=>{
-
-
-    }
-
-    console.log("AllofMember",AllofMember)
     return (
         <div>
             <AddButton onClick={handleOpen}>Add Organization</AddButton>
@@ -171,19 +182,7 @@ export default function BasicModal() {
                         </FormControl>
                     </Box>
                     <Box>
-
-                        {/* <div> <h2>New Members</h2>{AllofMember?.map((item) => {
-                            return <div key={item.MemberName} style={{ display: "flex", justifyContent: "space-evenly", margin: "5px", padding: "5px", fontFamily: '-moz-initial', backgroundColor: "teal", color: "white" }}>
-                                <p>Name: {item.MemberName}-</p>
-                                <p>Role: {item.Role}</p>
-                            </div>
-                        })}
-                        
-                        </div> */}
-
-
                     </Box>
-
                     <Box>
                         <Typography style={{ marginTop: "15px" }} id="modal-modal-title" variant="h5" component="h4">
                             Add Member
@@ -191,7 +190,7 @@ export default function BasicModal() {
                         {AllofMember.length > 0 && AllofMember.map((item, i) => {
 
                             return <Box key={i} sx={{ minWidth: 120 }}>
-                                <Input value={item.MemberName} placeholder="Member Name" onChange={HandleMemberChange} name='MemberName' width="100%" style={{ display: 'block', margin: "10px auto" }} />
+                                <Input value={item.MemberName} placeholder="Member Name" onChange={(e)=>HandleEditDataOfOldMember(e,item.id)} name='MemberName' width="100%" style={{ display: 'block', margin: "10px auto" }} />
 
                                 <FormControl fullWidth>
                                     <InputLabel id="demo-simple-select-label">Role</InputLabel>
@@ -201,16 +200,17 @@ export default function BasicModal() {
                                         value={item.Role}
                                         label="Role"
                                         name="Role"
-                                        onChange={HandleMemberChange}>
-                                         {arr.map((Newitem,i)=>{
-                                            if(Newitem==item.Role){
+                                        onChange={(e)=>HandleEditDataOfOldMember(e,item.id)}>
+                                        {arr.map((Newitem, i) => {
+                                            if (Newitem == item.Role) {
                                                 return <MenuItem key={i} value={item.Role}>{item.Role}</MenuItem>
-                                            }else{
+                                            } else {
                                                 return <MenuItem key={i} value={Newitem} >{Newitem}</MenuItem>
                                             }
 
-                                         })}                                 
+                                        })}
                                     </Select>
+                                    {/* <Button onClick={(e)=>HandleEditDataOfOldMember(eitem.id)} style={{backgroundColor:"teal",color:"white"}}>Edit</Button> */}
                                 </FormControl>
                             </Box>
                         })}
