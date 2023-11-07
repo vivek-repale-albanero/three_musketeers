@@ -1,6 +1,7 @@
 import { Icon, Modal, Box, FormControl, InputLabel, Select, MenuItem, Typography, Input } from '@material-ui/core'
 import React, { useState } from 'react'
 import AddButton from './AddButton'
+import { MissingPageContext } from '../../Context';
 
 const style = {
     position: 'absolute',
@@ -15,10 +16,24 @@ const style = {
 };
 function EyeComponent({ data }) {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { id, OrgName, countryName, stateName, city } = data
-    const [init, setinit] = useState({ OrgName, countryName, stateName, city })
+    const [init, setinit] = useState({ id, OrgName, countryName, stateName, city })
+    const { orgdata, setorgdata, singleorg, setsingleorg, Allmember } = React.useContext(MissingPageContext)
+    const [Newdata, setNewdata] = useState()
+    const handleclick = () => {
+        setOpen(false)
+
+    }
+
+    const handleOpen = () => {
+        const Newdat = orgdata.filter((item) => item.id == id)
+        setNewdata(Newdat[0])
+        setOpen(true)
+        
+
+    };
+
 
     return (
         <div>
@@ -52,9 +67,10 @@ function EyeComponent({ data }) {
                             // onChange={handleChange}
                             >
                                 <MenuItem value={init.countryName}>{init.countryName}</MenuItem>
-                                <MenuItem value={10}></MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                {Newdata?.country.map(({ countryName, index }) => {
+                                    return <MenuItem key={countryName} value={`${countryName}`}>{countryName}</MenuItem>
+                                })}
+
                             </Select>
                         </FormControl>
                     </Box>
@@ -70,9 +86,13 @@ function EyeComponent({ data }) {
                             // onChange={handleChange}
                             >
                                 <MenuItem value={init.stateName}>{init.stateName}</MenuItem>
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                {Newdata?.country.map(({ countryName, states }) => {
+                                    states.map(({ stateName }) => {
+                                        return <MenuItem key={stateName} value={stateName}>{stateName}</MenuItem>
+
+                                    })
+                                })}
+
                             </Select>
                         </FormControl>
                     </Box>
@@ -89,9 +109,15 @@ function EyeComponent({ data }) {
                             // onChange={handleChange}
                             >
                                 <MenuItem value={init.city}>{init.city}</MenuItem>
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                {Newdata?.country.map(({ countryName, states }) => {
+
+                                    states.map(({ stateName, cities }) => {
+                                        
+                                        cities.map((item)=> < MenuItem key={item} value={item}>{item}</MenuItem>)
+
+                                    })
+
+                                })}
                             </Select>
                         </FormControl>
                     </Box>
@@ -115,7 +141,7 @@ function EyeComponent({ data }) {
                     </Box>
 
                     <AddButton
-                        // onClick={handleclick}
+                        onClick={handleclick}
                         style={
                             {
                                 backgroundColor: "teal",
@@ -123,7 +149,7 @@ function EyeComponent({ data }) {
                                 display: "block",
                                 margin: "20px auto"
                             }}
-                    >Save
+                    >Close
                     </AddButton>
 
 

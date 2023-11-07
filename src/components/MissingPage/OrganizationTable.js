@@ -29,7 +29,7 @@ const columns = [
 
   },
   {
-    id: 'Memberscount',
+    id: 'MemberDetails',
     label: 'Members Count',
     minWidth: 170,
     align: 'right',
@@ -83,7 +83,7 @@ export default function ColumnGroupingTable() {
                   stateName,
                   city: cities[0],
                   Memberscount: 0,
-                  MemberDetails: {},
+                  MemberDetails:[],
                   See: <EyeComponent data={{ id, OrgName, countryName, stateName, city: cities[0] }} />,
                   Delete: <Icon>delete</Icon>
                 });
@@ -97,20 +97,10 @@ export default function ColumnGroupingTable() {
     return Rows
     // Rows array now contains one entry for each of the five organizations
   }
-  console.log("All Memmbers", Allmember)
-
-  const handleAllmembersdata=(Allmember)=>{
-
-    let newobj={
-      
-    }
-
-
-  }
+  
 
   React.useEffect(() => {
     let Rows = GetRows(orgdata, Allmember)
-    console.log(Rows)
     setsingleorg(Rows)
   }, [])
 
@@ -168,7 +158,7 @@ export default function ColumnGroupingTable() {
 
                       return (
                         <TableCell onClick={() => handleclick(value, row.id, row)} key={column.id} align={column.align}>
-                          {value}
+                          {column.id=="MemberDetails"?value?.length:value}
                         </TableCell>
 
                       );
