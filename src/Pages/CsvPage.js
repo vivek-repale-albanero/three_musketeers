@@ -185,8 +185,8 @@ const CsvPage = () => {
               Add File
             </Button>
           </Box>
-        <Container maxWidth="100%" className="csv-page-container" style={{ display: "flex" }}>
-          <Container>
+        <Container className="csv-page-container" style={{padding:"0",margin:"0",maxWidth:"100%"}}>
+          <Container style={{maxWidth:"100%"}}>
             <CsvUploader />
             {showTable ?
               <div className="table-container">
