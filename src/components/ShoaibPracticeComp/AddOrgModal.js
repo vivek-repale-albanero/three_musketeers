@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   AlbaButton,
   Icon,
@@ -16,13 +16,21 @@ import {
   TextForm,
 } from "@platform/service-ui-libraries";
 
-import img from '../../assests/check.png'
+import img from "../../assests/check.png";
 import axios from "axios";
 function AddOrgModal({ data }) {
   const { openModal, setOpenModal } = data;
-  const{orgModalData}=openModal
+  const [formdata, setformdata] = useState({
+    OrgName: "",
+    countryName: "",
+    stateName: "",
+    city: "",
+    MemberDetails: { name: "", role: "" },
+  });
+  const { orgModalData } = openModal;
   const ValidationRef = useRef([]);
 
+  console.log(formdata);
   const options = [
     { label: "SDE-1", value: "SDE-1" },
     { label: "SDE-2", value: "SDE-2" },
@@ -32,35 +40,41 @@ function AddOrgModal({ data }) {
     setOpenModal({ ...openModal, orgModalStatus: false });
   };
 
-  
-  console.log(orgModalData,"orgModalData")
-  const handleProceed = async() => {
-    try {   
-      axios.post(`http://localhost:3000/Metadata`,)
-    } catch (error) {
-      
+  // console.log(orgModalData,"orgModalData")
+  const validateProfileForm = () => {
+    const resultData = ValidationRef.current.map((refs) => {
+     
+      if (!refs) {
+        return true;
+      } else {
+        return refs?.checkValidation();
+      }
+    });
+    return resultData.every(Boolean);
+  };
+
+  const handleProceed = async () => {
+    if (validateProfileForm()) {
+      try {
+        axios
+          .post(`http://localhost:3000/Metadata`, formdata)
+          .then((res) => console.log(res));
+      } catch (error) {}
+      setOpenModal({ ...openModal, orgModalStatus: false });
     }
-    // console.log(ValidationRef)
-    setOpenModal({ ...openModal, orgModalStatus: false });
-
-
   };
 
   // console.log('outvalid',ValidationRef)
 
-  const HandleOrgChange=()=>{
-
-  }
-  const checklength=(value)=>{
-    let length=""
-    if(value.length<5){
-      return "Organization must be more than 5 Character"
+  const checklength = (value) => {
+    let length = "";
+    if (value.length < 5) {
+      return "Organization must be more than 5 Character";
     }
-     
 
-    return <img width="20px" src={img} />
+    return <img width="20px" src={img} />;
+  };
 
-  }
   // console.log(ValidationRef, "valid");
   console.log(openModal, "data", data);
   return (
@@ -100,16 +114,15 @@ function AddOrgModal({ data }) {
               },
             }}
             variant="filled"
-            fieldValue={orgModalData.OrgName}
-            // onChange={(e)=>}
+            onChange={(e) => setformdata({ ...formdata, OrgName: e })}
+            fieldValue={formdata.OrgName}
             placeholder="Organization Name"
             validationFunc={(value) => checklength(value)}
-
           ></TextForm>
           <TextForm
             label="Countery Name"
-            fieldValue={orgModalData.countryName}
-
+            fieldValue={formdata.countryName}
+            onChange={(e) => setformdata({ ...formdata, countryName: e })}
             ref={(e) => (ValidationRef.current[1] = e)}
             validationsDetail={{
               validations: {
@@ -120,9 +133,9 @@ function AddOrgModal({ data }) {
             placeholder="Countery Name"
           ></TextForm>
           <TextForm
-            fieldValue={orgModalData.stateName}
-
-            label="State Namee"
+            fieldValue={formdata.stateName}
+            onChange={(e) => setformdata({ ...formdata, stateName: e })}
+            label="State Name"
             ref={(e) => (ValidationRef.current[2] = e)}
             validationsDetail={{
               validations: {
@@ -133,8 +146,9 @@ function AddOrgModal({ data }) {
             placeholder="State Name"
           ></TextForm>
           <TextForm
-            fieldValue={orgModalData.city}
+            fieldValue={formdata.city}
             label="City Name"
+            onChange={(e) => setformdata({ ...formdata, city: e })}
             ref={(e) => (ValidationRef.current[3] = e)}
             validationsDetail={{
               validations: {
@@ -155,6 +169,12 @@ function AddOrgModal({ data }) {
                 whiteSpace: true,
               },
             }}
+            onChange={(e) =>
+              setformdata({
+                ...formdata,
+                MemberDetails: { ...formdata.MemberDetails, name: e },
+              })
+            }
             placeholder="Name"
           ></TextForm>
           <SelectForm
@@ -165,9 +185,17 @@ function AddOrgModal({ data }) {
                 whiteSpace: true,
               },
             }}
+            onChange={(e) =>
+              setformdata({
+                ...formdata,
+                MemberDetails: { ...formdata.MemberDetails, role: e },
+              })
+            }
             label="Select Role"
             options={options}
-          />
+            value={formdata.MemberDetails.role}
+
+/>
 
           {/* <TextField></TextField> */}
         </DialogContent>
