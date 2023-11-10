@@ -76,7 +76,7 @@ export default function Root() {
           <Route exact path="/gameredirect" render={()=> 
           <PrivateGameRoute><GamePageRedirect/></PrivateGameRoute>} />
           <Route exact path="/gameredirect/game" render={()=> <TicTacPage/>} />
-          <Route exact path="/missing" render={()=> <MissingPage/>} />
+          {/* <Route exact path="/missing" render={()=> <MissingPage/>} /> */}
 
           <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
           <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />
