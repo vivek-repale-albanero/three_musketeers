@@ -26,6 +26,15 @@ module.exports = (config, options) => ({
       "@platform/layout": "@platform/layout",
     },
   ],
+  resolve: {
+    alias: {
+      "@context": path.resolve(__dirname, "src/shared/Contexts"),
+      "@api": path.resolve(__dirname, "src/api/api"),
+      "@helpers": path.resolve(__dirname, "src/helpers/helpers"),
+      "@metadata": path.resolve(__dirname, "src/helpers/metadata"),
+      "@shared": path.resolve(__dirname, "src/shared"),
+    },
+  },
   module: {
     rules: [
       {

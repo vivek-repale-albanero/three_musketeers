@@ -1,0 +1,1 @@
+export {genericApiCall} from "./api";
