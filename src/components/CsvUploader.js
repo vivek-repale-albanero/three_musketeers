@@ -1,61 +1,97 @@
-import React, { useContext } from 'react';
-import { Button, Typography, Paper, Modal, IconButton,Icon } from '@material-ui/core';
-import './CsvUploader.scss';
-import {CSVContext} from "../Context"
+import React, { useContext, useRef } from "react";
+import {
+  AlbaButton,
+  Typography,
+  Paper,
+  Dialog,
+  Icon,
+  TextForm,
+  DraggableModal,
+  DialogTitle,
+  DialogContent,
+  DialogActions
+} from "@platform/service-ui-libraries";
+import "./CsvUploader.scss";
+import { CSVContext } from "../Context";
 
 const CsvUploader = () => {
   const {
-    isModalOpen,handleClose,handleFileChange,selectedFileName,showTableFn,uploading,
+    isModalOpen,
+    handleClose,
+    handleFileChange,
+    selectedFileName,
+    showTableFn,
+    errorMessageForCsvUploder,
+    uploading,
+    csvfileInputRef
   } = useContext(CSVContext);
   return (
-    <Modal
+    <Dialog
       open={isModalOpen}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      className="compare-files-dialog aw-dialog appModal"
+      PaperComponent={DraggableModal}
+      maxWidth={"md"}
+      fullWidth
     >
-      <Paper className="modalContainer">
-        <div className="modalTitleContainer">
-          <Typography variant="h6" className="modalHeading">
-            CSV Uploader
-          </Typography>
-          <IconButton className="closeIcon" onClick={handleClose}>
-            <Icon>
-              close
-            </Icon>
-          </IconButton>
-        </div>
-        <div className="dottedBorder">
+        <DialogTitle id="draggable-dialog-title">
+      <div className="csv-modal-head">
+          <Typography variant="h3">CSV Uploader</Typography>
+          <Icon style={{ color: "white" }} onClick={handleClose}>
+            close
+          </Icon>
+      </div>
+        </DialogTitle>
+      <DialogContent>
+        <div className="upload-file-content">
           <Typography variant="h6" className="modalHeading">
             Select File Here
           </Typography>
           <Typography variant="subtitle1" className="subHeading">
             Supported File: CSV
+            
           </Typography>
-          <br/>
-          <input type="file" accept=".csv" onChange={handleFileChange} className="fileInput" id="fileInput" />
+          <br />
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleFileChange}
+            className="fileInput"
+            id="fileInput"
+            ref={csvfileInputRef}
+            required
+          />
           <label htmlFor="fileInput" className="chooseFileButton">
             Choose File
           </label>
+          {errorMessageForCsvUploder && <div style={{ color: 'red' }}>{errorMessageForCsvUploder}</div>}
         </div>
-        <br/>
+        <br />
         {selectedFileName && (
           <Typography variant="subtitle1" className="selectedFileName">
             Selected File: {selectedFileName}
           </Typography>
         )}
-        <div className="buttonContainer">
-          <label
-
+          </DialogContent>
+          <DialogActions>
+        <div className="upload-btn-box">
+        {/* <AlbaButton
+            variant="contained"
+            className="uploadButton"
+            onClick={handleClose}
+          >
+            Close
+          </AlbaButton> */}
+          <AlbaButton
+            variant="contained"
             className="uploadButton"
             onClick={showTableFn}
             disabled={uploading}
           >
-            {uploading ? 'Uploading...' : 'Upload'}
-          </label>
+            {uploading ? "Uploading..." : "Upload"}
+          </AlbaButton>
         </div>
-      </Paper>
-    </Modal>
+        </DialogActions>
+    </Dialog>
   );
 };
 

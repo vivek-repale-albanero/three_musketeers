@@ -1,23 +1,14 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import Layout from "../../Layout/Layout";
 import { Container,Typography,Button,Icon } from "@material-ui/core";
 import {AlbaButton} from "@platform/service-ui-libraries";
 import "./HomePage.scss"
 
-function HomePage(){
+function HomePage() {
 
-    const [isFirstText, setIsFirstText] = useState(true);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-          setIsFirstText((prev) => !prev);
-        }, 3000); // Change the duration (in milliseconds) to control the transition interval
-    
-        return () => clearTimeout(timeout);
-      }, [isFirstText]);
-    return(
-        <>
-        <Layout>
+  return (
+    <>
+      <Layout>
         {/* <div className="container backGround" >
       <div className="text-wrapper">
         <p className={`text ${isFirstText ? 'text-up' : 'text-down'}`}>

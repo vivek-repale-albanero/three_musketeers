@@ -1,0 +1,35 @@
+
+.EComPage{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+
+    .title{
+        // margin: 55px0 30px 30px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1%;
+        padding: 1%;
+        border: 1px black solid;
+        border-radius: 5px;
+        .addBtn{
+            background-color: teal;
+            color: white;
+        }
+    }
+    .tableContent{
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        .actionBtn{
+            margin:3px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover{
+                box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}
