@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useContext, useEffect } from "react";
 import { Table } from "@platform/primary-table";
 import { MissingPageContext, PermissionContext } from "../../Context";
@@ -472,16 +471,14 @@ function CustomTable() {
 
   const [openModal, setOpenModal] = useState({
     status: false,
-    SeeDetailsModalobj: {
-
-    },
+    SeeDetailsModalobj: {},
     orgModalStatus: false,
     orgModalData: {
-      OrgName:"",
-      countryName:"",
-      stateName:"",
-      city:"",
-      MemberDetail:[]
+      OrgName: "",
+      countryName: "",
+      stateName: "",
+      city: "",
+      MemberDetail: [],
     },
   });
 
@@ -628,7 +625,7 @@ function CustomTable() {
           Add New Organization
         </AlbaButton>
 
-        <AddOrgModal data={{ openModal, setOpenModal }} />
+        <AddOrgModal data={{ openModal, setOpenModal,fetchData }} />
       </div>
       <Table
         tableProps={{
@@ -665,16 +662,30 @@ function CustomTable() {
           </DialogTitle>
           <DialogContent>
             <TextForm
-            label={'Organization Name'}
+              label={"Organization Name"}
               placeholder="Organization Name"
               fieldValue={openModal?.SeeDetailsModalobj?.OrgName}
             ></TextForm>
             <TextForm
-             label={'Country'}  fieldValue={openModal?.SeeDetailsModalobj?.countryName} placeholder="Countery Name"></TextForm>
-            <TextForm label={'StateName'} fieldValue={openModal?.SeeDetailsModalobj?.stateName} placeholder="State Name"></TextForm>
-            <TextForm label={'City'} fieldValue={openModal?.SeeDetailsModalobj?.city}placeholder="City Name"></TextForm>
-            <TextForm label={'Member Count'}  fieldValue={openModal?.SeeDetailsModalobj?.Membercount}placeholder="Member count"></TextForm>
-
+              label={"Country"}
+              fieldValue={openModal?.SeeDetailsModalobj?.countryName}
+              placeholder="Countery Name"
+            ></TextForm>
+            <TextForm
+              label={"StateName"}
+              fieldValue={openModal?.SeeDetailsModalobj?.stateName}
+              placeholder="State Name"
+            ></TextForm>
+            <TextForm
+              label={"City"}
+              fieldValue={openModal?.SeeDetailsModalobj?.city}
+              placeholder="City Name"
+            ></TextForm>
+            <TextForm
+              label={"Member Count"}
+              fieldValue={openModal?.SeeDetailsModalobj?.Membercount}
+              placeholder="Member count"
+            ></TextForm>
           </DialogContent>
 
           <DialogActions>
