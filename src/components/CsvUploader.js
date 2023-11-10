@@ -48,6 +48,7 @@ const CsvUploader = () => {
           </Typography>
           <Typography variant="subtitle1" className="subHeading">
             Supported File: CSV
+            
           </Typography>
           <br />
           <input
