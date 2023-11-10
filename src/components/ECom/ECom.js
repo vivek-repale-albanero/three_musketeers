@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
+import {AlbaButton } from '@platform/service-ui-libraries'
 import BreadCrumb from "../Breadcrumbs/BreadCrumb";
 import EditForm from "../EditForm/EditForm";
 import { ProductsContext } from "../../Context";
@@ -195,14 +196,14 @@ function ECom() {
                   ) : null}
         </Container>
 
-        <Button
+        <AlbaButton
           variant="contained"
-          className="addBtn"
+          classNamAlbaButtone="addBtn"
           onClick={openCartModal}
           disabled={products.length === 0}
         >
           Show Cart
-        </Button>
+        </AlbaButton>
         {showCartModal && (
           <Cart
             cartDidChange={cartChanged}
