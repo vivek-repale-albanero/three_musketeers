@@ -201,13 +201,6 @@
   ],
   "Metadata": [
     {
-      "id": 10,
-      "OrgName": "TechX Solutions",
-      "countryName": "Canada",
-      "stateName": "British Columbia",
-      "city": "Vancouver"
-    },
-    {
       "id": 11,
       "OrgName": "Infinite Ideas Inc.",
       "countryName": "USA",
@@ -486,26 +479,6 @@
       "countryName": "USA",
       "stateName": "Arizona",
       "city": "Tucson"
-    },
-    {
-      "id": 51
-    },
-    {
-      "id": 52
-    },
-    {
-      "id": 53
-    },
-    {
-      "OrgName": "asdfd",
-      "countryName": "asdfds",
-      "stateName": "asdfds",
-      "city": "asdfds",
-      "MemberDetails": {
-        "name": "asdfd",
-        "role": "SDE-2"
-      },
-      "id": 54
     }
   ]
 }

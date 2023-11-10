@@ -456,6 +456,7 @@ function CustomTable() {
   const [selectedFiles, setSelectedFiles] = useState([{ tableName: "" }]);
   const [reRunObj, setReRunObj] = useState({});
   const [actionComponents, setActionComponents] = useState([]);
+
   const [searchText, setSearchText] = useState("");
   const [JSONData, setJsonData] = useState([]);
   const {
@@ -604,28 +605,33 @@ function CustomTable() {
     setOpenModal({ ...openModal, orgModalStatus: true });
   };
 
+  const startTableButton = useCallback(() => {
+    return (
+      <AlbaButton
+        variant="success"
+        onClick={HandleAddorganizationBtn}
+      >
+       Add New Organization
+      </AlbaButton>
+    );
+  }, []);
+
   useEffect(() => {
     if (searchText.length > 2) {
       handleSearch(searchText);
     } else {
       fetchData(page, pageSize);
     }
+    setActionComponents([startTableButton]);
   }, [page, pageSize, searchText]);
 
   // console.log(Extracteddata);
   return (
     <div>
       <div className="ALbaButton">
-        <AlbaButton
-          className="button_Confirm"
-          // variant="success"
-          icon="folder_zip"
-          onClick={HandleAddorganizationBtn}
-        >
-          Add New Organization
-        </AlbaButton>
+        
 
-        <AddOrgModal data={{ openModal, setOpenModal,fetchData }} />
+        <AddOrgModal data={{ openModal, setOpenModal, fetchData }} />
       </div>
       <Table
         tableProps={{
@@ -655,6 +661,7 @@ function CustomTable() {
           fullWidth
         >
           <DialogTitle className="__title" id="draggable-dialog-title">
+          
             Organization Details
             <IconButton onClick={handleClose}>
               <Icon>close</Icon>
