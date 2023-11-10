@@ -58,15 +58,8 @@ const Layout = ({ children }) => {
             </ListItem> :
             null
           }
-          {/* {(loggedUser.Permission.missing.allow) ?
-            <ListItem button component={Link} to="/missing">
-              <ListItemIcon>
-                <Icon>corporate_fare</Icon>
-              </ListItemIcon>
-              <ListItemText primary="Organisation Info" />
-            </ListItem> :
-            null
-          } */}
+          
+
 
           <ListItem button component={Link} to="/Compo">
             <ListItemIcon>
