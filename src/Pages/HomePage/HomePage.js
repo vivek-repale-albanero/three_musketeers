@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Layout from "../../Layout/Layout";
-import { Container, Button, Icon } from "@material-ui/core";
+import { Container,Typography,Button,Icon } from "@material-ui/core";
+import {AlbaButton} from "@platform/service-ui-libraries";
 import "./HomePage.scss"
-import {
-  timeAgo,
-  Typography,
-  AlbaAutocomplete,
-} from '@platform/service-ui-libraries';
+
 function HomePage() {
 
   return (
@@ -22,25 +19,25 @@ function HomePage() {
         </p>
       </div>
     </div> */}
-        <div className="app">
-          <header className="bg_home">
-            <Container maxWidth="sm">
-              <Typography variant="h4" className="desc">
-                Welcome to Three Musketeers
-              </Typography>
-              <Typography variant="body1" className="description">
-                Get started by exploring our awesome features.
-              </Typography>
-              <Button variant="contained" color="primary" className="explore-button">
-                <Icon>west</Icon>
-                Explore
-              </Button>
-            </Container>
-          </header>
-        </div>
-      </Layout>
-    </>
-  )
+    <div className="app">
+      <header className="bg_home">
+        <Container maxWidth="sm">
+          <Typography variant="h4" className="desc">
+            Welcome to Three Musketeers
+          </Typography>
+          <Typography variant="body1" className="description">
+            Get started by exploring our awesome features.
+          </Typography>
+          <AlbaButton variant="primary"  className="explore-button">
+            <Icon>west</Icon> 
+            Explore
+          </AlbaButton>
+        </Container>
+      </header>
+    </div>
+        </Layout>
+        </>
+    )
 }
 
 export default HomePage;

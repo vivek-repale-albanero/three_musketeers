@@ -1,34 +1,34 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useMemo, useState, useCallback, useEffect } from "react";
 import {
-  Table,
   Link,
+  // Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
   Paper,
-  Button,
   Icon,
+  AlbaButton,
   Container,
   Checkbox,
   Card,
   Typography,
   Box,
-} from "@material-ui/core";
+} from "@platform/service-ui-libraries";
+import { Table } from "@platform/primary-table";
 import Layout from "../../Layout/Layout";
 import "./Userspage.scss";
 import BreadCrumb from "../../components/Breadcrumbs/BreadCrumb";
 import EditForm from "../../components/EditForm/EditForm";
 import { useHistory } from "react-router-dom";
-
 import { PermissionContext, UsersContext } from "../../Context";
+import UsersUITable from "./Table/UsersUITable";
+
 function UsersPage() {
-  const { setUnAuthMsg } = useContext(PermissionContext);
-  const history = useHistory();
-  const { users, setUsers, handlePermissionModalOpen, currentUser } =
+  const { users, setUsers, handlePermissionModalOpen, currentUser,setUnAuthMsg } =
     useContext(PermissionContext);
-  console.log("user", setUsers);
+    const history = useHistory();
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
 
   //Form Modal
@@ -71,6 +71,8 @@ function UsersPage() {
     data: {},
   });
 
+  const [searchText, setSearchText] = useState("");
+
   const closeModal = () => {
     setUserFormModal({
       ...userFormModal,
@@ -99,6 +101,7 @@ function UsersPage() {
   //Edit Form
 
   const openEditModaL = (user) => {
+    console.log(user);
     setUserFormModal({
       ...userFormModal,
       status: true,
@@ -106,8 +109,8 @@ function UsersPage() {
       data: user,
     });
   };
+
   const saveUserData = (editedUserData) => {
-    console.log("editedUserData", editedUserData);
     if (!userFormModal.edit) {
       fetch("http://localhost:3000/users", {
         method: "POST",
@@ -120,14 +123,12 @@ function UsersPage() {
         .catch((error) => {
           console.error("Error:", error);
         });
-      // const updatedUsers = [...users,editedUserData]
-      //    setUsers(updatedUsers)
     } else {
       const updateduser = editedUserData;
       const updatedUsersList = users
         .map((user) => (user.id === updateduser.id ? { ...updateduser } : user))
         .filter((user) => user.id === updateduser.id);
-      fetch(`http://localhost:3000/users/${updatedUsersList[0].id}`, {
+        fetch(`http://localhost:3000/users/${updatedUsersList[0].id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -143,8 +144,6 @@ function UsersPage() {
   };
   //Delete User
   const deleteUser = (userId) => {
-    //  const userList = users.filter((user)=> user.id !==userId)
-    //  setUsers(userList)
     fetch(`http://localhost:3000/users/${userId}`, {
       method: "DELETE",
     })
@@ -154,11 +153,99 @@ function UsersPage() {
       });
   };
 
-  const authMsgFn = () => {
-    setUnAuthMsg("Please Login First");
-    return "/unauth";
+  const authMsgFn = (user) => {
+    if(user.id!=loggedUser.id){
+
+      setUnAuthMsg("Please Login First");
+      history.push("/unauth");
+    }else{
+      history.push(`/users/authorization/${user.id}`)
+    }
   };
-  // console.log(currentUser)
+  //searchFunction
+  const handleSearch = async (text) => {
+    const url = `http://localhost:3000/users?q=${text}`;
+    const searchResults = await fetch(url);
+    const updatedResults = await searchResults.json();
+    setUsers(updatedResults);
+  };
+const   handleOnChangePage = () =>{}
+const handleOnChangePageSize= () =>{}
+
+  // useEffect(()=>{
+  //   handleSearch(searchText);
+  // },[searchText])
+  const usersListTableMetadata = (actions) => {
+    console.log("actions",actions)
+    return {
+      columns: [
+        {
+           componentId: 'SELECT_ROWS',
+           fixed: true,
+           id: 'SELECT_ROWS',
+           isComponent: true,
+          
+          
+          name: 'Checkbox'
+          },
+        { name: "ID", id: "id", searchable: true },
+        { name: "First Name", id: "user.firstName", searchable: true },
+        { name: "Last Name", id: "user.lastName", searchable: true },
+        { name: "User Name", id: "user.userName", searchable: true },
+        { name: "Email", id: "email", searchable: true },
+        { name: "Age", id: "age", searchable: true },
+        {
+          name: "Actions",
+          isComponent: true,
+          componentId: "ACTION_PANEL",
+          props: {
+            actions: [
+              {
+                icon: "visibility",
+                title: "Edit details",
+                isComponent: true,
+                componentId: "CLICK_ACTION",
+                onClick: (row) => {
+                  actions.handleEdit(row);
+                },
+              },
+              {
+                icon: "key",
+                title: "Permission",
+                isComponent: true,
+                componentId: "CLICK_ACTION",
+                onClick: (row) => {
+                  actions.authMsgFn(row)
+                },
+              },
+              {
+                icon: "delete",
+                title: "Delete",
+                isComponent: true,
+                componentId: "DELETE_ROW",
+                onClick: (row) => {
+                  actions.handleDelete(row.id);
+                },
+              },
+            ],
+          },
+        },
+      ],
+      data: actions?.data,
+      searchData: true,
+      handleSearch: actions?.handleSearch,
+      pagination: true,
+      selectRecordsFunctionality: true,
+      onRowsChange: actions?.onRowsChange,
+      onChangePage:actions?.onChangePage
+      // deleteRecords:(userId)=>actions.deleteUser(userId)
+    };
+  };
+
+  const [actionComponents, setActionComponents] = useState([]);
+  // const [tableProps,setTableProps] = useState({
+  //   ...usersListTableMetadata()
+  // })
 
   const userPageValue = useMemo(() => {
     return {
@@ -200,120 +287,35 @@ function UsersPage() {
             <Typography style={{ fontSize: "24px" }}>
               Users List <BreadCrumb />
             </Typography>
-            <Button
-              variant="contained"
-              className="addBtn"
+            <AlbaButton
+              variant="success"
+              // className="addBtn"
               onClick={openAddModal}
             >
               Add Users
-            </Button>
+            </AlbaButton>
             {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
           </Box>
           <Container maxWidth="100%" className="tableContent">
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead style={{ background: "rgb(42 139 139)" }}>
-                  <TableRow>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Id
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Name
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      E-mail
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Age
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      User Name
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Is Logged
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Actions
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {users.map((user) => (
-                    <TableRow key={user.id}>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.id}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>{`${
-                        user.user.firstName + " " + user.user.lastName
-                      }`}</TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.email}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.age}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.user.userName}
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          color: loggedUser.id === user.id ? "green" : "red",
-                          textAlign: "center",
-                        }}
-                      >
-                        {loggedUser.id === user.id ? "Online" : "Offline"}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        <>
-                          <Button
-                            className="actionBtn"
-                            onClick={() => openEditModaL(user)}
-                          >
-                            <Icon>edit_note</Icon>
-                          </Button>
-                          {userFormModal.status && userFormModal.edit ? (
-                            <EditForm />
-                          ) : null}
-                          <Link
-                            href={
-                              currentUser && currentUser.id == user.id
-                                ? `/users/authorization/${user.id}`
-                                : authMsgFn()
-                            }
-                            disabled={currentUser && currentUser.id == user.id}
-                          >
-                            <Button className="actionBtn">
-                              <Icon>key</Icon>
-                            </Button>
-                          </Link>
-                          <Button
-                            className="actionBtn"
-                            onClick={() => deleteUser(user.id)}
-                          >
-                            <Icon>delete</Icon>
-                          </Button>
-                        </>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <Table
+              tableProps={{
+                ...usersListTableMetadata({
+                  handleEdit: openEditModaL,
+                  handleDelete: deleteUser,
+                  onChangePage: handleOnChangePage,
+                onRowsChange: handleOnChangePageSize,
+                  handleSearch,
+                  authMsgFn
+                }),
+                data: users,
+                actionComponents: actionComponents,
+                title: "Users List",
+              }}
+            />
+            {console.log(userFormModal, "userForm")}
+            {userFormModal.status && userFormModal.edit ? <EditForm /> : null}
           </Container>
+          {/* <UsersUITable/> */}
         </UsersContext.Provider>
       </Layout>
     </>

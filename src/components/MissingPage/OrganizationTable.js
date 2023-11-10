@@ -29,7 +29,7 @@ const columns = [
 
   },
   {
-    id: 'Memberscount',
+    id: 'MemberDetails',
     label: 'Members Count',
     minWidth: 170,
     align: 'right',
@@ -48,7 +48,37 @@ const columns = [
   },
 ];
 
+export function GetRows(data) {
+  let Rows = [];
+  const uniqueOrganizations = new Set();
+  data.forEach(({ OrgName, country, id }) => {
+    if (!uniqueOrganizations.has(id)) {
+      country.forEach(({ countryName, states }) => {
+        if (!uniqueOrganizations.has(id)) {
+          states.forEach(({ stateName, cities }) => {
+            if (!uniqueOrganizations.has(id)) {
+              uniqueOrganizations.add(id);
+              Rows.push({
+                id,
+                OrgName,
+                countryName,
+                stateName,
+                city: cities[0],
+                Memberscount: 0,
+                MemberDetails:[],
+                See: <EyeComponent data={{ id, OrgName, countryName, stateName, city: cities[0] }} />,
+                Delete: <Icon>delete</Icon>
+              });
+            }
+          });
+        }
+      });
+    }
+  });
 
+  return Rows
+  // Rows array now contains one entry for each of the five organizations
+}
 
 export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
@@ -66,51 +96,11 @@ export default function ColumnGroupingTable() {
   };
 
 
-  function GetRows(data, Allmember) {
-    let Rows = [];
-    const uniqueOrganizations = new Set();
-    data.forEach(({ OrgName, country, id }) => {
-      if (!uniqueOrganizations.has(id)) {
-        country.forEach(({ countryName, states }) => {
-          if (!uniqueOrganizations.has(id)) {
-            states.forEach(({ stateName, cities }) => {
-              if (!uniqueOrganizations.has(id)) {
-                uniqueOrganizations.add(id);
-                Rows.push({
-                  id,
-                  OrgName,
-                  countryName,
-                  stateName,
-                  city: cities[0],
-                  Memberscount: 0,
-                  MemberDetails: {},
-                  See: <EyeComponent data={{ id, OrgName, countryName, stateName, city: cities[0] }} />,
-                  Delete: <Icon>delete</Icon>
-                });
-              }
-            });
-          }
-        });
-      }
-    });
 
-    return Rows
-    // Rows array now contains one entry for each of the five organizations
-  }
-  console.log("All Memmbers", Allmember)
-
-  const handleAllmembersdata=(Allmember)=>{
-
-    let newobj={
-      
-    }
-
-
-  }
+  
 
   React.useEffect(() => {
-    let Rows = GetRows(orgdata, Allmember)
-    console.log(Rows)
+    let Rows = GetRows(orgdata)
     setsingleorg(Rows)
   }, [])
 
@@ -168,7 +158,7 @@ export default function ColumnGroupingTable() {
 
                       return (
                         <TableCell onClick={() => handleclick(value, row.id, row)} key={column.id} align={column.align}>
-                          {value}
+                          {column.id=="MemberDetails"?value?.length:value}
                         </TableCell>
 
                       );

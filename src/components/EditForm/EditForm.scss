@@ -1,53 +1,65 @@
-.modalContainer {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    padding: 0; /* Remove top and bottom padding */
-    background-color: #fff;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
-  }
-  .modalTitleContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 1rem;
-  }
-  .modalHeading {
-    font-size: 24px;
-    color: teal;
-  }
+.modal_title{
+display: flex;
+justify-content: space-between;
+}
 
-  .editForm{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 25px;
-      .MuiInputBase-input{
-        margin: 15px 10px;
-      }
-      .buttonContainer{
-        .saveBtn{
-            margin:5px;
-            background: teal;
-            color: white;
-            font-weight: 700;
-         }
-         .cancelBtn{
-            margin:5px;
-            background: rgb(223, 10, 38);
-            color: white;
-            font-weight: 700;
-         }
-      }
-  }
+
+
+// .modalContainer {
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 500px;
+//     padding: 0; /* Remove top and bottom padding */
+//     background-color: #fff;
+//     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     border-radius: 10px;
+//     padding-left: 2%;
+//     padding-right: 2%;
+//     padding-bottom: 2%;
+//     .modalTitleContainer {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//       width: 100%;
+//       padding: 10px;
+//       margin-bottom: 1rem;
+//       .modalHeading {
+//         font-size: 24px;
+//         color: teal;
+//       }
+//     }
+    
+  
+//     .editForm{
+//         display: flex;
+//         flex-direction: column;
+//         width: 100%;
+//         padding: 25px;
+//         .MuiTextField-root .MuiFilledInput-input{
+//           padding: 10px;
+//         }
+//         // .MuiInputBase-input{
+//         //   margin: 15px 10px;
+//         // }
+//         .buttonContainer{
+//               margin:5px;
+//               font-weight: 700;
+//               .cancelBtn{
+//                 background-color: #c00000;
+//                 color: white;
+//                 &:hover{
+//                     background-color: #970000;
+//                     border-color: #970000;
+//                     cursor: pointer;
+//                 }
+//             }
+           
+//         }
+//     }
+//   }
+  

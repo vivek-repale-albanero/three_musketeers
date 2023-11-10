@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { PermissionContext } from "../../Context";
 import "./LoginPage.scss";
 
 import {
+  Box,
   Typography,
   Card,
-  TextField,
-  Button,
+  TextForm,
   Container,
   AlbaButton,
 } from "@platform/service-ui-libraries";
@@ -15,70 +15,104 @@ import {
 function LoginPage() {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const validateFields = useRef([]);
+  // const validateFields = useRef({})
   let history = useHistory();
   const { users, setLocal, local } = useContext(PermissionContext);
   console.log("users", users);
+  
+  const validateProfileForm = () => {
+    const resultData = validateFields.current.map((refs) => {
+      console.log("ref",refs)
+      if (!refs) {
+        return true;
+      } else {
+        return refs?.checkValidation();
+      }
+    });
+    return resultData.every(Boolean);
+  };
+  
+  
   const handleLogin = () => {
-    const user = users.find(
-      (user) => user.email === userEmail && user.password === password
-    );
-    // console.log("user",user)
-    if (user) {
-      // console.log(user)
-      localStorage.setItem("useLogedId", JSON.stringify(user));
-      setLocal(!local);
-      // alert('login sucessfull');
-      history.push("/home");
-    } else {
-      alert("Invalid credentials. Please try again.");
-    }
+    if(validateProfileForm()){
+
+      const user = users.find(
+        (user) => user.email === userEmail && user.password === password
+        );
+        if (user) {
+          localStorage.setItem("useLogedId", JSON.stringify(user));
+          setLocal(!local);
+          history.push("/home");
+        } else {
+          alert("Invalid credentials. Please try again.");
+        }
+      }
   };
   return (
-    <div className="loginCard">
+    <Box className="loginCard">
       <Card
         sx={{ minWidth: 275 }}
         className="tile"
         style={{ backgroundColor: "white" }}
       >
         <Container maxWidth="xs">
-          <div>
+          <Box>
             <Typography>THREE MUSKETEERS</Typography>
-            <AlbaButton variant="success">Test</AlbaButton>
-            <AlbaButton variant="danger">Test</AlbaButton>
-            <AlbaButton variant="primary">Test</AlbaButton>
-            <AlbaButton variant="secondary">Test</AlbaButton>
             <form>
-              <TextField
+              <TextForm
+                ref={(e)=>{
+                  console.log(e)
+                  validateFields.current[0] =e;
+                }}
                 label="Email"
-                variant="outlined"
-                fullWidth
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
-                margin="normal"
+                variant="filled"
+                fieldValue={userEmail}
+                placeholder="Email"
+                onChange={(e) => setUserEmail(e)}
+                id="desc"
+                validationsDetail={{
+                  validations:{
+                    required:true,
+                    whiteSpace:true,
+                    // email:true
+                  }
+                }
+              }
+              // validationFunc={validateForm}
               />
-              <TextField
+
+              
+              <TextForm
+              ref={(e)=>{
+                validateFields.current[1]=e
+              }}
                 label="Password"
-                variant="outlined"
-                type="password"
-                fullWidth
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                margin="normal"
+                variant="filled"
+                fieldValue={password}
+                placeholder="Password"
+                onChange={(e)=>setPassword(e)}
+                id="desc"
+                validationsDetail={{
+                  validations:{
+                    required:true,
+                    whiteSpace:true,
+                    // password:true
+                  }
+                }}
               />
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
+              <AlbaButton
+                variant="success"
                 className="button"
                 onClick={handleLogin}
               >
                 Log In
-              </Button>
+              </AlbaButton>
             </form>
-          </div>
+          </Box>
         </Container>
       </Card>
-    </div>
+    </Box>
   );
 }
 export default LoginPage;

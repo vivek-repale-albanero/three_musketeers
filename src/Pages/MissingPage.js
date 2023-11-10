@@ -17,13 +17,13 @@ function MissingPage() {
 
     return (
         <>
-                <Layout >
-            <MissingPageContext.Provider value={OrganizationData}>
+            <Layout >
+                <MissingPageContext.Provider value={OrganizationData}>
                     <div className='MissingPageMainDiv'>
-                    <Organization />
+                        <Organization />
                     </div>
-            </MissingPageContext.Provider>
-                </Layout >
+                </MissingPageContext.Provider>
+            </Layout >
         </>
 
     )

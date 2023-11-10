@@ -7,22 +7,22 @@
     padding: 1%;
     border: 1px black solid;
     border-radius: 5px;
-    .addBtn{
-        background-color: teal;
-        color: white;
-    }
+    // .addBtn{
+    //     background-color: teal;
+    //     color: white;
+    // }
 }
 .tableContent{
     width: 100%;
     max-width: 100%;
     padding: 15px;
-    .actionBtn{
-        margin:3px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        &:hover{
-            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
-        }
-    }
+    // .actionBtn{
+    //     margin:3px;
+    //     border: none;
+    //     border-radius: 5px;
+    //     cursor: pointer;
+    //     &:hover{
+    //         box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    //     }
+    // }
 }
