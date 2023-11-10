@@ -3,7 +3,8 @@ import React from 'react';
 // import { Outlet } from "react-router-dom"
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import { AddCircleOutlineIcon, Drawer, List, ListItem, ListItemIcon, ListItemText, Card, Avatar, Icon, Button } from '@material-ui/core';
+import {  Drawer, List, ListItem, ListItemIcon, ListItemText,Typography, Card, Avatar, Icon, Button } from '@material-ui/core';
+import {AlbaButton} from "@platform/service-ui-libraries"
 import "./Layout.scss"
 // import {HomeIcon,DashboardIcon,SettingsIcon} from ''
 // import Drawer from '@mui/material/Drawer';
@@ -24,16 +25,16 @@ const Layout = ({ children }) => {
   }
   return (
     <div >
-      <Drawer variant="permanent">
+      <Drawer variant="permanent" className='sidebar'>
         <Card className='userCard' >
           <div className='userInfo'>
             <Avatar>
               {loggedUser.user.userName[0]}
             </Avatar>
-            <div>
+            <Typography varaiant="secondary">
               {loggedUser.user.firstName}
-            </div>
-            <Button color='secondary' onClick={handleLogout} >Logout</Button>
+            </Typography>
+            <AlbaButton variant='danger' className="logoutBtn" onClick={handleLogout} >Logout</AlbaButton>
           </div>
         </Card>
 
