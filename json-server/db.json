@@ -164,6 +164,39 @@
         }
       },
       "id": 8
+    },
+    {
+      "user": {
+        "userName": "gn zfgrn",
+        "firstName": "fve",
+        "lastName": "bgfnfgn "
+      },
+      "age": "bcb",
+      "email": " nzfg",
+      "password": "b dbf",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 9
     }
   ],
   "Metadata": [
@@ -456,6 +489,9 @@
     },
     {
       "id": 51
+    },
+    {
+      "id": 52
     }
   ]
 }
