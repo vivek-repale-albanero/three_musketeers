@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import Layout from "../../Layout/Layout";
 import { Container,Typography,Button,Icon } from "@material-ui/core";
+import {AlbaButton} from "@platform/service-ui-libraries";
 import "./HomePage.scss"
 
 function HomePage(){
@@ -36,10 +37,10 @@ function HomePage(){
           <Typography variant="body1" className="description">
             Get started by exploring our awesome features.
           </Typography>
-          <Button variant="contained" color="primary" className="explore-button">
+          <AlbaButton variant="primary"  className="explore-button">
             <Icon>west</Icon> 
             Explore
-          </Button>
+          </AlbaButton>
         </Container>
       </header>
     </div>

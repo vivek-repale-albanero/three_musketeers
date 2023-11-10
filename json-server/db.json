@@ -36,7 +36,7 @@
     {
       "user": {
         "userName": "pritamHald@2000",
-        "firstName": "pri",
+        "firstName": "pritam",
         "lastName": "halder"
       },
       "age": "a",
@@ -44,23 +44,23 @@
       "password": "a",
       "Permission": {
         "csvPermission": {
-          "allow": false,
+          "allow": true,
           "subModules": {
-            "csvPagePermission": false,
-            "csvEditPermission": false,
-            "csvDownloadPermission": false
+            "csvPagePermission": true,
+            "csvEditPermission": true,
+            "csvDownloadPermission": true
           }
         },
         "gamePermission": {
-          "allow": false,
+          "allow": true,
           "subModules": {
-            "gamePagePermission": false,
-            "gameStartPermission": false,
-            "gameResetPermission": false
+            "gamePagePermission": true,
+            "gameStartPermission": true,
+            "gameResetPermission": true
           }
         },
         "missing": {
-          "allow": false,
+          "allow": true,
           "subModules": {}
         }
       },

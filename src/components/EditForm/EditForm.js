@@ -40,15 +40,18 @@ function EditForm() {
       open={userFormModal.status}
       onClose={closeModal}
       className="appModal"
-      maxWidth={'xl'}
+      maxWidth={'md'}
+      fullWidth
     >
         <DialogTitle className="__title" id="draggable-dialog-title">
+          <div className="modal_title">
           <Typography variant="h6" >
             {userFormModal.edit ? "Edit Details" : "Add User"}
           </Typography>
           <IconButton className="closeIcon" onClick={closeModal}>
             <Icon>close</Icon>
           </IconButton>
+          </div>
         </DialogTitle>
         <DialogContent>
           <TextForm
