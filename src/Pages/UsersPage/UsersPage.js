@@ -26,8 +26,9 @@ import { PermissionContext, UsersContext } from "../../Context";
 import UsersUITable from "./Table/UsersUITable";
 
 function UsersPage() {
-  const { users, setUsers, handlePermissionModalOpen, currentUser } =
+  const { users, setUsers, handlePermissionModalOpen, currentUser,setUnAuthMsg } =
     useContext(PermissionContext);
+    const history = useHistory();
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
 
   //Form Modal
@@ -152,9 +153,14 @@ function UsersPage() {
       });
   };
 
-  const authMsgFn = () => {
-    setUnAuthMsg("Please Login First");
-    return "/unauth";
+  const authMsgFn = (user) => {
+    if(user.id!=loggedUser.id){
+
+      setUnAuthMsg("Please Login First");
+      history.push("/unauth");
+    }else{
+      history.push(`/users/authorization/${user.id}`)
+    }
   };
   //searchFunction
   const handleSearch = async (text) => {
@@ -170,7 +176,7 @@ const handleOnChangePageSize= () =>{}
   //   handleSearch(searchText);
   // },[searchText])
   const usersListTableMetadata = (actions) => {
-    console.log(actions)
+    console.log("actions",actions)
     return {
       columns: [
         {
@@ -204,12 +210,12 @@ const handleOnChangePageSize= () =>{}
                 },
               },
               {
-                icon: "switches",
+                icon: "key",
                 title: "Permission",
                 isComponent: true,
                 componentId: "CLICK_ACTION",
-                onClick: (user) => {
-                  console.log(authMsgFn());
+                onClick: (row) => {
+                  actions.authMsgFn(row)
                 },
               },
               {
@@ -291,109 +297,6 @@ const handleOnChangePageSize= () =>{}
             {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
           </Box>
           <Container maxWidth="100%" className="tableContent">
-            {/* <TableContainer component={Paper}>
-              <Table>
-                <TableHead style={{ background: "rgb(42 139 139)" }}>
-                  <TableRow>
-                    <TableCell 
-                    style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Id
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Name
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      E-mail
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Age
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      User Name
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Is Logged
-                    </TableCell>
-                    <TableCell
-                      style={{ color: "rgb(224 224 224)", textAlign: "center" }}
-                    >
-                      Actions
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {users.map((user) => (
-                    <TableRow key={user.id}>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.id}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>{`${
-                        user.user.firstName + " " + user.user.lastName
-                      }`}</TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.email}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.age}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        {user.user.userName}
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          color: loggedUser.id === user.id ? "green" : "red",
-                          textAlign: "center",
-                        }}
-                      >
-                        {loggedUser.id === user.id ? "Online" : "Offline"}
-                      </TableCell>
-                      <TableCell style={{ textAlign: "center" }}>
-                        <>
-                          <Button
-                            className="actionBtn"
-                            onClick={() => openEditModaL(user)}
-                          >
-                            <Icon>edit_note</Icon>
-                          </Button>
-                          {userFormModal.status && userFormModal.edit ? (
-                            <EditForm />
-                          ) : null}
-                          <Link
-                            href={
-                              currentUser && currentUser.id == user.id
-                                ? `/users/authorization/${user.id}`
-                                : authMsgFn()
-                            }
-                            disabled={currentUser && currentUser.id == user.id}
-                          >
-                            <Button className="actionBtn">
-                              <Icon>key</Icon>
-                            </Button>
-                          </Link>
-                          <Button
-                            className="actionBtn"
-                            onClick={() => deleteUser(user.id)}
-                          >
-                            <Icon>delete</Icon>
-                          </Button>
-                        </>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer> */}
             <Table
               tableProps={{
                 ...usersListTableMetadata({
@@ -401,8 +304,8 @@ const handleOnChangePageSize= () =>{}
                   handleDelete: deleteUser,
                   onChangePage: handleOnChangePage,
                 onRowsChange: handleOnChangePageSize,
-                  handleSearch
-                  // data: users,
+                  handleSearch,
+                  authMsgFn
                 }),
                 data: users,
                 actionComponents: actionComponents,
