@@ -17,7 +17,9 @@ const EditModal = ({ open, data, onCancel, onSave }) => {
 
   return (
     <Dialog open={open} onClose={onCancel}>
+      <div>
       <DialogTitle>Edit Data</DialogTitle>
+      </div>
       <DialogContent>
         {Object.keys(editedData).map((fieldName) => (
           <TextField

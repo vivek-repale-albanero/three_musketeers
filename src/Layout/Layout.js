@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
     localStorage.removeItem("useLogedId")
   }
   return (
-    <div >
+    <div>
       <Drawer variant="permanent">
         <Card className='userCard' >
           <div className='userInfo'>

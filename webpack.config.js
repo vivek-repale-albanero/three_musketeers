@@ -24,6 +24,7 @@ module.exports = (config, options) => ({
       "@platform/service-ui-libraries": "@platform/service-ui-libraries",
       "@platform/modals": "@platform/modals",
       "@platform/layout": "@platform/layout",
+      "@platform/service-api-utilities":"@platform/service-api-utilities"
     },
   ],
   module: {
