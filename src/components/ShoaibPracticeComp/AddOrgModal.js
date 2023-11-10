@@ -48,7 +48,9 @@ function AddOrgModal({ data }) {
 
   // console.log('outvalid',ValidationRef)
 
+  const HandleOrgChange=()=>{
 
+  }
   const checklength=(value)=>{
     let length=""
     if(value.length<5){
@@ -99,6 +101,7 @@ function AddOrgModal({ data }) {
             }}
             variant="filled"
             fieldValue={orgModalData.OrgName}
+            // onChange={(e)=>}
             placeholder="Organization Name"
             validationFunc={(value) => checklength(value)}
 
