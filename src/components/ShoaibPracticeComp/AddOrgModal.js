@@ -66,20 +66,10 @@ function AddOrgModal({ data }) {
 
   // console.log('outvalid',ValidationRef)
 
-<<<<<<< HEAD
-  const HandleOrgChange=()=>{
-
-  }
-  const checklength=(value)=>{
-    let length=""
-    if(value.length<5){
-      return "Organization must be more than 5 Character"
-=======
   const checklength = (value) => {
     let length = "";
     if (value.length < 5) {
       return "Organization must be more than 5 Character";
->>>>>>> 7a39fb5b0aaaee10836f896e4cd5f3c67502c5d6
     }
 
     return <img width="20px" src={img} />;
@@ -124,13 +114,8 @@ function AddOrgModal({ data }) {
               },
             }}
             variant="filled"
-<<<<<<< HEAD
-            fieldValue={orgModalData.OrgName}
-            // onChange={(e)=>}
-=======
             onChange={(e) => setformdata({ ...formdata, OrgName: e })}
             fieldValue={formdata.OrgName}
->>>>>>> 7a39fb5b0aaaee10836f896e4cd5f3c67502c5d6
             placeholder="Organization Name"
             validationFunc={(value) => checklength(value)}
           ></TextForm>
@@ -209,7 +194,8 @@ function AddOrgModal({ data }) {
             label="Select Role"
             options={options}
             value={formdata.MemberDetails.role}
-          />
+
+/>
 
           {/* <TextField></TextField> */}
         </DialogContent>
