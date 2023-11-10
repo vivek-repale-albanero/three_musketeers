@@ -24,7 +24,7 @@ function EditForm() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Paper className="modalContainer">
+            <Paper className="modalContainer9999">
                 <div className="modalTitleContainer">
                     <Typography variant="h6" className="modalHeading">
                       { userFormModal.edit?"Edit Details":"Add User" }  

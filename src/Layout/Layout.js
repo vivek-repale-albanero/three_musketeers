@@ -1,10 +1,21 @@
 // Layout.js
-import React from 'react';
+import React from "react";
 // import { Outlet } from "react-router-dom"
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { AddCircleOutlineIcon, Drawer, List, ListItem, ListItemIcon, ListItemText, Card, Avatar, Icon, Button } from '@material-ui/core';
-import "./Layout.scss"
+import {
+  AddCircleOutlineIcon,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Card,
+  Avatar,
+  Icon,
+  Button,
+} from "@material-ui/core";
+import "./Layout.scss";
 // import {HomeIcon,DashboardIcon,SettingsIcon} from ''
 // import Drawer from '@mui/material/Drawer';
 // import List from '@mui/material/List';
@@ -20,66 +31,69 @@ const Layout = ({ children }) => {
   let history = useHistory();
   const handleLogout = () => {
     history.push("/");
-    localStorage.removeItem("useLogedId")
-  }
+    localStorage.removeItem("useLogedId");
+  };
   return (
-    <div >
-      <Drawer variant="permanent">
-        <Card className='userCard' >
-          <div className='userInfo'>
-            <Avatar>
-              {loggedUser.user.userName[0]}
-            </Avatar>
-            <div>
-              {loggedUser.user.firstName}
+    <div>
+      {/* <div > */}
+        <Drawer variant="permanent" className="sidebar">
+          <Card className="userCard">
+            <div className="userInfo">
+              <Avatar>{loggedUser.user.userName[0]}</Avatar>
+              <div>{loggedUser.user.firstName}</div>
+              <Button color="secondary" onClick={handleLogout}>
+                Logout
+              </Button>
             </div>
-            <Button color='secondary' onClick={handleLogout} >Logout</Button>
-          </div>
-        </Card>
+          </Card>
 
-        <List>
-        <ListItem button component={Link} to="/home">
-            <ListItemIcon>
-              <Icon>home</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-          <ListItem button component={Link} to="/users">
-            <ListItemIcon>
-              <Icon>group</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Users" />
-          </ListItem>
-          {(loggedUser.Permission.csvPermission.allow) ?
-            <ListItem button component={Link} to="/csv">
+          <List>
+            <ListItem button component={Link} to="/home">
               <ListItemIcon>
-                <Icon>backup_table</Icon>
+                <Icon>home</Icon>
               </ListItemIcon>
-              <ListItemText primary="Csv-Upload" />
+              <ListItemText primary="Home" />
             </ListItem>
-            : null
-          }
-          {(loggedUser.Permission.gamePermission.allow) ?
-            <ListItem button component={Link} to="/gameredirect">
+            <ListItem button component={Link} to="/users">
               <ListItemIcon>
-                <Icon>casino</Icon>
+                <Icon>group</Icon>
               </ListItemIcon>
-              <ListItemText primary="TicTacToe" />
-            </ListItem> :
-            null
-          }
-          {(loggedUser.Permission.missing.allow) ?
-            <ListItem button component={Link} to="/missing">
+              <ListItemText primary="Users" />
+            </ListItem>
+            {loggedUser.Permission.csvPermission.allow ? (
+              <ListItem button component={Link} to="/csv">
+                <ListItemIcon>
+                  <Icon>backup_table</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Csv-Upload" />
+              </ListItem>
+            ) : null}
+            {loggedUser.Permission.gamePermission.allow ? (
+              <ListItem button component={Link} to="/gameredirect">
+                <ListItemIcon>
+                  <Icon>casino</Icon>
+                </ListItemIcon>
+                <ListItemText primary="TicTacToe" />
+              </ListItem>
+            ) : null}
+            {loggedUser.Permission.missing.allow ? (
+              <ListItem button component={Link} to="/missing">
+                <ListItemIcon>
+                  <Icon>corporate_fare</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Organisation Info" />
+              </ListItem>
+            ) : null}
+            <ListItem button component={Link} to="/e-com">
               <ListItemIcon>
-                <Icon>corporate_fare</Icon>
+                <Icon>shop</Icon>
               </ListItemIcon>
-              <ListItemText primary="Organisation Info" />
-            </ListItem> :
-            null
-          }
-        </List>
-      </Drawer>
-      <div style={{ marginLeft: '15%' }}>
+              <ListItemText primary="Shopping" />
+            </ListItem>
+          </List>
+        </Drawer>
+      {/* </div> */}
+      <div style={{ marginLeft: "15%" }}>
         {/* <Outlet /> */}
         {children}
       </div>

@@ -1,24 +1,25 @@
-.MuiPaper-root{
+.sidebar {
+  .MuiPaper-root {
     width: 15%;
-}
-.MuiCard-root{
+  }
+  .MuiCard-root {
     width: 100%;
-}
-.userCard{
+  }
+  .userCard {
     padding: 40px;
     display: flex;
     justify-content: center;
     // .MuiPaper-root{
     //     background-color: teal;
     // }
-    .userInfo{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        div{
-            color: white;
-        }
+    .userInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      div {
+        color: white;
+      }
     }
-    
+  }
 }

@@ -18,6 +18,8 @@ import PrivateGameRoute from "./components/PrivateGameRoute";
 import axios from "axios";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
+import EComPage from "./Pages/ECom";
+import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
 
 
 
@@ -78,7 +80,10 @@ export default function Root() {
           <Route exact path="/missing" render={()=> <MissingPage/>} />
 
           <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
+          <Route exact path="/e-com" render={()=> <EComPage/>} />
+          <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
 
+          
         </Switch>
       </React.Suspense>
         </PermissionContext.Provider>
