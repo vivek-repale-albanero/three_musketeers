@@ -15,7 +15,6 @@ import MissingPage from "./Pages/MissingPage";
 import { PermissionContext } from "./Context";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";
-import axios from "axios";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
@@ -29,6 +28,7 @@ import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
 
 
 export default function Root() {
+  const [defaultVal, setDefaultVal] = useState([]);
   const [currentUser,setCurrentUser]=useState({})
   const [users, setUsers] = useState([]);
   const [local,setLocal]=useState(false)
@@ -42,7 +42,7 @@ export default function Root() {
     .catch((error) => {
       console.error('Error:', error);
     });
-  }, []);
+  },[]);
 
   useEffect(()=>{
     setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")))
@@ -50,11 +50,11 @@ export default function Root() {
   },[local])
   
   // //data from local storage
-    console.log("currentUser",currentUser)
+    // console.log("currentUser",currentUser)
   
   const permission = useMemo(() => {
-    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg}
-  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg])
+    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal}
+  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal])
   return (
     <BrowserRouter>
     <PermissionContext.Provider  value={permission}>
@@ -91,6 +91,8 @@ export default function Root() {
 
 
           
+
+
         </Switch>
       </React.Suspense>
         </PermissionContext.Provider>

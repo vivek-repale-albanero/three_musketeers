@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import "./CsvPage.scss";
 import { CSVContext, PermissionContext } from "../Context";
 import csv1 from "../assests/csv1.png";
@@ -9,37 +9,31 @@ import {
   Button,
   Typography,
   Container,
-  Paper,
-  Modal,
-  IconButton,
-  Icon,
-  makeStyles,
   Box,
-} from "@material-ui/core";
+} from "@platform/service-ui-libraries";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import CsvUploader from "../components/CsvUploader";
 import CsvTable from "../components/CsvTable";
 import Layout from "../Layout/Layout";
 import { Redirect, useHistory } from "react-router-dom";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, AlbaButton } from "@platform/service-ui-libraries";
 import BreadCrumb from "../components/Breadcrumbs/BreadCrumb";
 
 const CsvPage = () => {
   const { setUnAuthMsg } = useContext(PermissionContext);
   let history = useHistory();
-
+  const csvfileInputRef = useRef(null);
   const [csvData, setCsvData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showTable, setShowTable] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [availFile, setAvailFile] = useState("");
   const [editedData, setEditedData] = useState([]);
   const [editedFile, setEditedFile] = useState(null);
   const [editRowIndex, setEditRowIndex] = useState(-1);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
-
+  const [errorMessageForCsvUploder, setErrorMessageForCsvUploder] = useState(null);
   const { currentUser } = useContext(PermissionContext);
   const handleOpen = () => {
     setIsModalOpen(true);
@@ -48,7 +42,7 @@ const CsvPage = () => {
     setShowTable(false);
     const file = e.target.files[0];
     if (file) {
-      setAvailFile(file);
+      setErrorMessageForCsvUploder(null)
       setSelectedFileName(file.name);
       setUploading(true);
 
@@ -64,16 +58,26 @@ const CsvPage = () => {
     }
   };
   const showTableFn = () => {
-    if (availFile) {
-      setShowTable(true);
+    const selectedFile = csvfileInputRef.current.files[0];
+    if (selectedFile) {
+      const fileName = selectedFile.name;
+      if (fileName.endsWith('.csv')) {
+        console.log('Selected CSV file:', fileName);
+        setErrorMessageForCsvUploder(null);
+        setShowTable(true);
       setIsModalOpen(false);
+      } else {
+        setErrorMessageForCsvUploder('Please select a .csv file');
+        csvfileInputRef.current.value = '';
+      }
+      setSelectedFileName("")
     } else {
-      alert("Please choose a file before uploading.");
-      setSelectedFileName("");
+      setErrorMessageForCsvUploder('Please choose a file first');
     }
   };
   const handleClose = () => {
     setIsModalOpen(false);
+    setSelectedFileName("")
   };
   const processData = (csvContent) => {
     const lines = csvContent.split("\n");
@@ -175,7 +179,6 @@ const CsvPage = () => {
       handleClose,
       selectedFileName,
       uploading,
-      availFile,
       csvData,
       editedData,
       setCsvData,
@@ -190,7 +193,7 @@ const CsvPage = () => {
       handleEditClick,
       handleCancelEdit,
       handleSaveClick,
-      handleDownloadClick,
+      handleDownloadClick,errorMessageForCsvUploder, setErrorMessageForCsvUploder,csvfileInputRef
     };
   }, [
     isModalOpen,
@@ -199,7 +202,6 @@ const CsvPage = () => {
     handleClose,
     selectedFileName,
     uploading,
-    availFile,
     csvData,
     editedData,
     setCsvData,
@@ -215,7 +217,7 @@ const CsvPage = () => {
     handleEditClick,
     handleCancelEdit,
     handleSaveClick,
-    handleDownloadClick,
+    handleDownloadClick,errorMessageForCsvUploder, setErrorMessageForCsvUploder,csvfileInputRef
   ]);
   return (
     <Layout>
@@ -225,13 +227,13 @@ const CsvPage = () => {
             <Typography variant="h5">CSV List</Typography>
             <BreadCrumb />
           </div>
-          <Button
+          <AlbaButton
             variant="contained"
             className="add-button"
             onClick={handleOpen}
           >
             Add File
-          </Button>
+          </AlbaButton>
         </Box>
         <Container
           className="csv-page-container"
@@ -284,7 +286,6 @@ const CsvPage = () => {
                     <div className="carousel-item">
                       <img src={csv4} alt="Sample Image 4" />
                     </div>
-                    {/* Add more images as needed */}
                   </Carousel>
                 </div>
                 <Card className="upload-container">

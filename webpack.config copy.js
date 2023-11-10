@@ -22,6 +22,7 @@ module.exports = (webpackConfigEnv, argv) =>
         "react-router-dom": "react-router-dom",
         "@platform/primary-table": "@platform/primary-table",
         "@platform/service-ui-libraries": "@platform/service-ui-libraries",
+        "@platform/service-api-utilities":"@platform/service-api-utilities"
       },
     ],
     module: {
