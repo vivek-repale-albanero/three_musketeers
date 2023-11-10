@@ -1,28 +1,58 @@
-.MissingPageMainDiv{
+.MissingPageMainDiv {
 
     // border: 1px solid red;
     text-align: center;
     width: 100%;
     margin: auto;
-    
-    
-    .AddButton{
+
+
+    .AddButton {
         background-color: teal;
-        color:white;
-        
+        color: white;
+
     }
 
-    .AddButton:hover{
+    .AddButton:hover {
         background-color: rgb(17, 68, 68)
     }
-    .AddButton{
+
+    .AddButton {
         margin: 50px;
 
     }
-    .TableContainer{
+
+    .TableContainer {
         width: 100%;
         margin: auto;
-        padding:1%;
+        padding: 1%;
     }
 
+}
+
+.PlatformTableDiv {
+    margin: 10%;
+    overflow-y: scroll;
+    height: 700px;
+
+    .ALbaButton{
+        text-align: right;
+        margin: auto;
+    }
+
+    button{
+       padding: 10px;
+       background-color: teal;
+        margin: auto;
+        color: white;
+    }
+    .AddOrgModal{
+        width: 500px;
+        // height: 700px;
+    }
+    // .SeeDetailsModal{
+    //     padding: 50px;
+    // }
+    .MuiPaper-root {
+        width: 40%;
+    }
 }

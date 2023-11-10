@@ -48,7 +48,37 @@ const columns = [
   },
 ];
 
+export function GetRows(data) {
+  let Rows = [];
+  const uniqueOrganizations = new Set();
+  data.forEach(({ OrgName, country, id }) => {
+    if (!uniqueOrganizations.has(id)) {
+      country.forEach(({ countryName, states }) => {
+        if (!uniqueOrganizations.has(id)) {
+          states.forEach(({ stateName, cities }) => {
+            if (!uniqueOrganizations.has(id)) {
+              uniqueOrganizations.add(id);
+              Rows.push({
+                id,
+                OrgName,
+                countryName,
+                stateName,
+                city: cities[0],
+                Memberscount: 0,
+                MemberDetails:[],
+                See: <EyeComponent data={{ id, OrgName, countryName, stateName, city: cities[0] }} />,
+                Delete: <Icon>delete</Icon>
+              });
+            }
+          });
+        }
+      });
+    }
+  });
 
+  return Rows
+  // Rows array now contains one entry for each of the five organizations
+}
 
 export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
@@ -66,41 +96,11 @@ export default function ColumnGroupingTable() {
   };
 
 
-  function GetRows(data, Allmember) {
-    let Rows = [];
-    const uniqueOrganizations = new Set();
-    data.forEach(({ OrgName, country, id }) => {
-      if (!uniqueOrganizations.has(id)) {
-        country.forEach(({ countryName, states }) => {
-          if (!uniqueOrganizations.has(id)) {
-            states.forEach(({ stateName, cities }) => {
-              if (!uniqueOrganizations.has(id)) {
-                uniqueOrganizations.add(id);
-                Rows.push({
-                  id,
-                  OrgName,
-                  countryName,
-                  stateName,
-                  city: cities[0],
-                  Memberscount: 0,
-                  MemberDetails:[],
-                  See: <EyeComponent data={{ id, OrgName, countryName, stateName, city: cities[0] }} />,
-                  Delete: <Icon>delete</Icon>
-                });
-              }
-            });
-          }
-        });
-      }
-    });
 
-    return Rows
-    // Rows array now contains one entry for each of the five organizations
-  }
   
 
   React.useEffect(() => {
-    let Rows = GetRows(orgdata, Allmember)
+    let Rows = GetRows(orgdata)
     setsingleorg(Rows)
   }, [])
 

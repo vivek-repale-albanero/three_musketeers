@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
         </Card>
 
         <List>
-        <ListItem button component={Link} to="/home">
+          <ListItem button component={Link} to="/home">
             <ListItemIcon>
               <Icon>home</Icon>
             </ListItemIcon>
@@ -68,7 +68,7 @@ const Layout = ({ children }) => {
             </ListItem> :
             null
           }
-          {(loggedUser.Permission.missing.allow) ?
+          {/* {(loggedUser.Permission.missing.allow) ?
             <ListItem button component={Link} to="/missing">
               <ListItemIcon>
                 <Icon>corporate_fare</Icon>
@@ -76,7 +76,14 @@ const Layout = ({ children }) => {
               <ListItemText primary="Organisation Info" />
             </ListItem> :
             null
-          }
+          } */}
+
+          <ListItem button component={Link} to="/Compo">
+            <ListItemIcon>
+              <Icon>corporate_fare</Icon>
+            </ListItemIcon>
+            <ListItemText primary="Organisation Info" />
+          </ListItem>
         </List>
       </Drawer>
       <div style={{ marginLeft: '15%' }}>
