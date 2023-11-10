@@ -20,6 +20,10 @@ import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 
+import EComPage from "./Pages/ECom";
+import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
+
+
 
 
 
@@ -82,6 +86,11 @@ export default function Root() {
           <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />
 
 
+          <Route exact path="/e-com" render={()=> <EComPage/>} />
+          <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
+
+
+          
         </Switch>
       </React.Suspense>
         </PermissionContext.Provider>
