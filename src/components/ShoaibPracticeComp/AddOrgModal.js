@@ -35,23 +35,18 @@ function AddOrgModal({ data }) {
   
   console.log(orgModalData,"orgModalData")
   const handleProceed = async() => {
-
-
-    try {
-      
+    try {   
       axios.post(`http://localhost:3000/Metadata`,)
     } catch (error) {
       
     }
-    
-
-    console.log(ValidationRef)
+    // console.log(ValidationRef)
     setOpenModal({ ...openModal, orgModalStatus: false });
 
 
   };
 
-  console.log('outvalid',ValidationRef)
+  // console.log('outvalid',ValidationRef)
 
 
   const checklength=(value)=>{
@@ -64,7 +59,7 @@ function AddOrgModal({ data }) {
     return <img width="20px" src={img} />
 
   }
-  console.log(ValidationRef, "valid");
+  // console.log(ValidationRef, "valid");
   console.log(openModal, "data", data);
   return (
     <div className="AddOrgModal">
@@ -73,7 +68,8 @@ function AddOrgModal({ data }) {
         open={openModal.orgModalStatus}
         PaperComponent={DraggableModal}
         aria-labelledby="draggable-dialog-title"
-        maxWidth={"xl"}
+        maxWidth={"sm"}
+        fullWidth
       >
         <DialogTitle id="draggable-dialog-title">
           <div className="al-flex al-spc-btw">
