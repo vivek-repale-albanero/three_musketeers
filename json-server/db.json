@@ -1,113 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
-      "user": {
-        "userName": "pritam0001",
-        "firstName": "Pritam",
-        "lastName": "Halder"
-      },
-      "age": "a",
-      "email": "a",
-      "password": "a",
-      "Permission": {
-        "csvPermission": {
-          "allow": true,
-          "subModules": {
-            "csvPagePermission": true,
-            "csvEditPermission": true,
-            "csvDownloadPermission": true
-          }
-        },
-        "gamePermission": {
-          "allow": true,
-          "subModules": {
-            "gamePagePermission": true,
-            "gameStartPermission": true,
-            "gameResetPermission": true
-          }
-        },
-        "missing": {
-          "allow": true,
-          "subModules": {}
-        }
-      }
-    },
-    {
-      "user": {
-        "userName": "b",
-        "firstName": "sai",
-        "lastName": "praveen"
-      },
-      "age": "24",
-      "email": "b",
-      "password": "b",
-      "Permission": {
-        "csvPermission": {
-          "allow": true,
-          "subModules": {
-            "csvPagePermission": true,
-            "csvEditPermission": true,
-            "csvDownloadPermission": true
-          }
-        },
-        "gamePermission": {
-          "allow": true,
-          "subModules": {
-            "gamePagePermission": true,
-            "gameStartPermission": true,
-            "gameResetPermission": true
-          }
-        },
-        "missing": {
-          "allow": false,
-          "subModules": {}
-        }
-      },
-      "id": 2
-    },
-    {
-      "user": {
-        "userName": "Shoaib@1998",
-        "firstName": "shoaib",
-        "lastName": "Mansoori"
-      },
-      "age": "25",
-      "email": "Shoaib@1998gmail.com",
-      "password": "password1",
-      "Permission": {
-        "csvPermission": {
-          "allow": false,
-          "subModules": {
-            "csvPagePermission": false,
-            "csvEditPermission": false,
-            "csvDownloadPermission": false
-          }
-        },
-        "gamePermission": {
-          "allow": true,
-          "subModules": {
-            "gamePagePermission": true,
-            "gameStartPermission": true,
-            "gameResetPermission": true
-          }
-        },
-        "missing": {
-          "allow": true,
-          "subModules": {}
-        }
-      },
-      "id": 3
-    },
-    {
       "user": {
         "userName": "Eswar@0110",
-        "firstName": "Eswar",
-        "lastName": "M"
+        "firstName": "Esw",
+        "lastName": "Chandran"
       },
       "age": "26",
-      "email": "ewar0110@gmail.com",
-      "password": "password1",
+      "email": "eswar0110@gmail.com",
+      "password": "eswar1",
       "Permission": {
         "csvPermission": {
           "allow": true,
@@ -131,6 +32,138 @@
         }
       },
       "id": 4
+    },
+    {
+      "user": {
+        "userName": "pritamHald@2000",
+        "firstName": "pri",
+        "lastName": "halder"
+      },
+      "age": "a",
+      "email": "a",
+      "password": "a",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 5
+    },
+    {
+      "user": {
+        "userName": "abi@03891",
+        "firstName": "abi",
+        "lastName": "sheik"
+      },
+      "age": "26",
+      "email": "abishek@gmail.com",
+      "password": "password1",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 6
+    },
+    {
+      "user": {
+        "userName": "praveenSai@#$%",
+        "firstName": "sai",
+        "lastName": "praveen"
+      },
+      "age": "35",
+      "email": "b",
+      "password": "b",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 7
+    },
+    {
+      "user": {
+        "userName": "emma@123",
+        "firstName": "Aja",
+        "lastName": "Emma"
+      },
+      "age": "26",
+      "email": "emma123@gmail.com",
+      "password": "emma123",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 8
     }
   ],
   "Metadata": [
