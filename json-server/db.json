@@ -164,77 +164,9 @@
         }
       },
       "id": 8
-    },
-    {
-      "user": {
-        "userName": "gn zfgrn",
-        "firstName": "fve",
-        "lastName": "bgfnfgn "
-      },
-      "age": "bcb",
-      "email": " nzfg",
-      "password": "b dbf",
-      "Permission": {
-        "csvPermission": {
-          "allow": false,
-          "subModules": {
-            "csvPagePermission": false,
-            "csvEditPermission": false,
-            "csvDownloadPermission": false
-          }
-        },
-        "gamePermission": {
-          "allow": false,
-          "subModules": {
-            "gamePagePermission": false,
-            "gameStartPermission": false,
-            "gameResetPermission": false
-          }
-        },
-        "missing": {
-          "allow": false,
-          "subModules": {}
-        }
-      },
-      "id": 9
     }
   ],
   "Metadata": [
-    {
-      "id": 11,
-      "OrgName": "Infinite Ideas Inc.",
-      "countryName": "USA",
-      "stateName": "Illinois",
-      "city": "Chicago"
-    },
-    {
-      "id": 12,
-      "OrgName": "Global Innovators",
-      "countryName": "UK",
-      "stateName": "Scotland",
-      "city": "Edinburgh"
-    },
-    {
-      "id": 13,
-      "OrgName": "Future Technologies",
-      "countryName": "Germany",
-      "stateName": "Bavaria",
-      "city": "Munich"
-    },
-    {
-      "id": 14,
-      "OrgName": "NextGen Systems",
-      "countryName": "USA",
-      "stateName": "Massachusetts",
-      "city": "Boston"
-    },
-    {
-      "id": 15,
-      "OrgName": "InnovaTech Inc.",
-      "countryName": "Canada",
-      "stateName": "Quebec",
-      "city": "Montreal"
-    },
     {
       "id": 16,
       "OrgName": "TechSolutions Ltd.",
@@ -474,22 +406,39 @@
       "city": "Gold Coast"
     },
     {
-      "id": 50,
-      "OrgName": "TechMasters Innovate",
-      "countryName": "USA",
-      "stateName": "Arizona",
-      "city": "Tucson"
-<<<<<<< HEAD
-=======
+      "OrgName": "asdfdfsfdsfsbaaah",
+      "countryName": "sdfdsfdfdsff",
+      "stateName": "a",
+      "city": "a",
+      "MemberDetails": {
+        "name": "a",
+        "role": "SDE-2"
+      },
+      "id": 50
     },
     {
+      "OrgName": "dsfdsf",
+      "countryName": "sdfdsf",
+      "stateName": "sdfdsf",
+      "city": "sdfdsfd",
+      "MemberDetails": {
+        "id": "4ce4b129-fd3d-4476-99a0-aa056b1f6a7f",
+        "name": "jhghjjhfyiuiyui",
+        "role": "SDE-2"
+      },
       "id": 51
     },
     {
+      "OrgName": "sdfdsfd",
+      "countryName": "sdfdsfds",
+      "stateName": "sdfdfd",
+      "city": "sfdsfds",
+      "MemberDetails": {
+        "name": "sdfdfdsf",
+        "role": "SDE-3"
+      },
+      "Membercount": 2,
       "id": 52
-    },
-    {
-      "id": 53
     }
   ],
   "itemdata": [
@@ -631,7 +580,6 @@
         "role": "SDE-2"
       },
       "id": 54
->>>>>>> ee39dc040ce6363b6017a26aea44064e0a12d5e1
     }
   ],
   "products": [

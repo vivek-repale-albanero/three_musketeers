@@ -5,7 +5,6 @@ const useDebouncing =(func,delay)=>{
     function debounce(e){
 
         if(id){
-            console.log("hy",id)
             clearTimeout(id)
         }
 

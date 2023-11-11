@@ -13,24 +13,28 @@ import {
   ProfilingTemplateDetails,
   ReferenceTablesList,
   TextField,
+  ShowSnackbar,
   TextForm,
 } from "@platform/service-ui-libraries";
 
 import img from "../../assests/check.png";
 import axios from "axios";
-function AddOrgModal({ data }) {
+import { v4 as uuidv4 } from "uuid";
+import { ShoaibAddOrganizationFunc } from "../../api/api";
+function AddOrgModal({ data, fetchData }) {
   const { openModal, setOpenModal } = data;
   const [formdata, setformdata] = useState({
     OrgName: "",
     countryName: "",
     stateName: "",
     city: "",
-    MemberDetails: { name: "", role: "" },
+    MemberDetails: { id: uuidv4(), name: "", role: "" },
   });
+  const [Allmember, setAllMember] = useState([]);
   const { orgModalData } = openModal;
   const ValidationRef = useRef([]);
+  const MemberValidationref = useRef([]);
 
-  console.log(formdata);
   const options = [
     { label: "SDE-1", value: "SDE-1" },
     { label: "SDE-2", value: "SDE-2" },
@@ -42,8 +46,8 @@ function AddOrgModal({ data }) {
 
   // console.log(orgModalData,"orgModalData")
   const validateProfileForm = () => {
+    console.log(ValidationRef, "ref");
     const resultData = ValidationRef.current.map((refs) => {
-     
       if (!refs) {
         return true;
       } else {
@@ -55,16 +59,57 @@ function AddOrgModal({ data }) {
 
   const handleProceed = async () => {
     if (validateProfileForm()) {
-      try {
-        axios
-          .post(`http://localhost:3000/Metadata`, formdata)
-          .then((res) => console.log(res));
-      } catch (error) {}
-      setOpenModal({ ...openModal, orgModalStatus: false });
+      formdata.Membercount=Allmember.length
+      let { response, error } = await ShoaibAddOrganizationFunc(formdata);
+      console.log("outresponse", response);
+      if (response.status === 201) {
+        console.log("response ShoaibAddOrganizationFunc", response);
+        // console.log(fetchData)
+        setformdata({
+          OrgName: "",
+          countryName: "",
+          stateName: "",
+          city: "",
+          MemberDetails: { name: "", role: "" },
+        });
+        setOpenModal({ ...openModal, orgModalStatus: false });
+      } else {
+        console.log(
+          error,
+          "error",
+          "Something went wrong in ShoaibAddOrganizationFunc"
+        );
+        ShowSnackbar(
+          true,
+          "error",
+          "Something Went Wrong in ShoaibAddOrganizationFunc"
+        );
+      }
     }
   };
 
-  // console.log('outvalid',ValidationRef)
+  const handleAddclick = () => {
+    console.log("handleAddclick");
+
+    if (formdata.MemberDetails.name && formdata.MemberDetails.role) {
+      setAllMember((prev) => [...prev, formdata.MemberDetails]);
+      setformdata({ ...formdata, MemberDetails: { name: "", role: "" } });
+    } else {
+      alert("please fill all the member details");
+    }
+  };
+
+  const handlOnchangeOfOlderMember = (e, member) => {
+    // console.log(newobj)
+    // const EditedAllmember =Allmember.map((member)=>{
+    //   if(member.id==id){
+    //    return {...item, member:{name}}
+    //   }return item
+    // })
+    // console.log(member,e)
+  };
+
+  console.log(Allmember);
 
   const checklength = (value) => {
     let length = "";
@@ -75,8 +120,8 @@ function AddOrgModal({ data }) {
     return <img width="20px" src={img} />;
   };
 
-  // console.log(ValidationRef, "valid");
-  console.log(openModal, "data", data);
+  // // console.log(ValidationRef, "valid");
+  // console.log(openModal, "data", data);
   return (
     <div className="AddOrgModal">
       <Dialog
@@ -107,6 +152,7 @@ function AddOrgModal({ data }) {
           <TextForm
             label="Organization Name"
             ref={(e) => (ValidationRef.current[0] = e)}
+            fieldValue={formdata.OrgName}
             validationsDetail={{
               validations: {
                 required: true,
@@ -115,9 +161,7 @@ function AddOrgModal({ data }) {
             }}
             variant="filled"
             onChange={(e) => setformdata({ ...formdata, OrgName: e })}
-            fieldValue={formdata.OrgName}
             placeholder="Organization Name"
-            validationFunc={(value) => checklength(value)}
           ></TextForm>
           <TextForm
             label="Countery Name"
@@ -159,32 +203,73 @@ function AddOrgModal({ data }) {
             placeholder="City Name"
           ></TextForm>
 
-          <DialogTitle>New Members</DialogTitle>
+          {Allmember.length > 0 &&
+            Allmember.map((member, index) => {
+              return (
+                <>
+                  <div style={{ marginTop: "10px" }}>
+                    <DialogTitle>New Member : {member.name}</DialogTitle>
+                  </div>
+                  <TextForm
+                    label="Name"
+                    ref={(e) => (ValidationRef.current[index] = e)}
+                    validationsDetail={{
+                      validations: {
+                        required: true,
+                        whiteSpace: true,
+                      },
+                    }}
+                    onChange={(e) => handlOnchangeOfOlderMember(e, member)}
+                    fieldValue={member.name}
+                    placeholder="Name"
+                  ></TextForm>
+                  <SelectForm
+                    ref={(e) => (ValidationRef.current[index] = e)}
+                    validationsDetail={{
+                      validations: {
+                        required: true,
+                        whiteSpace: true,
+                      },
+                    }}
+                    onChange={(e) => handlOnchangeOfOlderMember(e, member)}
+                    label="Select Role"
+                    placeholder="Select role"
+                    options={options}
+                    fieldValue={member.role}
+                    onc
+                  />
+                </>
+              );
+            })}
+
+          <DialogTitle> Add New Members</DialogTitle>
+
           <TextForm
             label="Name"
             ref={(e) => (ValidationRef.current[4] = e)}
-            validationsDetail={{
-              validations: {
-                required: true,
-                whiteSpace: true,
-              },
-            }}
+            // validationsDetail={{
+            //   validations: {
+            //     required: true,
+            //     whiteSpace: true,
+            //   },
+            // }}
             onChange={(e) =>
               setformdata({
                 ...formdata,
                 MemberDetails: { ...formdata.MemberDetails, name: e },
               })
             }
+            fieldValue={formdata.MemberDetails.name}
             placeholder="Name"
           ></TextForm>
           <SelectForm
             ref={(e) => (ValidationRef.current[5] = e)}
-            validationsDetail={{
-              validations: {
-                required: true,
-                whiteSpace: true,
-              },
-            }}
+            // validationsDetail={{
+            //   validations: {
+            //     required: true,
+            //     whiteSpace: true,
+            //   },
+            // }}
             onChange={(e) =>
               setformdata({
                 ...formdata,
@@ -192,19 +277,18 @@ function AddOrgModal({ data }) {
               })
             }
             label="Select Role"
+            placeholder="Select role"
             options={options}
-            value={formdata.MemberDetails.role}
-
-/>
-
-          {/* <TextField></TextField> */}
+            fieldValue={formdata.MemberDetails.role}
+          />
         </DialogContent>
         <DialogActions>
           <div className="__dialog_action_wrapper al-flex">
             <AlbaButton
               //   variant={step === 0 ? 'danger' : 'primary'}
               //   onClick={handleBack}
-              data-test-id="data-profiling-cancel-button"
+              className="Addmemberbutton"
+              onClick={handleAddclick}
             >
               {/* {step === 0 ? 'Cancel' : 'Back'} */}
               Add Member
