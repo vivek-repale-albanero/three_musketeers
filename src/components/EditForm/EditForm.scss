@@ -1,10 +1,7 @@
-
-.modal_title{
-display: flex;
-justify-content: space-between;
+.modal_title {
+  display: flex;
+  justify-content: space-between;
 }
-
-
 
 // .modalContainer {
 //     position: fixed;
@@ -34,8 +31,7 @@ justify-content: space-between;
 //         color: teal;
 //       }
 //     }
-    
-  
+
 //     .editForm{
 //         display: flex;
 //         flex-direction: column;
@@ -59,11 +55,10 @@ justify-content: space-between;
 //                     cursor: pointer;
 //                 }
 //             }
-           
+
 //         }
 //     }
 //   }
-  
 
 // .modalContainer {
 //   position: fixed;
@@ -95,85 +90,94 @@ justify-content: space-between;
 //   color: teal;
 // }
 
-
-
-
 // .__add-product__modal {
 //   display: flex;
 //   flex-direction: column;
 //   width: 100%;
 //   padding: 20px;
 
-  // .__modal__title {
-  //   width: 100%;
-  //   display: flex;
-  //   justify-content: "space-between";
-  //   align-items: "center";
-  // }
+// .__modal__title {
+//   width: 100%;
+//   display: flex;
+//   justify-content: "space-between";
+//   align-items: "center";
+// }
 .compare-files-dialog {
   .MuiDialog-paperWidthSm {
     width: 700px;
-
   }
 }
-.__modal__content {
-  padding: 16px 24px;
-  width: 600px;
 
-  .__formWrapper {
-    display: flex;
-    flex-direction: column;
-    .__body {
-      margin: 8px 0;
+.__modalWrapper {
+  width: 400px;
+
+
+.__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  .__modal__content {
+    padding: 8px 8px;
+    width:100%;
+    //width: 600px;
+
+    .__formWrapper {
       display: flex;
-      min-width: 500px;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
+      //width:400px;
+      .__body {
+        margin: -8px 0;
+        display: flex;
+        min-width: 300px;
+        flex-direction: row;
+        justify-content: space-between;
 
-      align-items: center;
-      flex-grow: 1;
-      .__label {
-        flex: 2 1 0;
-      }
-      .__gap {
-        flex: 1 1 0;
-      }
-      .__actual {
-        flex: 6 1 0;
-        .__input_custom {
-          width: 100%;
+        align-items: center;
+        flex-grow: 1;
+        .__label {
+          flex: 2 1 0;
+        }
+        .__gap {
+          flex: 1 1 0;
+        }
+        .__actual {
+          flex: 6 1 0;
+          .__input_custom {
+            width: 100%;
+          }
         }
       }
-    }
-    .__buttonBody {
-      margin: 16px 0 0 0;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      .__button {
-        margin-left: 20px;
+      .__buttonBody {
+        margin: 16px 0 0 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        .__button {
+          margin-left: 20px;
+        }
+      }
+
+      .__check_default {
+        margin: 3px 0;
+        width: fit-content;
+        gap: 5px;
       }
     }
-
-    .__check_default {
-      margin: 3px 0;
-      width: fit-content;
-      gap: 5px;
+  }
+  .buttonContainer {
+    .saveBtn {
+      margin: 5px;
+      background: teal;
+      color: white;
+      font-weight: 700;
     }
-  }
-}
-.buttonContainer {
-  .saveBtn {
-    margin: 5px;
-    background: teal;
-    color: white;
-    font-weight: 700;
-  }
-  .cancelBtn {
-    margin: 5px;
-    background: rgb(223, 10, 38);
-    color: white;
-    font-weight: 700;
+    .cancelBtn {
+      margin: 5px;
+      background: rgb(223, 10, 38);
+      color: white;
+      font-weight: 700;
+    }
   }
 }
 //   .MuiSelect-select.MuiSelect-select {
@@ -182,3 +186,9 @@ justify-content: space-between;
 // }
 // }
 
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}

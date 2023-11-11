@@ -824,12 +824,18 @@
   ],
   "cart": [
     {
-      "name": "Product 4",
+      "name": "Product 1",
       "price": 33,
       "quantity": 3,
-      "id": 4,
-      "type": "entertainment",
-      "label": "Product 4"
+      "id": 1,
+      "type": "personal"
+    },
+    {
+      "name": "Mozilla 2",
+      "price": 33,
+      "quantity": 3,
+      "id": 2,
+      "type": "personal"
     }
   ]
 }

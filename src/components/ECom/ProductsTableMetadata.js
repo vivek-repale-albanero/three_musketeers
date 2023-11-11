@@ -52,12 +52,12 @@ export const ProductsTableMetadata = (actions) => ({
       },
     ],
     data: null,
-    //searchData: true,
-    //handleSearch: actions?.handleSearch,
+    searchData: true,
+    handleSearch: actions?.handleSearch,
     pagination: true,
     reload: true,
     selectRecordsFunctionality: true,
-    //onReload: actions?.onReload,
+    onReload: actions?.onReload,
     onChangePage: (e, page) => actions.onPageChange(page),
     onChangeRowsPerPage: (size, page) => {
       console.log('page is', page, ' and page size is ', size)
