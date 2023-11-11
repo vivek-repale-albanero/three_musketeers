@@ -61,7 +61,6 @@ import { genericApiCall} from "../helpers/api";
   };
 // export all api calls from here
 
-import { MultipleDeleteRecords, genericApiCall } from "../helpers/api";
 
 
 export const fetchOrgData = async ({ page, pageSize }) => {
