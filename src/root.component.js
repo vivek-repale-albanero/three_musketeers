@@ -19,7 +19,7 @@ import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 
-
+import {fetchUsers} from "./api/api"
 
 
 
@@ -29,15 +29,12 @@ export default function Root() {
   const [users, setUsers] = useState([]);
   const [local,setLocal]=useState(false)
   const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
+  const fetchAllUsers=async () => {
+    const { response, error } = await fetchUsers();
+    setUsers(response.data);
+  }
   useEffect(() => {
-    fetch('http://localhost:3000/users')
-    .then((res) => res.json())
-    .then((data) => {
-      setUsers(data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    fetchAllUsers()
   },[]);
 
   useEffect(()=>{

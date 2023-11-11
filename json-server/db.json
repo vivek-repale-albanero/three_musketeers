@@ -47,20 +47,20 @@
           "allow": true,
           "subModules": {
             "csvPagePermission": true,
-            "csvEditPermission": true,
-            "csvDownloadPermission": true
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
           }
         },
         "gamePermission": {
-          "allow": true,
+          "allow": false,
           "subModules": {
-            "gamePagePermission": true,
-            "gameStartPermission": true,
-            "gameResetPermission": true
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
           }
         },
         "missing": {
-          "allow": true,
+          "allow": false,
           "subModules": {}
         }
       },
@@ -513,24 +513,6 @@
   ],
   "sampleData": [
     {
-      "id": 1,
-      "userName": "a",
-      "firstName": "Pritam",
-      "lastName": "Halder"
-    },
-    {
-      "id": 2,
-      "userName": "b",
-      "firstName": "Easwar",
-      "lastName": "M"
-    },
-    {
-      "id": 3,
-      "userName": "c",
-      "firstName": "Shoabe",
-      "lastName": "fncrbu"
-    },
-    {
       "id": 4,
       "userName": "d",
       "firstName": "Anubhav",
@@ -636,6 +618,18 @@
         "role": "SDE-2"
       },
       "id": 54
+    },
+    {
+      "userName": "a",
+      "firstName": "a",
+      "lastName": "a",
+      "id": 55
+    },
+    {
+      "userName": "d",
+      "firstName": "d",
+      "lastName": "d",
+      "id": 56
     }
   ]
 }

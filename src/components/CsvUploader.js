@@ -30,7 +30,7 @@ const CsvUploader = () => {
       open={isModalOpen}
       className="compare-files-dialog aw-dialog appModal"
       PaperComponent={DraggableModal}
-      maxWidth={"md"}
+      maxWidth={"xs"}
       fullWidth
     >
         <DialogTitle id="draggable-dialog-title">
@@ -74,16 +74,8 @@ const CsvUploader = () => {
           </DialogContent>
           <DialogActions>
         <div className="upload-btn-box">
-        {/* <AlbaButton
-            variant="contained"
-            className="uploadButton"
-            onClick={handleClose}
-          >
-            Close
-          </AlbaButton> */}
           <AlbaButton
-            variant="contained"
-            className="uploadButton"
+            variant="success"
             onClick={showTableFn}
             disabled={uploading}
           >

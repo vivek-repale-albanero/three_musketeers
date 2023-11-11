@@ -5,17 +5,21 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  Paper,
-  Button,
   TableHead,
-  Box,
 } from '@material-ui/core';
+import {
+  AlbaButton,
+  Paper,
+  Box,
+} from "@platform/service-ui-libraries";
 import "./CsvTable.scss"
-import { CSVContext } from '../Context';
+import { CSVContext, PermissionContext } from '../Context';
 import EditTable from './EditTable';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const CsvTable = () => {
   const { csvData } = useContext(CSVContext);
+  const { currentUser,setUnAuthMsg } = useContext(PermissionContext);
   const [csvFormModal, setCsvFormModal] = useState({
     status: false,
     edit: false,
@@ -33,7 +37,7 @@ const CsvTable = () => {
   const [newRowData, setNewRowData] = useState({});
 
   const [csvDataState, setCsvDataState] = useState(csvData);
-  console.log("csvData", Object.keys(csvData[0]))
+  // console.log("csvData", Object.keys(csvData[0]))
   const [showDownload, setShowDownload] = useState(false);
 
   // set new rowData
@@ -83,6 +87,17 @@ const CsvTable = () => {
       closeCsvModal();
     };
   }
+
+  const EditPermission=()=>{
+    if(currentUser.Permission.csvPermission.csvEditPermission){
+      return false
+    }
+  }
+  const DownlodPermission=()=>{
+    if(currentUser.Permission.csvPermission.csvDownloadPermission){
+      return false
+    }
+  }
   const handleDownloadEditedFile = () => {
     // Create a CSV file with the updated data
     const csvContent = "data:text/csv;charset=utf-8," + csvDataState.map(row => Object.values(row).join(',')).join('\n');
@@ -117,14 +132,13 @@ const CsvTable = () => {
                   ))}
                   <TableCell>
                     {rowIndex !== 0 && (
-                      <Button
-                        variant="contained"
-                        className="edit-button"
-                        style={{ backgroundColor: "teal", color: "white" }}
-                        onClick={() => openEditModal(rowIndex)}
-                      >
-                        Edit
-                      </Button>
+                          <AlbaButton
+                          variant="success"
+                          onClick={() => openEditModal(rowIndex)}
+                          disabled={EditPermission}
+                        >
+                          Edit
+                        </AlbaButton>
                     )}
                   </TableCell>
                 </TableRow>}
@@ -135,14 +149,12 @@ const CsvTable = () => {
       </TableContainer>
       <Box style={{display:"flex",justifyContent:"flex-end"}}>
 
-        <Button
-          variant="contained"
-          className="add-row-button"
-          style={{ backgroundColor: "teal", color: "white", marginRight: "10px", margin: "10px" }}
-          onClick={openAddModal}
-        >
-          Add Row
-        </Button>
+        <AlbaButton
+            variant="success"
+            onClick={openAddModal}
+          >
+            Add Row
+          </AlbaButton>
         {csvFormModal.status && csvFormModal.edit && (
           <EditTable
             open={csvFormModal.status && csvFormModal.edit}
@@ -164,14 +176,13 @@ const CsvTable = () => {
         )}
 
         {showDownload && (
-          <Button
-            variant="contained"
-            className="download-button"
-            style={{ backgroundColor: "teal", color: "white", marginRight: "10px", margin: "10px"  }}
-            onClick={handleDownloadEditedFile}
-          >
-            Download Edited File
-          </Button>
+                  <AlbaButton
+                  variant="success"
+                  onClick={handleDownloadEditedFile}
+                  disabled={DownlodPermission}
+                >
+                  Download Edited File
+                </AlbaButton>
         )}
       </Box>
     </>

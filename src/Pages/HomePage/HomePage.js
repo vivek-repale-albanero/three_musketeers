@@ -3,12 +3,16 @@ import Layout from "../../Layout/Layout";
 import { Container,Typography,Button,Icon } from "@material-ui/core";
 import {AlbaButton} from "@platform/service-ui-libraries";
 import "./HomePage.scss"
+import Test from "../../components/Test";
+import AlbaAutoCompleteComp from "../../components/AlbaAutoCompleteComp";
 
 function HomePage() {
 
   return (
     <>
+    <Test/>
       <Layout>
+        <AlbaAutoCompleteComp/>
         {/* <div className="container backGround" >
       <div className="text-wrapper">
         <p className={`text ${isFirstText ? 'text-up' : 'text-down'}`}>
