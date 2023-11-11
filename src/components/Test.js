@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
-
+import "./Test.scss"
 import {
   timeAgo,
   Typography,
@@ -220,7 +220,8 @@ function Test() {
   });
   return (
     <>
-      <Table
+    <div className="testTable">
+      <Table 
         tableProps={{
           ...tableProps,
           totalCount,
@@ -230,7 +231,8 @@ function Test() {
           title: "Test Alba Table",
           actionComponents: actionComponents,
         }}
-      />
+        />
+        </div>
       {sampleData.status && !sampleData.edit && (
         <EditTable
           open={sampleData.status}

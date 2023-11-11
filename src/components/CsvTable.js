@@ -15,8 +15,6 @@ import {
 import "./CsvTable.scss"
 import { CSVContext, PermissionContext } from '../Context';
 import EditTable from './EditTable';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-
 const CsvTable = () => {
   const { csvData } = useContext(CSVContext);
   const { currentUser,setUnAuthMsg } = useContext(PermissionContext);
@@ -51,6 +49,10 @@ const CsvTable = () => {
   }
 
   const openEditModal = (rowIndex) => {
+    if(!currentUser.Permission.csvPermission.csvEditPermission){
+      setUnAuthMsg("Please Authorize for Csv Edit Permission");
+      window.location.href = "/unauth";
+    }
     setCsvFormModal({
       ...csvFormModal,
       status: true,
@@ -61,6 +63,10 @@ const CsvTable = () => {
   };
 
   const openAddModal = () => {
+    if(!currentUser.Permission.csvPermission.csvEditPermission){
+      setUnAuthMsg("Please Authorize for Csv Edit Permission");
+      window.location.href = "/unauth";
+    }
     setCsvFormModal({
       ...csvFormModal,
       status: true,
@@ -88,18 +94,22 @@ const CsvTable = () => {
     };
   }
 
-  const EditPermission=()=>{
-    if(currentUser.Permission.csvPermission.csvEditPermission){
-      return false
-    }
-  }
-  const DownlodPermission=()=>{
-    if(currentUser.Permission.csvPermission.csvDownloadPermission){
-      return false
-    }
-  }
+  // const EditPermission=()=>{
+  //   if(currentUser.Permission.csvPermission.csvEditPermission){
+  //     return false
+  //   }
+  // }
+  // const DownlodPermission=()=>{
+  //   if(currentUser.Permission.csvPermission.csvDownloadPermission){
+  //     return false
+  //   }
+  // }
   const handleDownloadEditedFile = () => {
     // Create a CSV file with the updated data
+    if(!currentUser.Permission.csvPermission.csvDownloadPermission){
+      setUnAuthMsg("Please Authorize for Csv Download Permission");
+      window.location.href = "/unauth";
+    }
     const csvContent = "data:text/csv;charset=utf-8," + csvDataState.map(row => Object.values(row).join(',')).join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
