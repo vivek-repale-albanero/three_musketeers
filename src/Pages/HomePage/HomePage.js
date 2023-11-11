@@ -3,9 +3,12 @@ import Layout from "../../Layout/Layout";
 import { Container,Typography,Button,Icon } from "@material-ui/core";
 import {AlbaButton} from "@platform/service-ui-libraries";
 import "./HomePage.scss"
+import { PermissionContext } from "../../Context";
 
 function HomePage() {
+  const {setBreadCrumbProps}=useContext(PermissionContext) 
 
+  useEffect(()=> setBreadCrumbProps({ navLinks: [], activeLink: { name: "home" } }),[]  )
   return (
     <>
       <Layout>
