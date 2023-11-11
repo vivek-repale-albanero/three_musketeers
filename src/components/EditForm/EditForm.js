@@ -44,8 +44,8 @@ function EditForm() {
       maxWidth={'xs'}
       fullWidth
     >
-        <DialogTitle className="__title" id="draggable-dialog-title">
-          <div className="modal_title">
+        <DialogTitle className="__title modal_title"  id="draggable-dialog-title">
+          <div className="formHead">
           <Typography variant="h6" >
             {userFormModal.edit ? "Edit Details" : "Add User"}
           </Typography>

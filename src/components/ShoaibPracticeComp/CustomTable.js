@@ -5,6 +5,7 @@ import { GetRows } from "../MissingPage/OrganizationTable";
 import { Box, Button, Typography, Modal } from "@material-ui/core";
 import useDebouncing from "./useDebouncing";
 import axios from "axios";
+import "../../styles/MissingPage.scss";
 import {
   AlbaButton,
   Icon,
@@ -16,6 +17,7 @@ import {
   SelectForm,
   DialogContent,
   TextForm,
+  ShowSnackbar,
 } from "@platform/service-ui-libraries";
 // import CompareFilesModal from "../../../../platform-ui-modals-dev/src/components/CompareFiles/AutomationDialogs/CompareFilesModal";
 let Metadata = [
@@ -373,6 +375,13 @@ let Metadata = [
 
 import * as list from "@platform/service-ui-libraries";
 import AddOrgModal from "./AddOrgModal";
+import {
+  DeleteSingleOrgData,
+  MultiDeleteRecordsFunc,
+  ShoaibReloadFetchResultsFunc,
+  fetchOrgData,
+  fetchSearchResultsFunc,
+} from "../../api/api";
 
 const textToCsvMetadata = (actions) => {
   return {
@@ -444,7 +453,7 @@ const style = {
 };
 
 function CustomTable() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   // const [Pagination, setPagination] = useState({ page: 1, pageSize: 10 });
   const [pageSize, setPageSize] = useState(10);
   const [totalCount, setTotalCount] = useState("");
@@ -456,6 +465,7 @@ function CustomTable() {
   const [selectedFiles, setSelectedFiles] = useState([{ tableName: "" }]);
   const [reRunObj, setReRunObj] = useState({});
   const [actionComponents, setActionComponents] = useState([]);
+
   const [searchText, setSearchText] = useState("");
   const [JSONData, setJsonData] = useState([]);
   const {
@@ -482,14 +492,14 @@ function CustomTable() {
     },
   });
 
-  const fetchData = async (page, pageSize) => {
-    let url = `http://localhost:3000/Metadata?_page=${page}&_limit=${pageSize}`;
-    try {
-      let fetchData = await fetch(url);
-      let Newdata = await fetchData.json();
-      setJsonData(Newdata);
-    } catch (error) {
-      console.log(error);
+  const fetchData = async () => {
+    const { response, error } = await fetchOrgData({ page, pageSize });
+    if (response?.statusText == "OK") {
+      setJsonData(response?.data);
+    } else {
+      setJsonData([]);
+      console.log(error, "error", "Something went wrong in fetchmetdata");
+      ShowSnackbar(true, "error", "Something Went Wrong in fetchmetdata");
     }
   };
 
@@ -502,7 +512,7 @@ function CustomTable() {
     setOpenModal({ ...openModal, status: false });
   };
 
-  console.log(list);
+  // console.log(list);
 
   /// ASK
   // function handledelete({ id }) {
@@ -524,53 +534,69 @@ function CustomTable() {
     if (searchText) {
       handleSearch(searchText);
     } else {
-      try {
-        let url = `http://localhost:3000/Metadata?_page=${page}&_limit=${pageSize}`;
-        let GetTheData = await fetch(url);
-        let GottheData = await GetTheData.json();
-        setJsonData(GottheData);
-      } catch (error) {
-        console.log(true, "error", error?.response?.data?.message);
-      }
+    let { response,error }=await ShoaibReloadFetchResultsFunc({page,pageSize,searchText})
+      if(response?.statusText=="OK"){
+        setJsonData(response?.data);
+      }else{
+        console.log(error, "error", "Something went wrong in ShoaibReloadFetchResultsFunc");
+        ShowSnackbar(true, "error", "Something Went Wrong in ShoaibReloadFetchResultsFunc");
+      }  
     }
   };
 
   const SingleDeleteRecords = async ({ id }) => {
-    try {
-      axios
-        .delete(`http://localhost:3000/Metadata/${id}`)
-        .then((res) => fetchData());
-    } catch (error) {
-      console.log(error);
+    const { response, error } = await DeleteSingleOrgData({ id });
+    if (response?.statusText == "OK") {
+      fetchData(page, pageSize);
+      console.log("SingleData Delete ", response);
+    } else {
+      console.log(
+        error,
+        "error",
+        "Something went wrong in SingleDeleteRecords"
+      );
+      ShowSnackbar(
+        true,
+        "error",
+        "Something Went Wrong in SingleDeleteRecords"
+      );
     }
   };
 
   const MultiDeleteRecords = async (id) => {
-    console.log(id);
-
-    try {
-      for (let i = 0; i < id.length; i++) {
-        console.log(id[i]);
-        axios
-          .delete(`http://localhost:3000/Metadata/${id[i]}`)
-          .then((res) => fetchData());
+    for (let i = 0; i < id.length; i++) {
+      const { response, error } = await MultiDeleteRecordsFunc(id[i]);
+      if (response.statusText == "OK") {
+        fetchData(page, pageSize);
+        console.log("MultiDeleteRecords", response);
+      } else {
+        console.log(
+          error,
+          "error",
+          "Something went wrong in MultiDeleteRecords"
+        );
+        ShowSnackbar(
+          true,
+          "error",
+          "Something Went Wrong in MultiDeleteRecords"
+        );
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
   const fetchSearchResults = async (searchText) => {
-    console.log("response", searchText);
-
-    let url = `http://localhost:3000/Metadata?_page=${page}&_limit=${pageSize}&q=${searchText}`;
-
-    try {
-      let GetSearchData = await fetch(url);
-      let GotSearchData = await GetSearchData.json();
-      setJsonData(GotSearchData);
-    } catch (error) {
-      console.log("error", error);
+    console.log(searchText ,"calling")
+    const { response, error } =  await fetchSearchResultsFunc({
+      searchText,
+      page,
+      pageSize,
+    });
+    
+    if (response?.statusText == "OK") {
+      setJsonData(response?.data);
+    } else {
+      console.log(error, "error", "Something went wrong in fetchSearchResults");
+      ShowSnackbar(true, "error", "Something Went Wrong in fetchSearchResults");
     }
   };
 
@@ -580,12 +606,15 @@ function CustomTable() {
       if (searchText?.length > 2) {
         await fetchSearchResults(searchText);
       } else if (!searchText?.length && page == 0) {
+        console.log('executed')
         await fetchData();
       }
     },
     [searchText, page, pageSize]
   );
-  const debounceFunction = useDebouncing(fetchSearchResults, 1000);
+
+
+ const debounceFunction = useDebouncing(handleSearch, 1000);
 
   // const handleStopJob = async (row) => {
   //   const payload = {
@@ -604,30 +633,33 @@ function CustomTable() {
     setOpenModal({ ...openModal, orgModalStatus: true });
   };
 
+  const startTableButton = useCallback(() => {
+    return (
+      <AlbaButton variant="success" onClick={HandleAddorganizationBtn}>
+        Add New Organization
+        {/* <Icon>upload</Icon> */}
+      </AlbaButton>
+    );
+  }, []);
+
   useEffect(() => {
     if (searchText.length > 2) {
       handleSearch(searchText);
     } else {
-      fetchData(page, pageSize);
+      fetchData();
     }
+
+    setActionComponents([startTableButton]);
   }, [page, pageSize, searchText]);
 
   // console.log(Extracteddata);
   return (
     <div>
       <div className="ALbaButton">
-        <AlbaButton
-          className="button_Confirm"
-          // variant="success"
-          icon="folder_zip"
-          onClick={HandleAddorganizationBtn}
-        >
-          Add New Organization
-        </AlbaButton>
-
-        <AddOrgModal data={{ openModal, setOpenModal,fetchData }} />
+        <AddOrgModal data={{ openModal, setOpenModal, fetchData }} />
       </div>
       <Table
+      className="orgTable"
         tableProps={{
           ...textToCsvMetadata({
             onPageChange: handleOnChangePage,
@@ -635,7 +667,7 @@ function CustomTable() {
             onReload: onReload,
             SingleDeleteRecords,
             MultiDeleteRecords,
-            handleSearch: debounceFunction,
+            handleSearch:debounceFunction,
             handleOpen,
             // totalCount: totalCount,
             // handleStopJob: handleStopJob
@@ -651,61 +683,66 @@ function CustomTable() {
           open={openModal.status}
           className="appModal"
           PaperComponent={DraggableModal}
-          maxWidth={"md"}
+          maxWidth={"sm"}
           fullWidth
         >
-          <DialogTitle className="__title" id="draggable-dialog-title">
-            Organization Details
-            <IconButton onClick={handleClose}>
-              <Icon>close</Icon>
-            </IconButton>
+          <DialogTitle id="draggable-dialog-title">
+            <div className="__title">
+              <span>Organization Details</span>
+              <IconButton onClick={handleClose}>
+                <Icon>close</Icon>
+              </IconButton>
+            </div>
           </DialogTitle>
           <DialogContent>
-            <TextForm
-              label={"Organization Name"}
-              placeholder="Organization Name"
-              fieldValue={openModal?.SeeDetailsModalobj?.OrgName}
-            ></TextForm>
-            <TextForm
-              label={"Country"}
-              fieldValue={openModal?.SeeDetailsModalobj?.countryName}
-              placeholder="Countery Name"
-            ></TextForm>
-            <TextForm
-              label={"StateName"}
-              fieldValue={openModal?.SeeDetailsModalobj?.stateName}
-              placeholder="State Name"
-            ></TextForm>
-            <TextForm
-              label={"City"}
-              fieldValue={openModal?.SeeDetailsModalobj?.city}
-              placeholder="City Name"
-            ></TextForm>
-            <TextForm
-              label={"Member Count"}
-              fieldValue={openModal?.SeeDetailsModalobj?.Membercount}
-              placeholder="Member count"
-            ></TextForm>
+            <div className="TextFormDivWatch">
+              <TextForm
+                label={"Organization Name"}
+                placeholder="Organization Name"
+                fieldValue={openModal?.SeeDetailsModalobj?.OrgName}
+                disabled
+                maxWidth={"100px"}
+                fullWidth
+                className="TextFormInputWatch"
+              ></TextForm>
+              <TextForm
+                label={"Country"}
+                fieldValue={openModal?.SeeDetailsModalobj?.countryName}
+                placeholder="Countery Name"
+                disabled
+              ></TextForm>
+              <TextForm
+                label={"StateName"}
+                fieldValue={openModal?.SeeDetailsModalobj?.stateName}
+                placeholder="State Name"
+                disabled
+              ></TextForm>
+              <TextForm
+                label={"City"}
+                fieldValue={openModal?.SeeDetailsModalobj?.city}
+                placeholder="City Name"
+                disabled
+              ></TextForm>
+              <TextForm
+                label={"Member Count"}
+                fieldValue={openModal?.SeeDetailsModalobj?.Membercount}
+                placeholder="Member count"
+                disabled
+              ></TextForm>
+            </div>
           </DialogContent>
 
           <DialogActions>
-            <div className="al-flex al-v-center al-spc-btw al-flex1">
-              <Typography>
-                *Duplicate records will not be compared, they will be dropped
-                and saved separately.
-              </Typography>
-              <div className="al-flex">
+            <div>
+              <div className="al-flex AlbabottonBack">
                 <AlbaButton
                   variant="danger"
                   onClick={() => {
                     handleClose();
                   }}
                 >
-                  {step != 1 ? <span>Back</span> : <span>Cancel</span>}
+                  Back
                 </AlbaButton>
-                {/* <AlbaButton variant="primary" loading={isLoadingProceedButton} onClick={handleProceed}>
-                   {step != 2 ? <span>Next</span> : <span>Confirm</span>}
-                 </AlbaButton> */}
               </div>
             </div>
           </DialogActions>

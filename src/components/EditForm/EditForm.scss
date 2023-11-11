@@ -1,4 +1,5 @@
-.modal_title{
+
+.formHead{
 display: flex;
 justify-content: space-between;
 }
@@ -63,3 +64,121 @@ justify-content: space-between;
 //     }
 //   }
   
+
+// .modalContainer {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 500px;
+//   padding: 0; /* Remove top and bottom padding */
+//   background-color: #fff;
+//   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border-radius: 10px;
+//   padding-left: 2%;
+//   padding-right: 2%;
+//   padding-bottom: 2%;
+// }
+// .modalTitleContainer {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   width: 100%;
+//   padding: 10px;
+//   margin-bottom: 1rem;
+// }
+// .modalHeading {
+//   font-size: 24px;
+//   color: teal;
+// }
+
+
+
+
+// .__add-product__modal {
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   padding: 20px;
+
+  // .__modal__title {
+  //   width: 100%;
+  //   display: flex;
+  //   justify-content: "space-between";
+  //   align-items: "center";
+  // }
+.compare-files-dialog {
+  .MuiDialog-paperWidthSm {
+    width: 700px;
+
+  }
+}
+.__modal__content {
+  padding: 16px 24px;
+  width: 600px;
+
+  .__formWrapper {
+    display: flex;
+    flex-direction: column;
+    .__body {
+      margin: 8px 0;
+      display: flex;
+      min-width: 500px;
+      flex-direction: row;
+      justify-content: space-between;
+
+      align-items: center;
+      flex-grow: 1;
+      .__label {
+        flex: 2 1 0;
+      }
+      .__gap {
+        flex: 1 1 0;
+      }
+      .__actual {
+        flex: 6 1 0;
+        .__input_custom {
+          width: 100%;
+        }
+      }
+    }
+    .__buttonBody {
+      margin: 16px 0 0 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      .__button {
+        margin-left: 20px;
+      }
+    }
+
+    .__check_default {
+      margin: 3px 0;
+      width: fit-content;
+      gap: 5px;
+    }
+  }
+}
+.buttonContainer {
+  .saveBtn {
+    margin: 5px;
+    background: teal;
+    color: white;
+    font-weight: 700;
+  }
+  .cancelBtn {
+    margin: 5px;
+    background: rgb(223, 10, 38);
+    color: white;
+    font-weight: 700;
+  }
+}
+//   .MuiSelect-select.MuiSelect-select {
+//     padding-right: 24px;
+//     margin-top: 28px;
+// }
+// }
+

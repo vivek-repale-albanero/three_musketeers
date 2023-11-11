@@ -6,7 +6,6 @@ import csv2 from "../assests/csv2.png";
 import csv3 from "../assests/csv3.png";
 import csv4 from "../assests/csv4.png";
 import {
-  Button,
   Typography,
   Container,
   Box,
@@ -228,8 +227,7 @@ const CsvPage = () => {
             <BreadCrumb />
           </div>
           <AlbaButton
-            variant="contained"
-            className="add-button"
+             variant="success"
             onClick={handleOpen}
           >
             Add File

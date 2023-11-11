@@ -5,12 +5,16 @@ import {
   AccordionDetails,
   Box,
 } from '@material-ui/core';
+import {
+  ShowSnackbar
+} from '@platform/service-ui-libraries';
 import './PermissionPage.scss';
 import { PermissionContext } from '../Context';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Layout from '../Layout/Layout';
 import axios from "axios"
 import BreadCrumb from '../components/Breadcrumbs/BreadCrumb';
+import { updatePermission } from '../api/api';
 const PermissionPage = () => {
   const [permissions, setPermissions] = useState({});
   const { local, setLocal } = useContext(PermissionContext)
@@ -126,17 +130,14 @@ const PermissionPage = () => {
     // Update local storage
     localStorage.setItem("useLogedId", JSON.stringify(updatedUser));
     setLocal(!local)
-
-    //updata data in database
-    axios.patch(`http://localhost:3000/users/${user.id}`, updatedUser)
-      .then(res => {
-        alert('Updated successfully');
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+    updatePermissionFn(updatedUser)
   };
-
+  const updatePermissionFn = async (updatedUser) => {
+    const { response, error } = await updatePermission(updatedUser);
+    if (response?.status == 200) {
+      ShowSnackbar(true, "success", "Permission Updated Successfully");
+    }
+  };
 
   return (
     <Layout>
@@ -159,7 +160,7 @@ const PermissionPage = () => {
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               <div className="user-permission-container">
                 {Object.entries(permissions).map(([mainKey, mainPermission]) => (
-                  <Accordion key={mainKey} style={{ width: "500px" }}>
+                  <Accordion key={mainKey} className='mainCheckBox'>
                     <AccordionSummary>
                       <FormGroup>
                         <FormControlLabel

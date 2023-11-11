@@ -18,7 +18,11 @@ import PrivateGameRoute from "./components/PrivateGameRoute";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
-import {BreadcrumbsBar} from "@platform/service-ui-libraries";
+import {fetchUsers} from "./api/api"
+import EComPage from "./Pages/ECom";
+import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
+
+
 
 
 
@@ -30,15 +34,12 @@ export default function Root() {
   const [users, setUsers] = useState([]);
   const [local,setLocal]=useState(false)
   const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
+  const fetchAllUsers=async () => {
+    const { response, error } = await fetchUsers();
+    setUsers(response.data);
+  }
   useEffect(() => {
-    fetch('http://localhost:3000/users')
-    .then((res) => res.json())
-    .then((data) => {
-      setUsers(data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    fetchAllUsers()
   },[]);
 
   useEffect(()=>{
@@ -82,6 +83,11 @@ export default function Root() {
           <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />
 
 
+          <Route exact path="/e-com" render={()=> <EComPage/>} />
+          <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
+
+
+          
 
 
         </Switch>
