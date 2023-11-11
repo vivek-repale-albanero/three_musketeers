@@ -1,24 +1,20 @@
 .MissingPageMainDiv {
-
     // border: 1px solid red;
     text-align: center;
     width: 100%;
     margin: auto;
 
-
     .AddButton {
         background-color: teal;
         color: white;
-
     }
 
     .AddButton:hover {
-        background-color: rgb(17, 68, 68)
+        background-color: rgb(17, 68, 68);
     }
 
     .AddButton {
         margin: 50px;
-
     }
 
     .TableContainer {
@@ -26,33 +22,65 @@
         margin: auto;
         padding: 1%;
     }
-
 }
 
 .PlatformTableDiv {
     margin: 10%;
-    overflow-y: scroll;
-    height: 700px;
 
-    .ALbaButton{
-        text-align: right;
-        margin: auto;
-    }
-
-    button{
-       padding: 10px;
-       background-color: teal;
+    button {
+        padding: 10px;
+        background-color: teal;
         margin: auto;
         color: white;
     }
-    .AddOrgModal{
+
+    .AddOrgModal {
         width: 500px;
         // height: 700px;
     }
-    // .SeeDetailsModal{
-    //     padding: 50px;
-    // }
+
     .MuiPaper-root {
         width: 40%;
     }
+
+    .AlbabottonBack {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.TextFormDivWatch {
+    display: block;
+    width: 80%;
+    // border: 1px solid red;
+    margin: auto;
+}
+
+.Addmemberbutton {
+    border: 1px solid black;
+}
+
+.table {
+    margin-top: 20px;
+    tbody {
+        display: block;
+        overflow-y: auto;
+        height: 460px;
+    }
+
+    thead,
+    tbody tr{
+        display: table;
+        width: 100%; 
+        background-color: #d9dde0;
+        table-layout: fixed;
+    }
+
+    
+   
 }
