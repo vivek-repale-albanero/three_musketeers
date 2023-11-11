@@ -135,7 +135,6 @@ const CsvTable = () => {
                           <AlbaButton
                           variant="success"
                           onClick={() => openEditModal(rowIndex)}
-                          disabled={EditPermission}
                         >
                           Edit
                         </AlbaButton>
@@ -179,7 +178,6 @@ const CsvTable = () => {
                   <AlbaButton
                   variant="success"
                   onClick={handleDownloadEditedFile}
-                  disabled={DownlodPermission}
                 >
                   Download Edited File
                 </AlbaButton>

@@ -219,7 +219,7 @@ function Test() {
     }),
   });
   return (
-    <Layout>
+    <>
       <Table
         tableProps={{
           ...tableProps,
@@ -249,8 +249,7 @@ function Test() {
           isAdding={false}
         />
       )}
-     </Layout>
-
+    </>
   );
 }
 export default Test;

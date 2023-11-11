@@ -24,9 +24,10 @@ import EditForm from "../../components/EditForm/EditForm";
 import { useHistory } from "react-router-dom";
 import { PermissionContext, UsersContext } from "../../Context";
 import UsersUITable from "./Table/UsersUITable";
+import { addUser_UsersPage,users_Fetch,editUser_usersPage,deleteUser_api } from "../../api/api";
 
 function UsersPage() {
-  const { users, setUsers, handlePermissionModalOpen, currentUser,setUnAuthMsg } =
+  const { users, setUsers, handlePermissionModalOpen, currentUser,setUnAuthMsg,setBreadCrumbProps ,breadcrumbProps} =
     useContext(PermissionContext);
     const history = useHistory();
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
@@ -110,31 +111,40 @@ function UsersPage() {
     });
   };
 
+  const users_fetchData = async()=>{
+    const {response,error} = await users_Fetch()
+    setUsers(response.data)
+    // return response.data
+  }
+  const AddUser = async(userData)=>{
+    const {response,error} = await addUser_UsersPage(userData)
+    console.log("res",response)
+  }
+  const editUser = async (userId) =>{
+    const {response,error} =editUser_usersPage(userId)
+  }
+
   const saveUserData = (editedUserData) => {
     if (!userFormModal.edit) {
-      fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(editedUserData),
-      })
-        .then((response) => afterEdit())
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+        //  console.log("editData",editedUserData)
+        AddUser(editedUserData)
+        users_fetchData();
+        console.log("useradd",users)
     } else {
       const updateduser = editedUserData;
       const updatedUsersList = users
         .map((user) => (user.id === updateduser.id ? { ...updateduser } : user))
         .filter((user) => user.id === updateduser.id);
-        fetch(`http://localhost:3000/users/${updatedUsersList[0].id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedUsersList[0]),
-      })
+        
+        editUser(updatedUsersList[0]);
+        users_fetchData()
+      //   fetch(`http://localhost:3000/users/${updatedUsersList[0].id}`, {
+      //   method: "PATCH",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(updatedUsersList[0]),
+      // })
         .then((response) => afterEdit())
         .catch((error) => {
           console.error("Error:", error);
@@ -143,14 +153,17 @@ function UsersPage() {
     closeModal();
   };
   //Delete User
-  const deleteUser = (userId) => {
-    fetch(`http://localhost:3000/users/${userId}`, {
-      method: "DELETE",
-    })
-      .then((res) => afterEdit())
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  const deleteUser = async(userId) => {
+
+    const{response,erro} = await deleteUser_api(userId) 
+    users_fetchData()
+    // fetch(`http://localhost:3000/users/${userId}`, {
+    //   method: "DELETE",
+    // })
+    //   .then((res) => afterEdit())
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   };
 
   const authMsgFn = (user) => {
@@ -169,12 +182,27 @@ function UsersPage() {
     const updatedResults = await searchResults.json();
     setUsers(updatedResults);
   };
-const   handleOnChangePage = () =>{}
-const handleOnChangePageSize= () =>{}
+  const   handleOnChangePage = () =>{}
+  const handleOnChangePageSize= () =>{}
+  const [actionComponents, setActionComponents] = useState([]);
+  
+  const addUsersButton = ()=>{
+    return(
+    <AlbaButton
+    variant="success"
+    onClick={openAddModal}
+  >
+    Add Users
+  </AlbaButton>
+  )};
 
-  // useEffect(()=>{
-  //   handleSearch(searchText);
-  // },[searchText])
+  useEffect(()=>{
+    setBreadCrumbProps({ navLinks: [], activeLink: { name: "users" } });
+    setActionComponents([addUsersButton])
+  },[])
+
+  console.log("breadcrumb",breadcrumbProps)
+
   const usersListTableMetadata = (actions) => {
     console.log("actions",actions)
     return {
@@ -184,9 +212,7 @@ const handleOnChangePageSize= () =>{}
            fixed: true,
            id: 'SELECT_ROWS',
            isComponent: true,
-          
-          
-          name: 'Checkbox'
+           name: 'Checkbox'
           },
         { name: "ID", id: "id", searchable: true },
         { name: "First Name", id: "user.firstName", searchable: true },
@@ -201,7 +227,7 @@ const handleOnChangePageSize= () =>{}
           props: {
             actions: [
               {
-                icon: "visibility",
+                icon: "edit",
                 title: "Edit details",
                 isComponent: true,
                 componentId: "CLICK_ACTION",
@@ -242,7 +268,6 @@ const handleOnChangePageSize= () =>{}
     };
   };
 
-  const [actionComponents, setActionComponents] = useState([]);
   // const [tableProps,setTableProps] = useState({
   //   ...usersListTableMetadata()
   // })
@@ -283,19 +308,6 @@ const handleOnChangePageSize= () =>{}
     <>
       <Layout>
         <UsersContext.Provider value={userPageValue}>
-          <Box className="title" style={{ display: "flex" }}>
-            <Typography style={{ fontSize: "24px" }}>
-              Users List <BreadCrumb />
-            </Typography>
-            <AlbaButton
-              variant="success"
-              // className="addBtn"
-              onClick={openAddModal}
-            >
-              Add Users
-            </AlbaButton>
-            {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
-          </Box>
           <Container maxWidth="100%" className="tableContent">
             <Table
               tableProps={{
@@ -313,6 +325,7 @@ const handleOnChangePageSize= () =>{}
               }}
             />
             {console.log(userFormModal, "userForm")}
+            {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
             {userFormModal.status && userFormModal.edit ? <EditForm /> : null}
           </Container>
           {/* <UsersUITable/> */}
