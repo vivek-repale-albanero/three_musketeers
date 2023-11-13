@@ -1,15 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@material-ui/core";
-import {
   FormControlLabel,
   Checkbox,
   AlbaButton,
   Icon,
-  Box
+  Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@platform/service-ui-libraries";
 import { ShowSnackbar } from "@platform/service-ui-libraries";
 import "./PermissionPage.scss";

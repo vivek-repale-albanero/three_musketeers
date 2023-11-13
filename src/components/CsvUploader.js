@@ -9,7 +9,8 @@ import {
   DraggableModal,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Backdrop
 } from "@platform/service-ui-libraries";
 import "./CsvUploader.scss";
 import { CSVContext } from "../Context";
@@ -32,6 +33,11 @@ const CsvUploader = () => {
       PaperComponent={DraggableModal}
       maxWidth={"xs"}
       fullWidth
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500
+      }}
     >
         <DialogTitle id="draggable-dialog-title">
       <div className="csv-modal-head">

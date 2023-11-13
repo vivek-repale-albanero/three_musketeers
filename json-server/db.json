@@ -47,8 +47,8 @@
           "allow": true,
           "subModules": {
             "csvPagePermission": true,
-            "csvEditPermission": false,
-            "csvDownloadPermission": false
+            "csvEditPermission": true,
+            "csvDownloadPermission": true
           }
         },
         "gamePermission": {
