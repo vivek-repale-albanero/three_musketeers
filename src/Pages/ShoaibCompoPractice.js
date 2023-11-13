@@ -5,6 +5,7 @@ import CustomTable from "../components/ShoaibPracticeComp/CustomTable";
 import { MissingPageContext } from "../Context";
 import data from "../Pages/ORGdata.json";
 import "../styles/MissingPage.scss";
+import * as list from '@platform/service-ui-libraries'
 import { DialogTitle } from "@platform/service-ui-libraries";
 function ShoaibCompoPractice() {
   const [orgdata, setorgdata] = useState(data);

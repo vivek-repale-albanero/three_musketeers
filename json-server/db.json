@@ -2,7 +2,7 @@
   "users": [
     {
       "user": {
-        "userName": "Eswar@0110",
+        "userName": "Eswar@0",
         "firstName": "Esw",
         "lastName": "Chandran"
       },
@@ -168,277 +168,4054 @@
   ],
   "Metadata": [
     {
-      "id": 16,
-      "OrgName": "TechSolutions Ltd.",
-      "countryName": "India",
-      "stateName": "Maharashtra",
-      "city": "Mumbai"
+      "id": 1,
+      "OrgName": "Albanero",
+      "country": [
+        {
+          "countryName": "India",
+          "states": [
+            {
+              "stateName": "Rajasthan",
+              "cities": [
+                "Rajsamand",
+                "Udaipur",
+                "Chittorgarh",
+                "Jaipur",
+                "Ajmer"
+              ]
+            },
+            {
+              "stateName": "West Bengal",
+              "cities": [
+                "Kolkata",
+                "Durgapur",
+                "Khadakpur",
+                "Asansol",
+                "Siliguri"
+              ]
+            },
+            {
+              "stateName": "Telangana",
+              "cities": [
+                "Hyderabad",
+                "Warangal",
+                "Nizamabad",
+                "Khammam",
+                "Karimnagar"
+              ]
+            },
+            {
+              "stateName": "Bihar",
+              "cities": [
+                "Munger",
+                "Madhubani",
+                "Muzaffarpur",
+                "Jehanabad",
+                "Aurangabad"
+              ]
+            },
+            {
+              "stateName": "Maharashtra",
+              "cities": [
+                "Mumbai",
+                "Pune",
+                "Nagpur",
+                "Nashik",
+                "Thane"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "unitedStates",
+          "states": [
+            {
+              "stateName": "California",
+              "cities": [
+                "Los Angeles",
+                "San Francisco",
+                "San Diego",
+                "Sacramento",
+                "San Jose"
+              ]
+            },
+            {
+              "stateName": "New York",
+              "cities": [
+                "New York City",
+                "Buffalo",
+                "Albany",
+                "Rochester",
+                "Syracuse"
+              ]
+            },
+            {
+              "stateName": "Texas",
+              "cities": [
+                "Houston",
+                "Dallas",
+                "Austin",
+                "San Antonio",
+                "Fort Worth"
+              ]
+            },
+            {
+              "stateName": "Florida",
+              "cities": [
+                "Miami",
+                "Orlando",
+                "Tampa",
+                "Jacksonville",
+                "Fort Lauderdale"
+              ]
+            },
+            {
+              "stateName": "Illinois",
+              "cities": [
+                "Chicago",
+                "Springfield",
+                "Rockford",
+                "Aurora",
+                "Naperville"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "United Kingdom",
+          "states": [
+            {
+              "stateName": "England",
+              "cities": [
+                "London",
+                "Manchester",
+                "Birmingham",
+                "Liverpool",
+                "Leeds"
+              ]
+            },
+            {
+              "stateName": "Scotland",
+              "cities": [
+                "Glasgow",
+                "Edinburgh",
+                "Aberdeen",
+                "Dundee",
+                "Inverness"
+              ]
+            },
+            {
+              "stateName": "Wales",
+              "cities": [
+                "Cardiff",
+                "Swansea",
+                "Newport",
+                "Wrexham",
+                "Barry"
+              ]
+            },
+            {
+              "stateName": "Northern Ireland",
+              "cities": [
+                "Belfast",
+                "Derry",
+                "Lisburn",
+                "Newry",
+                "Armagh"
+              ]
+            },
+            {
+              "stateName": "Isle of Man",
+              "cities": [
+                "Douglas",
+                "Peel",
+                "Ramsey",
+                "Castletown",
+                "Port Erin"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Australia",
+          "states": [
+            {
+              "stateName": "New South Wales",
+              "cities": [
+                "Sydney",
+                "Newcastle",
+                "Wollongong",
+                "Central Coast",
+                "Blue Mountains"
+              ]
+            },
+            {
+              "stateName": "Victoria",
+              "cities": [
+                "Melbourne",
+                "Geelong",
+                "Ballarat",
+                "Bendigo",
+                "Shepparton"
+              ]
+            },
+            {
+              "stateName": "Queensland",
+              "cities": [
+                "Brisbane",
+                "Gold Coast",
+                "Sunshine Coast",
+                "Townsville",
+                "Cairns"
+              ]
+            },
+            {
+              "stateName": "Western Australia",
+              "cities": [
+                "Perth",
+                "Mandurah",
+                "Bunbury",
+                "Geraldton",
+                "Kalgoorlie"
+              ]
+            },
+            {
+              "stateName": "South Australia",
+              "cities": [
+                "Adelaide",
+                "Mount Gambier",
+                "Whyalla",
+                "Murray Bridge",
+                "Port Lincoln"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Toronto",
+                "Ottawa",
+                "Mississauga",
+                "Hamilton",
+                "London"
+              ]
+            },
+            {
+              "stateName": "Quebec",
+              "cities": [
+                "Montreal",
+                "Quebec City",
+                "Laval",
+                "Gatineau",
+                "Longueuil"
+              ]
+            },
+            {
+              "stateName": "British Columbia",
+              "cities": [
+                "Vancouver",
+                "Surrey",
+                "Burnaby",
+                "Richmond",
+                "Abbotsford"
+              ]
+            },
+            {
+              "stateName": "Alberta",
+              "cities": [
+                "Calgary",
+                "Edmonton",
+                "Red Deer",
+                "Lethbridge",
+                "Medicine Hat"
+              ]
+            },
+            {
+              "stateName": "Manitoba",
+              "cities": [
+                "Winnipeg",
+                "Brandon",
+                "Steinbach",
+                "Portage la Prairie",
+                "Thompson"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 17,
-      "OrgName": "Futurix Innovations",
-      "countryName": "USA",
-      "stateName": "Washington",
-      "city": "Seattle"
+      "id": 2,
+      "OrgName": "Cashify",
+      "country": [
+        {
+          "countryName": "United Kingdom",
+          "states": [
+            {
+              "stateName": "England",
+              "cities": [
+                "London",
+                "Manchester",
+                "Birmingham",
+                "Liverpool",
+                "Leeds"
+              ]
+            },
+            {
+              "stateName": "Scotland",
+              "cities": [
+                "Glasgow",
+                "Edinburgh",
+                "Aberdeen",
+                "Dundee",
+                "Inverness"
+              ]
+            },
+            {
+              "stateName": "Wales",
+              "cities": [
+                "Cardiff",
+                "Swansea",
+                "Newport",
+                "Wrexham",
+                "Barry"
+              ]
+            },
+            {
+              "stateName": "Northern Ireland",
+              "cities": [
+                "Belfast",
+                "Derry",
+                "Lisburn",
+                "Newry",
+                "Armagh"
+              ]
+            },
+            {
+              "stateName": "Isle of Man",
+              "cities": [
+                "Douglas",
+                "Peel",
+                "Ramsey",
+                "Castletown",
+                "Port Erin"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "United States",
+          "states": [
+            {
+              "stateName": "California",
+              "cities": [
+                "Los Angeles",
+                "San Francisco",
+                "San Diego",
+                "Sacramento",
+                "San Jose"
+              ]
+            },
+            {
+              "stateName": "New York",
+              "cities": [
+                "New York City",
+                "Buffalo",
+                "Albany",
+                "Rochester",
+                "Syracuse"
+              ]
+            },
+            {
+              "stateName": "Texas",
+              "cities": [
+                "Houston",
+                "Dallas",
+                "Austin",
+                "San Antonio",
+                "Fort Worth"
+              ]
+            },
+            {
+              "stateName": "Florida",
+              "cities": [
+                "Miami",
+                "Orlando",
+                "Tampa",
+                "Jacksonville",
+                "Fort Lauderdale"
+              ]
+            },
+            {
+              "stateName": "Illinois",
+              "cities": [
+                "Chicago",
+                "Springfield",
+                "Rockford",
+                "Aurora",
+                "Naperville"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Toronto",
+                "Ottawa",
+                "Mississauga",
+                "Hamilton",
+                "London"
+              ]
+            },
+            {
+              "stateName": "Quebec",
+              "cities": [
+                "Montreal",
+                "Quebec City",
+                "Laval",
+                "Gatineau",
+                "Longueuil"
+              ]
+            },
+            {
+              "stateName": "British Columbia",
+              "cities": [
+                "Vancouver",
+                "Surrey",
+                "Burnaby",
+                "Richmond",
+                "Abbotsford"
+              ]
+            },
+            {
+              "stateName": "Alberta",
+              "cities": [
+                "Calgary",
+                "Edmonton",
+                "Red Deer",
+                "Lethbridge",
+                "Medicine Hat"
+              ]
+            },
+            {
+              "stateName": "Manitoba",
+              "cities": [
+                "Winnipeg",
+                "Brandon",
+                "Steinbach",
+                "Portage la Prairie",
+                "Thompson"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Australia",
+          "states": [
+            {
+              "stateName": "New South Wales",
+              "cities": [
+                "Sydney",
+                "Newcastle",
+                "Wollongong",
+                "Central Coast",
+                "Blue Mountains"
+              ]
+            },
+            {
+              "stateName": "Victoria",
+              "cities": [
+                "Melbourne",
+                "Geelong",
+                "Ballarat",
+                "Bendigo",
+                "Shepparton"
+              ]
+            },
+            {
+              "stateName": "Queensland",
+              "cities": [
+                "Brisbane",
+                "Gold Coast",
+                "Sunshine Coast",
+                "Townsville",
+                "Cairns"
+              ]
+            },
+            {
+              "stateName": "Western Australia",
+              "cities": [
+                "Perth",
+                "Mandurah",
+                "Bunbury",
+                "Geraldton",
+                "Kalgoorlie"
+              ]
+            },
+            {
+              "stateName": "South Australia",
+              "cities": [
+                "Adelaide",
+                "Mount Gambier",
+                "Whyalla",
+                "Murray Bridge",
+                "Port Lincoln"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Berlin",
+              "cities": [
+                "Berlin",
+                "Potsdam",
+                "Oranienburg",
+                "Strausberg",
+                "Bernau"
+              ]
+            },
+            {
+              "stateName": "Bavaria",
+              "cities": [
+                "Munich",
+                "Nuremberg",
+                "Augsburg",
+                "Regensburg",
+                "Ingolstadt"
+              ]
+            },
+            {
+              "stateName": "Baden-Württemberg",
+              "cities": [
+                "Stuttgart",
+                "Karlsruhe",
+                "Mannheim",
+                "Freiburg",
+                "Heidelberg"
+              ]
+            },
+            {
+              "stateName": "North Rhine-Westphalia",
+              "cities": [
+                "Cologne",
+                "Düsseldorf",
+                "Dortmund",
+                "Essen",
+                "Duisburg"
+              ]
+            },
+            {
+              "stateName": "Lower Saxony",
+              "cities": [
+                "Hanover",
+                "Braunschweig",
+                "Osnabrück",
+                "Oldenburg",
+                "Wolfsburg"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 18,
-      "OrgName": "SwiftTech Group",
-      "countryName": "Australia",
-      "stateName": "Victoria",
-      "city": "Melbourne"
+      "id": 3,
+      "OrgName": "IBM",
+      "country": [
+        {
+          "countryName": "France",
+          "states": [
+            {
+              "stateName": "Île-de-France",
+              "cities": [
+                "Paris",
+                "Versailles",
+                "Boulogne-Billancourt",
+                "Saint-Denis",
+                "Argenteuil"
+              ]
+            },
+            {
+              "stateName": "Provence-Alpes-Côte d'Azur",
+              "cities": [
+                "Marseille",
+                "Nice",
+                "Toulon",
+                "Avignon",
+                "Antibes"
+              ]
+            },
+            {
+              "stateName": "Auvergne-Rhône-Alpes",
+              "cities": [
+                "Lyon",
+                "Grenoble",
+                "Saint-Étienne",
+                "Clermont-Ferrand",
+                "Villeurbanne"
+              ]
+            },
+            {
+              "stateName": "Occitanie",
+              "cities": [
+                "Toulouse",
+                "Montpellier",
+                "Nîmes",
+                "Perpignan",
+                "Béziers"
+              ]
+            },
+            {
+              "stateName": "Nouvelle-Aquitaine",
+              "cities": [
+                "Bordeaux",
+                "Limoges",
+                "Pau",
+                "La Rochelle",
+                "Angoulême"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "China",
+          "states": [
+            {
+              "stateName": "Beijing",
+              "cities": [
+                "Beijing",
+                "Chaoyang",
+                "Haidian",
+                "Fengtai",
+                "Dongcheng"
+              ]
+            },
+            {
+              "stateName": "Shanghai",
+              "cities": [
+                "Shanghai",
+                "Huangpu",
+                "Xuhui",
+                "Changning",
+                "Jing'an"
+              ]
+            },
+            {
+              "stateName": "Guangdong",
+              "cities": [
+                "Guangzhou",
+                "Shenzhen",
+                "Dongguan",
+                "Foshan",
+                "Zhuhai"
+              ]
+            },
+            {
+              "stateName": "Jiangsu",
+              "cities": [
+                "Nanjing",
+                "Suzhou",
+                "Wuxi",
+                "Changzhou",
+                "Nantong"
+              ]
+            },
+            {
+              "stateName": "Zhejiang",
+              "cities": [
+                "Hangzhou",
+                "Ningbo",
+                "Wenzhou",
+                "Jiaxing",
+                "Huzhou"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Brazil",
+          "states": [
+            {
+              "stateName": "São Paulo",
+              "cities": [
+                "São Paulo",
+                "Guarulhos",
+                "Campinas",
+                "São Bernardo do Campo",
+                "Santo André"
+              ]
+            },
+            {
+              "stateName": "Rio de Janeiro",
+              "cities": [
+                "Rio de Janeiro",
+                "Nova Iguaçu",
+                "Duque de Caxias",
+                "Niterói",
+                "Belford Roxo"
+              ]
+            },
+            {
+              "stateName": "Minas Gerais",
+              "cities": [
+                "Belo Horizonte",
+                "Uberlândia",
+                "Contagem",
+                "Betim",
+                "Juiz de Fora"
+              ]
+            },
+            {
+              "stateName": "Bahia",
+              "cities": [
+                "Salvador",
+                "Feira de Santana",
+                "Vitória da Conquista",
+                "Camaçari",
+                "Itabuna"
+              ]
+            },
+            {
+              "stateName": "Paraná",
+              "cities": [
+                "Curitiba",
+                "Londrina",
+                "Maringá",
+                "Ponta Grossa",
+                "Cascavel"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Japan",
+          "states": [
+            {
+              "stateName": "Tokyo",
+              "cities": [
+                "Tokyo",
+                "Yokohama",
+                "Osaka",
+                "Nagoya",
+                "Sapporo"
+              ]
+            },
+            {
+              "stateName": "Kanagawa",
+              "cities": [
+                "Yokohama",
+                "Kawasaki",
+                "Sagamihara",
+                "Yokosuka",
+                "Fujisawa"
+              ]
+            },
+            {
+              "stateName": "Osaka",
+              "cities": [
+                "Osaka",
+                "Sakai",
+                "Higashiosaka",
+                "Kishiwada",
+                "Suita"
+              ]
+            },
+            {
+              "stateName": "Aichi",
+              "cities": [
+                "Nagoya",
+                "Toyota",
+                "Okazaki",
+                "Ichinomiya",
+                "Toyohashi"
+              ]
+            },
+            {
+              "stateName": "Hokkaido",
+              "cities": [
+                "Sapporo",
+                "Asahikawa",
+                "Hakodate",
+                "Tomakomai",
+                "Obihiro"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Russia",
+          "states": [
+            {
+              "stateName": "Moscow",
+              "cities": [
+                "Moscow",
+                "Saint Petersburg",
+                "Novosibirsk",
+                "Yekaterinburg",
+                "Nizhny Novgorod"
+              ]
+            },
+            {
+              "stateName": "Saint Petersburg",
+              "cities": [
+                "Saint Petersburg",
+                "Novosibirsk",
+                "Yekaterinburg",
+                "Nizhny Novgorod",
+                "Kazan"
+              ]
+            },
+            {
+              "stateName": "Novosibirsk Oblast",
+              "cities": [
+                "Novosibirsk",
+                "Berdkul",
+                "Cherepanovo",
+                "Karasuk",
+                "Iskitim"
+              ]
+            },
+            {
+              "stateName": "Sverdlovsk Oblast",
+              "cities": [
+                "Yekaterinburg",
+                "Nizhny Tagil",
+                "Kamensk-Uralsky",
+                "Serov",
+                "Polevskoy"
+              ]
+            },
+            {
+              "stateName": "Nizhny Novgorod Oblast",
+              "cities": [
+                "Nizhny Novgorod",
+                "Dzerzhinsk",
+                "Bor",
+                "Kstovo",
+                "Pavlovo"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 19,
-      "OrgName": "InnovateNow Inc.",
-      "countryName": "USA",
-      "stateName": "Colorado",
-      "city": "Denver"
+      "id": 4,
+      "OrgName": "Flipkart",
+      "country": [
+        {
+          "countryName": "South Africa",
+          "states": [
+            {
+              "stateName": "Gauteng",
+              "cities": [
+                "Johannesburg",
+                "Pretoria",
+                "Soweto",
+                "Vereeniging",
+                "Germiston"
+              ]
+            },
+            {
+              "stateName": "Western Cape",
+              "cities": [
+                "Cape Town",
+                "Stellenbosch",
+                "George",
+                "Paarl",
+                "Worcester"
+              ]
+            },
+            {
+              "stateName": "KwaZulu-Natal",
+              "cities": [
+                "Durban",
+                "Pietermaritzburg",
+                "Richards Bay",
+                "Ladysmith",
+                "Newcastle"
+              ]
+            },
+            {
+              "stateName": "Eastern Cape",
+              "cities": [
+                "Port Elizabeth",
+                "East London",
+                "Uitenhage",
+                "Mdantsane",
+                "Queenstown"
+              ]
+            },
+            {
+              "stateName": "Mpumalanga",
+              "cities": [
+                "Nelspruit",
+                "Mbombela",
+                "Witbank",
+                "Secunda",
+                "Middelburg"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Italy",
+          "states": [
+            {
+              "stateName": "Lazio",
+              "cities": [
+                "Rome",
+                "Latina",
+                "Frosinone",
+                "Viterbo",
+                "Rieti"
+              ]
+            },
+            {
+              "stateName": "Lombardy",
+              "cities": [
+                "Milan",
+                "Bergamo",
+                "Brescia",
+                "Pavia",
+                "Cremona"
+              ]
+            },
+            {
+              "stateName": "Sicily",
+              "cities": [
+                "Palermo",
+                "Catania",
+                "Messina",
+                "Syracuse",
+                "Marsala"
+              ]
+            },
+            {
+              "stateName": "Campania",
+              "cities": [
+                "Naples",
+                "Salerno",
+                "Torre del Greco",
+                "Giugliano in Campania",
+                "Pozzuoli"
+              ]
+            },
+            {
+              "stateName": "Veneto",
+              "cities": [
+                "Venice",
+                "Verona",
+                "Padua",
+                "Vicenza",
+                "Treviso"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Mexico",
+          "states": [
+            {
+              "stateName": "Mexico City",
+              "cities": [
+                "Mexico City",
+                "Ecatepec",
+                "Nezahualcóyotl",
+                "Naucalpan",
+                "Toluca"
+              ]
+            },
+            {
+              "stateName": "Jalisco",
+              "cities": [
+                "Guadalajara",
+                "Zapopan",
+                "Tlaquepaque",
+                "Tonalá",
+                "Puerto Vallarta"
+              ]
+            },
+            {
+              "stateName": "Nuevo León",
+              "cities": [
+                "Monterrey",
+                "Guadalupe",
+                "San Nicolás de los Garza",
+                "Apodaca",
+                "General Escobedo"
+              ]
+            },
+            {
+              "stateName": "Puebla",
+              "cities": [
+                "Puebla",
+                "Tehuacán",
+                "San Martín Texmelucan",
+                "Cholula",
+                "Izúcar de Matamoros"
+              ]
+            },
+            {
+              "stateName": "Guanajuato",
+              "cities": [
+                "León",
+                "Irapuato",
+                "Salamanca",
+                "Celaya",
+                "Acámbaro"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Argentina",
+          "states": [
+            {
+              "stateName": "Buenos Aires",
+              "cities": [
+                "Buenos Aires",
+                "La Plata",
+                "Mar del Plata",
+                "Bahía Blanca",
+                "Lomas de Zamora"
+              ]
+            },
+            {
+              "stateName": "Córdoba",
+              "cities": [
+                "Córdoba",
+                "Villa María",
+                "Río Cuarto",
+                "Alta Gracia",
+                "Bell Ville"
+              ]
+            },
+            {
+              "stateName": "Santa Fe",
+              "cities": [
+                "Rosario",
+                "Santa Fe",
+                "Venado Tuerto",
+                "Rafaela",
+                "Santo Tomé"
+              ]
+            },
+            {
+              "stateName": "Mendoza",
+              "cities": [
+                "Mendoza",
+                "San Rafael",
+                "San Martín",
+                "Malargüe",
+                "Tunuyán"
+              ]
+            },
+            {
+              "stateName": "Tucumán",
+              "cities": [
+                "San Miguel de Tucumán",
+                "Concepción",
+                "Banda del Río Salí",
+                "Tafí Viejo",
+                "Aguilares"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Spain",
+          "states": [
+            {
+              "stateName": "Madrid",
+              "cities": [
+                "Madrid",
+                "Móstoles",
+                "Alcalá de Henares",
+                "Fuenlabrada",
+                "Leganés"
+              ]
+            },
+            {
+              "stateName": "Catalonia",
+              "cities": [
+                "Barcelona",
+                "L'Hospitalet de Llobregat",
+                "Badalona",
+                "Terrassa",
+                "Sabadell"
+              ]
+            },
+            {
+              "stateName": "Andalusia",
+              "cities": [
+                "Seville",
+                "Málaga",
+                "Córdoba",
+                "Granada",
+                "Jerez de la Frontera"
+              ]
+            },
+            {
+              "stateName": "Valencia",
+              "cities": [
+                "Valencia",
+                "Alicante",
+                "Elche",
+                "Castellón de la Plana",
+                "Torrevieja"
+              ]
+            },
+            {
+              "stateName": "Galicia",
+              "cities": [
+                "Vigo",
+                "A Coruña",
+                "Ourense",
+                "Lugo",
+                "Pontevedra"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 20,
-      "OrgName": "TechWave Solutions",
-      "countryName": "UK",
-      "stateName": "Wales",
-      "city": "Cardiff"
+      "id": 5,
+      "OrgName": "Amazon",
+      "country": [
+        {
+          "countryName": "India",
+          "states": [
+            {
+              "stateName": "Maharashtra",
+              "cities": [
+                "Mumbai",
+                "Pune",
+                "Nagpur",
+                "Nashik",
+                "Thane"
+              ]
+            },
+            {
+              "stateName": "Uttar Pradesh",
+              "cities": [
+                "Lucknow",
+                "Kanpur",
+                "Agra",
+                "Varanasi",
+                "Prayagraj"
+              ]
+            },
+            {
+              "stateName": "Karnataka",
+              "cities": [
+                "Bengaluru",
+                "Mysuru",
+                "Hubli-Dharwad",
+                "Mangaluru",
+                "Belagavi"
+              ]
+            },
+            {
+              "stateName": "Gujarat",
+              "cities": [
+                "Ahmedabad",
+                "Surat",
+                "Vadodara",
+                "Rajkot",
+                "Bhavnagar"
+              ]
+            },
+            {
+              "stateName": "West Bengal",
+              "cities": [
+                "Kolkata",
+                "Asansol",
+                "Siliguri",
+                "Durgapur",
+                "Howrah"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Japan",
+          "states": [
+            {
+              "stateName": "Tokyo",
+              "cities": [
+                "Tokyo",
+                "Yokohama",
+                "Osaka",
+                "Nagoya",
+                "Sapporo"
+              ]
+            },
+            {
+              "stateName": "Kanagawa",
+              "cities": [
+                "Yokohama",
+                "Kawasaki",
+                "Sagamihara",
+                "Yokosuka",
+                "Fujisawa"
+              ]
+            },
+            {
+              "stateName": "Osaka",
+              "cities": [
+                "Osaka",
+                "Sakai",
+                "Higashiosaka",
+                "Kishiwada",
+                "Suita"
+              ]
+            },
+            {
+              "stateName": "Aichi",
+              "cities": [
+                "Nagoya",
+                "Toyota",
+                "Okazaki",
+                "Ichinomiya",
+                "Toyohashi"
+              ]
+            },
+            {
+              "stateName": "Hokkaido",
+              "cities": [
+                "Sapporo",
+                "Asahikawa",
+                "Hakodate",
+                "Tomakomai",
+                "Obihiro"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Brazil",
+          "states": [
+            {
+              "stateName": "São Paulo",
+              "cities": [
+                "São Paulo",
+                "Guarulhos",
+                "Campinas",
+                "São Bernardo do Campo",
+                "Santo André"
+              ]
+            },
+            {
+              "stateName": "Rio de Janeiro",
+              "cities": [
+                "Rio de Janeiro",
+                "Nova Iguaçu",
+                "Duque de Caxias",
+                "Niterói",
+                "Belford Roxo"
+              ]
+            },
+            {
+              "stateName": "Minas Gerais",
+              "cities": [
+                "Belo Horizonte",
+                "Uberlândia",
+                "Contagem",
+                "Betim",
+                "Juiz de Fora"
+              ]
+            },
+            {
+              "stateName": "Bahia",
+              "cities": [
+                "Salvador",
+                "Feira de Santana",
+                "Vitória da Conquista",
+                "Camaçari",
+                "Itabuna"
+              ]
+            },
+            {
+              "stateName": "Paraná",
+              "cities": [
+                "Curitiba",
+                "Londrina",
+                "Maringá",
+                "Ponta Grossa",
+                "Cascavel"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "United States",
+          "states": [
+            {
+              "stateName": "California",
+              "cities": [
+                "Los Angeles",
+                "San Francisco",
+                "San Diego",
+                "Sacramento",
+                "San Jose"
+              ]
+            },
+            {
+              "stateName": "New York",
+              "cities": [
+                "New York City",
+                "Buffalo",
+                "Albany",
+                "Rochester",
+                "Syracuse"
+              ]
+            },
+            {
+              "stateName": "Texas",
+              "cities": [
+                "Houston",
+                "Dallas",
+                "Austin",
+                "San Antonio",
+                "Fort Worth"
+              ]
+            },
+            {
+              "stateName": "Florida",
+              "cities": [
+                "Miami",
+                "Orlando",
+                "Tampa",
+                "Jacksonville",
+                "Fort Lauderdale"
+              ]
+            },
+            {
+              "stateName": "Illinois",
+              "cities": [
+                "Chicago",
+                "Springfield",
+                "Rockford",
+                "Aurora",
+                "Naperville"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Russia",
+          "states": [
+            {
+              "stateName": "Moscow",
+              "cities": [
+                "Moscow",
+                "Saint Petersburg",
+                "Novosibirsk",
+                "Yekaterinburg",
+                "Nizhny Novgorod"
+              ]
+            },
+            {
+              "stateName": "Saint Petersburg",
+              "cities": [
+                "Saint Petersburg",
+                "Novosibirsk",
+                "Yekaterinburg",
+                "Nizhny Novgorod",
+                "Kazan"
+              ]
+            },
+            {
+              "stateName": "Novosibirsk Oblast",
+              "cities": [
+                "Novosibirsk",
+                "Berdkul",
+                "Cherepanovo",
+                "Karasuk",
+                "Iskitim"
+              ]
+            },
+            {
+              "stateName": "Sverdlovsk Oblast",
+              "cities": [
+                "Yekaterinburg",
+                "Nizhny Tagil",
+                "Kamensk-Uralsky",
+                "Serov",
+                "Polevskoy"
+              ]
+            },
+            {
+              "stateName": "Nizhny Novgorod Oblast",
+              "cities": [
+                "Nizhny Novgorod",
+                "Dzerzhinsk",
+                "Bor",
+                "Kstovo",
+                "Pavlovo"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 21,
-      "OrgName": "FutureGrowth Ltd.",
-      "countryName": "India",
-      "stateName": "Delhi",
-      "city": "New Delhi"
+      "id": 6,
+      "OrgName": "TechWare",
+      "country": [
+        {
+          "countryName": "France",
+          "states": [
+            {
+              "stateName": "Île-de-France",
+              "cities": [
+                "Paris",
+                "Marseille",
+                "Lyon",
+                "Toulouse",
+                "Nice"
+              ]
+            },
+            {
+              "stateName": "Provence-Alpes-Côte d'Azur",
+              "cities": [
+                "Marseille",
+                "Nice",
+                "Toulon",
+                "Aix-en-Provence",
+                "Avignon"
+              ]
+            },
+            {
+              "stateName": "Occitanie",
+              "cities": [
+                "Toulouse",
+                "Montpellier",
+                "Nîmes",
+                "Perpignan",
+                "Carcassonne"
+              ]
+            },
+            {
+              "stateName": "Auvergne-Rhône-Alpes",
+              "cities": [
+                "Lyon",
+                "Saint-Étienne",
+                "Grenoble",
+                "Clermont-Ferrand",
+                "Chambéry"
+              ]
+            },
+            {
+              "stateName": "Hauts-de-France",
+              "cities": [
+                "Lille",
+                "Amiens",
+                "Roubaix",
+                "Tourcoing",
+                "Dunkirk"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Brazil",
+          "states": [
+            {
+              "stateName": "São Paulo",
+              "cities": [
+                "Sao Paulo",
+                "Guarulhos",
+                "Campinas",
+                "Sao Bernardo do Campo",
+                "Santo Andre"
+              ]
+            },
+            {
+              "stateName": "Rio de Janeiro",
+              "cities": [
+                "Rio de Janeiro",
+                "Sao Goncalo",
+                "Duque de Caxias",
+                "Nova Iguaçu",
+                "Niteroi"
+              ]
+            },
+            {
+              "stateName": "Minas Gerais",
+              "cities": [
+                "Belo Horizonte",
+                "Contagem",
+                "Uberlandia",
+                "Juiz de Fora",
+                "Betim"
+              ]
+            },
+            {
+              "stateName": "Bahia",
+              "cities": [
+                "Salvador",
+                "Feira de Santana",
+                "Vitoria da Conquista",
+                "Camaçari",
+                "Itabuna"
+              ]
+            },
+            {
+              "stateName": "Ceará",
+              "cities": [
+                "Fortaleza",
+                "Caucaia",
+                "Juazeiro do Norte",
+                "Maracanau",
+                "Sobral"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Japan",
+          "states": [
+            {
+              "stateName": "Tokyo",
+              "cities": [
+                "Tokyo",
+                "Yokohama",
+                "Osaka",
+                "Nagoya",
+                "Sapporo"
+              ]
+            },
+            {
+              "stateName": "Osaka",
+              "cities": [
+                "Osaka",
+                "Sakai",
+                "Higashi Osaka",
+                "Hirakata",
+                "Izumisano"
+              ]
+            },
+            {
+              "stateName": "Hokkaido",
+              "cities": [
+                "Sapporo",
+                "Asahikawa",
+                "Hakodate",
+                "Obihiro",
+                "Kitami"
+              ]
+            },
+            {
+              "stateName": "Aichi",
+              "cities": [
+                "Nagoya",
+                "Toyohashi",
+                "Okazaki",
+                "Ichinomiya",
+                "Seto"
+              ]
+            },
+            {
+              "stateName": "Fukuoka",
+              "cities": [
+                "Fukuoka",
+                "Kitakyushu",
+                "Kurume",
+                "Omuta",
+                "Dazaifu"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "South Korea",
+          "states": [
+            {
+              "stateName": "Seoul",
+              "cities": [
+                "Seoul",
+                "Incheon",
+                "Suwon",
+                "Goyang",
+                "Seongnam"
+              ]
+            },
+            {
+              "stateName": "Busan",
+              "cities": [
+                "Busan",
+                "Ulsan",
+                "Gimhae",
+                "Yangsan",
+                "Haeundae"
+              ]
+            },
+            {
+              "stateName": "Gyeonggi",
+              "cities": [
+                "Suwon",
+                "Goyang",
+                "Seongnam",
+                "Ansan",
+                "Anyang"
+              ]
+            },
+            {
+              "stateName": "Incheon",
+              "cities": [
+                "Incheon",
+                "Ganghwa",
+                "Bupyeong",
+                "Namdong",
+                "Gyeyang"
+              ]
+            },
+            {
+              "stateName": "Daegu",
+              "cities": [
+                "Daegu",
+                "Dalseo",
+                "Suseong",
+                "Buk-gu",
+                "Nam-gu"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Mexico",
+          "states": [
+            {
+              "stateName": "Mexico City",
+              "cities": [
+                "Mexico City",
+                "Ecatepec",
+                "Guadalajara",
+                "Puebla",
+                "Tijuana"
+              ]
+            },
+            {
+              "stateName": "Jalisco",
+              "cities": [
+                "Guadalajara",
+                "Zapopan",
+                "Tlaquepaque",
+                "Tonala",
+                "Puerto Vallarta"
+              ]
+            },
+            {
+              "stateName": "Nuevo León",
+              "cities": [
+                "Monterrey",
+                "San Nicolas",
+                "Guadalupe",
+                "Escobedo",
+                "Apodaca"
+              ]
+            },
+            {
+              "stateName": "Veracruz",
+              "cities": [
+                "Veracruz",
+                "Xalapa",
+                "Coatzacoalcos",
+                "Minatitlan",
+                "Poza Rica"
+              ]
+            },
+            {
+              "stateName": "Puebla",
+              "cities": [
+                "Puebla",
+                "Tlaxcala",
+                "Cholula",
+                "Teziutlan",
+                "Huauchinango"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 22,
-      "OrgName": "Innovative Labs",
-      "countryName": "USA",
-      "stateName": "Texas",
-      "city": "Dallas"
+      "id": 7,
+      "OrgName": "DataHub",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Bavaria",
+              "cities": [
+                "Munich",
+                "Nuremberg",
+                "Augsburg",
+                "Regensburg",
+                "Würzburg"
+              ]
+            },
+            {
+              "stateName": "North Rhine-Westphalia",
+              "cities": [
+                "Cologne",
+                "Düsseldorf",
+                "Dortmund",
+                "Essen",
+                "Duisburg"
+              ]
+            },
+            {
+              "stateName": "Baden-Württemberg",
+              "cities": [
+                "Stuttgart",
+                "Karlsruhe",
+                "Mannheim",
+                "Freiburg",
+                "Heidelberg"
+              ]
+            },
+            {
+              "stateName": "Lower Saxony",
+              "cities": [
+                "Hanover",
+                "Braunschweig",
+                "Osnabrück",
+                "Oldenburg",
+                "Göttingen"
+              ]
+            },
+            {
+              "stateName": "Hesse",
+              "cities": [
+                "Frankfurt",
+                "Wiesbaden",
+                "Kassel",
+                "Darmstadt",
+                "Offenbach"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Spain",
+          "states": [
+            {
+              "stateName": "Madrid",
+              "cities": [
+                "Madrid",
+                "Barcelona",
+                "Valencia",
+                "Seville",
+                "Zaragoza"
+              ]
+            },
+            {
+              "stateName": "Catalonia",
+              "cities": [
+                "Barcelona",
+                "L'Hospitalet de Llobregat",
+                "Badalona",
+                "Tarragona",
+                "Sabadell"
+              ]
+            },
+            {
+              "stateName": "Andalusia",
+              "cities": [
+                "Seville",
+                "Malaga",
+                "Granada",
+                "Cordoba",
+                "Huelva"
+              ]
+            },
+            {
+              "stateName": "Valencia",
+              "cities": [
+                "Valencia",
+                "Alicante",
+                "Castellon",
+                "Elche",
+                "Torrent"
+              ]
+            },
+            {
+              "stateName": "Galicia",
+              "cities": [
+                "Vigo",
+                "La Coruna",
+                "Santiago de Compostela",
+                "Pontevedra",
+                "Ourense"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Italy",
+          "states": [
+            {
+              "stateName": "Lombardy",
+              "cities": [
+                "Milan",
+                "Bergamo",
+                "Brescia",
+                "Monza",
+                "Como"
+              ]
+            },
+            {
+              "stateName": "Lazio",
+              "cities": [
+                "Rome",
+                "Latina",
+                "Fiumicino",
+                "Viterbo",
+                "Civitavecchia"
+              ]
+            },
+            {
+              "stateName": "Campania",
+              "cities": [
+                "Naples",
+                "Salerno",
+                "Pompeii",
+                "Caserta",
+                "Avellino"
+              ]
+            },
+            {
+              "stateName": "Veneto",
+              "cities": [
+                "Venice",
+                "Verona",
+                "Padua",
+                "Treviso",
+                "Vicenza"
+              ]
+            },
+            {
+              "stateName": "Sicily",
+              "cities": [
+                "Palermo",
+                "Catania",
+                "Messina",
+                "Siracusa",
+                "Trapani"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Sweden",
+          "states": [
+            {
+              "stateName": "Stockholm",
+              "cities": [
+                "Stockholm",
+                "Gothenburg",
+                "Malmö",
+                "Uppsala",
+                "Västerås"
+              ]
+            },
+            {
+              "stateName": "Skåne",
+              "cities": [
+                "Malmö",
+                "Lund",
+                "Helsingborg",
+                "Kristianstad",
+                "Trelleborg"
+              ]
+            },
+            {
+              "stateName": "Västra Götaland",
+              "cities": [
+                "Gothenburg",
+                "Borås",
+                "Uddevalla",
+                "Trollhättan",
+                "Skövde"
+              ]
+            },
+            {
+              "stateName": "Östergötland",
+              "cities": [
+                "Linköping",
+                "Norrköping",
+                "Motala",
+                "Finspång",
+                "Söderköping"
+              ]
+            },
+            {
+              "stateName": "Uppsala",
+              "cities": [
+                "Uppsala",
+                "Enköping",
+                "Håbo",
+                "Knivsta",
+                "Östhammar"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Argentina",
+          "states": [
+            {
+              "stateName": "Buenos Aires",
+              "cities": [
+                "Buenos Aires",
+                "La Plata",
+                "Mar del Plata",
+                "Bahía Blanca",
+                "Quilmes"
+              ]
+            },
+            {
+              "stateName": "Córdoba",
+              "cities": [
+                "Córdoba",
+                "Villa Maria",
+                "Río Cuarto",
+                "Alta Gracia",
+                "Bell Ville"
+              ]
+            },
+            {
+              "stateName": "Santa Fe",
+              "cities": [
+                "Rosario",
+                "Santa Fe",
+                "Santo Tomé",
+                "Venado Tuerto",
+                "Rafaela"
+              ]
+            },
+            {
+              "stateName": "Mendoza",
+              "cities": [
+                "Mendoza",
+                "San Rafael",
+                "San Martín",
+                "Maipú",
+                "Luján de Cuyo"
+              ]
+            },
+            {
+              "stateName": "Tucumán",
+              "cities": [
+                "San Miguel de Tucumán",
+                "Concepción",
+                "Banda del Río Salí",
+                "Alderetes",
+                "Famaillá"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 23,
-      "OrgName": "GlobalTech Innovations",
-      "countryName": "Canada",
-      "stateName": "Alberta",
-      "city": "Calgary"
+      "id": 8,
+      "OrgName": "TechMinds",
+      "country": [
+        {
+          "countryName": "France",
+          "states": [
+            {
+              "stateName": "Île-de-France",
+              "cities": [
+                "Paris",
+                "Marseille",
+                "Lyon",
+                "Toulouse",
+                "Nice"
+              ]
+            },
+            {
+              "stateName": "Auvergne-Rhône-Alpes",
+              "cities": [
+                "Lyon",
+                "Saint-Étienne",
+                "Grenoble",
+                "Clermont-Ferrand",
+                "Chambéry"
+              ]
+            },
+            {
+              "stateName": "Hauts-de-France",
+              "cities": [
+                "Lille",
+                "Amiens",
+                "Roubaix",
+                "Tourcoing",
+                "Dunkirk"
+              ]
+            },
+            {
+              "stateName": "Occitanie",
+              "cities": [
+                "Toulouse",
+                "Montpellier",
+                "Nîmes",
+                "Perpignan",
+                "Carcassonne"
+              ]
+            },
+            {
+              "stateName": "Provence-Alpes-Côte d'Azur",
+              "cities": [
+                "Marseille",
+                "Nice",
+                "Toulon",
+                "Aix-en-Provence",
+                "Avignon"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "India",
+          "states": [
+            {
+              "stateName": "Tamil Nadu",
+              "cities": [
+                "Chennai",
+                "Coimbatore",
+                "Madurai",
+                "Tiruchirappalli",
+                "Salem"
+              ]
+            },
+            {
+              "stateName": "Karnataka",
+              "cities": [
+                "Bengaluru",
+                "Mysuru",
+                "Hubli-Dharwad",
+                "Mangaluru",
+                "Belagavi"
+              ]
+            },
+            {
+              "stateName": "Kerala",
+              "cities": [
+                "Thiruvananthapuram",
+                "Kochi",
+                "Kozhikode",
+                "Thrissur",
+                "Kollam"
+              ]
+            },
+            {
+              "stateName": "Andhra Pradesh",
+              "cities": [
+                "Visakhapatnam",
+                "Vijayawada",
+                "Guntur",
+                "Nellore",
+                "Kurnool"
+              ]
+            },
+            {
+              "stateName": "Telangana",
+              "cities": [
+                "Hyderabad",
+                "Warangal",
+                "Nizamabad",
+                "Khammam",
+                "Karimnagar"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Japan",
+          "states": [
+            {
+              "stateName": "Tokyo",
+              "cities": [
+                "Tokyo",
+                "Yokohama",
+                "Osaka",
+                "Nagoya",
+                "Sapporo"
+              ]
+            },
+            {
+              "stateName": "Kanagawa",
+              "cities": [
+                "Yokohama",
+                "Kawasaki",
+                "Sagamihara",
+                "Yokosuka",
+                "Fujisawa"
+              ]
+            },
+            {
+              "stateName": "Osaka",
+              "cities": [
+                "Osaka",
+                "Sakai",
+                "Higashiosaka",
+                "Kishiwada",
+                "Suita"
+              ]
+            },
+            {
+              "stateName": "Aichi",
+              "cities": [
+                "Nagoya",
+                "Toyota",
+                "Okazaki",
+                "Ichinomiya",
+                "Toyohashi"
+              ]
+            },
+            {
+              "stateName": "Hokkaido",
+              "cities": [
+                "Sapporo",
+                "Asahikawa",
+                "Hakodate",
+                "Tomakomai",
+                "Obihiro"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "United States",
+          "states": [
+            {
+              "stateName": "California",
+              "cities": [
+                "Los Angeles",
+                "San Francisco",
+                "San Diego",
+                "Sacramento",
+                "San Jose"
+              ]
+            },
+            {
+              "stateName": "New York",
+              "cities": [
+                "New York City",
+                "Buffalo",
+                "Albany",
+                "Rochester",
+                "Syracuse"
+              ]
+            },
+            {
+              "stateName": "Texas",
+              "cities": [
+                "Houston",
+                "Dallas",
+                "Austin",
+                "San Antonio",
+                "Fort Worth"
+              ]
+            },
+            {
+              "stateName": "Florida",
+              "cities": [
+                "Miami",
+                "Orlando",
+                "Tampa",
+                "Jacksonville",
+                "Fort Lauderdale"
+              ]
+            },
+            {
+              "stateName": "Illinois",
+              "cities": [
+                "Chicago",
+                "Springfield",
+                "Rockford",
+                "Aurora",
+                "Naperville"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Toronto",
+                "Ottawa",
+                "Mississauga",
+                "Hamilton",
+                "London"
+              ]
+            },
+            {
+              "stateName": "Quebec",
+              "cities": [
+                "Montreal",
+                "Quebec City",
+                "Laval",
+                "Gatineau",
+                "Longueuil"
+              ]
+            },
+            {
+              "stateName": "British Columbia",
+              "cities": [
+                "Vancouver",
+                "Surrey",
+                "Burnaby",
+                "Richmond",
+                "Abbotsford"
+              ]
+            },
+            {
+              "stateName": "Alberta",
+              "cities": [
+                "Calgary",
+                "Edmonton",
+                "Red Deer",
+                "Lethbridge",
+                "Medicine Hat"
+              ]
+            },
+            {
+              "stateName": "Manitoba",
+              "cities": [
+                "Winnipeg",
+                "Brandon",
+                "Steinbach",
+                "Portage la Prairie",
+                "Thompson"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 24,
-      "OrgName": "TechMasters Inc.",
-      "countryName": "USA",
-      "stateName": "Florida",
-      "city": "Orlando"
+      "id": 9,
+      "OrgName": "InnoTech",
+      "country": [
+        {
+          "countryName": "Russia",
+          "states": [
+            {
+              "stateName": "Moscow",
+              "cities": [
+                "Moscow",
+                "Saint Petersburg",
+                "Novosibirsk",
+                "Yekaterinburg",
+                "Nizhny Novgorod"
+              ]
+            },
+            {
+              "stateName": "Saint Petersburg",
+              "cities": [
+                "Saint Petersburg",
+                "Novosibirsk",
+                "Yekaterinburg",
+                "Nizhny Novgorod",
+                "Kazan"
+              ]
+            },
+            {
+              "stateName": "Novosibirsk Oblast",
+              "cities": [
+                "Novosibirsk",
+                "Berdkul",
+                "Cherepanovo",
+                "Karasuk",
+                "Iskitim"
+              ]
+            },
+            {
+              "stateName": "Sverdlovsk Oblast",
+              "cities": [
+                "Yekaterinburg",
+                "Nizhny Tagil",
+                "Kamensk-Uralsky",
+                "Serov",
+                "Polevskoy"
+              ]
+            },
+            {
+              "stateName": "Nizhny Novgorod Oblast",
+              "cities": [
+                "Nizhny Novgorod",
+                "Dzerzhinsk",
+                "Bor",
+                "Kstovo",
+                "Pavlovo"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Mexico",
+          "states": [
+            {
+              "stateName": "Mexico City",
+              "cities": [
+                "Mexico City",
+                "Ecatepec",
+                "Guadalajara",
+                "Puebla",
+                "Tijuana"
+              ]
+            },
+            {
+              "stateName": "State of Mexico",
+              "cities": [
+                "Ecatepec",
+                "Nezahualcóyotl",
+                "Naucalpan",
+                "Toluca",
+                "Chimalhuacán"
+              ]
+            },
+            {
+              "stateName": "Jalisco",
+              "cities": [
+                "Guadalajara",
+                "Zapopan",
+                "Tlaquepaque",
+                "Puerto Vallarta",
+                "Tonalá"
+              ]
+            },
+            {
+              "stateName": "Puebla",
+              "cities": [
+                "Puebla",
+                "Tlaxcala",
+                "Cholula",
+                "Atlixco",
+                "Teziutlán"
+              ]
+            },
+            {
+              "stateName": "Baja California",
+              "cities": [
+                "Tijuana",
+                "Mexicali",
+                "Ensenada",
+                "Tecate",
+                "Playas de Rosarito"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "South Korea",
+          "states": [
+            {
+              "stateName": "Seoul",
+              "cities": [
+                "Seoul",
+                "Incheon",
+                "Suwon",
+                "Goyang",
+                "Seongnam"
+              ]
+            },
+            {
+              "stateName": "Busan",
+              "cities": [
+                "Busan",
+                "Ulsan",
+                "Gimhae",
+                "Yangsan",
+                "Saha"
+              ]
+            },
+            {
+              "stateName": "Incheon",
+              "cities": [
+                "Incheon",
+                "Bucheon",
+                "Goyang",
+                "Gunpo",
+                "Anyang"
+              ]
+            },
+            {
+              "stateName": "Gyeonggi",
+              "cities": [
+                "Suwon",
+                "Yongin",
+                "Seongnam",
+                "Ansan",
+                "Hwaseong"
+              ]
+            },
+            {
+              "stateName": "Gyeongsangnam-do",
+              "cities": [
+                "Changwon",
+                "Gimhae",
+                "Yangsan",
+                "Jinju",
+                "Tongyeong"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Toronto",
+                "Ottawa",
+                "Mississauga",
+                "Hamilton",
+                "London"
+              ]
+            },
+            {
+              "stateName": "Quebec",
+              "cities": [
+                "Montreal",
+                "Quebec City",
+                "Laval",
+                "Gatineau",
+                "Longueuil"
+              ]
+            },
+            {
+              "stateName": "British Columbia",
+              "cities": [
+                "Vancouver",
+                "Surrey",
+                "Burnaby",
+                "Richmond",
+                "Abbotsford"
+              ]
+            },
+            {
+              "stateName": "Alberta",
+              "cities": [
+                "Calgary",
+                "Edmonton",
+                "Red Deer",
+                "Lethbridge",
+                "Medicine Hat"
+              ]
+            },
+            {
+              "stateName": "Manitoba",
+              "cities": [
+                "Winnipeg",
+                "Brandon",
+                "Steinbach",
+                "Portage la Prairie",
+                "Thompson"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "India",
+          "states": [
+            {
+              "stateName": "Tamil Nadu",
+              "cities": [
+                "Chennai",
+                "Coimbatore",
+                "Madurai",
+                "Tiruchirappalli",
+                "Salem"
+              ]
+            },
+            {
+              "stateName": "Karnataka",
+              "cities": [
+                "Bengaluru",
+                "Mysuru",
+                "Hubli-Dharwad",
+                "Mangaluru",
+                "Belagavi"
+              ]
+            },
+            {
+              "stateName": "Kerala",
+              "cities": [
+                "Thiruvananthapuram",
+                "Kochi",
+                "Kozhikode",
+                "Thrissur",
+                "Kollam"
+              ]
+            },
+            {
+              "stateName": "Andhra Pradesh",
+              "cities": [
+                "Visakhapatnam",
+                "Vijayawada",
+                "Guntur",
+                "Nellore",
+                "Kurnool"
+              ]
+            },
+            {
+              "stateName": "Telangana",
+              "cities": [
+                "Hyderabad",
+                "Warangal",
+                "Nizamabad",
+                "Khammam",
+                "Karimnagar"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 25,
-      "OrgName": "InnovaCorp",
-      "countryName": "UK",
-      "stateName": "Northern Ireland",
-      "city": "Belfast"
+      "id": 10,
+      "OrgName": "DataSolutions",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Bavaria",
+              "cities": [
+                "Munich",
+                "Nuremberg",
+                "Augsburg",
+                "Regensburg",
+                "Ingolstadt"
+              ]
+            },
+            {
+              "stateName": "North Rhine-Westphalia",
+              "cities": [
+                "Cologne",
+                "Düsseldorf",
+                "Dortmund",
+                "Essen",
+                "Duisburg"
+              ]
+            },
+            {
+              "stateName": "Baden-Württemberg",
+              "cities": [
+                "Stuttgart",
+                "Karlsruhe",
+                "Mannheim",
+                "Freiburg",
+                "Heidelberg"
+              ]
+            },
+            {
+              "stateName": "Lower Saxony",
+              "cities": [
+                "Hanover",
+                "Braunschweig",
+                "Osnabrück",
+                "Oldenburg",
+                "Göttingen"
+              ]
+            },
+            {
+              "stateName": "Hesse",
+              "cities": [
+                "Frankfurt",
+                "Wiesbaden",
+                "Kassel",
+                "Darmstadt",
+                "Offenbach"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Spain",
+          "states": [
+            {
+              "stateName": "Madrid",
+              "cities": [
+                "Madrid",
+                "Barcelona",
+                "Valencia",
+                "Seville",
+                "Zaragoza"
+              ]
+            },
+            {
+              "stateName": "Catalonia",
+              "cities": [
+                "Barcelona",
+                "L'Hospitalet de Llobregat",
+                "Badalona",
+                "Tarragona",
+                "Sabadell"
+              ]
+            },
+            {
+              "stateName": "Andalusia",
+              "cities": [
+                "Seville",
+                "Malaga",
+                "Cordoba",
+                "Granada",
+                "Jerez de la Frontera"
+              ]
+            },
+            {
+              "stateName": "Valencia",
+              "cities": [
+                "Valencia",
+                "Alicante",
+                "Castellon de la Plana",
+                "Elche",
+                "Torrent"
+              ]
+            },
+            {
+              "stateName": "Galicia",
+              "cities": [
+                "Vigo",
+                "Coruna",
+                "Santiago de Compostela",
+                "Lugo",
+                "Ourense"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Brazil",
+          "states": [
+            {
+              "stateName": "São Paulo",
+              "cities": [
+                "São Paulo",
+                "Guarulhos",
+                "Campinas",
+                "São Bernardo do Campo",
+                "Santo André"
+              ]
+            },
+            {
+              "stateName": "Rio de Janeiro",
+              "cities": [
+                "Rio de Janeiro",
+                "Nova Iguaçu",
+                "Duque de Caxias",
+                "Niterói",
+                "Belford Roxo"
+              ]
+            },
+            {
+              "stateName": "Minas Gerais",
+              "cities": [
+                "Belo Horizonte",
+                "Uberlândia",
+                "Contagem",
+                "Betim",
+                "Juiz de Fora"
+              ]
+            },
+            {
+              "stateName": "Bahia",
+              "cities": [
+                "Salvador",
+                "Feira de Santana",
+                "Vitória da Conquista",
+                "Camaçari",
+                "Itabuna"
+              ]
+            },
+            {
+              "stateName": "Paraná",
+              "cities": [
+                "Curitiba",
+                "Londrina",
+                "Maringá",
+                "Ponta Grossa",
+                "Cascavel"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "China",
+          "states": [
+            {
+              "stateName": "Guangdong",
+              "cities": [
+                "Guangzhou",
+                "Shenzhen",
+                "Dongguan",
+                "Foshan",
+                "Zhongshan"
+              ]
+            },
+            {
+              "stateName": "Jiangsu",
+              "cities": [
+                "Nanjing",
+                "Suzhou",
+                "Wuxi",
+                "Changzhou",
+                "Nantong"
+              ]
+            },
+            {
+              "stateName": "Zhejiang",
+              "cities": [
+                "Hangzhou",
+                "Ningbo",
+                "Wenzhou",
+                "Jiaxing",
+                "Huzhou"
+              ]
+            },
+            {
+              "stateName": "Shandong",
+              "cities": [
+                "Jinan",
+                "Qingdao",
+                "Weifang",
+                "Yantai",
+                "Zibo"
+              ]
+            },
+            {
+              "stateName": "Henan",
+              "cities": [
+                "Zhengzhou",
+                "Luoyang",
+                "Kaifeng",
+                "Xinxiang",
+                "Anyang"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Toronto",
+                "Ottawa",
+                "Mississauga",
+                "Hamilton",
+                "London"
+              ]
+            },
+            {
+              "stateName": "Quebec",
+              "cities": [
+                "Montreal",
+                "Quebec City",
+                "Laval",
+                "Gatineau",
+                "Longueuil"
+              ]
+            },
+            {
+              "stateName": "Baden-Württemberg",
+              "cities": [
+                "Stuttgart",
+                "Karlsruhe",
+                "Mannheim",
+                "Freiburg",
+                "Heidelberg"
+              ]
+            },
+            {
+              "stateName": "Lower Saxony",
+              "cities": [
+                "Hanover",
+                "Braunschweig",
+                "Osnabrück",
+                "Oldenburg",
+                "Göttingen"
+              ]
+            },
+            {
+              "stateName": "Hesse",
+              "cities": [
+                "Frankfurt",
+                "Wiesbaden",
+                "Kassel",
+                "Darmstadt",
+                "Offenbach"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 26,
-      "OrgName": "GlobalTrends Ltd.",
-      "countryName": "Australia",
-      "stateName": "Queensland",
-      "city": "Brisbane"
+      "id": 11,
+      "OrgName": "TechHub",
+      "country": [
+        {
+          "countryName": "France",
+          "states": [
+            {
+              "stateName": "Île-de-France",
+              "cities": [
+                "Paris",
+                "Marseille",
+                "Lyon",
+                "Toulouse",
+                "Nice"
+              ]
+            },
+            {
+              "stateName": "Provence-Alpes-Côte d'Azur",
+              "cities": [
+                "Marseille",
+                "Nice",
+                "Toulon",
+                "Aix-en-Provence",
+                "Avignon"
+              ]
+            },
+            {
+              "stateName": "Auvergne-Rhône-Alpes",
+              "cities": [
+                "Lyon",
+                "Saint-Étienne",
+                "Grenoble",
+                "Clermont-Ferrand",
+                "Chambéry"
+              ]
+            },
+            {
+              "stateName": "Hauts-de-France",
+              "cities": [
+                "Lille",
+                "Amiens",
+                "Roubaix",
+                "Tourcoing",
+                "Dunkirk"
+              ]
+            },
+            {
+              "stateName": "Occitanie",
+              "cities": [
+                "Toulouse",
+                "Montpellier",
+                "Nîmes",
+                "Perpignan",
+                "Carcassonne"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Japan",
+          "states": [
+            {
+              "stateName": "Tokyo",
+              "cities": [
+                "Tokyo",
+                "Yokohama",
+                "Osaka",
+                "Nagoya",
+                "Sapporo"
+              ]
+            },
+            {
+              "stateName": "Kanagawa",
+              "cities": [
+                "Yokohama",
+                "Kawasaki",
+                "Sagamihara",
+                "Yokosuka",
+                "Fujisawa"
+              ]
+            },
+            {
+              "stateName": "Osaka",
+              "cities": [
+                "Osaka",
+                "Sakai",
+                "Higashiosaka",
+                "Kishiwada",
+                "Suita"
+              ]
+            },
+            {
+              "stateName": "Aichi",
+              "cities": [
+                "Nagoya",
+                "Toyota",
+                "Okazaki",
+                "Ichinomiya",
+                "Toyohashi"
+              ]
+            },
+            {
+              "stateName": "Hokkaido",
+              "cities": [
+                "Sapporo",
+                "Asahikawa",
+                "Hakodate",
+                "Tomakomai",
+                "Obihiro"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "South Africa",
+          "states": [
+            {
+              "stateName": "Gauteng",
+              "cities": [
+                "Johannesburg",
+                "Pretoria",
+                "Ekurhuleni",
+                "Centurion",
+                "Vereeniging"
+              ]
+            },
+            {
+              "stateName": "Western Cape",
+              "cities": [
+                "Cape Town",
+                "Stellenbosch",
+                "George",
+                "Paarl",
+                "Strand"
+              ]
+            },
+            {
+              "stateName": "KwaZulu-Natal",
+              "cities": [
+                "Durban",
+                "Pietermaritzburg",
+                "Newcastle",
+                "Richards Bay",
+                "Ladysmith"
+              ]
+            },
+            {
+              "stateName": "Eastern Cape",
+              "cities": [
+                "Port Elizabeth",
+                "East London",
+                "Uitenhage",
+                "Mdantsane",
+                "King William's Town"
+              ]
+            },
+            {
+              "stateName": "Limpopo",
+              "cities": [
+                "Polokwane",
+                "Mokopane",
+                "Thohoyandou",
+                "Giyani",
+                "Lebowakgomo"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "United States",
+          "states": [
+            {
+              "stateName": "California",
+              "cities": [
+                "Los Angeles",
+                "San Francisco",
+                "San Diego",
+                "Sacramento",
+                "San Jose"
+              ]
+            },
+            {
+              "stateName": "New York",
+              "cities": [
+                "New York City",
+                "Buffalo",
+                "Albany",
+                "Rochester",
+                "Syracuse"
+              ]
+            },
+            {
+              "stateName": "Texas",
+              "cities": [
+                "Houston",
+                "Dallas",
+                "Austin",
+                "San Antonio",
+                "Fort Worth"
+              ]
+            },
+            {
+              "stateName": "Florida",
+              "cities": [
+                "Miami",
+                "Orlando",
+                "Tampa",
+                "Jacksonville",
+                "Fort Lauderdale"
+              ]
+            },
+            {
+              "stateName": "Illinois",
+              "cities": [
+                "Chicago",
+                "Springfield",
+                "Rockford",
+                "Aurora",
+                "Naperville"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Argentina",
+          "states": [
+            {
+              "stateName": "Buenos Aires",
+              "cities": [
+                "Buenos Aires",
+                "La Plata",
+                "Mar del Plata",
+                "Quilmes",
+                "Bahía Blanca"
+              ]
+            },
+            {
+              "stateName": "Córdoba",
+              "cities": [
+                "Córdoba",
+                "Villa María",
+                "Río Cuarto",
+                "Alta Gracia",
+                "Bell Ville"
+              ]
+            },
+            {
+              "stateName": "Santa Fe",
+              "cities": [
+                "Rosario",
+                "Santa Fe",
+                "San Lorenzo",
+                "Santo Tomé",
+                "Venado Tuerto"
+              ]
+            },
+            {
+              "stateName": "Mendoza",
+              "cities": [
+                "Mendoza",
+                "San Rafael",
+                "Godoy Cruz",
+                "Luján de Cuyo",
+                "Maipú"
+              ]
+            },
+            {
+              "stateName": "Tucumán",
+              "cities": [
+                "San Miguel de Tucumán",
+                "Tafí Viejo",
+                "Alderetes",
+                "San Salvador de Jujuy",
+                "Palpalá"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 27,
-      "OrgName": "FutureWave Systems",
-      "countryName": "India",
-      "stateName": "Tamil Nadu",
-      "city": "Chennai"
+      "id": 12,
+      "OrgName": "InnovateTech",
+      "country": [
+        {
+          "countryName": "Italy",
+          "states": [
+            {
+              "stateName": "Lombardy",
+              "cities": [
+                "Milan",
+                "Bergamo",
+                "Brescia",
+                "Monza",
+                "Como"
+              ]
+            },
+            {
+              "stateName": "Lazio",
+              "cities": [
+                "Rome",
+                "Latina",
+                "Fiumicino",
+                "Viterbo",
+                "Civitavecchia"
+              ]
+            },
+            {
+              "stateName": "Campania",
+              "cities": [
+                "Naples",
+                "Salerno",
+                "Pompeii",
+                "Torre del Greco",
+                "Caserta"
+              ]
+            },
+            {
+              "stateName": "Veneto",
+              "cities": [
+                "Venice",
+                "Verona",
+                "Padua",
+                "Vicenza",
+                "Treviso"
+              ]
+            },
+            {
+              "stateName": "Sicily",
+              "cities": [
+                "Palermo",
+                "Catania",
+                "Messina",
+                "Siracusa",
+                "Trapani"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Mexico",
+          "states": [
+            {
+              "stateName": "Mexico City",
+              "cities": [
+                "Mexico City",
+                "Ecatepec",
+                "Guadalajara",
+                "Puebla",
+                "Tijuana"
+              ]
+            },
+            {
+              "stateName": "Jalisco",
+              "cities": [
+                "Guadalajara",
+                "Zapopan",
+                "Tlaquepaque",
+                "Tonalá",
+                "Puerto Vallarta"
+              ]
+            },
+            {
+              "stateName": "Nuevo León",
+              "cities": [
+                "Monterrey",
+                "San Nicolás de los Garza",
+                "Guadalupe",
+                "Apodaca",
+                "General Escobedo"
+              ]
+            },
+            {
+              "stateName": "Puebla",
+              "cities": [
+                "Puebla City",
+                "Tlaxcala City",
+                "Cholula",
+                "Teziutlán",
+                "Huauchinango"
+              ]
+            },
+            {
+              "stateName": "Veracruz",
+              "cities": [
+                "Veracruz",
+                "Xalapa",
+                "Coatzacoalcos",
+                "Córdoba",
+                "Minatitlán"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "South Korea",
+          "states": [
+            {
+              "stateName": "Seoul",
+              "cities": [
+                "Seoul",
+                "Incheon",
+                "Suwon",
+                "Goyang",
+                "Bucheon"
+              ]
+            },
+            {
+              "stateName": "Busan",
+              "cities": [
+                "Busan",
+                "Ulsan",
+                "Gimhae",
+                "Yangsan",
+                "Gijang"
+              ]
+            },
+            {
+              "stateName": "Incheon",
+              "cities": [
+                "Incheon",
+                "Bupyeong",
+                "Sinchon",
+                "Gyeyang",
+                "Yeonsu"
+              ]
+            },
+            {
+              "stateName": "Gyeonggi",
+              "cities": [
+                "Suwon",
+                "Yongin",
+                "Seongnam",
+                "Goyang",
+                "Ansan"
+              ]
+            },
+            {
+              "stateName": "Daegu",
+              "cities": [
+                "Daegu",
+                "Dalseo",
+                "Seo-gu",
+                "Nam-gu",
+                "Buk-gu"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Nigeria",
+          "states": [
+            {
+              "stateName": "Lagos",
+              "cities": [
+                "Lagos",
+                "Ikeja",
+                "Lekki",
+                "Victoria Island",
+                "Ikoyi"
+              ]
+            },
+            {
+              "stateName": "Abuja",
+              "cities": [
+                "Abuja",
+                "Gwarinpa",
+                "Kubwa",
+                "Asokoro",
+                "Maitama"
+              ]
+            },
+            {
+              "stateName": "Kano",
+              "cities": [
+                "Kano",
+                "Nasarawa",
+                "Kofar Mata",
+                "Tarauni",
+                "Gwale"
+              ]
+            },
+            {
+              "stateName": "Rivers",
+              "cities": [
+                "Port Harcourt",
+                "Obio-Akpor",
+                "Okrika",
+                "D-line",
+                "Eleme"
+              ]
+            },
+            {
+              "stateName": "Oyo",
+              "cities": [
+                "Ibadan",
+                "Ogbomosho",
+                "Iwo",
+                "Oyo",
+                "Saki"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Australia",
+          "states": [
+            {
+              "stateName": "New South Wales",
+              "cities": [
+                "Sydney",
+                "Newcastle",
+                "Wollongong",
+                "Central Coast",
+                "Blue Mountains"
+              ]
+            },
+            {
+              "stateName": "Victoria",
+              "cities": [
+                "Melbourne",
+                "Geelong",
+                "Ballarat",
+                "Bendigo",
+                "Shepparton"
+              ]
+            },
+            {
+              "stateName": "Queensland",
+              "cities": [
+                "Brisbane",
+                "Gold Coast",
+                "Sunshine Coast",
+                "Townsville",
+                "Cairns"
+              ]
+            },
+            {
+              "stateName": "Western Australia",
+              "cities": [
+                "Perth",
+                "Mandurah",
+                "Bunbury",
+                "Geraldton",
+                "Kalgoorlie"
+              ]
+            },
+            {
+              "stateName": "South Australia",
+              "cities": [
+                "Adelaide",
+                "Mount Gambier",
+                "Whyalla",
+                "Murray Bridge",
+                "Port Lincoln"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 28,
-      "OrgName": "TechNexa Solutions",
-      "countryName": "USA",
-      "stateName": "California",
-      "city": "San Diego"
+      "id": 13,
+      "OrgName": "GlobalInnovate",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Bavaria",
+              "cities": [
+                "Munich",
+                "Nuremberg",
+                "Augsburg",
+                "Regensburg",
+                "Ingolstadt"
+              ]
+            },
+            {
+              "stateName": "North Rhine-Westphalia",
+              "cities": [
+                "Cologne",
+                "Düsseldorf",
+                "Dortmund",
+                "Essen",
+                "Duisburg"
+              ]
+            },
+            {
+              "stateName": "Baden-Württemberg",
+              "cities": [
+                "Stuttgart",
+                "Karlsruhe",
+                "Mannheim",
+                "Freiburg",
+                "Heidelberg"
+              ]
+            },
+            {
+              "stateName": "Lower Saxony",
+              "cities": [
+                "Hanover",
+                "Braunschweig",
+                "Osnabrück",
+                "Oldenburg",
+                "Göttingen"
+              ]
+            },
+            {
+              "stateName": "Hesse",
+              "cities": [
+                "Frankfurt",
+                "Wiesbaden",
+                "Kassel",
+                "Darmstadt",
+                "Offenbach"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "China",
+          "states": [
+            {
+              "stateName": "Beijing",
+              "cities": [
+                "Beijing",
+                "Chaoyang",
+                "Haidian",
+                "Dongcheng",
+                "Xicheng"
+              ]
+            },
+            {
+              "stateName": "Shanghai",
+              "cities": [
+                "Shanghai",
+                "Huangpu",
+                "Jing'an",
+                "Xuhui",
+                "Pudong"
+              ]
+            },
+            {
+              "stateName": "Guangdong",
+              "cities": [
+                "Guangzhou",
+                "Shenzhen",
+                "Dongguan",
+                "Foshan",
+                "Zhongshan"
+              ]
+            },
+            {
+              "stateName": "Jiangsu",
+              "cities": [
+                "Nanjing",
+                "Suzhou",
+                "Wuxi",
+                "Changzhou",
+                "Nantong"
+              ]
+            },
+            {
+              "stateName": "Zhejiang",
+              "cities": [
+                "Hangzhou",
+                "Ningbo",
+                "Wenzhou",
+                "Jiaxing",
+                "Huzhou"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Spain",
+          "states": [
+            {
+              "stateName": "Madrid",
+              "cities": [
+                "Madrid",
+                "Barcelona",
+                "Valencia",
+                "Seville",
+                "Zaragoza"
+              ]
+            },
+            {
+              "stateName": "Catalonia",
+              "cities": [
+                "Barcelona",
+                "L'Hospitalet de Llobregat",
+                "Badalona",
+                "Terrassa",
+                "Sabadell"
+              ]
+            },
+            {
+              "stateName": "Andalusia",
+              "cities": [
+                "Seville",
+                "Malaga",
+                "Cordoba",
+                "Granada",
+                "Jerez de la Frontera"
+              ]
+            },
+            {
+              "stateName": "Valencia",
+              "cities": [
+                "Valencia",
+                "Alicante",
+                "Castellon de la Plana",
+                "Elche",
+                "Torrevieja"
+              ]
+            },
+            {
+              "stateName": "Galicia",
+              "cities": [
+                "Vigo",
+                "A Coruña",
+                "Santiago de Compostela",
+                "Ourense",
+                "Lugo"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Toronto",
+                "Ottawa",
+                "Mississauga",
+                "Hamilton",
+                "London"
+              ]
+            },
+            {
+              "stateName": "Quebec",
+              "cities": [
+                "Montreal",
+                "Quebec City",
+                "Laval",
+                "Gatineau",
+                "Longueuil"
+              ]
+            },
+            {
+              "stateName": "British Columbia",
+              "cities": [
+                "Vancouver",
+                "Surrey",
+                "Burnaby",
+                "Richmond",
+                "Abbotsford"
+              ]
+            },
+            {
+              "stateName": "Alberta",
+              "cities": [
+                "Calgary",
+                "Edmonton",
+                "Red Deer",
+                "Lethbridge",
+                "Medicine Hat"
+              ]
+            },
+            {
+              "stateName": "Manitoba",
+              "cities": [
+                "Winnipeg",
+                "Brandon",
+                "Steinbach",
+                "Portage la Prairie",
+                "Thompson"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "South Africa",
+          "states": [
+            {
+              "stateName": "Gauteng",
+              "cities": [
+                "Johannesburg",
+                "Pretoria",
+                "Ekurhuleni",
+                "Centurion",
+                "Vereeniging"
+              ]
+            },
+            {
+              "stateName": "Western Cape",
+              "cities": [
+                "Cape Town",
+                "Stellenbosch",
+                "George",
+                "Paarl",
+                "Strand"
+              ]
+            },
+            {
+              "stateName": "KwaZulu-Natal",
+              "cities": [
+                "Durban",
+                "Pietermaritzburg",
+                "Newcastle",
+                "Richards Bay",
+                "Ladysmith"
+              ]
+            },
+            {
+              "stateName": "Eastern Cape",
+              "cities": [
+                "Port Elizabeth",
+                "East London",
+                "Uitenhage",
+                "Grahamstown",
+                "King William's Town"
+              ]
+            },
+            {
+              "stateName": "Limpopo",
+              "cities": [
+                "Polokwane",
+                "Mokopane",
+                "Thohoyandou",
+                "Tzaneen",
+                "Louis Trichardt"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 29,
-      "OrgName": "InnoVision Tech",
-      "countryName": "Canada",
-      "stateName": "Ontario",
-      "city": "Ottawa"
+      "id": 14,
+      "OrgName": "TechInnovate",
+      "country": [
+        {
+          "countryName": "France",
+          "states": [
+            {
+              "stateName": "Île-de-France",
+              "cities": [
+                "Paris",
+                "Versailles",
+                "Boulogne-Billancourt",
+                "Argenteuil",
+                "Montreuil"
+              ]
+            },
+            {
+              "stateName": "Auvergne-Rhône-Alpes",
+              "cities": [
+                "Lyon",
+                "Saint-Étienne",
+                "Grenoble",
+                "Clermont-Ferrand",
+                "Chambéry"
+              ]
+            },
+            {
+              "stateName": "Provence-Alpes-Côte d'Azur",
+              "cities": [
+                "Marseille",
+                "Nice",
+                "Toulon",
+                "Aix-en-Provence",
+                "Avignon"
+              ]
+            },
+            {
+              "stateName": "Hauts-de-France",
+              "cities": [
+                "Lille",
+                "Amiens",
+                "Roubaix",
+                "Tourcoing",
+                "Dunkirk"
+              ]
+            },
+            {
+              "stateName": "Nouvelle-Aquitaine",
+              "cities": [
+                "Bordeaux",
+                "Limoges",
+                "Pau",
+                "La Rochelle",
+                "Bayonne"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Mexico",
+          "states": [
+            {
+              "stateName": "Mexico City",
+              "cities": [
+                "Mexico City",
+                "Iztapalapa",
+                "Ecatepec de Morelos",
+                "Guadalajara",
+                "Puebla"
+              ]
+            },
+            {
+              "stateName": "Jalisco",
+              "cities": [
+                "Guadalajara",
+                "Zapopan",
+                "Tlaquepaque",
+                "Tonala",
+                "Puerto Vallarta"
+              ]
+            },
+            {
+              "stateName": "Nuevo León",
+              "cities": [
+                "Monterrey",
+                "San Nicolás de los Garza",
+                "Guadalupe",
+                "Apodaca",
+                "General Escobedo"
+              ]
+            },
+            {
+              "stateName": "Veracruz",
+              "cities": [
+                "Veracruz",
+                "Xalapa",
+                "Coatzacoalcos",
+                "Poza Rica de Hidalgo",
+                "Cordoba"
+              ]
+            },
+            {
+              "stateName": "Puebla",
+              "cities": [
+                "Puebla",
+                "Tlaxcala",
+                "Cholula",
+                "Amozoc",
+                "Atlixco"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Italy",
+          "states": [
+            {
+              "stateName": "Lazio",
+              "cities": [
+                "Rome",
+                "Latina",
+                "Fiumicino",
+                "Viterbo",
+                "Civitavecchia"
+              ]
+            },
+            {
+              "stateName": "Lombardy",
+              "cities": [
+                "Milan",
+                "Bergamo",
+                "Brescia",
+                "Monza",
+                "Como"
+              ]
+            },
+            {
+              "stateName": "Veneto",
+              "cities": [
+                "Venice",
+                "Verona",
+                "Padua",
+                "Trieste",
+                "Vicenza"
+              ]
+            },
+            {
+              "stateName": "Campania",
+              "cities": [
+                "Naples",
+                "Salerno",
+                "Pompeii",
+                "Caserta",
+                "Avellino"
+              ]
+            },
+            {
+              "stateName": "Tuscany",
+              "cities": [
+                "Florence",
+                "Pisa",
+                "Siena",
+                "Lucca",
+                "Arezzo"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Argentina",
+          "states": [
+            {
+              "stateName": "Buenos Aires",
+              "cities": [
+                "Buenos Aires",
+                "La Plata",
+                "Mar del Plata",
+                "Quilmes",
+                "Bahia Blanca"
+              ]
+            },
+            {
+              "stateName": "Cordoba",
+              "cities": [
+                "Cordoba",
+                "Rosario",
+                "Mendoza",
+                "San Juan",
+                "La Rioja"
+              ]
+            },
+            {
+              "stateName": "Santa Fe",
+              "cities": [
+                "Santa Fe",
+                "Rosario",
+                "Rafaela",
+                "Venado Tuerto",
+                "San Lorenzo"
+              ]
+            },
+            {
+              "stateName": "Mendoza",
+              "cities": [
+                "Mendoza",
+                "Godoy Cruz",
+                "Maipu",
+                "San Martin",
+                "Lujan de Cuyo"
+              ]
+            },
+            {
+              "stateName": "Tucuman",
+              "cities": [
+                "San Miguel de Tucuman",
+                "Concepcion",
+                "Yerba Buena",
+                "Aguilares",
+                "Banda del Rio Sali"
+              ]
+            }
+          ]
+        },
+        {
+          "countryName": "Netherlands",
+          "states": [
+            {
+              "stateName": "North Holland",
+              "cities": [
+                "Amsterdam",
+                "Haarlem",
+                "Zaandam",
+                "Alkmaar",
+                "Hilversum"
+              ]
+            },
+            {
+              "stateName": "South Holland",
+              "cities": [
+                "Rotterdam",
+                "The Hague",
+                "Leiden",
+                "Delft",
+                "Dordrecht"
+              ]
+            },
+            {
+              "stateName": "Utrecht",
+              "cities": [
+                "Utrecht",
+                "Amersfoort",
+                "Hilversum",
+                "Zeist",
+                "Nieuwegein"
+              ]
+            },
+            {
+              "stateName": "Tucuman",
+              "cities": [
+                "San Miguel de Tucuman",
+                "Concepcion",
+                "Yerba Buena",
+                "Aguilares",
+                "Banda del Rio Sali"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 30,
-      "OrgName": "GlobalEdge Innovations",
-      "countryName": "USA",
-      "stateName": "Arizona",
-      "city": "Phoenix"
-    },
-    {
-      "id": 31,
-      "OrgName": "NextInnovate Inc.",
-      "countryName": "UK",
-      "stateName": "England",
-      "city": "Manchester"
-    },
-    {
-      "id": 32,
-      "OrgName": "FutureCraft Ltd.",
-      "countryName": "India",
-      "stateName": "Kerala",
-      "city": "Trivandrum"
-    },
-    {
-      "id": 33,
-      "OrgName": "InnovateIt Solutions",
-      "countryName": "USA",
-      "stateName": "New Jersey",
-      "city": "Jersey City"
-    },
-    {
-      "id": 34,
-      "OrgName": "TechFusion Inc.",
-      "countryName": "Canada",
-      "stateName": "Quebec",
-      "city": "Quebec City"
-    },
-    {
-      "id": 35,
-      "OrgName": "GlobalNexa Tech",
-      "countryName": "Australia",
-      "stateName": "Western Australia",
-      "city": "Perth"
-    },
-    {
-      "id": 36,
-      "OrgName": "FuturePath Systems",
-      "countryName": "USA",
-      "stateName": "Colorado",
-      "city": "Colorado Springs"
-    },
-    {
-      "id": 37,
-      "OrgName": "InnoSolutions Ltd.",
-      "countryName": "UK",
-      "stateName": "Scotland",
-      "city": "Glasgow"
-    },
-    {
-      "id": 38,
-      "OrgName": "TechGenius Innovations",
-      "countryName": "India",
-      "stateName": "Gujarat",
-      "city": "Ahmedabad"
-    },
-    {
-      "id": 39,
-      "OrgName": "FutureFusion Inc.",
-      "countryName": "USA",
-      "stateName": "Illinois",
-      "city": "Springfield"
-    },
-    {
-      "id": 40,
-      "OrgName": "GlobalSolve Tech",
-      "countryName": "Canada",
-      "stateName": "British Columbia",
-      "city": "Victoria"
-    },
-    {
-      "id": 41,
-      "OrgName": "InnovateX Inc.",
-      "countryName": "Australia",
-      "stateName": "New South Wales",
-      "city": "Newcastle"
-    },
-    {
-      "id": 42,
-      "OrgName": "TechSynergy Solutions",
-      "countryName": "India",
-      "stateName": "Andhra Pradesh",
-      "city": "Hyderabad"
-    },
-    {
-      "id": 43,
-      "OrgName": "FutureTech Innovations",
-      "countryName": "USA",
-      "stateName": "Washington",
-      "city": "Spokane"
-    },
-    {
-      "id": 44,
-      "OrgName": "GlobalInnova Labs",
-      "countryName": "Canada",
-      "stateName": "Alberta",
-      "city": "Edmonton"
-    },
-    {
-      "id": 45,
-      "OrgName": "NextWave Tech",
-      "countryName": "UK",
-      "stateName": "Wales",
-      "city": "Swansea"
-    },
-    {
-      "id": 46,
-      "OrgName": "InnovateItNow Inc.",
-      "countryName": "India",
-      "stateName": "Tamil Nadu",
-      "city": "Coimbatore"
-    },
-    {
-      "id": 47,
-      "OrgName": "TechNexa Innovations",
-      "countryName": "USA",
-      "stateName": "California",
-      "city": "San Jose"
-    },
-    {
-      "id": 48,
-      "OrgName": "FutureGrowth Systems",
-      "countryName": "Canada",
-      "stateName": "Ontario",
-      "city": "Hamilton"
-    },
-    {
-      "id": 49,
-      "OrgName": "GlobalTech Corp",
-      "countryName": "Australia",
-      "stateName": "Queensland",
-      "city": "Gold Coast"
-    },
-    {
-      "OrgName": "asdfdfsfdsfsbaaah",
-      "countryName": "sdfdsfdfdsff",
-      "stateName": "a",
-      "city": "a",
-      "MemberDetails": {
-        "name": "a",
-        "role": "SDE-2"
-      },
-      "id": 50
-    },
-    {
-      "OrgName": "dsfdsf",
-      "countryName": "sdfdsf",
-      "stateName": "sdfdsf",
-      "city": "sdfdsfd",
-      "MemberDetails": {
-        "id": "4ce4b129-fd3d-4476-99a0-aa056b1f6a7f",
-        "name": "jhghjjhfyiuiyui",
-        "role": "SDE-2"
-      },
-      "id": 51
-    },
-    {
-      "OrgName": "sdfdsfd",
-      "countryName": "sdfdsfds",
-      "stateName": "sdfdfd",
-      "city": "sfdsfds",
-      "MemberDetails": {
-        "name": "sdfdfdsf",
-        "role": "SDE-3"
-      },
+      "OrgName": "IMBM",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Lower Saxony",
+              "cities": [
+                "Wolfsburg"
+              ]
+            }
+          ]
+        }
+      ],
       "Membercount": 2,
-      "id": 52
+      "id": 15
+    },
+    {
+      "OrgName": "asdsadsad",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Hesse",
+              "cities": [
+                "Darmstadt"
+              ]
+            }
+          ]
+        }
+      ],
+      "Membercount": 3,
+      "id": 16
+    },
+    {
+      "OrgName": "assdadsa",
+      "country": [
+        {
+          "countryName": "France",
+          "states": [
+            {
+              "stateName": "Auvergne-Rhône-Alpes",
+              "cities": [
+                "Saint-Étienne"
+              ]
+            }
+          ]
+        }
+      ],
+      "Membercount": 1,
+      "id": 17
+    },
+    {
+      "OrgName": "asas",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Hesse",
+              "cities": [
+                "Wiesbaden"
+              ]
+            }
+          ]
+        }
+      ],
+      "Membercount": 1,
+      "id": 18
+    },
+    {
+      "OrgName": "asdsad",
+      "country": [
+        {
+          "countryName": "Germany",
+          "states": [
+            {
+              "stateName": "Bavaria",
+              "cities": [
+                "Regensburg"
+              ]
+            }
+          ]
+        }
+      ],
+      "Membercount": 1,
+      "id": 19
+    },
+    {
+      "OrgName": "wwq",
+      "country": [
+        {
+          "countryName": "Canada",
+          "states": [
+            {
+              "stateName": "Ontario",
+              "cities": [
+                "Mississauga"
+              ]
+            }
+          ]
+        }
+      ],
+      "Membercount": 0,
+      "id": 20
+    },
+    {
+      "OrgName": "blah",
+      "country": [
+        {
+          "countryName": "United Kingdom",
+          "states": [
+            {
+              "stateName": "Northern Ireland",
+              "cities": [
+                "Newry"
+              ]
+            }
+          ]
+        }
+      ],
+      "Membercount": 0,
+      "id": 21
     }
   ],
   "itemdata": [

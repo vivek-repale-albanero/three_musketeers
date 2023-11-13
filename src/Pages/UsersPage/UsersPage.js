@@ -312,7 +312,7 @@ const handleOnChangePageSize= () =>{}
                 title: "Users List",
               }}
             />
-            {console.log(userFormModal, "userForm")}
+
             {userFormModal.status && userFormModal.edit ? <EditForm /> : null}
           </Container>
           {/* <UsersUITable/> */}
