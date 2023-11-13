@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   AlbaButton,
   Typography,
@@ -13,8 +13,10 @@ import {
 } from "@platform/service-ui-libraries";
 import './EditTable.scss';
 import { PermissionContext } from '../Context';
+import { fetchTestDataUsername } from '../api/api';
 const EditTable = ({ open, data, onSave, onCancel, isAdding }) => {
   const [editedData, setEditedData] = useState(data);
+  const [existingData, setExistingData] = useState(null);
 const validateFields=useRef([])
 const validateTableForm=()=>{
   const resultData=validateFields.current.map((refs)=>{
@@ -27,14 +29,28 @@ const validateTableForm=()=>{
   return resultData.every(Boolean)
 }
   const handleSave = () => {
-    // console.log(validateTableForm())
     if(validateTableForm()){
       onSave(editedData);
       onCancel();
     }
   };
-
-
+    //////////////////////////////Fetch users name//////////////////////
+    const fetchUsersDataFun =async () => {
+      const { response, error } =await fetchTestDataUsername();
+      setExistingData(response.data)
+    };
+    useEffect(()=>{
+      fetchUsersDataFun()
+    },[])
+  const checkUser = (value ) => {
+    const isUserExist =existingData.some(user => user.userName === value);
+    let validationMsg = '';
+     if(isUserExist){
+      validationMsg="User Already Exist"
+     }
+  
+    return validationMsg;
+  };
 
   const handleInputChange = (e, key) => {
     setEditedData({ ...editedData, [key]: e });
@@ -72,7 +88,7 @@ const validateTableForm=()=>{
               required:true,
               whiteSpace:true
             }}}
-            // validationFunc={jobNameValidation}
+            // validationFunc={(value)=>checkUser(value)}
             id={key}
           />
           ))}

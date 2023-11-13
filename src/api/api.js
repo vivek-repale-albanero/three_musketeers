@@ -35,6 +35,14 @@ export const deleteUser_api =async(payload) =>{
   })
 }
 
+export const fetchTestDataUsername=async()=>{
+   const url=`sampleData`;
+  return await genericApiCall({
+      method: 'GET',
+      url
+    },
+    );
+ }
 
   export const fetchTestData=async(payload)=>{
     payload.page=payload.page+1

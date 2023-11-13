@@ -324,7 +324,7 @@ function UsersPage() {
                 title: "Users List",
               }}
             />
-            {console.log(userFormModal, "userForm")}
+            {/* {console.log(userFormModal, "userForm")} */}
             {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
             {userFormModal.status && userFormModal.edit ? <EditForm /> : null}
           </Container>
