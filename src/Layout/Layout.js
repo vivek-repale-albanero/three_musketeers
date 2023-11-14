@@ -1,22 +1,14 @@
 // Layout.js
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-  Card,
-  Avatar,
-  Icon,
-  AlbaButton,
-} from "@platform/service-ui-libraries";
-import "./Layout.scss";
+import {  Drawer, List, ListItem, ListItemIcon, ListItemText,Typography, Card, Avatar, Icon, AlbaButton,BreadcrumbsBar } from "@platform/service-ui-libraries";
+import "./Layout.scss"
+import { PermissionContext } from '../Context';
+
 
 const Layout = ({ children }) => {
+  const {breadcrumbProps} = useContext(PermissionContext)
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
   let history = useHistory();
   const handleLogout = () => {
@@ -95,9 +87,8 @@ const Layout = ({ children }) => {
           </ListItem>
         </List>
       </Drawer>
-      {/* </div> */}
-      <div style={{ marginLeft: "15%" }}>
-        {/* <Outlet /> */}
+      <div style={{ marginLeft: '15%' }}>
+        <BreadcrumbsBar {...breadcrumbProps} />
         {children}
       </div>
     </div>

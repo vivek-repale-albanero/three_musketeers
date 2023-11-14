@@ -1,7 +1,107 @@
 // export all api calls from here
+import { genericApiCall } from "../helpers/api";
 
-import { MultipleDeleteRecords, genericApiCall } from "../helpers/api";
+export const users_Fetch = async() =>{
+  const url ='users';
+  return await genericApiCall({
+    method:'GET',
+    url,
+  }) 
+}
 
+export const addUser_UsersPage = async(payload) =>{
+      const url = "users";
+      return await genericApiCall({
+        method:'POST',
+        url,
+        data:payload
+      })
+}
+
+export const editUser_usersPage = async (payload) =>{
+   const url = `users/${payload.id}`
+   return await genericApiCall({
+    method:'PATCH',
+    url,
+    data:payload
+   })
+}
+
+export const deleteUser_api =async(payload) =>{
+  const url=`users/${payload}`;
+  return await genericApiCall({
+    method:'DELETE',
+    url
+  })
+}
+
+export const fetchTestDataUsername=async()=>{
+   const url=`sampleData`;
+  return await genericApiCall({
+      method: 'GET',
+      url
+    },
+    );
+ }
+
+  export const fetchTestData=async(payload)=>{
+    payload.page=payload.page+1
+     const url=`sampleData?_page=${payload.page}&_limit=${payload.pageSize}&q=${payload.searchText}`;
+    return await genericApiCall({
+        method: 'GET',
+        url
+      },
+      );
+   }
+   export const addTestData = async (payload) => {
+    const url = `sampleData`;
+    return await genericApiCall({
+      method: 'POST',
+      url,
+      data: payload
+    });
+  };
+  export const editTestData = async (payload) => {
+    const url = `sampleData/${payload.id}`;
+    return await genericApiCall({
+      method: 'PATCH',
+      url,
+      data: payload
+    });
+  };
+  
+  export const deleteListTestData = async (payload) => {
+    const url = `sampleData/${payload}`;
+    return await genericApiCall({
+      method: 'DELETE',
+      url,
+      data: payload
+    });
+  };
+  export const fetchUsers = async () => {
+    const url = `users`;
+    return await genericApiCall({
+      method: 'GET',
+      url
+    });
+  };
+
+  export const getAutoCompleteOptions = async () => {
+    const url = `itemdata`;
+    return await genericApiCall({
+      method: 'GET',
+      url
+    });
+  };
+
+  export const updatePermission = async (payload) => {
+    const url = `users/${payload.id}`;
+    return await genericApiCall({
+      method: 'PATCH',
+      url,
+      data: payload
+    });
+  };
 
 export const fetchOrgData = async ({ page, pageSize }) => {
   let url = `Metadata?_page=${page}&_limit=${pageSize}`;

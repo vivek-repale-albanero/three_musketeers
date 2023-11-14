@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   AlbaButton,
   Typography,
@@ -11,9 +11,12 @@ import {
   DialogTitle,
   DialogContent,
 } from "@platform/service-ui-libraries";
-// import './EditTable.scss';
+import './EditTable.scss';
+import { PermissionContext } from '../Context';
+import { fetchTestDataUsername } from '../api/api';
 const EditTable = ({ open, data, onSave, onCancel, isAdding }) => {
   const [editedData, setEditedData] = useState(data);
+  const [existingData, setExistingData] = useState(null);
 const validateFields=useRef([])
 const validateTableForm=()=>{
   const resultData=validateFields.current.map((refs)=>{
@@ -26,15 +29,27 @@ const validateTableForm=()=>{
   return resultData.every(Boolean)
 }
   const handleSave = () => {
-    console.log(validateTableForm())
     if(validateTableForm()){
       onSave(editedData);
       onCancel();
     }
   };
-
-  const handleCancel = () => {
-    onCancel();
+    //////////////////////////////Fetch users name//////////////////////
+    const fetchUsersDataFun =async () => {
+      const { response, error } =await fetchTestDataUsername();
+      setExistingData(response.data)
+    };
+    useEffect(()=>{
+      fetchUsersDataFun()
+    },[])
+  const checkUser = (value ) => {
+    const isUserExist =existingData.some(user => user.userName === value);
+    let validationMsg = '';
+     if(isUserExist){
+      validationMsg="User Already Exist"
+     }
+  
+    return validationMsg;
   };
 
   const handleInputChange = (e, key) => {
@@ -42,11 +57,19 @@ const validateTableForm=()=>{
   };
 
   return (
-    <Dialog open={open} className="compare-files-dialog aw-dialog appModal"
+    <Dialog open={open} 
+    className="compare-files-dialog aw-dialog appModal"
     PaperComponent={DraggableModal}
-    maxWidth={"md"}
+    maxWidth={"xs"}
     fullWidth>
-      <DialogTitle>{isAdding ? 'Add New Row' : 'Edit Data'}</DialogTitle>
+      <DialogTitle id="draggable-dialog-title">
+        <div className='formTable'>
+      <Typography variant="h3">{isAdding ? 'Add New Data' : 'Edit Data'}</Typography>
+      <Icon style={{ color: "white" }} onClick={onCancel}>
+            close
+          </Icon>
+        </div>
+      </DialogTitle>
       <DialogContent>
         <div>
           {Object.keys(editedData).map((key,index) => (
@@ -55,7 +78,8 @@ const validateTableForm=()=>{
               validateFields.current[index] = element;
             }}
             key={key}
-              label={key}
+            // disabled={key==="id"}
+              label={key.toUpperCase()}
             variant="filled"
             fieldValue={editedData[key]}
             placeholder={key}
@@ -64,13 +88,19 @@ const validateTableForm=()=>{
               required:true,
               whiteSpace:true
             }}}
-            // validationFunc={jobNameValidation}
+            // validationFunc={(value)=>checkUser(value)}
             id={key}
           />
           ))}
         </div>
       </DialogContent>
       <DialogActions>
+          <AlbaButton
+            variant="danger"
+            onClick={onCancel}
+          >
+            Cancel
+          </AlbaButton>
         <AlbaButton
           variant="success"
           onClick={handleSave}
@@ -78,12 +108,6 @@ const validateTableForm=()=>{
           color: "white"}}
           >
           Save
-        </AlbaButton>
-        <AlbaButton
-          variant="danger"
-          onClick={handleCancel}
-        >
-          Cancel
         </AlbaButton>
       </DialogActions>
     </Dialog>
