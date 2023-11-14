@@ -4462,24 +4462,6 @@
       ],
       "Membercount": 0,
       "id": 20
-    },
-    {
-      "OrgName": "blah",
-      "country": [
-        {
-          "countryName": "United Kingdom",
-          "states": [
-            {
-              "stateName": "Northern Ireland",
-              "cities": [
-                "Newry"
-              ]
-            }
-          ]
-        }
-      ],
-      "Membercount": 0,
-      "id": 21
     }
   ],
   "itemdata": [
