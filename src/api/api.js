@@ -1,6 +1,14 @@
 // export all api calls from here
 import { genericApiCall } from "../helpers/api";
 
+export const fetchProducts=async(page,pageSize)=>{
+  const url= `products?_page=${page+1}&_limit=${pageSize}`
+  return await genericApiCall({
+    method:'GET',
+    url
+  })
+}
+
 export const users_Fetch = async() =>{
   const url ='users';
   return await genericApiCall({

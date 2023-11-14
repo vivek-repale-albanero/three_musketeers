@@ -32,10 +32,10 @@ export default function PlatformAutoComplete({ setProducts }) {
 
   const handleSearch = () => {};
 
-    const handleItemsSelected = (e) => {
-      setSelectedItems([...selectedItems, e.target.value]);
-      setDefaultVal(e.target.value);
-    };
+  const handleItemsSelected = (e) => {
+    setSelectedItems([...selectedItems, e.target.value]);
+    setDefaultVal(e.target.value);
+  };
   const handleProductsTableChange = (items) => {
     console.log("getting item", items);
     setSelectedItems([...items]);
@@ -53,18 +53,18 @@ export default function PlatformAutoComplete({ setProducts }) {
         updateValue={(val) => handleProductsTableChange(val.selectedItems)}
         multiple={true}
         selectAll={true}
-//         customListRender={({ availableItems ,handleItemSelected}) => {
-// return availableItems.map(item=>(
-//     <div key={item.id} style={{display:'flex',justifyContent:'flex-start',alignItems:'center',gap:'20px',marginBottom:'10px',padding:'10px',borderBottom:'1px solid black'}}>
-// <Typography>
-//     {item.name}
-// </Typography>
-// <Typography>
-//    Price: {item.price}
-// </Typography>
-//     </div>
-// ))
-//             }}
+        //         customListRender={({ availableItems ,handleItemSelected}) => {
+        // return availableItems.map(item=>(
+        //     <div key={item.id} style={{display:'flex',justifyContent:'flex-start',alignItems:'center',gap:'20px',marginBottom:'10px',padding:'10px',borderBottom:'1px solid black'}}>
+        // <Typography>
+        //     {item.name}
+        // </Typography>
+        // <Typography>
+        //    Price: {item.price}
+        // </Typography>
+        //     </div>
+        // ))
+        //             }}
       />
     </div>
   );

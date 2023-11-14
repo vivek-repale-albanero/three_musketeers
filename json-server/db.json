@@ -988,13 +988,6 @@
       "type": "personal"
     },
     {
-      "name": "Produt 24",
-      "price": 22,
-      "quantity": 22,
-      "type": "sports",
-      "id": 21
-    },
-    {
       "type": "personal",
       "id": 22
     },
@@ -1014,13 +1007,6 @@
     },
     {
       "id": 27
-    },
-    {
-      "name": "Product 1",
-      "price": 44,
-      "quantity": 1,
-      "type": "personal",
-      "id": 28
     },
     {
       "name": "New Product",

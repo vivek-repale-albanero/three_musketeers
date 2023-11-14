@@ -166,25 +166,24 @@ function ECom() {
 
   //Action object for MUI based table
   const actions = () => {
-    return { openEditModaL, deleteProduct, handleAddToCart };
+    return { openAddModal,openEditModaL, deleteProduct, handleAddToCart };
   };
   return (
     <div>
       <ProductsContext.Provider value={productPageValue}>
         <Box className="title" style={{ display: "flex" }}>
           <Typography style={{ fontSize: "24px" }}>E-Com</Typography>
-          <Button variant="contained" className="addBtn" onClick={openAddModal}>
+          {/* <Button variant="contained" className="addBtn" onClick={openAddModal}>
             Add Product
-          </Button>
+          </Button> */}
           {productFormModal.status && !productFormModal.edit ? (
             <EditProductForm />
           ) : null}
         </Box>
         <Container maxWidth="100%" className="tableContent">
           {/* <TableMUI actions={actions} products={products} productFormModal={productFormModal}/> */}
-          <PlatformAutoComplete products={products} setProducts={setProducts}/>
+          {/* <PlatformAutoComplete products={products} setProducts={setProducts}/> */}
           <PlatformProductTable
-            products={products}
             actions={actions}
             page={page}
             setPage={setPage}
@@ -218,3 +217,9 @@ function ECom() {
 }
 
 export default ECom;
+
+
+//Modal
+//TextForm with validations
+//Table
+

@@ -1,0 +1,35 @@
+
+
+.__body{
+    height: 100vh;
+    min-width: 500px;
+
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+
+    .__smallBox__wrapper{
+        flex:1;
+        padding: 10px;
+        display: flex;
+        gap:20px;
+        flex-wrap: wrap;
+        border: 2px solid black;
+        border-radius: 10px;
+
+
+
+
+    }
+    .__bigBox__wrapper{
+        flex:1;
+        border:2px solid black;
+        border-radius: 10px;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        gap:10px;
+
+    }
+
+}

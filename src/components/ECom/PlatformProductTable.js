@@ -1,21 +1,25 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Table } from "@platform/primary-table";
 import { Typography } from "@material-ui/core";
-import {AlbaButton} from '@platform/service-ui-libraries'
+import { AlbaButton } from "@platform/service-ui-libraries";
 import { ProductsTableMetadata } from "./ProductsTableMetadata";
+import { fetchProducts } from "../../api/api";
 
-function PlatformProductTable({products,actions,page,pageSize,setPage,setPageSize}) {
-  
+function PlatformProductTable({
+  actions,
+  page,
+  pageSize,
+  setPage,
+  setPageSize,
+}) {
   const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [totalCount, setTotalCount] = useState("");
-  const [integrityAnalysis, setIntegrityAnalysis] = useState(false);
-  const [idForRerun, setIdForRerun] = useState("");
   const [actionComponents, setActionComponents] = useState([]);
 
-  const {openEditModaL,deleteProduct,handleAddToCart}=actions()
+  const { openAddModal, openEditModaL, deleteProduct, handleAddToCart } =
+    actions();
 
-  
   const handleOnChangePage = (page) => {
     setPage(page);
   };
@@ -23,10 +27,34 @@ function PlatformProductTable({products,actions,page,pageSize,setPage,setPageSiz
     setPageSize(pageSize);
     setPage(page);
   };
-  const fetchData = async () => {
-    // we fetch data and update setData here
-
+  const fetchData = async (page, pageSize) => {
+    const { response, error } = await fetchProducts(page, pageSize);
+    console.log('fetch data is called!')
+    //console.log('reponse',response.request.status)
+    if (response.request.status === 200) {
+      setData(response.data);
+    } else {
+      console.log("error fetching data", error);
+    }
   };
+  useEffect(() => {
+    fetchData(page, pageSize);
+    console.log('uef 1 run!')
+  }, [searchText, page, pageSize]);
+
+  useEffect(() => {
+    fetchData();
+    console.log('uef 2 run!')
+    setActionComponents([AddProductButton]);
+  }, []);
+
+  useEffect(() => {
+    const filteredProducts = data?.filter((item) =>
+      item.name.toLowerCase().startsWith(searchText)
+    );
+    console.log("filtered products", filteredProducts);
+    setData(filteredProducts);
+  }, [searchText]);
 
   const handleDelete = (ids) => {
     deleteIntegrityData({ ids }).then((res) => {
@@ -45,34 +73,9 @@ function PlatformProductTable({products,actions,page,pageSize,setPage,setPageSiz
       fetchData();
     }
   };
-  const handleSearch = useCallback(
-    (searchText) => {
-      setSearchText(searchText);
-      if (searchText?.length > 2) {
-        searchIntegrityAnalysis({
-          searchText: searchText,
-          page: page,
-          pageSize: pageSize,
-          handleResponse: ({ response }) => {
-            if (response?.data?.payload) {
-              setData(
-                response?.data?.payload?.data?.map((item) => ({
-                  ...item,
-                  ...(item.status === "Stopped" && {
-                    stoppedBy: item.createdBy,
-                  }),
-                })) || []
-              );
-              setTotalCount(response?.data?.payload?.totalCount);
-            }
-          },
-        });
-      } else if (!searchText?.length && page == 0) {
-        fetchData();
-      }
-    },
-    [searchText, page, pageSize]
-  );
+  const handleSearch = useCallback((searchInput) => {
+    setSearchText(searchInput);
+  }, []);
   const stopPopupBody = (row) => (
     <Typography
       align="left"
@@ -82,12 +85,12 @@ function PlatformProductTable({products,actions,page,pageSize,setPage,setPageSiz
       Are you sure you want to stop {row.name} ?
     </Typography>
   );
-  
+
   const [tableProps, setTableProps] = useState({
     ...ProductsTableMetadata({
       handleDelete: deleteProduct,
-      handleEdit:openEditModaL,
-      handleAddToCart:handleAddToCart,
+      handleEdit: openEditModaL,
+      handleAddToCart: handleAddToCart,
       onPageChange: handleOnChangePage,
       onRowsChange: handleOnChangePageSize,
       //onStopClick,
@@ -96,40 +99,33 @@ function PlatformProductTable({products,actions,page,pageSize,setPage,setPageSiz
     }),
   });
 
-  useEffect(() => {
-    if (searchText.length > 2) {
-      handleSearch(searchText);
-    } else {
-      fetchData();
-    }
-  }, [page, pageSize]);
+  console.log("data now is", data);
 
-  const integrityButton = useCallback(() => {
+  const AddProductButton = useCallback(() => {
     return (
       <AlbaButton
         variant="success"
-        icon="library_books"
+        icon="add"
         onClick={() => {
-          setIntegrityAnalysis(true);
+          openAddModal();
         }}
       >
-        Integrity Analysis
+        Add Product
       </AlbaButton>
     );
   }, []);
-  
 
   return (
     <div className="table-wrapper">
       <Table
         tableProps={{
           ...tableProps,
-          totalCount: totalCount,
-          data: products,
-          //handleSearch: handleSearch,
-          onReload,
+          totalCount,
+          data,
+          handleSearch,
+          // onReload,
           title: "Products",
-          actionComponents: actionComponents,
+          actionComponents,
         }}
       />
     </div>

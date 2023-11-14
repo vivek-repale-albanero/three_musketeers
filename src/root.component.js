@@ -21,6 +21,8 @@ import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 import {fetchUsers} from "./api/api"
 import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
+import ColorDrag from "./Pages/ColorDragPage/ColorDrag";
+import Signup from "./components/Signup/Signup";
 
 
 
@@ -85,6 +87,9 @@ export default function Root() {
 
           <Route exact path="/e-com" render={()=> <EComPage/>} />
           <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
+          <Route exact path='/task-anubhav' render={()=><ColorDrag/>}/>
+          {/* Exporting from the component itself */}
+          <Route exact path='/task-anubhav/signup' render={()=><Signup/>}/>
 
 
           

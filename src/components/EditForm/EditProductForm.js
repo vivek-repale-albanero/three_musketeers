@@ -29,6 +29,7 @@ import {
   Form,
 } from "@platform/service-ui-libraries";
 
+console.log(comps)
 function EditProductForm() {
   console.log(comps);
 
@@ -204,6 +205,7 @@ function EditProductForm() {
                   name: e,
                 })
               }
+              variant="filled"
             />
           </div>
 
