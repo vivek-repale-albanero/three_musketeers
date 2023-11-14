@@ -11,7 +11,7 @@ import UsersPage from "./Pages/UsersPage/UsersPage";
 import GamePageRedirect from "./Pages/GamePageRedirect";
 import TicTacPage from "./Pages/TicTacToe";
 import MissingPage from "./Pages/MissingPage";
-
+import { BreadcrumbsBar } from '@platform/service-ui-libraries';
 import { PermissionContext } from "./Context";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";

@@ -18,8 +18,8 @@ function HomePage() {
   return (
     <>
       <Layout>
-        {/* <Test2/> */}
-        {/* <Test /> */}
+        <Test2/>
+        <Test />
         <AlbaAutoCompleteComp />
         {/* <div className="container backGround" >
       <div className="text-wrapper">
