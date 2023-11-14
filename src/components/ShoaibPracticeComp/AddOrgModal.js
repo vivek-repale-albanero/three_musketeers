@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   AlbaButton,
   Icon,
@@ -20,8 +20,9 @@ import {
 import img from "../../assests/check.png";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { ShoaibAddOrganizationFunc } from "../../api/api";
-function AddOrgModal({ data, fetchData }) {
+import { OrgContextRequest, ShoaibAddOrganizationFunc } from "../../api/api";
+import { MissingPageContext } from "../../Context";
+function AddOrgModal({ data ,myFunction}) {
   const { openModal, setOpenModal } = data;
   const [formdata, setformdata] = useState({
     OrgName: "",
@@ -34,6 +35,7 @@ function AddOrgModal({ data, fetchData }) {
   const { orgModalData } = openModal;
   const ValidationRef = useRef([]);
   const MemberValidationref = useRef([]);
+  const [orgdata, setorgdata] = useState([]);
 
   const options = [
     { label: "SDE-1", value: "SDE-1" },
@@ -44,7 +46,6 @@ function AddOrgModal({ data, fetchData }) {
     setOpenModal({ ...openModal, orgModalStatus: false });
   };
 
-  // console.log(orgModalData,"orgModalData")
   const validateProfileForm = () => {
     console.log(ValidationRef, "ref");
     const resultData = ValidationRef.current.map((refs) => {
@@ -57,10 +58,36 @@ function AddOrgModal({ data, fetchData }) {
     return resultData.every(Boolean);
   };
 
+
+  const FetchContextOrgDetails = async () => {
+    const { response, error } = await OrgContextRequest();
+    if (response.statusText == "OK") {
+      setorgdata(response?.data);
+    } else {
+      console.log("error", error);
+    }
+  };
+
   const handleProceed = async () => {
     if (validateProfileForm()) {
-      formdata.Membercount=Allmember.length
-      let { response, error } = await ShoaibAddOrganizationFunc(formdata);
+      formdata.Membercount = Allmember.length;
+      let data = {
+        OrgName: formdata.OrgName,
+        country: [
+          {
+            countryName: formdata.countryName,
+            states: [
+              {
+                stateName: formdata.stateName,
+                cities: [formdata.city],
+              },
+            ],
+          },
+        ],
+        Membercount: formdata.Membercount,
+      };
+      data.Membercount = Allmember.length;
+      let { response, error } = await ShoaibAddOrganizationFunc(data);
       console.log("outresponse", response);
       if (response.status === 201) {
         console.log("response ShoaibAddOrganizationFunc", response);
@@ -73,6 +100,8 @@ function AddOrgModal({ data, fetchData }) {
           MemberDetails: { name: "", role: "" },
         });
         setOpenModal({ ...openModal, orgModalStatus: false });
+        setAllMember([])
+        myFunction()
       } else {
         console.log(
           error,
@@ -90,7 +119,6 @@ function AddOrgModal({ data, fetchData }) {
 
   const handleAddclick = () => {
     console.log("handleAddclick");
-
     if (formdata.MemberDetails.name && formdata.MemberDetails.role) {
       setAllMember((prev) => [...prev, formdata.MemberDetails]);
       setformdata({ ...formdata, MemberDetails: { name: "", role: "" } });
@@ -109,7 +137,9 @@ function AddOrgModal({ data, fetchData }) {
     // console.log(member,e)
   };
 
-  console.log(Allmember);
+  useEffect(() => {
+    FetchContextOrgDetails();
+  }, []);
 
   const checklength = (value) => {
     let length = "";
@@ -120,8 +150,45 @@ function AddOrgModal({ data, fetchData }) {
     return <img width="20px" src={img} />;
   };
 
-  // // console.log(ValidationRef, "valid");
-  // console.log(openModal, "data", data);
+  
+
+  let Counteryoption = orgdata.reduce((acc, { country }, index) => {
+    country.map(({ countryName }) => {
+      acc.push({ label: countryName, value: countryName });
+    });
+    return acc;
+  }, []);
+
+  
+  let Statenames = orgdata.reduce((acc, { country }, i) => {
+    country.map(({ countryName, states }) => {
+      if (formdata.countryName == countryName) {
+        states.map(({ stateName }) => {
+          acc.push({ label: stateName, value: stateName });
+        });
+      }
+    });
+    return acc
+  }, []);
+
+
+
+ 
+  const CitiesName = orgdata.reduce((acc, { country }, i) => {
+    country.map(({ countryName, states }) => {
+      states.map(({ stateName, cities }) => {
+        if (formdata.stateName == stateName) {
+          cities.map(item=>acc.push({ label: item, value: item }))
+          
+        }
+      });
+    });
+    return acc
+  },[]);
+
+
+  
+
   return (
     <div className="AddOrgModal">
       <Dialog
@@ -163,7 +230,21 @@ function AddOrgModal({ data, fetchData }) {
             onChange={(e) => setformdata({ ...formdata, OrgName: e })}
             placeholder="Organization Name"
           ></TextForm>
-          <TextForm
+          <SelectForm
+            label="Select Country"
+            ref={(e) => (ValidationRef.current[1] = e)}
+            validationsDetail={{
+              validations: {
+                required: true,
+                whiteSpace: true,
+              },
+            }}
+            onChange={(e) => setformdata({ ...formdata, countryName: e })}
+            options={Counteryoption}
+            placeholder="Countery Name"
+            fieldValue={formdata.countryName}
+          />
+          {/* <TextForm
             label="Countery Name"
             fieldValue={formdata.countryName}
             onChange={(e) => setformdata({ ...formdata, countryName: e })}
@@ -175,8 +256,22 @@ function AddOrgModal({ data, fetchData }) {
               },
             }}
             placeholder="Countery Name"
-          ></TextForm>
-          <TextForm
+          /> */}
+
+          <SelectForm
+            label="Select States"
+            ref={(e) => (ValidationRef.current[2] = e)}
+            validationsDetail={{
+              validations: {
+                required: true,
+                whiteSpace: true,
+              },
+            }}
+            onChange={(e) => setformdata({ ...formdata, stateName: e })}
+            options={Statenames}
+            fieldValue={formdata.stateName}
+          />
+          {/* <TextForm
             fieldValue={formdata.stateName}
             onChange={(e) => setformdata({ ...formdata, stateName: e })}
             label="State Name"
@@ -187,9 +282,10 @@ function AddOrgModal({ data, fetchData }) {
                 whiteSpace: true,
               },
             }}
+            options={Statenames}
             placeholder="State Name"
-          ></TextForm>
-          <TextForm
+          /> */}
+          {/* <TextForm
             fieldValue={formdata.city}
             label="City Name"
             onChange={(e) => setformdata({ ...formdata, city: e })}
@@ -201,7 +297,22 @@ function AddOrgModal({ data, fetchData }) {
               },
             }}
             placeholder="City Name"
-          ></TextForm>
+          /> */}
+
+          <SelectForm
+            label="City Name"
+            ref={(e) => (ValidationRef.current[3] = e)}
+            validationsDetail={{
+              validations: {
+                required: true,
+                whiteSpace: true,
+              },
+            }}
+            onChange={(e) => setformdata({ ...formdata, city: e })}
+            options={CitiesName}
+            placeholder="Countery Name"
+            fieldValue={formdata.city}
+          />
 
           {Allmember.length > 0 &&
             Allmember.map((member, index) => {
@@ -222,7 +333,7 @@ function AddOrgModal({ data, fetchData }) {
                     onChange={(e) => handlOnchangeOfOlderMember(e, member)}
                     fieldValue={member.name}
                     placeholder="Name"
-                  ></TextForm>
+                  />
                   <SelectForm
                     ref={(e) => (ValidationRef.current[index] = e)}
                     validationsDetail={{
@@ -236,7 +347,6 @@ function AddOrgModal({ data, fetchData }) {
                     placeholder="Select role"
                     options={options}
                     fieldValue={member.role}
-                    onc
                   />
                 </>
               );

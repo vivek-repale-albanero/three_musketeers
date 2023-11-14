@@ -146,18 +146,33 @@ export const fetchSearchResultsFunc = async ({
 };
 
 
+export const HandleOrgPatchData=async({id,obj})=>{
+  console.log(id,obj,"bsldfladsj")
+  let url=`Metadata/${id}`
+  // return await genericApiCall({
+  //   url,method:"PATCH",data:data
+  // })
+}
+
 
 export const ShoaibReloadFetchResultsFunc = async ({
   page,
   pageSize,
   searchText,
 }) => {
-  let url = `Metadata?q=${searchText}`;
+  let url = `Metadata?q=${searchText}&_page=${page}&_limit=${pageSize}`;
   return await genericApiCall({
     url,
     method: "GET",
   });
 };
+
+export const OrgContextRequest =()=>{
+  let url = 'Metadata'
+  return genericApiCall({
+    url,method:"GET"
+  })
+}
 
 export const ShoaibAddOrganizationFunc = async (formdata) => {
 

@@ -324,8 +324,12 @@ function UsersPage() {
                 title: "Users List",
               }}
             />
+<<<<<<< HEAD
+
+=======
             {/* {console.log(userFormModal, "userForm")} */}
             {userFormModal.status && !userFormModal.edit ? <EditForm /> : null}
+>>>>>>> d34f107e38b507ed28d05948640e73a240a84c64
             {userFormModal.status && userFormModal.edit ? <EditForm /> : null}
           </Container>
           {/* <UsersUITable/> */}
