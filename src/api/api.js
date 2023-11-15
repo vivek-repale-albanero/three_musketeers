@@ -9,6 +9,17 @@ export const users_Fetch = async() =>{
   }) 
 }
 
+export const fetchUsersPageData=async(payload)=>{
+  payload.page=payload.page+1
+   const url=`users?_page=${payload.page}&_limit=${payload.pageSize}&q=${payload.searchText}`;
+   console.log("url",url)
+  return await genericApiCall({
+      method: 'GET',
+      url
+    },
+    );
+ }
+
 export const addUser_UsersPage = async(payload) =>{
       const url = "users";
       return await genericApiCall({
@@ -70,6 +81,14 @@ export const deleteUser_api =async(payload) =>{
       data: payload
     });
   };
+
+  export const searchUsersPage_api = async (text,page,pageSize) =>{
+    const url = `users?q=${text}&_page=${page}&_limit=${pageSize}`;
+    return await genericApiCall({
+     method:'GET',
+     url
+    })
+  }
   export const fetchUsers = async () => {
     const url = `users`;
     return await genericApiCall({

@@ -21,6 +21,8 @@ import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 import {fetchUsers} from "./api/api"
 import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
+import CsvPageAssess from "./Assessment/CsvPageAssess";
+import MapPage from "./Pages/Map/map";
 
 
 
@@ -87,8 +89,8 @@ export default function Root() {
           <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
 
 
-          
-
+          <Route exact path="/assess" render={()=> <CsvPageAssess/>}/>
+          <Route exact path="/map" render={()=> <MapPage/>}/>
 
         </Switch>
       </React.Suspense>

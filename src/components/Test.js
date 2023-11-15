@@ -202,11 +202,13 @@ function Test() {
   //search
 
   const handleSearch = useCallback(
-    (searchText) => {
-      setSearchText(searchText);
-      if (searchText?.length > 2) {
+    (text) => {
+      setSearchText(text);
+      console.log("instant",searchText)
+      // if (searchText?.length > 2) {
+        // console.log("searchLength",searchText?.length)
         fetchDataFun(page, pageSize, searchText);
-      }
+      // }
     },
     [searchText, page, pageSize]
   );
