@@ -28,14 +28,16 @@ export default function PlatformAutoComplete({ setProducts }) {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(options);
+  console.log("options",options);
 
-  const handleSearch = () => {};
+  // const handleSearch = () => {};
 
-    const handleItemsSelected = (e) => {
-      setSelectedItems([...selectedItems, e.target.value]);
-      setDefaultVal(e.target.value);
-    };
+  //   const handleItemsSelected = (e) => {
+  //     setSelectedItems([...selectedItems, e.target.value]);
+  //     setDefaultVal(e.target.value);
+  //   };
+
+  
   const handleProductsTableChange = (items) => {
     console.log("getting item", items);
     setSelectedItems([...items]);
@@ -49,7 +51,7 @@ export default function PlatformAutoComplete({ setProducts }) {
     <div>
       <AlbaAutocomplete
         options={options}
-        defaultVal={defaultVal}
+        // defaultVal={defaultVal}
         updateValue={(val) => handleProductsTableChange(val.selectedItems)}
         multiple={true}
         selectAll={true}

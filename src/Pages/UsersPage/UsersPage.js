@@ -388,9 +388,12 @@ function UsersPage() {
                 title: "Users List",
               }}
             />
+
             {console.log(userFormModal, "userForm")}
             {userFormModal.status && !userFormModal.edit ? <EditForm  saveUserData={saveUserData} page={page} pageSize={pageSize} searchText={searchText} /> : null}
             {userFormModal.status && userFormModal.edit ? <EditForm saveUserData={saveUserData} page={page} pageSize={pageSize} searchText={searchText}/> : null}
+
+
           </Container>
           {/* <UsersUITable/> */}
         </UsersContext.Provider>

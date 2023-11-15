@@ -11,7 +11,7 @@ import UsersPage from "./Pages/UsersPage/UsersPage";
 import GamePageRedirect from "./Pages/GamePageRedirect";
 import TicTacPage from "./Pages/TicTacToe";
 import MissingPage from "./Pages/MissingPage";
-
+import { BreadcrumbsBar } from '@platform/service-ui-libraries';
 import { PermissionContext } from "./Context";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";
@@ -79,7 +79,7 @@ export default function Root() {
           <Route exact path="/gameredirect" render={()=> 
           <PrivateGameRoute><GamePageRedirect/></PrivateGameRoute>} />
           <Route exact path="/gameredirect/game" render={()=> <TicTacPage/>} />
-          {/* <Route exact path="/missing" render={()=> <MissingPage/>} /> */}
+          <Route exact path="/missing" render={()=> <MissingPage/>} />
 
           <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
           <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />

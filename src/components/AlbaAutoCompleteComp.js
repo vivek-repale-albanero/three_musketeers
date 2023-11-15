@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Typography, AlbaAutocomplete } from "@platform/service-ui-libraries";
 import { PermissionContext } from "../Context";
 import { getAutoCompleteOptions } from "../api/api";
@@ -6,27 +6,28 @@ import "./AlbaAutoCompleteComp.scss"
 function AlbaAutoCompleteComp() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [options, setOptions] = useState([]);
-  const [loding, setLoding] = useState(true);
+  const [loding, setLoding] = useState(false);
   const { defaultVal, setDefaultVal } = useContext(PermissionContext);
-
   const handleSearch = async () => {
     setLoding(true);
     const { response, error } = await getAutoCompleteOptions();
-    setLoding(false);
     setOptions(response.data);
+    setLoding(false);
   };
-  const handleupdate = (e) => {
-    setSelectedItems(e.selectedItems);
-    setDefaultVal(e.selectedItems);
+  useEffect(()=>{
+    handleSearch()
+  },[])
+  // console.log("options",options)
+  const handleupdate = (val) => {
+    setSelectedItems(val);
+    setDefaultVal(val)
   };
 
   console.log("selectedItems", selectedItems);
   return (
     <div className="autoComp">
       <AlbaAutocomplete
-        asyncSearchMode={true}
         dataTestId="alba-autocomplete"
-        onType={handleSearch}
         placeholder="Placeholder"
         label="Autocomplete"
         loading={loding}
@@ -46,19 +47,6 @@ function AlbaAutoCompleteComp() {
                   {option?.label}
                 </Typography>
               </div>
-            //   <div
-            //    className="join_table_list_item alba-autocomplete__list__item"
-            //    onClick={() => handleItemSelected(option)}
-            //    key={option.id}
-            //  >
-            //    <Typography
-            //      variant="body1"
-            //      style={{ fontWeight: "bold" }}
-            //      className="text_element al-ellipsis"
-            //    >
-            //      {option?.label}
-            //    </Typography>
-            //  </div>
             );
           });
         }}
@@ -72,7 +60,7 @@ function AlbaAutoCompleteComp() {
             required: true,
           },
         }}
-        updateValue={handleupdate}
+        updateValue={(e)=>handleupdate(e.selectedItems)}
       />
     </div>
   );

@@ -6,6 +6,7 @@ import "./HomePage.scss";
 import { PermissionContext } from "../../Context";
 import Test from "../../components/Test";
 import AlbaAutoCompleteComp from "../../components/AlbaAutoCompleteComp";
+import Test2 from "../../components/Test2";
 
 function HomePage() {
   const { setBreadCrumbProps } = useContext(PermissionContext);
@@ -17,6 +18,7 @@ function HomePage() {
   return (
     <>
       <Layout>
+        <Test2/>
         <Test />
         <AlbaAutoCompleteComp />
         {/* <div className="container backGround" >

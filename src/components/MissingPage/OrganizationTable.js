@@ -50,8 +50,9 @@ const columns = [
 
 export function GetRows(data) {
   let Rows = [];
+
   const uniqueOrganizations = new Set();
-  data.forEach(({ OrgName, country, id }) => {
+  data.forEach(({ OrgName, country, id, Membercount}) => {
     if (!uniqueOrganizations.has(id)) {
       country.forEach(({ countryName, states }) => {
         if (!uniqueOrganizations.has(id)) {
@@ -64,7 +65,7 @@ export function GetRows(data) {
                 countryName,
                 stateName,
                 city: cities[0],
-                Memberscount: 0,
+                Membercount:Membercount?Membercount:0,
                 MemberDetails:[],
                 See: <EyeComponent data={{ id, OrgName, countryName, stateName, city: cities[0] }} />,
                 Delete: <Icon>delete</Icon>

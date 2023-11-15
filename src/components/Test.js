@@ -1,16 +1,8 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
-
+import "./Test.scss"
 import {
-  timeAgo,
-  Typography,
-  AlbaAutocomplete,
+
   AlbaButton,
-  DraggableModal,
-  IconButton,
-  Dialog,
-  Icon,
-  DialogTitle,
-  DialogContent,
   ShowSnackbar,
 } from "@platform/service-ui-libraries";
 import {
@@ -18,6 +10,7 @@ import {
   addTestData,
   editTestData,
   deleteListTestData,
+  fetchTestDataUsername
 } from "../api/api";
 import { PermissionContext } from "../Context";
 import { Table } from "@platform/primary-table";
@@ -144,6 +137,8 @@ function Test() {
     }
   };
 
+
+
   ///////////////////////////add data api call/////////////////
   const addDataApi = async (newData) => {
     setLoading(true);
@@ -222,7 +217,8 @@ function Test() {
   });
   return (
     <>
-      <Table
+    <div className="testTable">
+      <Table 
         tableProps={{
           ...tableProps,
           totalCount,
@@ -232,7 +228,8 @@ function Test() {
           title: "Test Alba Table",
           actionComponents: actionComponents,
         }}
-      />
+        />
+        </div>
       {sampleData.status && !sampleData.edit && (
         <EditTable
           open={sampleData.status}
