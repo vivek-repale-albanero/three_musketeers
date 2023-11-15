@@ -5,7 +5,7 @@ import { CssBaseline } from "@material-ui/core";
 import CsvPage from "./Pages/CsvPage";
 import PermissionPage from "./Pages/PermissionPage";
 import "../src/styles/overrides.scss";
-import "../src/styles/styles.scss"
+import "../src/styles/styles.scss";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import UsersPage from "./Pages/UsersPage/UsersPage";
 import GamePageRedirect from "./Pages/GamePageRedirect";
@@ -13,7 +13,7 @@ import TicTacPage from "./Pages/TicTacToe";
 import MissingPage from "./Pages/MissingPage";
 
 import { PermissionContext } from "./Context";
-import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
+import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute";
 import PrivateGameRoute from "./components/PrivateGameRoute";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
@@ -21,81 +21,113 @@ import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 
 import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
-
-
-
-
-
+import Assesment from "./Pages/Assesment";
+import SeeAllParentDetail from "./components/AssesmentComp/SeeAllParentDetail";
 
 export default function Root() {
   const [defaultVal, setDefaultVal] = useState([]);
-  const [currentUser,setCurrentUser]=useState({})
+  const [currentUser, setCurrentUser] = useState({});
   const [users, setUsers] = useState([]);
-  const [local,setLocal]=useState(false)
-  const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
+  const [local, setLocal] = useState(false);
+  const [unAuthMsg, setUnAuthMsg] = useState("You are not Authorized");
   useEffect(() => {
-    fetch('http://localhost:3000/users')
-    .then((res) => res.json())
-    .then((data) => {
-      setUsers(data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  },[]);
+    fetch("http://localhost:3000/users")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
-  useEffect(()=>{
-    setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")))
+  useEffect(() => {
+    setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")));
+  }, [local]);
 
-  },[local])
-  
   // //data from local storage
-    // console.log("currentUser",currentUser)
-  
+  // console.log("currentUser",currentUser)
+
   const permission = useMemo(() => {
-    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal}
-  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal])
+    return {
+      users,
+      setUsers,
+      currentUser,
+      setCurrentUser,
+      setLocal,
+      local,
+      unAuthMsg,
+      setUnAuthMsg,
+      defaultVal,
+      setDefaultVal,
+    };
+  }, [
+    users,
+    currentUser,
+    setCurrentUser,
+    setLocal,
+    local,
+    setUnAuthMsg,
+    unAuthMsg,
+    defaultVal,
+    setDefaultVal,
+  ]);
   return (
     <BrowserRouter>
-    <PermissionContext.Provider  value={permission}>
+      <PermissionContext.Provider value={permission}>
+        <CssBaseline />
+        <React.Suspense>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/auth/login" />
+            </Route>
+            <Route exact path="/home" render={() => <HomePage />} />
+            <Route
+              exact
+              path="/csv"
+              render={() => (
+                <PrivateCsvEditRoute>
+                  <CsvPage />
+                </PrivateCsvEditRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/users/authorization/:id"
+              render={() => <PermissionPage />}
+            />
 
-      <CssBaseline />
-      <React.Suspense>
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/auth/login" />
-          </Route>
-          <Route exact path="/home" render={() =>(<HomePage/>)} />
-          <Route exact path="/csv" render={() => 
-          <PrivateCsvEditRoute>
-          
-          <CsvPage />
-           </PrivateCsvEditRoute>
-        } 
-        />
-          <Route exact path="/users/authorization/:id" render={()=>(<PermissionPage />)}/>
-          
-          <Route exact path="/auth/login" render={() => <LoginPage />} />
-          <Route exact path="/users" render={()=> <UsersPage/>}/>
-          <Route exact path="/gameredirect" render={()=> 
-          <PrivateGameRoute><GamePageRedirect/></PrivateGameRoute>} />
-          <Route exact path="/gameredirect/game" render={()=> <TicTacPage/>} />
-          <Route exact path="/missing" render={()=> <MissingPage/>} />
+            <Route exact path="/auth/login" render={() => <LoginPage />} />
+            <Route exact path="/users" render={() => <UsersPage />} />
+            <Route
+              exact
+              path="/gameredirect"
+              render={() => (
+                <PrivateGameRoute>
+                  <GamePageRedirect />
+                </PrivateGameRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/gameredirect/game"
+              render={() => <TicTacPage />}
+            />
+            <Route exact path="/missing" render={() => <MissingPage />} />
 
-          <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
-          <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />
+            <Route exact path="/unauth" render={() => <UnauthorizedPage />} />
+            <Route exact path="/Compo" render={() => <ShoaibCompoPractice />} />
 
-
-          <Route exact path="/e-com" render={()=> <EComPage/>} />
-          <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
-
-
-          
-
-
-        </Switch>
-      </React.Suspense>
-        </PermissionContext.Provider>
+            <Route exact path="/e-com" render={() => <EComPage />} />
+            <Route
+              exact
+              path="/table-demo"
+              render={() => <IntegrityAnalysisList />}
+            />
+            <Route exact path="/assesment" render={() => <Assesment />} />
+          </Switch>
+        </React.Suspense>
+      </PermissionContext.Provider>
     </BrowserRouter>
   );
 }

@@ -446,6 +446,7 @@ const textToCsvMetadata = (actions) => {
     searchData: true,
     totalCount: actions.totalCount,
     numericPagination: true,
+
   };
 };
 
@@ -496,6 +497,8 @@ function CustomTable() {
 
   const fetchData = async () => {
     const { response, error } = await fetchOrgData({ page, pageSize });
+  console.log(page,pageSize,"innn fetch")
+
     if (response?.statusText == "OK") {
       let GetMassageData = GetRows(response?.data);
 
@@ -528,7 +531,7 @@ function CustomTable() {
   // }
 
   const handleOnChangePage = (page) => {
-    setPage(page + 1);
+    setPage(page);
   };
 
   const handleOnChangePageSize = (pageSize, page) => {
@@ -562,9 +565,12 @@ function CustomTable() {
       }
     }
   };
+  console.log(page,pageSize)
 
   const SingleDeleteRecords = async ({ id }) => {
     // console.log("inner",Extracteddata)
+  console.log(page,pageSize,"innn")
+
     const { response, error } = await DeleteSingleOrgData({ id });
     if (response?.statusText == "OK") {
       fetchData(page, pageSize);
@@ -670,7 +676,6 @@ function CustomTable() {
     } else {
       fetchData();
     }
-
     // let getdata= GetRows(orgdata)
     // SetExtractededdata(getdata)
     setActionComponents([startTableButton]);

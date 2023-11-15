@@ -93,6 +93,12 @@ const Layout = ({ children }) => {
             </ListItemIcon>
             <ListItemText primary="Shopping" />
           </ListItem>
+          <ListItem button component={Link} to="/assesment">
+            <ListItemIcon>
+              <Icon>casino</Icon>
+            </ListItemIcon>
+            <ListItemText primary="assesment" />
+          </ListItem>
         </List>
       </Drawer>
       {/* </div> */}
