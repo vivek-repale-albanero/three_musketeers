@@ -22,7 +22,7 @@ import {fetchUsers} from "./api/api"
 import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
 import CsvPageAssess from "./Assessment/CsvPageAssess";
-import MapPage from "./Pages/Map/map";
+import MapPage from "./Pages/Map/MapPage";
 
 
 
