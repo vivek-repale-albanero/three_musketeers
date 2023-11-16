@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Button,
   Icon,
@@ -30,23 +30,33 @@ function ECom() {
   //const [newProduct, setNewProduct] = useState({});
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartChanged, setCartChanged] = useState(false);
-  //const [cartData,setCartData] = useState([]);
+
+  //gonna optimize in a while
+  const fetchTableData = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`
+      );
+      const jsonRes = await res.json();
+      //console.log('data being fetched',jsonRes)
+      setProducts(jsonRes);
+    } catch (error) {
+      //console.log("error", error);
+    }
+  };
   useEffect(() => {
-    console.log(
-      "Use effect called for page ",
-      page,
-      " and pagesize is ",
-      pageSize
-    );
-    fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, [page, pageSize]);
+    fetchTableData();
+  }, [page, pageSize,cartChanged]);
+
+  // const fetchCartData = useCallback(async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:3000/cart`);
+  //     const jsonResponse = await response.json();
+  //     setCartData(jsonResponse)
+  //   } catch (error) {
+  //     //console.log("error", error);
+  //   }
+  // },[]);
 
   const openAddModal = () => {
     setProductFormModal({
@@ -75,7 +85,7 @@ function ECom() {
       .then((data) => setProducts(data));
   };
   const openEditModaL = (product) => {
-    console.log("edit is running", product);
+    //console.log("edit is running", product);
     setProductFormModal({
       ...productFormModal,
       status: true,
@@ -99,7 +109,7 @@ function ECom() {
       });
       setCartChanged(true);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
 
     //setCartData(cartData.filter((item) => item.id !== productId))
@@ -117,7 +127,7 @@ function ECom() {
       })
         .then((response) => afterEdit())
         .catch((error) => {
-          console.error("Error:", error);
+          //console.error("Error:", error);
         });
       // const updatedUsers = [...users,editedUserData]
       //    setUsers(updatedUsers)
@@ -137,7 +147,7 @@ function ECom() {
       })
         .then((response) => afterEdit())
         .catch((error) => {
-          console.error("Error:", error);
+          //console.error("Error:", error);
         });
     }
     closeModal();
@@ -147,21 +157,78 @@ function ECom() {
     return { productFormModal, products, saveProductData, closeModal };
   }, [productFormModal, products, saveProductData, closeModal]);
 
-  //Cart
-  const handleAddToCart = (product) => {
-    fetch(`http://localhost:3000/cart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => setCartChanged(true))
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  const handleAddToCart = async (product) => {
+    setCartChanged(false)
+    try {
+      const response = await fetch(
+        `http://localhost:3000/cart?name=${product.name}`
+      );
+      const cartProduct = await response.json();
+      const modifiedCartProduct =
+        cartProduct.length > 0
+          ? {
+              ...cartProduct[0],
+              number: cartProduct[0].number + 1,
+            }
+          : {
+              ...product,
+              number: 1,
+            };
+      //console.log("cart product modified is", modifiedCartProduct);
+      const fetchedProductWithId = await fetch(
+        `http://localhost:3000/products/${product.id}`
+      );
+      const fetchedProductWithIdJson = await fetchedProductWithId.json();
+      const productFetchResponse = await fetch(
+        `http://localhost:3000/products/${product.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...fetchedProductWithIdJson,
+            quantity: Math.max(fetchedProductWithIdJson.quantity - 1, 0),
+          }),
+        }
+      );
+      const updatedProduct = await productFetchResponse.json();
+
+      //if the product which is to be added is already present in cart, we r gonna patch
+      //else we just post the new product to cart
+      if (cartProduct.length > 0) {
+        const cartEditResponse = await fetch(
+          `http://localhost:3000/cart/${modifiedCartProduct.id}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(modifiedCartProduct),
+          }
+        );
+        const updatedCartProduct = await cartEditResponse.json();
+        //console.log("cart product updated is", updatedCartProduct);
+      } else {
+        const cartPostResponse = await fetch(`http://localhost:3000/cart`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(modifiedCartProduct),
+        });
+        const cartPostResponseJson = await cartPostResponse.json();
+        //console.log("cart product updated is", cartPostResponseJson);
+      }
+
+      setCartChanged(true);
+    } catch (error) {
+      //console.log("error", error);
+    }
+
     //setCartData([...cartData,product])
   };
+  //console.log("data we r getting", products,'and cartchanged is ',cartChanged);
 
   //Action object for MUI based table
   const actions = () => {
@@ -195,17 +262,15 @@ function ECom() {
             <EditProductForm />
           ) : null}
         </Container>
-       <div style={{width:'100%',textAlign:'center'}}>
-
-
-        <AlbaButton
-          variant="contained"
-          classNamAlbaButtone="addBtn"
-          onClick={openCartModal}
-          disabled={products.length === 0}
-        >
-          Show Cart
-        </AlbaButton>
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <AlbaButton
+            variant="contained"
+            classNamAlbaButtone="addBtn"
+            onClick={openCartModal}
+            disabled={products.length === 0}
+          >
+            Show Cart
+          </AlbaButton>
         </div>
 
         {showCartModal && (

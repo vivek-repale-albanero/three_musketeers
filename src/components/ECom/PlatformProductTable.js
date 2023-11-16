@@ -39,15 +39,15 @@ function PlatformProductTable({
       console.log("error fetching data", error);
     }
   };
+
+  //console.log('Products table data',products)
   useEffect(() => {
     //this use effect is gonna run for the first time no matter the dependencies.
     fetchData(page, pageSize);
-    console.log('uef 1 run!')
   }, [searchText,page,pageSize]);
 
   useEffect(() => {
     //fetchData();
-    console.log('uef 2 run!')
     setActionComponents([AddProductButton]);
   }, []);
 
@@ -130,7 +130,7 @@ const handleSelected=(elems)=>console.log(elems)
           // onReload,
           title: "Products",
           actionComponents,
-          handleAddAllToCart:handleSelected
+          //handleAddAllToCart:handleSelected
           
         }}
       />

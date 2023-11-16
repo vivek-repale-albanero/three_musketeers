@@ -15,7 +15,7 @@ import {
   List,
   ListItem,
   ListItemText,
-} from '@platform/service-ui-libraries'
+} from "@platform/service-ui-libraries";
 
 function Cart({ onClose, onCartChange, cartDidChange, open }) {
   const [data, setData] = useState([]);
@@ -25,6 +25,7 @@ function Cart({ onClose, onCartChange, cartDidChange, open }) {
       .then((res) => res.json())
       .then((data) => setData(data));
   };
+  console.log('data in the cart',data)
   useEffect(() => {
     fetchData();
   }, []);
@@ -44,15 +45,13 @@ function Cart({ onClose, onCartChange, cartDidChange, open }) {
   //on the popup what I need is 2 fields to bd added which are product type(select) and quantity
 
   return (
-    <div className="__cart__modal">
-      <Drawer
-        anchor="bottom"
-        open={open}
-        onClose={onClose}
-        //sx={{ height: "250px" }}
-      >
-        <div className="__modal__content">
-
+    <Drawer
+      anchor="bottom"
+      open={open}
+      onClose={onClose}
+      //sx={{ height: "250px" }}
+    >
+      <div className="__modal__wrapper">
         <Typography variant="h4" component="h6" align="center">
           {" "}
           Shopping Cart
@@ -68,7 +67,7 @@ function Cart({ onClose, onCartChange, cartDidChange, open }) {
                 marginTop: "10px",
               }}
             >
-              <ListItemText >
+              <ListItemText>
                 <Typography>{item.name}</Typography>
                 <Typography>{item.price}</Typography>
               </ListItemText>
@@ -86,10 +85,8 @@ function Cart({ onClose, onCartChange, cartDidChange, open }) {
             <p style={{ textAlign: "center" }}>Please add a product!</p>
           )}
         </List>
-        </div>
-
-      </Drawer>{" "}
-    </div>
+      </div>
+    </Drawer>
   );
 }
 
