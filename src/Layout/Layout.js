@@ -85,6 +85,14 @@ const Layout = ({ children }) => {
             </ListItemIcon>
             <ListItemText primary="Shopping" />
           </ListItem>
+          <ListItem button component={Link} to="/assess">
+            <Icon></Icon>
+            <ListItemText primary="Assess" />
+          </ListItem>
+          <ListItem button component={Link} to="/map">
+            <Icon></Icon>
+            <ListItemText primary="CSV Mapping" />
+          </ListItem>
         </List>
       </Drawer>
       <div style={{ marginLeft: '15%' }}>

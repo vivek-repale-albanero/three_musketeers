@@ -373,13 +373,6 @@ function AddOrgModal({ data ,myFunction}) {
             placeholder="Name"
           ></TextForm>
           <SelectForm
-            ref={(e) => (ValidationRef.current[5] = e)}
-            // validationsDetail={{
-            //   validations: {
-            //     required: true,
-            //     whiteSpace: true,
-            //   },
-            // }}
             onChange={(e) =>
               setformdata({
                 ...formdata,
@@ -392,31 +385,6 @@ function AddOrgModal({ data ,myFunction}) {
             fieldValue={formdata.MemberDetails.role}
           />
         </DialogContent>
-        <DialogActions>
-          <div className="__dialog_action_wrapper al-flex">
-            <AlbaButton
-              //   variant={step === 0 ? 'danger' : 'primary'}
-              //   onClick={handleBack}
-              className="Addmemberbutton"
-              onClick={handleAddclick}
-            >
-              {/* {step === 0 ? 'Cancel' : 'Back'} */}
-              Add Member
-            </AlbaButton>
-            {/* {profilingOptions?.useTemplate && (step == 0 || (step == 1 && referenceTables?.length)) ? ( */}
-
-            {/* ) : ( */}
-            <AlbaButton
-              variant="success"
-              onClick={handleProceed}
-              // loading={isLoadingProceedButton}
-              data-test-id="data-profiling-proceed-button"
-            >
-              Confirm
-            </AlbaButton>
-            {/* )} */}
-          </div>
-        </DialogActions>
       </Dialog>
     </div>
   );

@@ -1,0 +1,74 @@
+.Parent_container{
+    display: flex;
+    height: 100vh;
+    .containerLeft{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid black;
+        padding: 2%;
+        .buttonCont{
+            display: flex;
+            // justify-content: space-between;
+        }
+        .inner_container{
+            margin-top: 50px;
+            // padding-right: 50px;
+            border: 1px solid black;
+            border-radius: 5px;
+             .content{
+                  display:flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 .eleMap{
+                     display: flex;
+                     justify-content: space-between;
+                     align-items: center;
+                    //  padding: 5px;
+                     // width: 500px;
+                     .autocomp{
+                         width: 300px;
+                         margin: 0px 5px;
+                        }
+                        .labelName{
+                         width: 150px;
+                         margin-left: 40px;
+                        }
+                    }
+            }
+            .btnSave{
+                display:flex;
+                justify-content: flex-end;
+                margin: 25px 50px 25px 10px;
+            }
+        }
+    }
+    .containerRight{
+        flex: 1;
+        padding: 2%;
+           .displayContent{
+                  margin-top: 150px;
+            .displayValues{
+                display: flex;
+                flex-direction: column;
+                .display{
+                     display: flex;
+                     justify-content: space-around;
+                    .displayLabel{
+                        display:flex;
+                        flex: 1;
+                        align-items: center;
+                        margin: 5px;
+                        width: 200px;
+                    }
+                    .displayValue{
+                        margin: 5px;
+                        border: 1px black solid;
+                        width: 100px;
+                    }
+                }
+            }
+           }
+    }
+}

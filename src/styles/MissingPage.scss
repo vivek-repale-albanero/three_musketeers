@@ -29,9 +29,9 @@
 
     button {
         padding: 10px;
-        background-color: teal;
+        // background-color: teal;
         margin: auto;
-        color: white;
+        // color: white;
     }
 
     .AddOrgModal {
@@ -67,6 +67,8 @@
 
 .table {
     margin-top: 20px;
+    background-color: #d9dde0;    
+
     tbody {
         display: block;
         overflow-y: auto;
@@ -77,10 +79,21 @@
     tbody tr{
         display: table;
         width: 100%; 
-        background-color: #d9dde0;
         table-layout: fixed;
+        background-color: #d9dde0;    
+
     }
 
     
    
+}
+
+.albaauto{
+    padding: 50px;
+}
+
+.alba-autocomplete__input__search__selection input {
+
+    border: none;
+
 }

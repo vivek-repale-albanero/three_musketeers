@@ -32,14 +32,14 @@
           margin-left: 10px;
         }
       }
+      // .__check_default{
 
-      .MuiCheckbox-root {
-        color: #00bbd1;
         
-        &.Mui-checked {
-          color: #00bbd1;
-        }
-      }
+      //   .jss14{
+      //     color: #219d28;
+      //   }
+        
+      // }
     }
   }
   }
@@ -73,6 +73,6 @@
 }
 .modal-footer{
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin: 25px;
 }

@@ -28,9 +28,9 @@ export default function PlatformAutoComplete({ setProducts }) {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(options);
+  console.log("options",options);
 
-  const handleSearch = () => {};
+  // const handleSearch = () => {};
 
   const handleItemsSelected = (e) => {
     setSelectedItems([...selectedItems, e.target.value]);
@@ -49,7 +49,7 @@ export default function PlatformAutoComplete({ setProducts }) {
     <div>
       <AlbaAutocomplete
         options={options}
-        defaultVal={defaultVal}
+        // defaultVal={defaultVal}
         updateValue={(val) => handleProductsTableChange(val.selectedItems)}
         multiple={true}
         selectAll={true}
