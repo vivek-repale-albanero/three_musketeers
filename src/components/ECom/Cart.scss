@@ -28,7 +28,15 @@
   color: teal;
 }
 
-.cartPaper{
-    width:25%;
+.cartPaper {
+  width: 25%;
 }
 
+.__cart__modal {
+  width: 100%;
+  
+  .__modal__content{
+    min-height: 500px;
+    height: 60vh;
+  }
+}

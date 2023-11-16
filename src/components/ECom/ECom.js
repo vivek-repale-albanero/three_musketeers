@@ -195,6 +195,8 @@ function ECom() {
             <EditProductForm />
           ) : null}
         </Container>
+       <div style={{width:'100%',textAlign:'center'}}>
+
 
         <AlbaButton
           variant="contained"
@@ -204,6 +206,8 @@ function ECom() {
         >
           Show Cart
         </AlbaButton>
+        </div>
+
         {showCartModal && (
           <Cart
             cartDidChange={cartChanged}

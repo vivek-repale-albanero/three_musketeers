@@ -4338,20 +4338,6 @@
   ],
   "products": [
     {
-      "name": "Product 1",
-      "price": 33,
-      "quantity": 3,
-      "id": 1,
-      "type": "personal"
-    },
-    {
-      "name": "Mozilla 2",
-      "price": 33,
-      "quantity": 3,
-      "id": 2,
-      "type": "personal"
-    },
-    {
       "name": "Mobile 3",
       "price": 33,
       "quantity": 3,
