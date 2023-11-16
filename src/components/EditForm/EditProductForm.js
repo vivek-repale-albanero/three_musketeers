@@ -168,130 +168,132 @@ function EditProductForm() {
       onClose={closeModal}
       className="compare-files-dialog aw-dialog appModal"
       PaperComponent={DraggableModal}
-      maxWidth={"sm"}
+      maxWidth={"xs"}
     >
-      <DialogTitle id="draggable-dialog-title">
-        <div className="__modal__title">
-          <Typography className="__text al-ellipsis" variant="h6">
-            {productFormModal.edit ? "Edit Product" : "Add Product"}
-          </Typography>
+      <div className="__modalWrapper">
+        <DialogTitle id="draggable-dialog-title">
+          <div className="__title">
+            <Typography className="__text al-ellipsis" variant="h6">
+              {productFormModal.edit ? "Edit Product" : "Add Product"}
+            </Typography>
 
-          <IconButton onClick={closeModal}>
-            <Icon>close</Icon>
-          </IconButton>
-        </div>
-      </DialogTitle>
-      <DialogContent className="__modal__content">
-        <div className="__form__wrapper">
-          <div className="__body">
-            <TextForm
-              validationsDetail={{
-                validations: {
-                  required: true,
-                  whiteSpace: true,
-                },
-              }}
-              validationFunc={(inputData) => handleNameValidation(inputData)}
-              ref={(elem) => {
-                validateFields.current[0] = elem;
-              }}
-              id="outlined-helperText"
-              label="Product name"
-              fieldValue={editProductData.name}
-              onChange={(e) =>
-                setEditProductData({
-                  ...editProductData,
-                  name: e,
-                })
-              }
-            />
-          </div>
+            <IconButton onClick={closeModal}>
+              <Icon>close</Icon>
+            </IconButton>
+            </div>
+        </DialogTitle>
+        <DialogContent className="__modal__content">
+          <div className="__formWrapper">
+            <div className="__body">
+              <TextForm
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
+                validationFunc={(inputData) => handleNameValidation(inputData)}
+                ref={(elem) => {
+                  validateFields.current[0] = elem;
+                }}
+                id="outlined-helperText"
+                label="Product name"
+                fieldValue={editProductData.name}
+                onChange={(e) =>
+                  setEditProductData({
+                    ...editProductData,
+                    name: e,
+                  })
+                }
+              />
+            </div>
 
-          <div className="__body">
-            <TextForm
-              validationsDetail={{
-                validations: {
-                  required: true,
-                  whiteSpace: true,
-                },
-              }}
-              ref={(elem) => {
-                validateFields.current[1] = elem;
-              }}
-              id="outlined-helperText"
-              label="Price"
-              type="number"
-              fieldValue={editProductData.price}
-              onChange={(e) =>
-                setEditProductData({
-                  ...editProductData,
-                  price: parseFloat(e),
-                })
-              }
-            />
-          </div>
-          <div className="__body">
-            <TextForm
-              validationsDetail={{
-                validations: {
-                  required: true,
-                  whiteSpace: true,
-                },
-              }}
-              ref={(elem) => {
-                validateFields.current[2] = elem;
-              }}
-              id="outlined-helperText"
-              label="Quantity"
-              type="number"
-              fieldValue={editProductData.quantity}
-              onChange={(e) =>
-                setEditProductData({
-                  ...editProductData,
-                  quantity: parseFloat(e),
-                })
-              }
-            />
-          </div>
+            <div className="__body">
+              <TextForm
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
+                ref={(elem) => {
+                  validateFields.current[1] = elem;
+                }}
+                id="outlined-helperText"
+                label="Price"
+                type="number"
+                fieldValue={editProductData.price}
+                onChange={(e) =>
+                  setEditProductData({
+                    ...editProductData,
+                    price: parseFloat(e),
+                  })
+                }
+              />
+            </div>
+            <div className="__body">
+              <TextForm
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
+                ref={(elem) => {
+                  validateFields.current[2] = elem;
+                }}
+                id="outlined-helperText"
+                label="Quantity"
+                type="number"
+                fieldValue={editProductData.quantity}
+                onChange={(e) =>
+                  setEditProductData({
+                    ...editProductData,
+                    quantity: parseFloat(e),
+                  })
+                }
+              />
+            </div>
 
-          <div className="__body">
-            <SelectForm
-              validationsDetail={{
-                validations: {
-                  required: true,
-                  whiteSpace: true,
-                },
-              }}
-              ref={(elem) => {
-                validateFields.current[4] = elem;
-              }}
-              fieldValue={editProductData.type}
-              label="Select type"
-              placeholder="Select"
-              onChange={(e) => {
-                console.log("onchange", e);
-                setEditProductData({
-                  ...editProductData,
-                  type: e,
-                });
-              }}
-              options={types.map((type) => {
-                return { label: type, value: type };
-              })}
-            />
-          </div>
+            <div className="__body">
+              <SelectForm
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
+                ref={(elem) => {
+                  validateFields.current[4] = elem;
+                }}
+                fieldValue={editProductData.type}
+                label="Select type"
+                placeholder="Select"
+                onChange={(e) => {
+                  console.log("onchange", e);
+                  setEditProductData({
+                    ...editProductData,
+                    type: e,
+                  });
+                }}
+                options={types.map((type) => {
+                  return { label: type, value: type };
+                })}
+              />
+            </div>
 
-          <br />
-          <div className="buttonContainer">
-            <AlbaButton variant="danger" onClick={closeModal}>
-              Cancel
-            </AlbaButton>
-            <AlbaButton variant="success" onClick={handleSave}>
-              Save
-            </AlbaButton>
+            <br />
+            <div className="buttonContainer">
+              <AlbaButton variant="danger" onClick={closeModal}>
+                Cancel
+              </AlbaButton>
+              <AlbaButton variant="success" onClick={handleSave}>
+                Save
+              </AlbaButton>
+            </div>
           </div>
-        </div>
-      </DialogContent>
+        </DialogContent>
+      </div>
     </Dialog>
     // </div>
   );

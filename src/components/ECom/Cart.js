@@ -15,15 +15,15 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
+import { fetchCartData } from "../../api/api";
 
 function Cart({ onClose, onCartChange, cartDidChange, open }) {
   const [data, setData] = useState([]);
-
-  const fetchData = () => {
-    fetch("http://localhost:3000/cart")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  };
+  const fetchData=async()=>{
+    const data=await fetchCartData()
+    console.log(data)
+    //setData(data)
+  }
   useEffect(() => {
     fetchData();
   }, []);

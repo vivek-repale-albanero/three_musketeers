@@ -8,7 +8,7 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import {AlbaButton } from '@platform/service-ui-libraries'
+import { AlbaButton, ShowSnackbar } from "@platform/service-ui-libraries";
 import BreadCrumb from "../Breadcrumbs/BreadCrumb";
 import EditForm from "../EditForm/EditForm";
 import { ProductsContext } from "../../Context";
@@ -38,7 +38,7 @@ function ECom() {
       " and pagesize is ",
       pageSize
     );
-    fetch(`http://localhost:3000/products?_page=${page+1}&_limit=${pageSize}` )
+    fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -47,7 +47,6 @@ function ECom() {
         console.error("Error:", error);
       });
   }, [page, pageSize]);
-  
 
   const openAddModal = () => {
     setProductFormModal({
@@ -69,9 +68,9 @@ function ECom() {
       data: {},
     });
   };
-
+  console.log(ShowSnackbar);
   const afterEdit = () => {
-    fetch(`http://localhost:3000/products?_page=${page+1}&_limit=${pageSize}`)
+    fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   };
@@ -148,62 +147,73 @@ function ECom() {
     return { productFormModal, products, saveProductData, closeModal };
   }, [productFormModal, products, saveProductData, closeModal]);
 
+  
   //Cart
-  const handleAddToCart = (product) => {
-    fetch(`http://localhost:3000/cart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => setCartChanged(true))
-      .catch((error) => {
-        console.error("Error:", error);
+  const handleAddToCart = async (product) => {
+    try {
+      const response = await fetch(`http://localhost:3000/cart`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
       });
-    //setCartData([...cartData,product])
+      const jsonResonse = await response.json();
+      setCartChanged(true);
+      // console.log("Snack bar should have run!");
+     
+      // ShowSnackbar(true,"success", "Added to cart!");
+    } catch (error) {
+      console.error("Error:", error);
+      //ShowSnackbar(false,'error', "Something went wrong!");
+    }
   };
 
   //Action object for MUI based table
   const actions = () => {
-    return { openEditModaL, deleteProduct, handleAddToCart };
+    return { openEditModaL, deleteProduct, handleAddToCart, openAddModal };
   };
   return (
     <div>
       <ProductsContext.Provider value={productPageValue}>
         <Box className="title" style={{ display: "flex" }}>
           <Typography style={{ fontSize: "24px" }}>E-Com</Typography>
-          <Button variant="contained" className="addBtn" onClick={openAddModal}>
+          {/* <Button variant="contained" className="addBtn" onClick={openAddModal}>
             Add Product
-          </Button>
+          </Button> */}
           {productFormModal.status && !productFormModal.edit ? (
             <EditProductForm />
           ) : null}
         </Box>
         <Container maxWidth="100%" className="tableContent">
           {/* <TableMUI actions={actions} products={products} productFormModal={productFormModal}/> */}
-          <PlatformAutoComplete products={products} setProducts={setProducts}/>
+          {/* <PlatformAutoComplete products={products} setProducts={setProducts} /> */}
           <PlatformProductTable
             products={products}
+            setProducts={setProducts}
             actions={actions}
             page={page}
             setPage={setPage}
             pageSize={pageSize}
             setPageSize={setPageSize}
+            
           />
           {productFormModal.status && productFormModal.edit ? (
-                    <EditProductForm />
-                  ) : null}
+            <EditProductForm />
+          ) : null}
         </Container>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <AlbaButton
+            className="__showCartBtn"
+            variant="contained"
+            classNamAlbaButtone="addBtn"
+            onClick={openCartModal}
+            disabled={products.length === 0}
+          >
+            Show Cart
+          </AlbaButton>
+        </div>
 
-        <AlbaButton
-          variant="contained"
-          classNamAlbaButtone="addBtn"
-          onClick={openCartModal}
-          disabled={products.length === 0}
-        >
-          Show Cart
-        </AlbaButton>
         {showCartModal && (
           <Cart
             cartDidChange={cartChanged}
