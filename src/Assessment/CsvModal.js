@@ -9,40 +9,34 @@ import {
   DraggableModal,
   DialogTitle,
   DialogContent,
-  DialogActions,
-  Backdrop
+  DialogActions
 } from "@platform/service-ui-libraries";
-import "./CsvUploader.scss";
-import { CSVContext } from "../Context";
+// import "./CsvUploader.scss";
+import { assessCsv } from "../Context";
 
-const CsvUploader = () => {
+const CsvModal = () => {
   const {
-    isModalOpen,
-    handleClose,
-    handleFileChange,
-    selectedFileName,
-    showTableFn,
-    errorMessageForCsvUploder,
-    uploading,
-    csvfileInputRef
-  } = useContext(CSVContext);
+    uploadModal,
+    modalClose,
+    onFileChange,
+    csvfileInputRef,
+    filename,
+    uploadErrMsg,
+    isUploading,
+    onUpload
+  } = useContext(assessCsv);
   return (
     <Dialog
-      open={isModalOpen}
+      open={uploadModal}
       className="compare-files-dialog aw-dialog appModal"
       PaperComponent={DraggableModal}
       maxWidth={"xs"}
       fullWidth
-      closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500
-      }}
     >
         <DialogTitle id="draggable-dialog-title">
       <div className="csv-modal-head">
           <Typography variant="h3">CSV Uploader</Typography>
-          <Icon style={{ color: "white" }} onClick={handleClose}>
+          <Icon style={{ color: "white" }} onClick={modalClose}>
             close
           </Icon>
       </div>
@@ -60,7 +54,7 @@ const CsvUploader = () => {
           <input
             type="file"
             accept=".csv"
-            onChange={handleFileChange}
+            onChange={onFileChange}
             className="fileInput"
             id="fileInput"
             ref={csvfileInputRef}
@@ -69,12 +63,12 @@ const CsvUploader = () => {
           <label htmlFor="fileInput" className="chooseFileButton">
             Choose File
           </label>
-          {errorMessageForCsvUploder && <div style={{ color: 'red' }}>{errorMessageForCsvUploder}</div>}
+          {uploadErrMsg && <div style={{ color: 'red' }}>{uploadErrMsg}</div>}
         </div>
         <br />
-        {selectedFileName && (
+        {filename && (
           <Typography variant="subtitle1" className="selectedFileName">
-            Selected File: {selectedFileName}
+            Selected File: {filename}
           </Typography>
         )}
           </DialogContent>
@@ -82,10 +76,10 @@ const CsvUploader = () => {
         <div className="upload-btn-box">
           <AlbaButton
             variant="success"
-            onClick={showTableFn}
-            disabled={uploading}
+            onClick={onUpload}
+            disabled={isUploading}
           >
-            {uploading ? "Uploading..." : "Upload"}
+            {isUploading ? "Uploading..." : "Upload"}
           </AlbaButton>
         </div>
         </DialogActions>
@@ -93,4 +87,4 @@ const CsvUploader = () => {
   );
 };
 
-export default CsvUploader;
+export default CsvModal;

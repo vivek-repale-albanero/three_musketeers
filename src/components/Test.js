@@ -1,16 +1,8 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 import "./Test.scss"
 import {
-  timeAgo,
-  Typography,
-  AlbaAutocomplete,
+
   AlbaButton,
-  DraggableModal,
-  IconButton,
-  Dialog,
-  Icon,
-  DialogTitle,
-  DialogContent,
   ShowSnackbar,
 } from "@platform/service-ui-libraries";
 import {
@@ -18,6 +10,7 @@ import {
   addTestData,
   editTestData,
   deleteListTestData,
+  fetchTestDataUsername
 } from "../api/api";
 import { PermissionContext } from "../Context";
 import { Table } from "@platform/primary-table";
@@ -144,6 +137,8 @@ function Test() {
     }
   };
 
+
+
   ///////////////////////////add data api call/////////////////
   const addDataApi = async (newData) => {
     setLoading(true);
@@ -202,11 +197,13 @@ function Test() {
   //search
 
   const handleSearch = useCallback(
-    (searchText) => {
-      setSearchText(searchText);
-      if (searchText?.length > 2) {
+    (text) => {
+      setSearchText(text);
+      console.log("instant",searchText)
+      // if (searchText?.length > 2) {
+        // console.log("searchLength",searchText?.length)
         fetchDataFun(page, pageSize, searchText);
-      }
+      // }
     },
     [searchText, page, pageSize]
   );

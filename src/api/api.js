@@ -21,6 +21,17 @@ export const users_Fetch = async() =>{
   }) 
 }
 
+export const fetchUsersPageData=async(payload)=>{
+  payload.page=payload.page+1
+   const url=`users?_page=${payload.page}&_limit=${payload.pageSize}&q=${payload.searchText}`;
+   console.log("url",url)
+  return await genericApiCall({
+      method: 'GET',
+      url
+    },
+    );
+ }
+
 export const addUser_UsersPage = async(payload) =>{
       const url = "users";
       return await genericApiCall({
@@ -47,6 +58,14 @@ export const deleteUser_api =async(payload) =>{
   })
 }
 
+export const fetchTestDataUsername=async()=>{
+   const url=`sampleData`;
+  return await genericApiCall({
+      method: 'GET',
+      url
+    },
+    );
+ }
 
   export const fetchTestData=async(payload)=>{
     payload.page=payload.page+1
@@ -82,6 +101,14 @@ export const deleteUser_api =async(payload) =>{
       data: payload
     });
   };
+
+  export const searchUsersPage_api = async (text,page,pageSize) =>{
+    const url = `users?q=${text}&_page=${page}&_limit=${pageSize}`;
+    return await genericApiCall({
+     method:'GET',
+     url
+    })
+  }
   export const fetchUsers = async () => {
     const url = `users`;
     return await genericApiCall({
@@ -150,18 +177,33 @@ export const fetchSearchResultsFunc = async ({
 };
 
 
+export const HandleOrgPatchData=async({id,obj})=>{
+  console.log(id,obj,"bsldfladsj")
+  let url=`Metadata/${id}`
+  // return await genericApiCall({
+  //   url,method:"PATCH",data:data
+  // })
+}
+
 
 export const ShoaibReloadFetchResultsFunc = async ({
   page,
   pageSize,
   searchText,
 }) => {
-  let url = `Metadata?q=${searchText}`;
+  let url = `Metadata?q=${searchText}&_page=${page}&_limit=${pageSize}`;
   return await genericApiCall({
     url,
     method: "GET",
   });
 };
+
+export const OrgContextRequest =()=>{
+  let url = 'Metadata'
+  return genericApiCall({
+    url,method:"GET"
+  })
+}
 
 export const ShoaibAddOrganizationFunc = async (formdata) => {
 

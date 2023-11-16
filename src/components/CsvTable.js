@@ -49,30 +49,33 @@ const CsvTable = () => {
   }
 
   const openEditModal = (rowIndex) => {
-    if(!currentUser.Permission.csvPermission.csvEditPermission){
+    // console.log("permission",currentUser.Permission.csvPermission.subModules.csvEditPermission)
+    if(!currentUser.Permission.csvPermission.subModules.csvEditPermission){
       setUnAuthMsg("Please Authorize for Csv Edit Permission");
       window.location.href = "/unauth";
+    }else{
+      setCsvFormModal({
+        ...csvFormModal,
+        status: true,
+        edit: true,
+        data: csvDataState[rowIndex]
+      })
+      setEditedRowIndex(rowIndex);
     }
-    setCsvFormModal({
-      ...csvFormModal,
-      status: true,
-      edit: true,
-      data: csvDataState[rowIndex]
-    })
-    setEditedRowIndex(rowIndex);
   };
 
   const openAddModal = () => {
-    if(!currentUser.Permission.csvPermission.csvEditPermission){
+    if(!currentUser.Permission.csvPermission.subModules.csvEditPermission){
       setUnAuthMsg("Please Authorize for Csv Edit Permission");
       window.location.href = "/unauth";
+    }else{
+      setCsvFormModal({
+        ...csvFormModal,
+        status: true,
+        edit: false,
+        data: newRowData
+      })
     }
-    setCsvFormModal({
-      ...csvFormModal,
-      status: true,
-      edit: false,
-      data: newRowData
-    })
   };
 
   const saveData = (newData, isAdding) => {
@@ -106,17 +109,19 @@ const CsvTable = () => {
   // }
   const handleDownloadEditedFile = () => {
     // Create a CSV file with the updated data
-    if(!currentUser.Permission.csvPermission.csvDownloadPermission){
+    if(!currentUser.Permission.csvPermission.subModules.csvDownloadPermission){
       setUnAuthMsg("Please Authorize for Csv Download Permission");
       window.location.href = "/unauth";
+    }else{
+
+      const csvContent = "data:text/csv;charset=utf-8," + csvDataState.map(row => Object.values(row).join(',')).join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "edited_data.csv");
+      document.body.appendChild(link);
+      link.click();
     }
-    const csvContent = "data:text/csv;charset=utf-8," + csvDataState.map(row => Object.values(row).join(',')).join('\n');
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "edited_data.csv");
-    document.body.appendChild(link);
-    link.click();
   };
 
   return (

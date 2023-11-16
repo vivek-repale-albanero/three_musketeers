@@ -1,4 +1,10 @@
-import React, { useState, useCallback, useContext, useEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import { Table } from "@platform/primary-table";
 import { MissingPageContext, PermissionContext } from "../../Context";
 import { GetRows } from "../MissingPage/OrganizationTable";
@@ -377,11 +383,14 @@ import * as list from "@platform/service-ui-libraries";
 import AddOrgModal from "./AddOrgModal";
 import {
   DeleteSingleOrgData,
+  HandleOrgPatchData,
   MultiDeleteRecordsFunc,
   ShoaibReloadFetchResultsFunc,
   fetchOrgData,
   fetchSearchResultsFunc,
 } from "../../api/api";
+import AlbaAutoComplete from "./AlbaAutoComplete1";
+import AlbaAutoCompl from "./AlbaAutoComplete1";
 
 const textToCsvMetadata = (actions) => {
   return {
@@ -465,17 +474,10 @@ function CustomTable() {
   const [selectedFiles, setSelectedFiles] = useState([{ tableName: "" }]);
   const [reRunObj, setReRunObj] = useState({});
   const [actionComponents, setActionComponents] = useState([]);
-
   const [searchText, setSearchText] = useState("");
   const [JSONData, setJsonData] = useState([]);
-  const {
-    orgdata,
-    setorgdata,
-    singleorg,
-    setsingleorg,
-    Allmember,
-    setAllMember,
-  } = React.useContext(MissingPageContext);
+  const [patchdata, setpatcdata] = useState([]);
+  const seeUserDetail = useRef([]);
   //ASK......
   // const [Extracteddata, SetExtractededdata] = useState([]);
 
@@ -495,7 +497,10 @@ function CustomTable() {
   const fetchData = async () => {
     const { response, error } = await fetchOrgData({ page, pageSize });
     if (response?.statusText == "OK") {
-      setJsonData(response?.data);
+      let GetMassageData = GetRows(response?.data);
+
+      setpatcdata(response?.data);
+      setJsonData(GetMassageData);
     } else {
       setJsonData([]);
       console.log(error, "error", "Something went wrong in fetchmetdata");
@@ -503,15 +508,16 @@ function CustomTable() {
     }
   };
 
-  const handleOpen = (id) => {
-    console.log(id, "id");
-    setOpenModal({ ...openModal, status: true, SeeDetailsModalobj: id });
+  const handleOpen = (data) => {
+    console.log(data, "data");
+    setOpenModal({ ...openModal, status: true, SeeDetailsModalobj: data });
   };
 
   const handleClose = () => {
     setOpenModal({ ...openModal, status: false });
   };
 
+  // console.log(JSONData,"JSONData")
   // console.log(list);
 
   /// ASK
@@ -522,7 +528,6 @@ function CustomTable() {
   // }
 
   const handleOnChangePage = (page) => {
-    console.log(page);
     setPage(page + 1);
   };
 
@@ -534,17 +539,32 @@ function CustomTable() {
     if (searchText) {
       handleSearch(searchText);
     } else {
-    let { response,error }=await ShoaibReloadFetchResultsFunc({page,pageSize,searchText})
-      if(response?.statusText=="OK"){
-        setJsonData(response?.data);
-      }else{
-        console.log(error, "error", "Something went wrong in ShoaibReloadFetchResultsFunc");
-        ShowSnackbar(true, "error", "Something Went Wrong in ShoaibReloadFetchResultsFunc");
-      }  
+      let { response, error } = await ShoaibReloadFetchResultsFunc({
+        page,
+        pageSize,
+        searchText,
+      });
+      if (response?.statusText == "OK") {
+        let GetMassageData = GetRows(response?.data);
+
+        setJsonData(GetMassageData);
+      } else {
+        console.log(
+          error,
+          "error",
+          "Something went wrong in ShoaibReloadFetchResultsFunc"
+        );
+        ShowSnackbar(
+          true,
+          "error",
+          "Something Went Wrong in ShoaibReloadFetchResultsFunc"
+        );
+      }
     }
   };
 
   const SingleDeleteRecords = async ({ id }) => {
+    // console.log("inner",Extracteddata)
     const { response, error } = await DeleteSingleOrgData({ id });
     if (response?.statusText == "OK") {
       fetchData(page, pageSize);
@@ -562,6 +582,8 @@ function CustomTable() {
       );
     }
   };
+
+  // console.log("outer",Extracteddata)
 
   const MultiDeleteRecords = async (id) => {
     for (let i = 0; i < id.length; i++) {
@@ -585,15 +607,16 @@ function CustomTable() {
   };
 
   const fetchSearchResults = async (searchText) => {
-    console.log(searchText ,"calling")
-    const { response, error } =  await fetchSearchResultsFunc({
+    const { response, error } = await fetchSearchResultsFunc({
       searchText,
       page,
       pageSize,
     });
-    
+
     if (response?.statusText == "OK") {
-      setJsonData(response?.data);
+      let GetMassageData = GetRows(response?.data);
+
+      setJsonData(GetMassageData);
     } else {
       console.log(error, "error", "Something went wrong in fetchSearchResults");
       ShowSnackbar(true, "error", "Something Went Wrong in fetchSearchResults");
@@ -606,15 +629,14 @@ function CustomTable() {
       if (searchText?.length > 2) {
         await fetchSearchResults(searchText);
       } else if (!searchText?.length && page == 0) {
-        console.log('executed')
+        console.log("executed");
         await fetchData();
       }
     },
     [searchText, page, pageSize]
   );
 
-
- const debounceFunction = useDebouncing(handleSearch, 1000);
+  const debounceFunction = useDebouncing(handleSearch, 1000);
 
   // const handleStopJob = async (row) => {
   //   const payload = {
@@ -649,17 +671,89 @@ function CustomTable() {
       fetchData();
     }
 
+    // let getdata= GetRows(orgdata)
+    // SetExtractededdata(getdata)
     setActionComponents([startTableButton]);
   }, [page, pageSize, searchText]);
 
-  // console.log(Extracteddata);
+  const seeuserdetailvalidation = () => {
+    console.log(seeUserDetail);
+    let checkValidations = seeUserDetail.current.map((ref) => {
+      console.log(ref);
+      if (!ref) {
+        return false;
+      } else {
+        return ref?.checkValidation();
+      }
+    });
+
+    return checkValidations.every(Boolean);
+  };
+
+  const customValidation = (value) => {
+    let msg;
+    if (value.length < 2) {
+      msg = "Value should be greater than 2";
+    }
+    if (value.length >= 10) {
+      msg = "value should be less than 10";
+    }
+    return msg;
+  };
+  const HandleEdit = async (patchid) => {
+    console.log(seeuserdetailvalidation());
+    if (seeuserdetailvalidation()) {
+      handleClose();
+    }
+    let obj = { ...openModal.SeeDetailsModalobj };
+
+    let newdata = JSONData.map((item) => {
+      if (item.id == patchid) {
+        return obj;
+      } else {
+        return item;
+      }
+    });
+    setJsonData(newdata);
+    // const NewData= patchdata.reduce((acc,{id,OrgName,country})=>{
+    //  let newobj={}
+    //   if(id==patchid){
+    //     newobj.id=patchid
+    //     acc.OrgName=obj.OrgName
+
+    //    return country.map(({countryName,states})=>{
+    //     countryName=obj.countryName
+    //     return states.map(({stateName,cities})=>{
+    //       stateName=obj.stateName
+    //       return cities.map((item)=>{
+    //         cities[0]=item
+    //       })
+    //     })
+    //    })
+
+    //   }
+    //   return acc
+    // },[])
+    // console.log("patchdataid",NewData)
+    // handleClose()
+    // const{response,error}=await HandleOrgPatchData({
+    // id,obj
+    // })
+  };
+
   return (
     <div>
       <div className="ALbaButton">
-        <AddOrgModal data={{ openModal, setOpenModal, fetchData }} />
+        <AddOrgModal
+          data={{ openModal, setOpenModal }}
+          myFunction={fetchData}
+        />
+      </div>
+      <div>
+        <AlbaAutoCompl className="alba-autocomplete__input__search__selection input " data={JSONData} page={page} pageSize={pageSize} update={setJsonData} setjson={setJsonData} />
       </div>
       <Table
-      className="orgTable"
+        className="orgTable"
         tableProps={{
           ...textToCsvMetadata({
             onPageChange: handleOnChangePage,
@@ -667,7 +761,7 @@ function CustomTable() {
             onReload: onReload,
             SingleDeleteRecords,
             MultiDeleteRecords,
-            handleSearch:debounceFunction,
+            handleSearch: debounceFunction,
             handleOpen,
             // totalCount: totalCount,
             // handleStopJob: handleStopJob
@@ -677,6 +771,7 @@ function CustomTable() {
           title: "Organization Details",
         }}
       />
+
       {openModal.status && (
         <Dialog
           //  open={compareFilesDialog.status}
@@ -700,40 +795,126 @@ function CustomTable() {
                 label={"Organization Name"}
                 placeholder="Organization Name"
                 fieldValue={openModal?.SeeDetailsModalobj?.OrgName}
-                disabled
+                onChange={(e) =>
+                  setOpenModal({
+                    ...openModal,
+                    SeeDetailsModalobj: {
+                      ...openModal.SeeDetailsModalobj,
+                      OrgName: e,
+                    },
+                  })
+                }
                 maxWidth={"100px"}
+                ref={(e) => (seeUserDetail.current[0] = e)}
+                validationsDetail={{
+                  validations: {
+                    whiteSpace: true,
+                    required: true,
+                  },
+                }}
+                validationFunc={customValidation}
                 fullWidth
                 className="TextFormInputWatch"
               ></TextForm>
               <TextForm
                 label={"Country"}
+                ref={(e) => (seeUserDetail.current[1] = e)}
                 fieldValue={openModal?.SeeDetailsModalobj?.countryName}
+                onChange={(e) =>
+                  setOpenModal({
+                    ...openModal,
+                    SeeDetailsModalobj: {
+                      ...openModal.SeeDetailsModalobj,
+                      countryName: e,
+                    },
+                  })
+                }
                 placeholder="Countery Name"
-                disabled
+                validationsDetail={{
+                  validations: {
+                    whiteSpace: true,
+                    required: true,
+                  },
+                }}
               ></TextForm>
               <TextForm
                 label={"StateName"}
+                ref={(e) => (seeUserDetail.current[2] = e)}
                 fieldValue={openModal?.SeeDetailsModalobj?.stateName}
                 placeholder="State Name"
-                disabled
+                onChange={(e) =>
+                  setOpenModal({
+                    ...openModal,
+                    SeeDetailsModalobj: {
+                      ...openModal.SeeDetailsModalobj,
+                      stateName: e,
+                    },
+                  })
+                }
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
               ></TextForm>
               <TextForm
                 label={"City"}
+                ref={(e) => (seeUserDetail.current[3] = e)}
                 fieldValue={openModal?.SeeDetailsModalobj?.city}
                 placeholder="City Name"
-                disabled
+                onChange={(e) =>
+                  setOpenModal({
+                    ...openModal,
+                    SeeDetailsModalobj: {
+                      ...openModal.SeeDetailsModalobj,
+                      city: e,
+                    },
+                  })
+                }
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
               ></TextForm>
               <TextForm
                 label={"Member Count"}
                 fieldValue={openModal?.SeeDetailsModalobj?.Membercount}
+                ref={(e) => (seeUserDetail.current[4] = e)}
                 placeholder="Member count"
-                disabled
+                validationsDetail={{
+                  validations: {
+                    required: true,
+                    whiteSpace: true,
+                  },
+                }}
+                onChange={(e) =>
+                  setOpenModal({
+                    ...openModal,
+                    SeeDetailsModalobj: {
+                      ...openModal.SeeDetailsModalobj,
+                      Membercount: e,
+                    },
+                  })
+                }
               ></TextForm>
             </div>
           </DialogContent>
 
           <DialogActions>
-            <div>
+            <div style={{ display: "flex" }}>
+              <div className="al-flex ">
+                <AlbaButton
+                  variant="danger"
+                  onClick={() => {
+                    HandleEdit(openModal?.SeeDetailsModalobj.id);
+                  }}
+                >
+                  Edit
+                </AlbaButton>
+              </div>
               <div className="al-flex AlbabottonBack">
                 <AlbaButton
                   variant="danger"
