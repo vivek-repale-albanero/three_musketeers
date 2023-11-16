@@ -226,7 +226,18 @@ function UsersPage() {
     setActionComponents([addUsersButton]);
     getOptions_api()
   }, []);
+  
+  useEffect(()=>{
+    const loc = breadCrumbSet(location)
+    console.log("link",loc.end)
+   const pathName = location.pathname.split("/").filter((path) => path);
+  if(pathName.length > 1){
+    setBreadCrumbProps({navLinks:[loc.navprev],activeLink:{name:loc.end}})
+  }else{
+         setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+  }
 
+},[location])
   const usersListTableMetadata = (actions) => {
     return {
       columns: [

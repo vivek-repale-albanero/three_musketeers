@@ -39,27 +39,28 @@ export default function Root() {
 
   const breadCrumbSet = (location) =>{
     const pathName = location.pathname.split("/").filter((path) => path);
+    console.log(pathName[0])
+
         if(pathName.length > 1){
+          console.log("mul")
+
             const end = pathName[pathName.length-1];
             const prev= pathName.slice(0,-1);
             const navPrev= prev.map((path)=>({name:path, route:path}))
-            console.log( "BREADEND",end)
-            console.log("prev",prev)
-            console.log("navprev",navPrev)
-
-            // setBreadCrumbProps({navLinks:[...navPrev],activeLink:{name:end}})
+            return {end:end , navprev:navPrev}
         }else{
-          const nav = pathName[0]
-          console.log((nav))
-            // setBreadCrumbProps({navLinks:[],activeLink:{name:nav}})
+          console.log("single")
+          const end = pathName[0]
+          // console.log(pathName)
+          return {nav:end}
         }
     }
-
 
   const fetchAllUsers=async () => {
     const { response, error } = await fetchUsers();
     setUsers(response.data);
   }
+
   useEffect(() => {
     fetchAllUsers()
   },[]);
@@ -67,7 +68,6 @@ export default function Root() {
   useEffect(()=>{
     setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")))
   },[local])
-  
   
   const permission = useMemo(() => {
     return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps,breadCrumbSet}
