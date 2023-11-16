@@ -23,6 +23,7 @@ import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
 import ColorDrag from "./Pages/ColorDragPage/ColorDrag";
 import Signup from "./components/Signup/Signup";
+import DynamicInputs from "./components/DynamicInputs/DynamicInputs";
 
 
 
@@ -90,6 +91,8 @@ export default function Root() {
           <Route exact path='/task-anubhav' render={()=><ColorDrag/>}/>
           {/* Exporting from the component itself */}
           <Route exact path='/task-anubhav/signup' render={()=><Signup/>}/>
+          <Route exact path='/task-anubhav/dynamic-inputs' render={()=><DynamicInputs/>}/>
+
 
 
           

@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Paper,
   Typography,
   TextForm,
   AlbaButton,
+  CheckboxForm,
 } from "@platform/service-ui-libraries";
 import "./Signup.scss";
 export default function Signup() {
@@ -16,6 +17,8 @@ export default function Signup() {
     password: "",
     confirmPassword: "",
   });
+  const [termsChecked, setTermsChecked] = useState(false);
+  const [toggleCheckboxBorder, setToggleCheckboxBorder] = useState(false);
 
   const handleNameValidation = (inputData) => {
     if (inputData.length < 5) {
@@ -63,24 +66,34 @@ export default function Signup() {
     }
     return true;
   };
-
-  const handlePasswordValidation=(confirmPasswordValue)=>{
-    if(!validatePassword(confirmPasswordValue)||!validatePassword(formData.password)||formData.password!==confirmPasswordValue) return 'Password does not match'
-  }
+  const handlePasswordValidation = (confirmPasswordValue) => {
+    if (
+      !validatePassword(confirmPasswordValue) ||
+      !(formData.password === confirmPasswordValue)
+    )
+      return "Password does not match";
+  };
 
   const validateProfileForm = () => {
-    const resultData = validateFields.current.map((ref) => {
-      console.log(ref);
+    const resultData = validateFields.current.map((ref,index) => {
+      console.log('ref',index,'and ref is',ref)
       if (!ref) return true;
       else return ref?.checkValidation();
     });
+
     return resultData.every(Boolean);
   };
+
   const handleSave = () => {
     if (validateProfileForm()) {
       console.log("done");
+      setToggleCheckboxBorder(false)
+    } else {
+      console.log('some problem occured!')
+      setToggleCheckboxBorder(true);
     }
   };
+
   return (
     <div className="__signup">
       <div className="__signup__content">
@@ -255,9 +268,41 @@ export default function Signup() {
           </div>
         </div>
 
-        {/* form end */}
+        <div
+          style={{ width: "100%", height: "1px", backgroundColor: "black" }}
+        ></div>
 
-        <AlbaButton variant="success" onclick={handleSave}>
+        {/* form end */}
+        {/* Terms and conditions */}
+        <div className="__signup__checkbox">
+          <CheckboxForm
+            ref={(elem) => {
+              validateFields.current[6] = elem;
+            }}
+            validationsDetail={{
+              validations: {
+                required: true,
+              },
+            }}
+            //style={{ color: toggleCheckboxBorder ? "red" : "black" }}
+            
+            id="outlined-helperText"
+            label="I agree to Albanero's Terms of Use and Privacy Policy. I agree to subscribe Albanero's newsletter for relevant upgrades and policy changes."
+            fieldValue={termsChecked}
+            onChange={(e) => {
+              setTermsChecked(e);
+              setToggleCheckboxBorder(!e);
+            }}
+          />{" "}
+        </div>
+
+        {/* {!termsChecked&&<p style={{color:'red'}}>Please check the terms and conditions</p>} */}
+        {/* Albabutton must contain id */}
+        <AlbaButton
+          variant="success"
+          onClick={handleSave}
+          id="confirm-form-submission"
+        >
           Next
         </AlbaButton>
       </div>

@@ -4,6 +4,7 @@ import { Typography } from "@material-ui/core";
 import { AlbaButton } from "@platform/service-ui-libraries";
 import { ProductsTableMetadata } from "./ProductsTableMetadata";
 import { fetchProducts } from "../../api/api";
+import './PlatformProductTable.scss'
 
 function PlatformProductTable({
   actions,
@@ -11,6 +12,7 @@ function PlatformProductTable({
   pageSize,
   setPage,
   setPageSize,
+  products,setProducts
 }) {
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
@@ -29,7 +31,7 @@ function PlatformProductTable({
   };
   const fetchData = async (page, pageSize) => {
     const { response, error } = await fetchProducts(page, pageSize);
-    console.log('fetch data is called!')
+   // console.log('fetch data is called!')
     //console.log('reponse',response.request.status)
     if (response.request.status === 200) {
       setData(response.data);
@@ -38,23 +40,24 @@ function PlatformProductTable({
     }
   };
   useEffect(() => {
+    //this use effect is gonna run for the first time no matter the dependencies.
     fetchData(page, pageSize);
     console.log('uef 1 run!')
-  }, [searchText, page, pageSize]);
+  }, [searchText,page,pageSize]);
 
   useEffect(() => {
-    fetchData();
+    //fetchData();
     console.log('uef 2 run!')
     setActionComponents([AddProductButton]);
   }, []);
 
   useEffect(() => {
     const filteredProducts = data?.filter((item) =>
-      item.name.toLowerCase().startsWith(searchText)
+      item.name?.toLowerCase().startsWith(searchText)
     );
-    console.log("filtered products", filteredProducts);
-    setData(filteredProducts);
-  }, [searchText]);
+   // console.log("filtered products", filteredProducts);
+    setProducts(filteredProducts);
+  }, [searchText,data]);
 
   const handleDelete = (ids) => {
     deleteIntegrityData({ ids }).then((res) => {
@@ -85,7 +88,7 @@ function PlatformProductTable({
       Are you sure you want to stop {row.name} ?
     </Typography>
   );
-
+const handleSelected=(elems)=>console.log(elems)
   const [tableProps, setTableProps] = useState({
     ...ProductsTableMetadata({
       handleDelete: deleteProduct,
@@ -98,8 +101,7 @@ function PlatformProductTable({
       //stopPopupBody,
     }),
   });
-
-  console.log("data now is", data);
+ // console.log("data now is", data);
 
   const AddProductButton = useCallback(() => {
     return (
@@ -116,18 +118,24 @@ function PlatformProductTable({
   }, []);
 
   return (
-    <div className="table-wrapper">
+    <div className="table-wrapper" >
+      <div className="__table__body">
+
       <Table
         tableProps={{
           ...tableProps,
           totalCount,
-          data,
+          data:products,
           handleSearch,
           // onReload,
           title: "Products",
           actionComponents,
+          handleAddAllToCart:handleSelected
+          
         }}
       />
+            </div>
+
     </div>
   );
 }

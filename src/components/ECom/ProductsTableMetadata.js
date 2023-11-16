@@ -60,4 +60,6 @@ export const ProductsTableMetadata = (actions) => ({
   },
   //deleteRecords: (recordIds) => actions.handleDelete(recordIds),
   numericPagination: true,
+  setSelected:items=>actions.handleAddAllToCart(items)
+  //deleteRecords:recordIds=>actions.handleAddAllToCart(recordIds)
 });

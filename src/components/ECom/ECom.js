@@ -8,7 +8,7 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import {AlbaButton } from '@platform/service-ui-libraries'
+import { AlbaButton } from "@platform/service-ui-libraries";
 import BreadCrumb from "../Breadcrumbs/BreadCrumb";
 import EditForm from "../EditForm/EditForm";
 import { ProductsContext } from "../../Context";
@@ -38,7 +38,7 @@ function ECom() {
       " and pagesize is ",
       pageSize
     );
-    fetch(`http://localhost:3000/products?_page=${page+1}&_limit=${pageSize}` )
+    fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -47,7 +47,6 @@ function ECom() {
         console.error("Error:", error);
       });
   }, [page, pageSize]);
-  
 
   const openAddModal = () => {
     setProductFormModal({
@@ -71,7 +70,7 @@ function ECom() {
   };
 
   const afterEdit = () => {
-    fetch(`http://localhost:3000/products?_page=${page+1}&_limit=${pageSize}`)
+    fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   };
@@ -166,7 +165,7 @@ function ECom() {
 
   //Action object for MUI based table
   const actions = () => {
-    return { openAddModal,openEditModaL, deleteProduct, handleAddToCart };
+    return { openAddModal, openEditModaL, deleteProduct, handleAddToCart };
   };
   return (
     <div>
@@ -184,6 +183,8 @@ function ECom() {
           {/* <TableMUI actions={actions} products={products} productFormModal={productFormModal}/> */}
           {/* <PlatformAutoComplete products={products} setProducts={setProducts}/> */}
           <PlatformProductTable
+            products={products}
+            setProducts={setProducts}
             actions={actions}
             page={page}
             setPage={setPage}
@@ -191,8 +192,8 @@ function ECom() {
             setPageSize={setPageSize}
           />
           {productFormModal.status && productFormModal.edit ? (
-                    <EditProductForm />
-                  ) : null}
+            <EditProductForm />
+          ) : null}
         </Container>
 
         <AlbaButton
@@ -218,8 +219,6 @@ function ECom() {
 
 export default ECom;
 
-
 //Modal
 //TextForm with validations
 //Table
-
