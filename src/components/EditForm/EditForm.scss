@@ -10,50 +10,47 @@
 //   }
 // }
 
-.__modal__wrapper {
-  min-width: 300px;
-  width: 400px;
-  height:500px;
-  .__modal__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .__modal__form__wrapper {
-
-    display: flex;
-    flex-direction: column;
-
-    // .__modal__body {
-    //   display: flex;
-    //   min-width: 500px;
-    //   flex-direction: row;
-    //   justify-content: space-between;
-
-    //   align-items: center;
-    //   flex-grow: 1;
-    //   .__label {
-    //     flex: 2 1 0;
-    //   }
-    //   .__gap {
-    //     flex: 1 1 0;
-    //   }
-    //   .__actual {
-    //     flex: 6 1 0;
-    //     .__input_custom {
-    //       width: 100%;
-    //     }
-    //   }
-    // }
-    .__modal__form_button__wrapper{
-      display:flex;
-      justify-content: flex-end;
+  .__modal__wrapper {
+    .__modal__title {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap:5px;
-      margin-top: 5px;
+    }
+    .__modal__form__wrapper {
+      display: flex;
+      flex-direction: column;
+
+      // .__modal__body {
+      //   display: flex;
+      //   min-width: 500px;
+      //   flex-direction: row;
+      //   justify-content: space-between;
+
+      //   align-items: center;
+      //   flex-grow: 1;
+      //   .__label {
+      //     flex: 2 1 0;
+      //   }
+      //   .__gap {
+      //     flex: 1 1 0;
+      //   }
+      //   .__actual {
+      //     flex: 6 1 0;
+      //     .__input_custom {
+      //       width: 100%;
+      //     }
+      //   }
+      // }
+      .__modal__form_button__wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 5px;
+        margin-top: 5px;
+      }
     }
   }
-}
+
 
 // .buttonContainer {
 //   .saveBtn {

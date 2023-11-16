@@ -32,7 +32,13 @@
   width: 25%;
 }
 
-.__modal__wrapper{
+.__cartModal__wrapper{
   height:70vh;
-  width: auto;
+  width: 100%;
+  .__table__wrapper{
+    width:100%;
+    max-height: 500px;
+    //height:70%;
+  }
+
 }

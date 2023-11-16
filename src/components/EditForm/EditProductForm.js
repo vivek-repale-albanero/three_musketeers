@@ -164,6 +164,7 @@ function EditProductForm() {
     //   </Paper>
     // </Modal>
     // <div className="__add-product__modal">
+<div className="__add_product__modal">
 
     <Dialog
       open={productFormModal.status}
@@ -298,6 +299,8 @@ function EditProductForm() {
         </DialogContent>
       </div>
     </Dialog>
+    </div>
+
 
     // </div>
   );
