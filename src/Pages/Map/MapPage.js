@@ -8,7 +8,7 @@ import {
   Container,
   Box,
   AlbaAutocomplete,
-  Typography
+  Typography,
 } from "@platform/service-ui-libraries";
 import "./MapPage.scss";
 
@@ -22,7 +22,7 @@ function MapPage() {
   const [sourceFile, setSourceFile] = useState(null);
   const [targetFile, setTargetFile] = useState(null);
   const [defaultOpotions, setDefaultOptions] = useState([]);
-  const [isSave,setIsSave] = useState(false)
+  const [isSave, setIsSave] = useState(false);
 
   const openModal = () => {
     setFileUploadModal({ ...fileUploadmodal, status: true, isSource: true });
@@ -114,60 +114,65 @@ function MapPage() {
 
                 <Box>
                   {sourceFile && targetFile ? (
-                    <div >
-
-                    <div>
-                      {targetFile.map((ele, index) => (
+                    <div className="inner_container">
+                      <div className="content">
+                        {targetFile.map((ele, index) => (
                           <div key={ele} className="eleMap">
-                          <div className="autocomp">
-                            <AlbaAutocomplete
-                              dataTestId="alba-autocomplete"
-                              label="Source File"
-                              placeholder="Select Options"
-                              loading={false}
-                              //   defaultValue={()=>getValue(ele)}
-                              options={sourceFile}
-                            //   multiple={true}
-                              selectAll={true}
-                              shrinkList={true}
-                              disabled={false}
-                              updateValue={(e) => {
+                            <div className="autocomp">
+                              <AlbaAutocomplete
+                                dataTestId="alba-autocomplete"
+                                label="Source File"
+                                placeholder="Select Options"
+                                loading={false}
+                                //   defaultValue={()=>getValue(ele)}
+                                options={sourceFile}
+                                //   multiple={true}
+                                selectAll={true}
+                                shrinkList={true}
+                                disabled={false}
+                                updateValue={(e) => {
                                   onAutoCompleteUpdate(e.selectedItems, index);
                                 }}
-                                />
+                              />
+                            </div>
+                            <div className="labelName">{ele}</div>
                           </div>
-
-                          <div>{ele}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                       <AlbaButton variant="success" onClick={()=>setIsSave(true)}>Save</AlbaButton>
+                        ))}
                       </div>
+
+                      <div className="btnSave">
+                      <AlbaButton
+                        variant="success"
+                        onClick={() => setIsSave(true)}
+                        >
+                        Save
+                      </AlbaButton>
+                        </div>
+                    </div>
                   ) : null}
                 </Box>
               </Box>
               <Box className="containerRight">
-                    <Typography variant="h3">Mapped Text</Typography> 
-                     {isSave? 
-                     <div> 
-                         {defaultOpotions.map((item,index)=> (
-                            <div key={index}>
-                               {item.id}
-                               <div>
-                                 {item.options.map((option,ind)=>(
-                                    <div key={ind}>
-                                        {option.label}
-                                    </div>
-                                 ))}
-                                </div> 
-                            </div>
-                         )
-                          )}
-                     </div>
-                     :
-                     null}
-                      
+                <Typography variant="h3">Mapped Text</Typography>
+
+                <div className="displayContent">
+                {isSave ? (
+                  <div className="displayValues">
+                    {defaultOpotions.map((item, index) => (
+                      <div key={index} className="display">
+                        <div className="displayLabel">
+                        {item.id}
+                        </div>
+                        <div className="displayValue">
+                          {item.options.map((option, ind) => (
+                            <div key={ind}>{option.label}</div>
+                            ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+                </div>
               </Box>
             </div>
           </Container>
