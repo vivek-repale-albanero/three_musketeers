@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef } from "react";
 import { Modal, Paper, Typography, IconButton, Icon } from "@material-ui/core";
-import { TextForm, AlbaButton ,Dialog,DialogTitle,DialogContent,DialogActions} from "@platform/service-ui-libraries";
+import { TextForm, AlbaButton ,Dialog,DialogTitle,DialogContent,DialogActions,DraggableModal} from "@platform/service-ui-libraries";
 import "./EditForm.scss";
 import { UsersContext } from "../../Context";
 
@@ -39,12 +39,13 @@ function EditForm() {
     <Dialog
       open={userFormModal.status}
       onClose={closeModal}
-      className="appModal"
-      maxWidth={'md'}
+      className=" aw-dialog appModal"
+      PaperComponent={DraggableModal}
+      maxWidth={'xs'}
       fullWidth
     >
-        <DialogTitle className="__title" id="draggable-dialog-title">
-          <div className="modal_title">
+        <DialogTitle className="__title modal_title"  id="draggable-dialog-title">
+          <div className="formHead">
           <Typography variant="h6" >
             {userFormModal.edit ? "Edit Details" : "Add User"}
           </Typography>

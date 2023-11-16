@@ -4,9 +4,9 @@
       "user": {
         "userName": "Eswar@0110",
         "firstName": "Esw",
-        "lastName": "Chandran"
+        "lastName": "Cha"
       },
-      "age": "26",
+      "age": "25",
       "email": "eswar0110@gmail.com",
       "password": "eswar1",
       "Permission": {
@@ -47,20 +47,20 @@
           "allow": true,
           "subModules": {
             "csvPagePermission": true,
-            "csvEditPermission": true,
-            "csvDownloadPermission": true
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
           }
         },
         "gamePermission": {
-          "allow": true,
+          "allow": false,
           "subModules": {
-            "gamePagePermission": true,
-            "gameStartPermission": true,
-            "gameResetPermission": true
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
           }
         },
         "missing": {
-          "allow": true,
+          "allow": false,
           "subModules": {}
         }
       },
@@ -167,13 +167,13 @@
     },
     {
       "user": {
-        "userName": "gn zfgrn",
-        "firstName": "fve",
-        "lastName": "bgfnfgn "
+        "userName": "dsf",
+        "firstName": "es",
+        "lastName": "sdf"
       },
-      "age": "bcb",
-      "email": " nzfg",
-      "password": "b dbf",
+      "age": "sdf",
+      "email": "adf",
+      "password": "df",
       "Permission": {
         "csvPermission": {
           "allow": false,
@@ -196,52 +196,241 @@
           "subModules": {}
         }
       },
-      "id": 9
+      "id": 14
+    },
+    {
+      "user": {
+        "userName": "af",
+        "firstName": "ef",
+        "lastName": "esf"
+      },
+      "age": "fea",
+      "email": "aef",
+      "password": "af",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 15
+    },
+    {
+      "user": {
+        "userName": "vae",
+        "firstName": "ea",
+        "lastName": "aeff"
+      },
+      "age": "afe",
+      "email": "aef",
+      "password": "eaf",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 16
+    },
+    {
+      "user": {
+        "userName": "SC",
+        "firstName": "wa",
+        "lastName": "cd"
+      },
+      "age": "s",
+      "email": "ss",
+      "password": "S",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 17
+    },
+    {
+      "user": {
+        "userName": "fse",
+        "firstName": "asd",
+        "lastName": "fe"
+      },
+      "age": "e",
+      "email": "fsf",
+      "password": "ef",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 18
+    },
+    {
+      "user": {
+        "userName": "as",
+        "firstName": "qa",
+        "lastName": "ws"
+      },
+      "age": "xz",
+      "email": "s",
+      "password": "xc",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 19
+    },
+    {
+      "user": {
+        "userName": "d",
+        "firstName": "pi",
+        "lastName": "rd"
+      },
+      "age": "d",
+      "email": "d",
+      "password": "d",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 20
+    },
+    {
+      "user": {
+        "userName": "xd",
+        "firstName": "bik",
+        "lastName": "xw"
+      },
+      "age": "d",
+      "email": "d",
+      "password": "d",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 21
     }
   ],
   "Metadata": [
-    {
-      "id": 10,
-      "OrgName": "TechX Solutions",
-      "countryName": "Canada",
-      "stateName": "British Columbia",
-      "city": "Vancouver"
-    },
-    {
-      "id": 11,
-      "OrgName": "Infinite Ideas Inc.",
-      "countryName": "USA",
-      "stateName": "Illinois",
-      "city": "Chicago"
-    },
-    {
-      "id": 12,
-      "OrgName": "Global Innovators",
-      "countryName": "UK",
-      "stateName": "Scotland",
-      "city": "Edinburgh"
-    },
-    {
-      "id": 13,
-      "OrgName": "Future Technologies",
-      "countryName": "Germany",
-      "stateName": "Bavaria",
-      "city": "Munich"
-    },
-    {
-      "id": 14,
-      "OrgName": "NextGen Systems",
-      "countryName": "USA",
-      "stateName": "Massachusetts",
-      "city": "Boston"
-    },
-    {
-      "id": 15,
-      "OrgName": "InnovaTech Inc.",
-      "countryName": "Canada",
-      "stateName": "Quebec",
-      "city": "Montreal"
-    },
     {
       "id": 16,
       "OrgName": "TechSolutions Ltd.",
@@ -481,20 +670,39 @@
       "city": "Gold Coast"
     },
     {
-      "id": 50,
-      "OrgName": "TechMasters Innovate",
-      "countryName": "USA",
-      "stateName": "Arizona",
-      "city": "Tucson"
+      "OrgName": "asdfdfsfdsfsbaaah",
+      "countryName": "sdfdsfdfdsff",
+      "stateName": "a",
+      "city": "a",
+      "MemberDetails": {
+        "name": "a",
+        "role": "SDE-2"
+      },
+      "id": 50
     },
     {
+      "OrgName": "dsfdsf",
+      "countryName": "sdfdsf",
+      "stateName": "sdfdsf",
+      "city": "sdfdsfd",
+      "MemberDetails": {
+        "id": "4ce4b129-fd3d-4476-99a0-aa056b1f6a7f",
+        "name": "jhghjjhfyiuiyui",
+        "role": "SDE-2"
+      },
       "id": 51
     },
     {
+      "OrgName": "sdfdsfd",
+      "countryName": "sdfdsfds",
+      "stateName": "sdfdfd",
+      "city": "sfdsfds",
+      "MemberDetails": {
+        "name": "sdfdfdsf",
+        "role": "SDE-3"
+      },
+      "Membercount": 2,
       "id": 52
-    },
-    {
-      "id": 53
     }
   ],
   "itemdata": [
@@ -513,26 +721,8 @@
   ],
   "sampleData": [
     {
-      "id": 1,
-      "userName": "a",
-      "firstName": "Pritam",
-      "lastName": "Halder"
-    },
-    {
-      "id": 2,
-      "userName": "b",
-      "firstName": "Easwar",
-      "lastName": "M"
-    },
-    {
-      "id": 3,
-      "userName": "c",
-      "firstName": "Shoabe",
-      "lastName": "fncrbu"
-    },
-    {
       "id": 4,
-      "userName": "d",
+      "userName": "dfr",
       "firstName": "Anubhav",
       "lastName": "Nayak"
     },
@@ -636,6 +826,24 @@
         "role": "SDE-2"
       },
       "id": 54
+    },
+    {
+      "userName": "a",
+      "firstName": "a",
+      "lastName": "a",
+      "id": 55
+    },
+    {
+      "userName": "d",
+      "firstName": "d",
+      "lastName": "d",
+      "id": 56
+    },
+    {
+      "userName": "s",
+      "firstName": "s",
+      "lastName": "s",
+      "id": 57
     }
   ],
   "products": [

@@ -3,13 +3,11 @@ import axios from "axios";
 export async function genericApiCall(payload) {
   let response = null;
   let error = null;
-
   const PROTOCOL = "http";
-  const HOST = 'localhost:3000';
+  const HOST = "localhost:3000";
   const urlPath = `${PROTOCOL}://${HOST}/`;
-
   payload.url = urlPath + payload.url;
-
+  console.log(payload,"payload")
   try {
     response = await axios(payload);
   } catch (e) {

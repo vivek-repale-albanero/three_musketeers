@@ -18,7 +18,7 @@ import PrivateGameRoute from "./components/PrivateGameRoute";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
-
+import {fetchUsers} from "./api/api"
 import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
 
@@ -28,20 +28,18 @@ import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
 
 
 export default function Root() {
+  const [breadcrumbProps,setBreadCrumbProps] = useState({navLinks:[],activeLink:{}})
   const [defaultVal, setDefaultVal] = useState([]);
   const [currentUser,setCurrentUser]=useState({})
   const [users, setUsers] = useState([]);
   const [local,setLocal]=useState(false)
   const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
+  const fetchAllUsers=async () => {
+    const { response, error } = await fetchUsers();
+    setUsers(response.data);
+  }
   useEffect(() => {
-    fetch('http://localhost:3000/users')
-    .then((res) => res.json())
-    .then((data) => {
-      setUsers(data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    fetchAllUsers()
   },[]);
 
   useEffect(()=>{
@@ -53,12 +51,11 @@ export default function Root() {
     // console.log("currentUser",currentUser)
   
   const permission = useMemo(() => {
-    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal}
-  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal])
+    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps}
+  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps])
   return (
     <BrowserRouter>
     <PermissionContext.Provider  value={permission}>
-
       <CssBaseline />
       <React.Suspense>
         <Switch>

@@ -1,0 +1,21 @@
+
+.testTable {
+    // border:1Px solid red;
+    margin-top: 20px;
+    tbody {
+        display: block;
+        overflow-y: auto;
+        height: 460px;
+    }
+
+    thead,
+    tbody tr{
+        display: table;
+        width: 100%; 
+        background-color: #d9dde0;
+        table-layout: fixed;
+    }
+
+    
+   
+}
