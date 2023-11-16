@@ -6,22 +6,11 @@ import React, {
   useEffect,
 } from "react";
 import {
-  Link,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Icon,
   AlbaButton,
   AlbaAutocomplete,
   Container,
-  Checkbox,
-  Card,
-  Typography,
-  Box,
 } from "@platform/service-ui-libraries";
+import {Link , useLocation } from "react-router-dom";
 import * as s from "@platform/service-ui-libraries"
 import { Table } from "@platform/primary-table";
 import Layout from "../../Layout/Layout";
@@ -53,12 +42,12 @@ function UsersPage() {
     setBreadCrumbProps,
     breadcrumbProps,
     defaultVal,
-    setDefaultVal
+    setDefaultVal,
+    breadCrumbSet
   } = useContext(PermissionContext);
   const history = useHistory();
+  const location = useLocation();
   const loggedUser = JSON.parse(localStorage.getItem("useLogedId"));
-
-
 
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
@@ -67,8 +56,8 @@ function UsersPage() {
   const [selectedOptions,setSelectedOptions] = useState([])
   const [isLoading,setIsLoading] = useState(false);
 
-
-
+  
+  breadCrumbSet(location);
   //Form Modal
   let userData = {
     user: {
@@ -109,10 +98,6 @@ function UsersPage() {
     data: {},
   });
 
- 
-
-
-
   const closeModal = () => {
     setUserFormModal({
       ...userFormModal,
@@ -141,7 +126,6 @@ function UsersPage() {
   //Edit Form
 
   const openEditModaL = (user) => {
-    console.log(user);
     setUserFormModal({
       ...userFormModal,
       status: true,
@@ -149,14 +133,16 @@ function UsersPage() {
       data: user,
     });
   };
-
+  const fetchUser_Api = async(page,pageSize,searchText)=>{
+    const {response,error}= await fetchUsersPageData({page,pageSize,searchText});
+    setUsers(response.data)
+  }
   const users_fetchData = async () => {
     const { response, error } = await users_Fetch();
     setUsers(response.data);
   };
   const AddUser = async (userData) => {
     const { response, error } = await addUser_UsersPage(userData);
-    console.log("res", response);
   };
   const editUser = async (userId) => {
     const { response, error } = editUser_usersPage(userId);
@@ -176,10 +162,13 @@ function UsersPage() {
     closeModal();
   };
   //Delete User
-  const deleteUser = async (userId,page,pageSize,searchText) => {
+  const deleteUser = async (userId) => {
     const { response, error } = await deleteUser_api(userId);
-    fetchUser_Api(page,pageSize,searchText)
-
+    if(response.status===200){
+      users_fetchData()
+    }else{
+      console.log(error)
+    }
   };
 
   const authMsgFn = (user) => {
@@ -192,15 +181,8 @@ function UsersPage() {
   };
 
   
-  
-  const fetchUser_Api = async(page,pageSize,searchText)=>{
-    const {response,error}= await fetchUsersPageData({page,pageSize,searchText});
-    setUsers(response.data)
-  }
-  
   const onReload = async () => {
-    users_fetchData();
-
+    // users_fetchData();
     fetchUser_Api(page,pageSize,searchText)
   };
 
@@ -219,17 +201,14 @@ function UsersPage() {
   const handleOnChangePage = (page) => {
     setPage(page);
     fetchUser_Api(page,pageSize,searchText);
-
   };
   const handleOnChangePageSize = (pageSize, page) => {
     setPageSize(pageSize);
     setPage(page);
     fetchUser_Api(page,pageSize,searchText);
-
   };
 
   const handleSearch = (text,page,pageSize) => {
-    console.log("text",text)
     fetchUser_Api(page,pageSize,text);
   };
   const [actionComponents, setActionComponents] = useState([]);
@@ -243,14 +222,12 @@ function UsersPage() {
   };
 
   useEffect(() => {
-    setBreadCrumbProps({ navLinks: [ ], activeLink: { name: "users" } });
+    // setBreadCrumbProps({ navLinks: [ ], activeLink: { name: "users" } });
     setActionComponents([addUsersButton]);
     getOptions_api()
   }, []);
-  console.log("option",options)
 
   const usersListTableMetadata = (actions) => {
-    console.log("actions", actions);
     return {
       columns: [
         {
@@ -312,8 +289,8 @@ function UsersPage() {
       onReload: actions?.onReload,
       onChangeRowsPerPage: (size, page) => actions?.onRowsChange(size, page),
       onChangePage: (e, page) => actions?.onPageChange(page),
-      numericPagination: true
-      // deleteRecords:(userId)=>actions.deleteUser(userId)
+      numericPagination: true,
+      deleteRecords:(userId)=>actions.handleDelete(userId)
     };
   };
   const userPageValue = useMemo(() => {
@@ -354,7 +331,7 @@ function UsersPage() {
     <>
       <Layout>
         <UsersContext.Provider value={userPageValue}>
-          <div className="autoComplete">
+          {/* <div className="autoComplete">
           <AlbaAutocomplete
           dataTestId="alba-autocomplete"
           label="AutoComplete"
@@ -368,7 +345,7 @@ function UsersPage() {
           disabled={false}
           updateValue={(e)=>onAutoCompleteUpdate(e.selectedItems)}
           />
-          </ div>
+          </ div> */}
           <Container maxWidth="100%" className="tableContent">
             <Table
               tableProps={{
@@ -379,8 +356,6 @@ function UsersPage() {
                   onRowsChange: handleOnChangePageSize,
                   handleSearch,
                   authMsgFn,
-
-                  
                   onReload,
                 }),
                 data: users,
@@ -389,7 +364,6 @@ function UsersPage() {
               }}
             />
 
-            {console.log(userFormModal, "userForm")}
             {userFormModal.status && !userFormModal.edit ? <EditForm  saveUserData={saveUserData} page={page} pageSize={pageSize} searchText={searchText} /> : null}
             {userFormModal.status && userFormModal.edit ? <EditForm saveUserData={saveUserData} page={page} pageSize={pageSize} searchText={searchText}/> : null}
 

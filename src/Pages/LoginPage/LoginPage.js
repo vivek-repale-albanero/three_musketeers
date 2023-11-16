@@ -19,11 +19,9 @@ function LoginPage() {
   // const validateFields = useRef({})
   let history = useHistory();
   const { users, setLocal, local } = useContext(PermissionContext);
-  console.log("users", users);
   
   const validateProfileForm = () => {
     const resultData = validateFields.current.map((refs) => {
-      console.log("ref",refs)
       if (!refs) {
         return true;
       } else {
@@ -62,7 +60,6 @@ function LoginPage() {
             <form>
               <TextForm
                 ref={(e)=>{
-                  console.log(e)
                   validateFields.current[0] =e;
                 }}
                 label="Email"

@@ -4,21 +4,24 @@ import { Container, Typography, Button, Icon } from "@material-ui/core";
 import { AlbaButton } from "@platform/service-ui-libraries";
 import "./HomePage.scss";
 import { PermissionContext } from "../../Context";
+import { useLocation } from "react-router-dom";
 import Test from "../../components/Test";
 import AlbaAutoCompleteComp from "../../components/AlbaAutoCompleteComp";
 import Test2 from "../../components/Test2";
 
 function HomePage() {
-  const { setBreadCrumbProps } = useContext(PermissionContext);
+  const { setBreadCrumbProps,breadCrumbSet } = useContext(PermissionContext);
+  const location = useLocation();
+  breadCrumbSet(location)
 
-  useEffect(
-    () => setBreadCrumbProps({ navLinks: [], activeLink: { name: "home" } }),
-    []
-  );
+  // useEffect(
+  //   () => setBreadCrumbProps({ navLinks: [], activeLink: { name: "home" } }),
+  //   []
+  // );
   return (
     <>
       <Layout>
-        <Test2/>
+        {/* <Test2/> */}
         <Test />
         <AlbaAutoCompleteComp />
         {/* <div className="container backGround" >

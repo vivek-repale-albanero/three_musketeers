@@ -36,6 +36,26 @@ export default function Root() {
   const [users, setUsers] = useState([]);
   const [local,setLocal]=useState(false)
   const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
+
+  const breadCrumbSet = (location) =>{
+    const pathName = location.pathname.split("/").filter((path) => path);
+        if(pathName.length > 1){
+            const end = pathName[pathName.length-1];
+            const prev= pathName.slice(0,-1);
+            const navPrev= prev.map((path)=>({name:path, route:path}))
+            console.log( "BREADEND",end)
+            console.log("prev",prev)
+            console.log("navprev",navPrev)
+
+            // setBreadCrumbProps({navLinks:[...navPrev],activeLink:{name:end}})
+        }else{
+          const nav = pathName[0]
+          console.log((nav))
+            // setBreadCrumbProps({navLinks:[],activeLink:{name:nav}})
+        }
+    }
+
+
   const fetchAllUsers=async () => {
     const { response, error } = await fetchUsers();
     setUsers(response.data);
@@ -46,15 +66,12 @@ export default function Root() {
 
   useEffect(()=>{
     setCurrentUser(JSON.parse(localStorage.getItem("useLogedId")))
-
   },[local])
   
-  // //data from local storage
-    // console.log("currentUser",currentUser)
   
   const permission = useMemo(() => {
-    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps}
-  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps])
+    return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps,breadCrumbSet}
+  }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps,breadCrumbSet])
   return (
     <BrowserRouter>
     <PermissionContext.Provider  value={permission}>
@@ -67,7 +84,6 @@ export default function Root() {
           <Route exact path="/home" render={() =>(<HomePage/>)} />
           <Route exact path="/csv" render={() => 
           <PrivateCsvEditRoute>
-          
           <CsvPage />
            </PrivateCsvEditRoute>
         } 
