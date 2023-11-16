@@ -69,7 +69,6 @@ function ChildAss({ data }) {
         }
       });
       SetParentList(NewParentList);
-      console.log(defaultVal,'def',child)
       let NewDefaultValue = defaultVal.map((item,index) => {
       return {...item,child:[...item.child,child]}
 
@@ -83,7 +82,6 @@ function ChildAss({ data }) {
   };
   //   console.log("singleParent", singleParent, ParentList);
 
-  console.log(defaultVal, "deffff",ParentList);
   return (
     <div>
       {/* <div
