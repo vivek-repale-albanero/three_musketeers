@@ -1,5 +1,5 @@
-import React,{useState,useMemo,useRef, useEffect} from "react";
-import { assessCsv } from "../Context";
+import React,{useState,useMemo,useRef, useEffect,useContext} from "react";
+import { PermissionContext, assessCsv } from "../Context";
 import {
     AlbaButton
   } from "@platform/service-ui-libraries";
@@ -7,13 +7,25 @@ import Layout from "../Layout/Layout";
 import CsvModal from "./CsvModal";
 import { Table } from "@platform/primary-table";
 import EditTable from "../components/EditTable";
+import { useLocation } from "react-router-dom";
+
 import "./CsvPageAssess.scss"
 
 
 
 
   function CsvPageAssess (){
-   
+    const { setBreadCrumbProps,breadCrumbSet } = useContext(PermissionContext);
+    const location = useLocation();
+    useEffect(()=>{
+      const loc = breadCrumbSet(location)
+     const pathName = location.pathname.split("/").filter((path) => path);
+    if(pathName.length > 1){
+      setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
+    }else{
+           setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+    }
+  },[location])
    
     const [csvData, setCsvData] = useState([]);
     const [csvHeaders,setCsvHeaders] = useState([]);

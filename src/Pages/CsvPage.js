@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./CsvPage.scss";
 import { CSVContext, PermissionContext } from "../Context";
 import csv1 from "../assests/csv1.png";
@@ -20,8 +21,9 @@ import { Card, CardContent, AlbaButton } from "@platform/service-ui-libraries";
 import BreadCrumb from "../components/Breadcrumbs/BreadCrumb";
 
 const CsvPage = () => {
-  const { setUnAuthMsg } = useContext(PermissionContext);
+  const { setUnAuthMsg ,setBreadCrumbProps,breadCrumbSet} = useContext(PermissionContext);
   let history = useHistory();
+  const location = useLocation()
   const csvfileInputRef = useRef(null);
   const [csvData, setCsvData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,6 +36,17 @@ const CsvPage = () => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [errorMessageForCsvUploder, setErrorMessageForCsvUploder] = useState(null);
   const { currentUser } = useContext(PermissionContext);
+
+
+  useEffect(()=>{
+    const loc = breadCrumbSet(location)
+   const pathName = location.pathname.split("/").filter((path) => path);
+  if(pathName.length > 1){
+    setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
+  }else{
+         setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+  }
+},[location])
   const handleOpen = () => {
     setIsModalOpen(true);
   };
@@ -223,7 +236,7 @@ const CsvPage = () => {
         <Box className="header" style={{ display: "flex" }}>
           <div>
             <Typography variant="h5">CSV List</Typography>
-            <BreadCrumb />
+            {/* <BreadCrumb /> */}
           </div>
           <AlbaButton
              variant="success"

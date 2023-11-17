@@ -19,7 +19,7 @@ function Organization() {
     return (
         <div >
         <Container maxWidth="100%" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                    <BreadCrumb/>
+                    {/* <BreadCrumb/> */}
             <div className="ButtonDiv">
             </div>
         </Container>

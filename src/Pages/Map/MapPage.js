@@ -1,7 +1,9 @@
-import React, { useState, useMemo, useRef, useEffect } from "react";
-import { CSVMap } from "../../Context";
+import React, { useState, useMemo, useRef, useEffect,useContext } from "react";
+import { CSVMap, PermissionContext } from "../../Context";
 import Layout from "../../Layout/Layout";
 import FileUploadModal from "./FileuploadModal";
+import { useLocation } from "react-router-dom";
+
 // import { Container } from "@material-ui/core";
 import {
   AlbaButton,
@@ -13,6 +15,18 @@ import {
 import "./MapPage.scss";
 
 function MapPage() {
+  const { setBreadCrumbProps,breadCrumbSet } = useContext(PermissionContext);
+  const location = useLocation();
+  useEffect(()=>{
+    const loc = breadCrumbSet(location)
+   const pathName = location.pathname.split("/").filter((path) => path);
+  if(pathName.length > 1){
+    setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
+  }else{
+         setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+  }
+},[location])
+
   const fileUploadRef = useRef(null);
   const [fileUploadmodal, setFileUploadModal] = useState({
     status: false,

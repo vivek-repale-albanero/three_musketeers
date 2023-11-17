@@ -39,20 +39,19 @@ export default function Root() {
 
   const breadCrumbSet = (location) =>{
     const pathName = location.pathname.split("/").filter((path) => path);
-    console.log(pathName[0])
-
+    // console.log(pathName[0])
         if(pathName.length > 1){
           console.log("mul")
-
             const end = pathName[pathName.length-1];
             const prev= pathName.slice(0,-1);
             const navPrev= prev.map((path)=>({name:path, route:path}))
+            console.log("naVP",navPrev)
             return {end:end , navprev:navPrev}
         }else{
           console.log("single")
           const end = pathName[0]
           // console.log(pathName)
-          return {nav:end}
+          return {end:end}
         }
     }
 

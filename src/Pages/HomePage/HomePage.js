@@ -12,12 +12,18 @@ import Test2 from "../../components/Test2";
 function HomePage() {
   const { setBreadCrumbProps,breadCrumbSet } = useContext(PermissionContext);
   const location = useLocation();
-  breadCrumbSet(location)
 
-  // useEffect(
-  //   () => setBreadCrumbProps({ navLinks: [], activeLink: { name: "home" } }),
-  //   []
-  // );
+  useEffect(()=>{
+    const loc = breadCrumbSet(location)
+   const pathName = location.pathname.split("/").filter((path) => path);
+  if(pathName.length > 1){
+    setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
+  }else{
+         setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+  }
+},[location])
+
+
   return (
     <>
       <Layout>

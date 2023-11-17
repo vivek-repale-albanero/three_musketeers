@@ -26,7 +26,8 @@ import {
   editUser_usersPage,
   deleteUser_api,
   fetchUsersPageData,
-  getAutoCompleteOptions
+  getAutoCompleteOptions,
+  deleteUsersListRecord
 } from "../../api/api";
 
 
@@ -221,6 +222,17 @@ function UsersPage() {
     );
   };
 
+  const userRecordDelete = async(ids) => {
+        for (const id of ids){
+          const {response,error} = await deleteUsersListRecord(id)
+          if(response.status === 200){
+               users_fetchData()
+          }
+        }
+    // fetchUser_Api(page,pageSize,searchText)
+
+  }
+
   useEffect(() => {
     // setBreadCrumbProps({ navLinks: [ ], activeLink: { name: "users" } });
     setActionComponents([addUsersButton]);
@@ -229,14 +241,12 @@ function UsersPage() {
   
   useEffect(()=>{
     const loc = breadCrumbSet(location)
-    console.log("link",loc.end)
    const pathName = location.pathname.split("/").filter((path) => path);
   if(pathName.length > 1){
-    setBreadCrumbProps({navLinks:[loc.navprev],activeLink:{name:loc.end}})
+    setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
   }else{
          setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
   }
-
 },[location])
   const usersListTableMetadata = (actions) => {
     return {
@@ -301,7 +311,7 @@ function UsersPage() {
       onChangeRowsPerPage: (size, page) => actions?.onRowsChange(size, page),
       onChangePage: (e, page) => actions?.onPageChange(page),
       numericPagination: true,
-      deleteRecords:(userId)=>actions.handleDelete(userId)
+      deleteRecords:(userId)=>actions.userRecordDelete(userId)
     };
   };
   const userPageValue = useMemo(() => {
@@ -368,17 +378,15 @@ function UsersPage() {
                   handleSearch,
                   authMsgFn,
                   onReload,
+                  userRecordDelete
                 }),
                 data: users,
                 actionComponents: actionComponents,
                 title: "Users List",
               }}
             />
-
             {userFormModal.status && !userFormModal.edit ? <EditForm  saveUserData={saveUserData} page={page} pageSize={pageSize} searchText={searchText} /> : null}
             {userFormModal.status && userFormModal.edit ? <EditForm saveUserData={saveUserData} page={page} pageSize={pageSize} searchText={searchText}/> : null}
-
-
           </Container>
           {/* <UsersUITable/> */}
         </UsersContext.Provider>

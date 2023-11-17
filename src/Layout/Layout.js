@@ -86,11 +86,15 @@ const Layout = ({ children }) => {
             <ListItemText primary="Shopping" />
           </ListItem>
           <ListItem button component={Link} to="/assess">
-            <Icon></Icon>
+          <ListItemIcon>
+            <Icon>table_chart</Icon>
+          </ListItemIcon>
             <ListItemText primary="Assess" />
           </ListItem>
           <ListItem button component={Link} to="/map">
-            <Icon></Icon>
+          <ListItemIcon>
+            <Icon>tablet</Icon>
+          </ListItemIcon>
             <ListItemText primary="CSV Mapping" />
           </ListItem>
         </List>
