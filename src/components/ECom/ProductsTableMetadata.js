@@ -21,7 +21,7 @@ export const ProductsTableMetadata = (actions) => ({
           {
             icon: "remove",
             title: "Remove product",
-            componentId: "DELETE_ROW",
+            componentId: "CLICK_ACTION",
             onClick: (row) => actions.handleDelete(row.id),
           },
           {

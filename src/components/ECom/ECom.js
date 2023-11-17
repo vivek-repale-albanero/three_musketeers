@@ -17,6 +17,12 @@ import Cart from "./Cart";
 import TableMUI from "./MUITable";
 import PlatformProductTable from "./PlatformProductTable";
 import PlatformAutoComplete from "./PlatformAutoComplete";
+import {
+  fetchCartProductWithName,
+  fetchProductWithId,
+  editProductWithId,
+  addProductInCart,
+} from "../../api/api";
 
 function ECom() {
   const [productFormModal, setProductFormModal] = useState({
@@ -30,6 +36,8 @@ function ECom() {
   //const [newProduct, setNewProduct] = useState({});
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartChanged, setCartChanged] = useState(false);
+  const [operationPerformedInCart, setOperationPerformedInCart] =
+    useState(false);
 
   //gonna optimize in a while
   const fetchTableData = async () => {
@@ -46,7 +54,7 @@ function ECom() {
   };
   useEffect(() => {
     fetchTableData();
-  }, [page, pageSize,cartChanged]);
+  }, [page, pageSize, cartChanged, operationPerformedInCart]);
 
   // const fetchCartData = useCallback(async () => {
   //   try {
@@ -66,6 +74,9 @@ function ECom() {
       data: {},
     });
   };
+  const showAlert=()=>{
+    alert("Can't be added!")
+  }
   const openCartModal = () => setShowCartModal(true);
   const closeCartModal = () => {
     setShowCartModal(false);
@@ -157,73 +168,101 @@ function ECom() {
     return { productFormModal, products, saveProductData, closeModal };
   }, [productFormModal, products, saveProductData, closeModal]);
 
-  const handleAddToCart = async (product) => {
-    setCartChanged(false)
-    try {
-      const response = await fetch(
-        `http://localhost:3000/cart?name=${product.name}`
-      );
-      const cartProduct = await response.json();
-      const modifiedCartProduct =
-        cartProduct.length > 0
-          ? {
-              ...cartProduct[0],
-              number: cartProduct[0].number + 1,
-            }
-          : {
-              ...product,
-              number: 1,
-            };
-      //console.log("cart product modified is", modifiedCartProduct);
-      const fetchedProductWithId = await fetch(
-        `http://localhost:3000/products/${product.id}`
-      );
-      const fetchedProductWithIdJson = await fetchedProductWithId.json();
-      const productFetchResponse = await fetch(
-        `http://localhost:3000/products/${product.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...fetchedProductWithIdJson,
-            quantity: Math.max(fetchedProductWithIdJson.quantity - 1, 0),
-          }),
-        }
-      );
-      const updatedProduct = await productFetchResponse.json();
+  //fetchCartProductWithName fetchProductWithId editProductWithId addProductInCart
+  const fetchCartProduct = async (prodName) => {
+    const { response, error } = await fetchCartProductWithName(prodName);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+  const fetchProduct = async (id) => {
+    const { response, error } = await fetchProductWithId(id);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+  const editProduct = async (id, product) => {
+    const { response, error } = await editProductWithId(prodName);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+  const addInCart = async (prod) => {
+    const { response, error } = await addProductInCart(prod);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
 
-      //if the product which is to be added is already present in cart, we r gonna patch
-      //else we just post the new product to cart
-      if (cartProduct.length > 0) {
-        const cartEditResponse = await fetch(
-          `http://localhost:3000/cart/${modifiedCartProduct.id}`,
+  const handleAddToCart = async (product) => {
+    
+    if (product.quantity > 0) {
+      setCartChanged(false);
+      try {
+        const response = await fetch(
+          `http://localhost:3000/cart?name=${product.name}`
+        );
+        const cartProduct = await response.json();
+        const modifiedCartProduct =
+          cartProduct.length > 0
+            ? {
+                ...cartProduct[0],
+                number: cartProduct[0].number + 1,
+              }
+            : {
+                ...product,
+                number: 1,
+              };
+        //console.log("cart product modified is", modifiedCartProduct);
+        const fetchedProductWithId = await fetch(
+          `http://localhost:3000/products/${product.id}`
+        );
+        const fetchedProductWithIdJson = await fetchedProductWithId.json();
+        const productFetchResponse = await fetch(
+          `http://localhost:3000/products/${product.id}`,
           {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(modifiedCartProduct),
+            body: JSON.stringify({
+              ...fetchedProductWithIdJson,
+              quantity: Math.max(fetchedProductWithIdJson.quantity - 1, 0),
+            }),
           }
         );
-        const updatedCartProduct = await cartEditResponse.json();
-        //console.log("cart product updated is", updatedCartProduct);
-      } else {
-        const cartPostResponse = await fetch(`http://localhost:3000/cart`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(modifiedCartProduct),
-        });
-        const cartPostResponseJson = await cartPostResponse.json();
-        //console.log("cart product updated is", cartPostResponseJson);
-      }
+        const updatedProduct = await productFetchResponse.json();
 
-      setCartChanged(true);
-    } catch (error) {
-      //console.log("error", error);
+        //if the product which is to be added is already present in cart, we r gonna patch
+        //else we just post the new product to cart
+        if (cartProduct.length > 0) {
+          const cartEditResponse = await fetch(
+            `http://localhost:3000/cart/${modifiedCartProduct.id}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(modifiedCartProduct),
+            }
+          );
+          const updatedCartProduct = await cartEditResponse.json();
+          //console.log("cart product updated is", updatedCartProduct);
+        } else {
+          const cartPostResponse = await fetch(`http://localhost:3000/cart`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(modifiedCartProduct),
+          });
+          const cartPostResponseJson = await cartPostResponse.json();
+          //console.log("cart product updated is", cartPostResponseJson);
+        }
+
+        setCartChanged(true);
+      } catch (error) {
+        //console.log("error", error);
+      }
+    }
+    else{
+      showAlert()
     }
 
     //setCartData([...cartData,product])
@@ -262,7 +301,9 @@ function ECom() {
             <EditProductForm />
           ) : null}
         </Container>
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
           <AlbaButton
             variant="contained"
             classNamAlbaButtone="addBtn"
@@ -279,6 +320,7 @@ function ECom() {
             onCartChange={setCartChanged}
             onClose={closeCartModal}
             open={showCartModal}
+            onOperationPerformed={setOperationPerformedInCart}
           />
         )}
       </ProductsContext.Provider>
