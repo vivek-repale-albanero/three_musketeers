@@ -29,6 +29,7 @@ import {
   Form,
 } from "@platform/service-ui-libraries";
 
+console.log(comps);
 function EditProductForm() {
   console.log(comps);
 
@@ -163,6 +164,8 @@ function EditProductForm() {
     //   </Paper>
     // </Modal>
     // <div className="__add-product__modal">
+<div className="__add_product__modal">
+
     <Dialog
       open={productFormModal.status}
       onClose={closeModal}
@@ -170,9 +173,9 @@ function EditProductForm() {
       PaperComponent={DraggableModal}
       maxWidth={"xs"}
     >
-      <div className="__modalWrapper">
+      <div className="__modal__wrapper">
         <DialogTitle id="draggable-dialog-title">
-          <div className="__title">
+          <div className="__modal__title">
             <Typography className="__text al-ellipsis" variant="h6">
               {productFormModal.edit ? "Edit Product" : "Add Product"}
             </Typography>
@@ -180,11 +183,11 @@ function EditProductForm() {
             <IconButton onClick={closeModal}>
               <Icon>close</Icon>
             </IconButton>
-            </div>
+          </div>
         </DialogTitle>
-        <DialogContent className="__modal__content">
-          <div className="__formWrapper">
-            <div className="__body">
+        <DialogContent id="draggable-dialog-content">
+          <div className="__modal__form__wrapper">
+            <div className="__modal__body">
               <TextForm
                 validationsDetail={{
                   validations: {
@@ -205,10 +208,11 @@ function EditProductForm() {
                     name: e,
                   })
                 }
+                variant="filled"
               />
             </div>
 
-            <div className="__body">
+            <div className="__modal__body">
               <TextForm
                 validationsDetail={{
                   validations: {
@@ -231,7 +235,7 @@ function EditProductForm() {
                 }
               />
             </div>
-            <div className="__body">
+            <div className="__modal__body">
               <TextForm
                 validationsDetail={{
                   validations: {
@@ -255,7 +259,7 @@ function EditProductForm() {
               />
             </div>
 
-            <div className="__body">
+            <div className="__modal__body">
               <SelectForm
                 validationsDetail={{
                   validations: {
@@ -282,8 +286,8 @@ function EditProductForm() {
               />
             </div>
 
-            <br />
-            <div className="buttonContainer">
+            {/* <br /> */}
+            <div className="__modal__form_button__wrapper">
               <AlbaButton variant="danger" onClick={closeModal}>
                 Cancel
               </AlbaButton>
@@ -295,6 +299,9 @@ function EditProductForm() {
         </DialogContent>
       </div>
     </Dialog>
+    </div>
+
+
     // </div>
   );
 }

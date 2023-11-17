@@ -21,6 +21,9 @@ import ShoaibCompoPractice from "./Pages/ShoaibCompoPractice";
 import {fetchUsers} from "./api/api"
 import EComPage from "./Pages/ECom";
 import IntegrityAnalysisList from "./components/ComponentThatDisplaysTable";
+import ColorDrag from "./Pages/ColorDragPage/ColorDrag";
+import Signup from "./components/Signup/Signup";
+import DynamicInputs from "./components/DynamicInputs/DynamicInputs";
 import CsvPageAssess from "./Assessment/CsvPageAssess";
 import MapPage from "./Pages/Map/MapPage";
 
@@ -102,6 +105,11 @@ export default function Root() {
 
           <Route exact path="/e-com" render={()=> <EComPage/>} />
           <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
+          <Route exact path='/task-anubhav' render={()=><ColorDrag/>}/>
+          {/* Exporting from the component itself */}
+          <Route exact path='/task-anubhav/signup' render={()=><Signup/>}/>
+          <Route exact path='/task-anubhav/dynamic-inputs' render={()=><DynamicInputs/>}/>
+
 
 
           <Route exact path="/assess" render={()=> <CsvPageAssess/>}/>

@@ -3,7 +3,7 @@ import { Table } from "@platform/primary-table";
 import { Typography } from "@material-ui/core";
 import { AlbaButton } from "@platform/service-ui-libraries";
 import { ProductsTableMetadata } from "./ProductsTableMetadata";
-import { fetchProductsData } from "../../api/api";
+import { fetchProducts } from "../../api/api";
 
 function PlatformProductTable({
   products,
@@ -15,7 +15,7 @@ function PlatformProductTable({
   pageSize,
 }) {
   const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [totalCount, setTotalCount] = useState("");
   const [allProducts, setAllProducts] = useState([]);
 
@@ -24,17 +24,6 @@ function PlatformProductTable({
   const { openEditModaL, deleteProduct, handleAddToCart, openAddModal } =
     actions();
 
-  const fetchData = async (page, pageSize) => {
-    // we fetch data and update setData here
-    try {
-      const { response, error } = await fetchProductsData(page, pageSize);
-      if (response.status === 200) setAllProducts(response.data);
-      else console.log("error fetching data", error);
-    } catch (error) {
-      console.log("Somthing wrong in api call", error);
-    }
-  };
-  console.log("hello", fetchData());
   const handleOnChangePage = (page) => {
     setPage(page);
   };
@@ -42,28 +31,46 @@ function PlatformProductTable({
     setPageSize(pageSize);
     setPage(page);
   };
-  const AddProductButton = useCallback(() => {
-    return (
-      <AlbaButton variant="success" icon="add" onClick={openAddModal}>
-        Add product
-      </AlbaButton>
-    );
-  });
-  useEffect(() => {
-    setActionComponents([AddProductButton]);
-    fetchData(page, pageSize);
-  }, [page, pageSize]);
+  const fetchData = async (page, pageSize) => {
+    const { response, error } = await fetchProducts(page, pageSize);
+    // console.log('fetch data is called!')
+    //console.log('reponse',response.request.status)
+    if (response.request.status === 200) {
+      setData(response.data);
+    } else {
+      console.log("error fetching data", error);
+    }
+  };
 
-  // const handleDelete = (ids) => {
-  //   deleteIntegrityData({ ids }).then((res) => {
-  //     if (res?.response?.data?.success) {
-  //       ShowSnackbar(true, "success", res.response.data.message);
-  //       setProducts(fetchData());
-  //     } else {
-  //       ShowSnackbar(true, "error", res?.error?.response.data.message);
-  //     }
-  //   });
-  // };
+  //console.log('Products table data',products)
+  useEffect(() => {
+    //this use effect is gonna run for the first time no matter the dependencies.
+    fetchData(page, pageSize);
+  }, [searchText, page, pageSize]);
+
+  useEffect(() => {
+    //fetchData();
+    setActionComponents([AddProductButton]);
+  }, []);
+
+  useEffect(() => {
+    const filteredProducts = data?.filter((item) =>
+      item.name?.toLowerCase().startsWith(searchText)
+    );
+    // console.log("filtered products", filteredProducts);
+    setProducts(filteredProducts);
+  }, [searchText, data]);
+
+  const handleDelete = (ids) => {
+    deleteIntegrityData({ ids }).then((res) => {
+      if (res?.response?.data?.success) {
+        ShowSnackbar(true, "success", res.response.data.message);
+        fetchData();
+      } else {
+        ShowSnackbar(true, "error", res?.error?.response.data.message);
+      }
+    });
+  };
   const onReload = async () => {
     if (searchText.length > 2) {
       handleSearch(searchText);
@@ -128,7 +135,7 @@ function PlatformProductTable({
       Are you sure you want to stop {row.name} ?
     </Typography>
   );
-
+  const handleSelected = (elems) => console.log(elems);
   const [tableProps, setTableProps] = useState({
     ...ProductsTableMetadata({
       handleDelete: deleteProduct,
@@ -144,42 +151,38 @@ function PlatformProductTable({
       //stopPopupBody,
     }),
   });
+  // console.log("data now is", data);
 
-  // useEffect(() => {
-  //   if (searchText.length > 2) {
-  //     handleSearch(searchText);
-  //   } else {
-  //     setProducts(fetchData());
-  //   }
-  // }, [page, pageSize]);
-
-  const integrityButton = useCallback(() => {
+  const AddProductButton = useCallback(() => {
     return (
       <AlbaButton
         variant="success"
-        icon="library_books"
+        icon="add"
         onClick={() => {
-          setIntegrityAnalysis(true);
+          openAddModal();
         }}
       >
-        Integrity Analysis
+        Add Product
       </AlbaButton>
     );
   }, []);
 
   return (
     <div className="table-wrapper">
-      <Table
-        tableProps={{
-          ...tableProps,
-          totalCount: totalCount,
-          data: products,
-          handleSearch: handleSearch,
-          onReload,
-          title: "Products",
-          actionComponents: actionComponents,
-        }}
-      />
+      <div className="__table__body">
+        <Table
+          tableProps={{
+            ...tableProps,
+            totalCount,
+            data: products,
+            handleSearch,
+            // onReload,
+            title: "Products",
+            actionComponents,
+            //handleAddAllToCart:handleSelected
+          }}
+        />
+      </div>
     </div>
   );
 }

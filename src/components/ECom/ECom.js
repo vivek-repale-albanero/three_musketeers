@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Button,
   Icon,
@@ -17,6 +17,12 @@ import Cart from "./Cart";
 import TableMUI from "./MUITable";
 import PlatformProductTable from "./PlatformProductTable";
 import PlatformAutoComplete from "./PlatformAutoComplete";
+import {
+  fetchCartProductWithName,
+  fetchProductWithId,
+  editProductWithId,
+  addProductInCart,
+} from "../../api/api";
 
 function ECom() {
   const [productFormModal, setProductFormModal] = useState({
@@ -30,8 +36,36 @@ function ECom() {
   //const [newProduct, setNewProduct] = useState({});
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartChanged, setCartChanged] = useState(false);
-  //const [cartData,setCartData] = useState([]);
+  const [operationPerformedInCart, setOperationPerformedInCart] =
+    useState(false);
+
+  //gonna optimize in a while
+  const fetchTableData = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`
+      );
+      const jsonRes = await res.json();
+      //console.log('data being fetched',jsonRes)
+      setProducts(jsonRes);
+    } catch (error) {
+      //console.log("error", error);
+    }
+  };
   useEffect(() => {
+    fetchTableData();
+  }, [page, pageSize, cartChanged, operationPerformedInCart]);
+
+  // const fetchCartData = useCallback(async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:3000/cart`);
+  //     const jsonResponse = await response.json();
+  //     setCartData(jsonResponse)
+  //   } catch (error) {
+  //     //console.log("error", error);
+  //   }
+  // },[]);
+  useEffect(()=>{
     console.log(
       "Use effect called for page ",
       page,
@@ -56,6 +90,9 @@ function ECom() {
       data: {},
     });
   };
+  const showAlert=()=>{
+    alert("Can't be added!")
+  }
   const openCartModal = () => setShowCartModal(true);
   const closeCartModal = () => {
     setShowCartModal(false);
@@ -75,7 +112,7 @@ function ECom() {
       .then((data) => setProducts(data));
   };
   const openEditModaL = (product) => {
-    console.log("edit is running", product);
+    //console.log("edit is running", product);
     setProductFormModal({
       ...productFormModal,
       status: true,
@@ -99,7 +136,7 @@ function ECom() {
       });
       setCartChanged(true);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
 
     //setCartData(cartData.filter((item) => item.id !== productId))
@@ -117,7 +154,7 @@ function ECom() {
       })
         .then((response) => afterEdit())
         .catch((error) => {
-          console.error("Error:", error);
+          //console.error("Error:", error);
         });
       // const updatedUsers = [...users,editedUserData]
       //    setUsers(updatedUsers)
@@ -137,7 +174,7 @@ function ECom() {
       })
         .then((response) => afterEdit())
         .catch((error) => {
-          console.error("Error:", error);
+          //console.error("Error:", error);
         });
     }
     closeModal();
@@ -147,31 +184,130 @@ function ECom() {
     return { productFormModal, products, saveProductData, closeModal };
   }, [productFormModal, products, saveProductData, closeModal]);
 
+  //fetchCartProductWithName fetchProductWithId editProductWithId addProductInCart
+  const fetchCartProduct = async (prodName) => {
+    const { response, error } = await fetchCartProductWithName(prodName);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+  const fetchProduct = async (id) => {
+    const { response, error } = await fetchProductWithId(id);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+  const editProduct = async (id, product) => {
+    const { response, error } = await editProductWithId(prodName);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+  const addInCart = async (prod) => {
+    const { response, error } = await addProductInCart(prod);
+    if (response.request.status === 200) return response.data;
+    else return { error };
+  };
+
+  const handleAddToCart = async (product) => {
+    
+    if (product.quantity > 0) {
+      setCartChanged(false);
+      try {
+        const response = await fetch(
+          `http://localhost:3000/cart?name=${product.name}`
+        );
+        const cartProduct = await response.json();
+        const modifiedCartProduct =
+          cartProduct.length > 0
+            ? {
+                ...cartProduct[0],
+                number: cartProduct[0].number + 1,
+              }
+            : {
+                ...product,
+                number: 1,
+              };
+        //console.log("cart product modified is", modifiedCartProduct);
+        const fetchedProductWithId = await fetch(
+          `http://localhost:3000/products/${product.id}`
+        );
+        const fetchedProductWithIdJson = await fetchedProductWithId.json();
+        const productFetchResponse = await fetch(
+          `http://localhost:3000/products/${product.id}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...fetchedProductWithIdJson,
+              quantity: Math.max(fetchedProductWithIdJson.quantity - 1, 0),
+            }),
+          }
+        );
+        const updatedProduct = await productFetchResponse.json();
+
+        //if the product which is to be added is already present in cart, we r gonna patch
+        //else we just post the new product to cart
+        if (cartProduct.length > 0) {
+          const cartEditResponse = await fetch(
+            `http://localhost:3000/cart/${modifiedCartProduct.id}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(modifiedCartProduct),
+            }
+          );
+          const updatedCartProduct = await cartEditResponse.json();
+          //console.log("cart product updated is", updatedCartProduct);
+        } else {
+          const cartPostResponse = await fetch(`http://localhost:3000/cart`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(modifiedCartProduct),
+          });
+          const cartPostResponseJson = await cartPostResponse.json();
+          //console.log("cart product updated is", cartPostResponseJson);
+        }
+
+        setCartChanged(true);
+      } catch (error) {
+        //console.log("error", error);
+      }
+    }
+    else{
+      showAlert()
+    }
+  }
+    //setCartData([...cartData,product])
   
   //Cart
-  const handleAddToCart = async (product) => {
-    try {
-      const response = await fetch(`http://localhost:3000/cart`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      });
-      const jsonResonse = await response.json();
-      setCartChanged(true);
-      // console.log("Snack bar should have run!");
+  // const handleAddToCart = async (product) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:3000/cart`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(product),
+  //     });
+  //     const jsonResonse = await response.json();
+  //     setCartChanged(true);
+  //     // console.log("Snack bar should have run!");
      
-      // ShowSnackbar(true,"success", "Added to cart!");
-    } catch (error) {
-      console.error("Error:", error);
-      //ShowSnackbar(false,'error', "Something went wrong!");
-    }
-  };
+  //     // ShowSnackbar(true,"success", "Added to cart!");
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     //ShowSnackbar(false,'error', "Something went wrong!");
+  //   }
+  // };
+  //console.log("data we r getting", products,'and cartchanged is ',cartChanged);
 
   //Action object for MUI based table
   const actions = () => {
-    return { openEditModaL, deleteProduct, handleAddToCart, openAddModal };
+    return { openAddModal, openEditModaL, deleteProduct, handleAddToCart };
   };
   return (
     <div>
@@ -187,6 +323,7 @@ function ECom() {
         </Box>
         <Container maxWidth="100%" className="tableContent">
           {/* <TableMUI actions={actions} products={products} productFormModal={productFormModal}/> */}
+          {/* <PlatformAutoComplete products={products} setProducts={setProducts}/> */}
           {/* <PlatformAutoComplete products={products} setProducts={setProducts} /> */}
           <PlatformProductTable
             products={products}
@@ -220,6 +357,7 @@ function ECom() {
             onCartChange={setCartChanged}
             onClose={closeCartModal}
             open={showCartModal}
+            onOperationPerformed={setOperationPerformedInCart}
           />
         )}
       </ProductsContext.Provider>
@@ -228,3 +366,5 @@ function ECom() {
 }
 
 export default ECom;
+
+

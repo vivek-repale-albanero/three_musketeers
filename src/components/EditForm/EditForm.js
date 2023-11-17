@@ -54,6 +54,7 @@ function EditForm( {saveUserData,page,pageSize,searchText}) {
       fullWidth
     >
       {/* <div className="formHead"> */}
+      
       <DialogTitle id="draggable-dialog-title">
         <div className="formHead">
           <Typography variant="h6">
