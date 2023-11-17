@@ -1,4 +1,3 @@
-// export all api calls from here
 import { genericApiCall } from "../helpers/api";
 
 export const fetchProducts = async (page, pageSize) => {
@@ -90,6 +89,15 @@ export const deleteUser_api = async (payload) => {
   return await genericApiCall({
     method: "DELETE",
     url,
+  });
+};
+
+export const deleteUsersListRecord = async (payload) => {
+  const url = `users/${payload}`;
+  return await genericApiCall({
+    method: 'DELETE',
+    url,
+    data: payload
   });
 };
 

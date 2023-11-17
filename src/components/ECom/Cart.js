@@ -16,7 +16,7 @@ function Cart({
   const [buttonActionPerformed, setButtonActionPerformed] = useState(false);
   const [page, setPage] = useState(0);
   //const [totalAmount, setTotalAmount] = useState(0);
-  const [pageSize, setPageSize] = useState(7);
+  const [pageSize, setPageSize] = useState(10);
 
   const showAlert = () => {
     alert("This product is no more available. Sorry!");
@@ -30,6 +30,9 @@ function Cart({
     }
   };
   console.log("data in the cart", data);
+
+
+
   useEffect(() => {
     onOperationPerformed(false);
   }, []);

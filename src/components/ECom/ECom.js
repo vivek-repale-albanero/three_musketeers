@@ -8,7 +8,7 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import { AlbaButton } from "@platform/service-ui-libraries";
+import { AlbaButton, ShowSnackbar } from "@platform/service-ui-libraries";
 import BreadCrumb from "../Breadcrumbs/BreadCrumb";
 import EditForm from "../EditForm/EditForm";
 import { ProductsContext } from "../../Context";
@@ -65,6 +65,22 @@ function ECom() {
   //     //console.log("error", error);
   //   }
   // },[]);
+  useEffect(()=>{
+    console.log(
+      "Use effect called for page ",
+      page,
+      " and pagesize is ",
+      pageSize
+    );
+    fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [page, pageSize]);
 
   const openAddModal = () => {
     setProductFormModal({
@@ -89,7 +105,7 @@ function ECom() {
       data: {},
     });
   };
-
+  console.log(ShowSnackbar);
   const afterEdit = () => {
     fetch(`http://localhost:3000/products?_page=${page + 1}&_limit=${pageSize}`)
       .then((res) => res.json())
@@ -264,9 +280,29 @@ function ECom() {
     else{
       showAlert()
     }
-
+  }
     //setCartData([...cartData,product])
-  };
+  
+  //Cart
+  // const handleAddToCart = async (product) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:3000/cart`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(product),
+  //     });
+  //     const jsonResonse = await response.json();
+  //     setCartChanged(true);
+  //     // console.log("Snack bar should have run!");
+     
+  //     // ShowSnackbar(true,"success", "Added to cart!");
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     //ShowSnackbar(false,'error', "Something went wrong!");
+  //   }
+  // };
   //console.log("data we r getting", products,'and cartchanged is ',cartChanged);
 
   //Action object for MUI based table
@@ -288,6 +324,7 @@ function ECom() {
         <Container maxWidth="100%" className="tableContent">
           {/* <TableMUI actions={actions} products={products} productFormModal={productFormModal}/> */}
           {/* <PlatformAutoComplete products={products} setProducts={setProducts}/> */}
+          {/* <PlatformAutoComplete products={products} setProducts={setProducts} /> */}
           <PlatformProductTable
             products={products}
             setProducts={setProducts}
@@ -296,15 +333,15 @@ function ECom() {
             setPage={setPage}
             pageSize={pageSize}
             setPageSize={setPageSize}
+            
           />
           {productFormModal.status && productFormModal.edit ? (
             <EditProductForm />
           ) : null}
         </Container>
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <AlbaButton
+            className="__showCartBtn"
             variant="contained"
             classNamAlbaButtone="addBtn"
             onClick={openCartModal}
@@ -330,6 +367,4 @@ function ECom() {
 
 export default ECom;
 
-//Modal
-//TextForm with validations
-//Table
+

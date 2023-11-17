@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory,useLocation } from "react-router-dom";
 
 import "../styles/GameRedirect.scss";
 import Layout from "../Layout/Layout";
@@ -10,7 +10,7 @@ import BreadCrumb from "../components/Breadcrumbs/BreadCrumb";
 import { Box, Typography } from "@material-ui/core";
 
 const GamePageRedirect = () => {
-  const { setUnAuthMsg } = useContext(PermissionContext);
+  const { setUnAuthMsg,setBreadCrumbProps,breadCrumbSet } = useContext(PermissionContext);
   const { currentUser } = useContext(PermissionContext);
   const [userData, setUserData] = useState([]);
   const [PlayingDetails, setPlayingDetails] = useState({
@@ -32,7 +32,16 @@ const GamePageRedirect = () => {
       console.log("error", error);
     }
   }
-
+  const location = useLocation();
+  useEffect(()=>{
+    const loc = breadCrumbSet(location)
+   const pathName = location.pathname.split("/").filter((path) => path);
+  if(pathName.length > 1){
+    setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
+  }else{
+         setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+  }
+},[location])
   useEffect(() => {
     FetchUsers();
   }, []);
@@ -85,7 +94,7 @@ const GamePageRedirect = () => {
 
   return (
     <Layout>
-     <BreadCrumb />
+     {/* <BreadCrumb /> */}
       <div className='parent'>
       
         <div className='child'>

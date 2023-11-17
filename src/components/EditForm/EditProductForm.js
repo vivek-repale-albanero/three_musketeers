@@ -171,7 +171,7 @@ function EditProductForm() {
       onClose={closeModal}
       className="compare-files-dialog aw-dialog appModal"
       PaperComponent={DraggableModal}
-      maxWidth={"sm"}
+      maxWidth={"xs"}
     >
       <div className="__modal__wrapper">
         <DialogTitle id="draggable-dialog-title">

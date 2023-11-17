@@ -15,13 +15,15 @@ import { PermissionContext } from "../Context";
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Layout from "../Layout/Layout";
 import BreadCrumb from "../components/Breadcrumbs/BreadCrumb";
-
+import { useLocation } from "react-router-dom";
 import { updatePermission } from "../api/api";
 import { useHistory } from "react-router-dom";
 const PermissionPage = () => {
   const history=useHistory()
   const [permissions, setPermissions] = useState({});
-  const { local, setLocal } = useContext(PermissionContext);
+  const { local, setLocal ,breadCrumbSet,setBreadCrumbProps} = useContext(PermissionContext);
+  const location = useLocation()
+  // breadCrumbSet(location)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("useLogedId"));
     //use local storage
@@ -42,48 +44,29 @@ const PermissionPage = () => {
           };
         }
       }
-
       setPermissions(initialPermissions);
     }
-    //from db uses of db
-    // else {
-    // axios.get(`http://localhost:3000/users/${user.id}`)
-    // .then((res) => {
-    // const userFromDatabase = res.data;
-
-    // // Update the permissions state with data from the database
-    // const updatedPermissions = { ...permissions };
-
-    // for (const key in userFromDatabase.Permission) {
-    // if (updatedPermissions[key]) {
-    // updatedPermissions[key].checked = userFromDatabase.Permission[key].allow;
-
-    // for (const nestedKey in userFromDatabase.Permission[key].subModules) {
-    // if (updatedPermissions[key].nested[nestedKey]) {
-    // updatedPermissions[key].nested[nestedKey].checked = userFromDatabase.Permission[key].subModules[nestedKey];
-    // }
-    // }
-    // }
-    // }
-
-    // setPermissions(updatedPermissions);
-    // })
-    // .catch((error) => {
-    // console.error('Error fetching user data:', error);
-    // });
-    // }
+    
   }, []);
+  useEffect(()=>{
+    const loc = breadCrumbSet(location)
+    console.log(loc)
+   const pathName = location.pathname.split("/").filter((path) => path);
+  if(pathName.length > 1){
+    setBreadCrumbProps({navLinks:loc.navprev,activeLink:{name:loc.end}})
+  }else{
+    setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+  }
+},[location])
 
   const handleMainCheckboxChange = (mainKey) => {
     setPermissions((prevPermissions) => {
       const newPermissions = { ...prevPermissions };
       newPermissions[mainKey].checked = !newPermissions[mainKey].checked;
-
       for (const nestedKey in newPermissions[mainKey].nested) {
         newPermissions[mainKey].nested[nestedKey].checked =
           newPermissions[mainKey].checked;
       }
-
       return newPermissions;
     });
   };

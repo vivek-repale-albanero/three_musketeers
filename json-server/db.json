@@ -36,7 +36,7 @@
     {
       "user": {
         "userName": "pritamHald@2000",
-        "firstName": "pritam",
+        "firstName": "pri",
         "lastName": "halder"
       },
       "age": "a",
@@ -52,52 +52,19 @@
           }
         },
         "gamePermission": {
-          "allow": false,
+          "allow": true,
           "subModules": {
-            "gamePagePermission": false,
-            "gameStartPermission": false,
-            "gameResetPermission": false
+            "gamePagePermission": true,
+            "gameStartPermission": true,
+            "gameResetPermission": true
           }
         },
         "missing": {
-          "allow": false,
+          "allow": true,
           "subModules": {}
         }
       },
       "id": 5
-    },
-    {
-      "user": {
-        "userName": "abi@03891",
-        "firstName": "abi",
-        "lastName": "shei"
-      },
-      "age": "26",
-      "email": "abishek@gmail.com",
-      "password": "password1",
-      "Permission": {
-        "csvPermission": {
-          "allow": false,
-          "subModules": {
-            "csvPagePermission": false,
-            "csvEditPermission": false,
-            "csvDownloadPermission": false
-          }
-        },
-        "gamePermission": {
-          "allow": false,
-          "subModules": {
-            "gamePagePermission": false,
-            "gameStartPermission": false,
-            "gameResetPermission": false
-          }
-        },
-        "missing": {
-          "allow": false,
-          "subModules": {}
-        }
-      },
-      "id": 6
     },
     {
       "user": {
@@ -134,13 +101,13 @@
     },
     {
       "user": {
-        "userName": "vae",
-        "firstName": "ea",
-        "lastName": "aeff"
+        "userName": "qd",
+        "firstName": "dqe",
+        "lastName": "dqe"
       },
-      "age": "afe",
-      "email": "aef",
-      "password": "eaf",
+      "age": "qd",
+      "email": "qd",
+      "password": "qed",
       "Permission": {
         "csvPermission": {
           "allow": false,
@@ -163,17 +130,17 @@
           "subModules": {}
         }
       },
-      "id": 16
+      "id": 9
     },
     {
       "user": {
-        "userName": "SC",
-        "firstName": "wa",
-        "lastName": "cd"
+        "userName": "earg",
+        "firstName": "wfe",
+        "lastName": "gerg"
       },
-      "age": "s",
-      "email": "ss",
-      "password": "S",
+      "age": "arw",
+      "email": "agr",
+      "password": "agr",
       "Permission": {
         "csvPermission": {
           "allow": false,
@@ -196,17 +163,17 @@
           "subModules": {}
         }
       },
-      "id": 17
+      "id": 10
     },
     {
       "user": {
-        "userName": "fse",
-        "firstName": "asd",
-        "lastName": "fe"
+        "userName": "gar",
+        "firstName": "agr",
+        "lastName": "rwg"
       },
-      "age": "e",
-      "email": "fsf",
-      "password": "ef",
+      "age": "warg",
+      "email": "arg",
+      "password": "awg",
       "Permission": {
         "csvPermission": {
           "allow": false,
@@ -229,7 +196,139 @@
           "subModules": {}
         }
       },
-      "id": 18
+      "id": 11
+    },
+    {
+      "user": {
+        "userName": "w",
+        "firstName": "wg",
+        "lastName": "wr"
+      },
+      "age": "rg",
+      "email": "gr",
+      "password": "rg",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 12
+    },
+    {
+      "user": {
+        "userName": "rw",
+        "firstName": "agw",
+        "lastName": "rg"
+      },
+      "age": "rw",
+      "email": "wr",
+      "password": "w",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 13
+    },
+    {
+      "user": {
+        "userName": "r",
+        "firstName": "gar",
+        "lastName": "gr"
+      },
+      "age": "ra",
+      "email": "gr",
+      "password": "rg",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 14
+    },
+    {
+      "user": {
+        "userName": "gr",
+        "firstName": "gra",
+        "lastName": "rw"
+      },
+      "age": "gr",
+      "email": "rg",
+      "password": "gr",
+      "Permission": {
+        "csvPermission": {
+          "allow": false,
+          "subModules": {
+            "csvPagePermission": false,
+            "csvEditPermission": false,
+            "csvDownloadPermission": false
+          }
+        },
+        "gamePermission": {
+          "allow": false,
+          "subModules": {
+            "gamePagePermission": false,
+            "gameStartPermission": false,
+            "gameResetPermission": false
+          }
+        },
+        "missing": {
+          "allow": false,
+          "subModules": {}
+        }
+      },
+      "id": 15
     }
   ],
   "Metadata": [
@@ -4282,68 +4381,31 @@
   ],
   "sampleData": [
     {
-      "id": 4,
-      "userName": "daqa",
-      "firstName": "Anubhav",
-      "lastName": "Nayak"
+      "userName": "fwwfe",
+      "firstName": "fwe",
+      "lastName": "fe",
+      "id": 15
     },
     {
-      "id": 5,
-      "userName": "e",
-      "firstName": "Pritam",
-      "lastName": "Halder"
+      "userName": "xq",
+      "firstName": "wdq",
+      "lastName": "qwd",
+      "id": 16
     },
     {
-      "id": 6,
-      "userName": "f",
-      "firstName": "Easwar",
-      "lastName": "M"
+      "userName": "ed",
+      "firstName": "fe",
+      "lastName": "fea",
+      "id": 17
     },
     {
-      "id": 7,
-      "userName": "g",
-      "firstName": "Shoabe",
-      "lastName": "fncrbu"
-    },
-    {
-      "id": 8,
-      "userName": "h",
-      "firstName": "Anubhav",
-      "lastName": "Nayak"
-    },
-    {
-      "id": 9,
-      "userName": "i",
-      "firstName": "Pritam",
-      "lastName": "Halder"
-    },
-    {
-      "id": 11,
-      "userName": "k",
-      "firstName": "Pritam",
-      "lastName": "Halder"
-    },
-    {
-      "id": 12,
-      "userName": "l",
-      "firstName": "Easwar",
-      "lastName": "M"
-    },
-    {
-      "id": 13,
-      "userName": "m",
-      "firstName": "Shoabe",
-      "lastName": "fncrbu"
+      "userName": "era",
+      "firstName": "fdae",
+      "lastName": "erge",
+      "id": 18
     }
   ],
   "products": [
-    {
-      "name": "Product 6",
-      "price": 33,
-      "quantity": 10,
-      "id": 6,
-      "type": "personal"
-    },
     {
       "name": "Product 7",
       "price": 33,
@@ -4361,7 +4423,7 @@
     {
       "name": "Product 9",
       "price": 33,
-      "quantity": 4,
+      "quantity": 1,
       "id": 9,
       "type": "personal"
     },
@@ -4389,7 +4451,7 @@
     {
       "name": "Product 13",
       "price": 33,
-      "quantity": 19,
+      "quantity": 11,
       "id": 13,
       "type": "personal"
     },
@@ -4417,7 +4479,7 @@
     {
       "name": "Product 17",
       "price": 33,
-      "quantity": 10,
+      "quantity": 8,
       "id": 17,
       "type": "personal"
     },
@@ -4499,15 +4561,7 @@
       "quantity": 4,
       "id": 13,
       "type": "personal",
-      "number": 7
-    },
-    {
-      "name": "Product 6",
-      "price": 33,
-      "quantity": 2,
-      "id": 6,
-      "type": "personal",
-      "number": 0
+      "number": 14
     },
     {
       "name": "Product 17",
@@ -4515,7 +4569,7 @@
       "quantity": 3,
       "id": 17,
       "type": "personal",
-      "number": 0
+      "number": 2
     },
     {
       "name": "Product 18",
@@ -4563,7 +4617,7 @@
       "quantity": 1,
       "id": 9,
       "type": "personal",
-      "number": 2
+      "number": 5
     },
     {
       "name": "New Product",

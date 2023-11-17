@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
+import { useLocation } from "react-router-dom";
 import Layout from '../Layout/Layout'
 import '../styles/MissingPage.scss'
 import data from './ORGdata.json'
 
 import Organization from '../components/MissingPage/Organization'
 import { useMemo } from 'react'
-import { MissingPageContext } from '../Context'
+import { MissingPageContext, PermissionContext } from '../Context'
 import { OrgContextRequest } from '../api/api'
 function MissingPage() {
+    const { setBreadCrumbProps,breadCrumbSet } = useContext(PermissionContext);
 
     const [orgdata, setorgdata] = useState(data)
     const [singleorg, setsingleorg] = useState([])
@@ -26,7 +28,17 @@ function MissingPage() {
     }
 
     console.log(orgdata,"response data")
+    const location = useLocation();
 
+    useEffect(()=>{
+      const loc = breadCrumbSet(location)
+     const pathName = location.pathname.split("/").filter((path) => path);
+    if(pathName.length > 1){
+      setBreadCrumbProps({navLinks:[...loc.navprev],activeLink:{name:loc.end}})
+    }else{
+           setBreadCrumbProps({navLinks:[],activeLink:{name:loc.end}})
+    }
+  },[location])
     useEffect(()=>{
         FetchContextOrgDetails()
     },[])
