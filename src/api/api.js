@@ -1,4 +1,5 @@
 import { genericApiCall } from "../helpers/api";
+import axios from "axios";
 
 export const fetchProducts = async (page, pageSize) => {
   const url = `products?_page=${page + 1}&_limit=${pageSize}`;
@@ -256,3 +257,18 @@ export const getInspectRepairListAPI = async ({ page, pageSize }) => {
     url,
   });
 };
+
+
+
+{/****************Film DashBoard API *****************/}
+
+export const getFilmDataAPI = async () =>{
+  const url= `https://swapi.dev/api/films/`;
+  const response = await axios.get(url)
+  console.log("api",response)
+   return response
+  // return await genericApiCall({
+  //   method: "GET",
+  //   url,
+  // });
+}

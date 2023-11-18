@@ -9,6 +9,7 @@ import {
   AlbaButton,
   AlbaAutocomplete,
   Container,
+  ShowSnackbar,
 } from "@platform/service-ui-libraries";
 import {Link , useLocation } from "react-router-dom";
 import * as s from "@platform/service-ui-libraries"
@@ -144,15 +145,26 @@ function UsersPage() {
   };
   const AddUser = async (userData) => {
     const { response, error } = await addUser_UsersPage(userData);
+    console.log("res",response?.statusText)
+    if(response.status == 201){
+      ShowSnackbar(true, 'success', response?.statusText);
+    fetchUser_Api(page,pageSize,searchText)
+    }else{
+      ShowSnackbar(true, 'error', error);
+    }
   };
   const editUser = async (userId) => {
     const { response, error } = editUser_usersPage(userId);
+    console.log("edires",response)
+    // if(response.status == 200){
+    // }else{
+    //   console.log(error)
+    // }
   };
 
   const saveUserData = (editedUserData,page,pageSize,searchText) => {
     if (!userFormModal.edit) {
       AddUser(editedUserData);
-    fetchUser_Api(page,pageSize,searchText)
     } else {
       const updateduser = editedUserData;
       const updatedUsersList = users.map((user) => (user.id === updateduser.id ? { ...updateduser } : user)).filter((user) => user.id === updateduser.id);

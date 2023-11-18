@@ -12,7 +12,7 @@ import GamePageRedirect from "./Pages/GamePageRedirect";
 import TicTacPage from "./Pages/TicTacToe";
 import MissingPage from "./Pages/MissingPage";
 import { BreadcrumbsBar } from '@platform/service-ui-libraries';
-import { PermissionContext } from "./Context";
+import { FilmDashboard, PermissionContext } from "./Context";
 import PrivateCsvEditRoute from "./components/PrivateCsvEditRoute"
 import PrivateGameRoute from "./components/PrivateGameRoute";
 import UnauthorizedPage from "./Pages/UnauthorizedPage";
@@ -27,6 +27,8 @@ import DynamicInputs from "./components/DynamicInputs/DynamicInputs";
 import CsvPageAssess from "./Assessment/CsvPageAssess";
 import MapPage from "./Pages/Map/MapPage";
 import HomePageIMDB from "./Pages/HomePageIMDB/HomePageIMDB";
+import DashboardHome from "./FilmDashboard/DashboardHome";
+import FilmPage from "./FilmDashboard/Pages/FilmPage";
 
 
 
@@ -40,6 +42,14 @@ export default function Root() {
   const [users, setUsers] = useState([]);
   const [local,setLocal]=useState(false)
   const[unAuthMsg,setUnAuthMsg]=useState("You are not Authorized")
+
+{/*****************************FilmDashboard******************************/}
+  const [filmData,setFilmData] = useState([])
+  const [isFilmDataLoading,setIsFilmDataLoading] = useState(false)
+
+
+
+{/*****************************FilmDashboard******************************/}
 
   const breadCrumbSet = (location) =>{
     const pathName = location.pathname.split("/").filter((path) => path);
@@ -75,8 +85,30 @@ export default function Root() {
   const permission = useMemo(() => {
     return {users,setUsers,currentUser,setCurrentUser,setLocal,local,unAuthMsg,setUnAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps,breadCrumbSet}
   }, [users,currentUser,setCurrentUser,setLocal,local,setUnAuthMsg,unAuthMsg,defaultVal, setDefaultVal,breadcrumbProps,setBreadCrumbProps,breadCrumbSet])
+ 
+
+
+  {/*********************** */}
+  const filmDash = useMemo(()=>{
+    return{
+        filmData,
+        setFilmData,
+        isFilmDataLoading,
+        setIsFilmDataLoading 
+    }
+},[
+    filmData,
+    setFilmData,
+    isFilmDataLoading,
+    setIsFilmDataLoading
+]);
+
+  {/*********************** */}
+
   return (
     <BrowserRouter>
+    <FilmDashboard.Provider value={filmDash}>
+
     <PermissionContext.Provider  value={permission}>
       <CssBaseline />
       <React.Suspense>
@@ -92,27 +124,20 @@ export default function Root() {
         } 
         />
           <Route exact path="/users/authorization/:id" render={()=>(<PermissionPage />)}/>
-          
           <Route exact path="/auth/login" render={() => <LoginPage />} />
           <Route exact path="/users" render={()=> <UsersPage/>}/>
           <Route exact path="/gameredirect" render={()=> 
           <PrivateGameRoute><GamePageRedirect/></PrivateGameRoute>} />
           <Route exact path="/gameredirect/game" render={()=> <TicTacPage/>} />
           <Route exact path="/missing" render={()=> <MissingPage/>} />
-
           <Route exact path="/unauth" render={()=> <UnauthorizedPage/>} />
           <Route exact path="/Compo" render={()=> <ShoaibCompoPractice/>} />
-
-
           <Route exact path="/e-com" render={()=> <EComPage/>} />
           <Route exact path='/table-demo' render={()=><IntegrityAnalysisList/>}/>
           <Route exact path='/task-anubhav' render={()=><ColorDrag/>}/>
           {/* Exporting from the component itself */}
           <Route exact path='/task-anubhav/signup' render={()=><Signup/>}/>
           <Route exact path='/task-anubhav/dynamic-inputs' render={()=><DynamicInputs/>}/>
-
-
-
           <Route exact path="/assess" render={()=> <CsvPageAssess/>}/>
           <Route exact path="/map" render={()=> <MapPage/>}/>
 
@@ -121,9 +146,13 @@ export default function Root() {
           <Route exact path="/imdb-home" render={()=> <HomePageIMDB/>}/>
 
 
+          <Route exact path="/dashboard" render={()=> <DashboardHome/>} />
+          <Route exact path="/films" render={()=> <FilmPage/>}/>
         </Switch>
       </React.Suspense>
         </PermissionContext.Provider>
+    </FilmDashboard.Provider>
+
     </BrowserRouter>
   );
 }

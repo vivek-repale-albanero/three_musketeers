@@ -1,0 +1,14 @@
+.filmInfo{
+    .filmCard{
+        width:350px;
+        height:150px;
+        margin: 10px;
+        .MuiCard-root{
+            background-color: white !important;
+            .filmImg{
+                height:100px;
+                width:250px;
+            }
+        }
+    }
+}
