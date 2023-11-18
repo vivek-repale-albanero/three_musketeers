@@ -1,0 +1,12 @@
+.__imdb__layout {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  
+  .__imdb__content {
+    padding:0rem 16rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

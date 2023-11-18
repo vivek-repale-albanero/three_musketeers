@@ -26,6 +26,7 @@ import Signup from "./components/Signup/Signup";
 import DynamicInputs from "./components/DynamicInputs/DynamicInputs";
 import CsvPageAssess from "./Assessment/CsvPageAssess";
 import MapPage from "./Pages/Map/MapPage";
+import HomePageIMDB from "./Pages/HomePageIMDB/HomePageIMDB";
 
 
 
@@ -114,6 +115,11 @@ export default function Root() {
 
           <Route exact path="/assess" render={()=> <CsvPageAssess/>}/>
           <Route exact path="/map" render={()=> <MapPage/>}/>
+
+          
+          {/* IMDB */}
+          <Route exact path="/imdb-home" render={()=> <HomePageIMDB/>}/>
+
 
         </Switch>
       </React.Suspense>

@@ -269,7 +269,7 @@ function Cart({
               data,
               // handleSearch,
               // onReload,
-              title: "Cart",
+              //title: "Cart",
               //actionComponents,
               //handleAddAllToCart:handleSelected
             }}
