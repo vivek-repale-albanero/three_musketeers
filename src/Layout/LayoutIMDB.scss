@@ -1,10 +1,10 @@
 .__imdb__layout {
-  height: 100vh;
+  height: auto;
   width: 100%;
-  background-color: black;
+  background-color: #000;
   
   .__imdb__content {
-    padding:0rem 16rem;
+    padding:0rem 115px;
     display: flex;
     flex-direction: column;
     gap: 20px;
