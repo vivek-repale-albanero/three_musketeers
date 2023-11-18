@@ -1,0 +1,36 @@
+.home{
+    background-color: rgb(17, 0, 65);
+    height:100vh;
+    .Welcome_card{
+    background-color: rgb(253, 252, 252);
+
+        border: 1px solid rgb(253, 252, 252);
+        border-radius: 5px;
+        width: 50%;
+        height:400px;
+        position: relative;
+        top:15em;
+        left:25em;
+        .img_container{
+            border: 1px solid rgb(51, 50, 50);
+            border-radius: 5px;
+            width:95%;
+            height:60%;
+            margin:20px;
+            img {
+                object-fit: fill;
+              }
+            .img_banner{
+                position: relative;
+                top: 25%;
+                left: 35%;
+            }
+        }
+        .card_Heading{
+            padding: 0px 20px;
+        }
+        .card_text{
+            padding: 0px 20px;
+        }
+    }
+}

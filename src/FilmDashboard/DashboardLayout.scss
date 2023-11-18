@@ -1,0 +1,36 @@
+
+.sidebar{
+    .logoCard{
+        text-align: center;
+        .logo{
+                width: 100%;
+                padding: 40px;
+                background-color: white ;
+        }
+    }
+    .accord_option{
+        .MuiAccordion-root{
+            width: 100%;
+        }
+        .accord_icon{
+            margin: 0px 5px;
+        }
+        .accord_menu{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            .MuiAccordionDetails-root{
+                align-items: center;
+            }
+            .option_icon{
+                padding: 5px;
+            }
+            .option_name{
+                text-align: center;
+            }
+        }
+    }
+ 
+}
+    
