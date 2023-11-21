@@ -1,14 +1,54 @@
-.filmInfo{
-    .filmCard{
-        width:350px;
-        height:150px;
-        margin: 10px;
-        .MuiCard-root{
-            background-color: white !important;
-            .filmImg{
-                height:100px;
-                width:250px;
-            }
+.filmInfo {
+  .filmCard {
+    width: 250px;
+    height: 150px;
+    margin: 10px;
+    // flex-grow: 1;
+    .MuiCard-root {
+      // background-color: white !important;
+      .filmImg {
+        .MuiCardMedia-root {
+          // border-radius: 5px;
+          height: 100px;
+          width: 250px;
         }
+      }
+      .filmdata {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .containHead{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .contBtn{
+          display: flex;
+          // justify-content: flex-end;
+          position: relative;
+          padding-left: 16px;
+          width: 2%;
+        }
+        .MuiCardHeader-root{
+          padding: 16px 2px;
+        }
+        .moviepopOver {
+          .MuiPopover-paper {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            .__alba_button {
+              width: 200px;
+            }
+            .option_button {
+              display: flex;
+              width: 200px;
+              // justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
     }
+  }
 }

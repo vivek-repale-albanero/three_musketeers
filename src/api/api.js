@@ -265,10 +265,44 @@ export const getInspectRepairListAPI = async ({ page, pageSize }) => {
 export const getFilmDataAPI = async () =>{
   const url= `https://swapi.dev/api/films/`;
   const response = await axios.get(url)
-  console.log("api",response)
+  console.log("films",response)
    return response
   // return await genericApiCall({
   //   method: "GET",
   //   url,
   // });
+}
+
+export const getPeopleDataAPI = async()=>{
+  const url =`https://swapi.dev/api/people/`;
+  const response = await axios.get(url);
+  console.log("people",response)
+  return response
+}
+
+export const getPlanetDataAPI = async()=>{
+  const url = `https://swapi.dev/api/planets/`;
+  const response = await axios.get(url);
+  console.log("planetsapi",response)
+  return response
+}
+
+export const getSpeciesDataAPI = async()=>{
+  const url = `https://swapi.dev/api/species/`;
+  const response = await axios.get(url);
+  console.log("planetsapi",response)
+  return response
+}
+export const getStarshipsDataAPI = async()=>{
+  const url = `https://swapi.dev/api/starships`;
+  const response = await axios.get(url);
+  console.log("starshipapi",response)
+  return response
+}
+
+export const getVehiclesDataAPI = async()=>{
+  const url = `https://swapi.dev/api/vehicles`;
+  const response = await axios.get(url);
+  console.log("vehicleapi",response);
+  return response
 }

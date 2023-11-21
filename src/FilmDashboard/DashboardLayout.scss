@@ -30,6 +30,17 @@
                 text-align: center;
             }
         }
+        .load_menu{
+            display: flex;
+            align-items: center;
+            .option_icon{
+                padding-top: 1px;
+                padding-right: 2px;
+            }
+            .option_name{
+                text-align: center;
+            }
+        }
     }
  
 }

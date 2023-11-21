@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useHistory,useLocation } from "react-router-dom";
 import {
-    Box,
+  Box,
   Drawer,
   List,
   ListItem,
@@ -16,54 +16,17 @@ import {
   AccordionDetails,
 } from "@platform/service-ui-libraries";
 
-
-import { getFilmDataAPI } from "../api/api";
 import "./DashboardLayout.scss";
 import { FilmDashboard } from "../Context";
 
-
-
-
-
 function DashboardLayout({ children }) {
-//        const [filmData,setFilmData] = useState([])
-//        const [isFilmDataLoading,setIsFilmDataLoading] = useState(false)
+  const location = useLocation();
 
-//    const eswar = "eswar"
-
-    const {setFilmData,setIsFilmDataLoading} = useContext(FilmDashboard)
-
-       const getFilms = async() =>{ 
-        setIsFilmDataLoading(true)
-        const response =  await getFilmDataAPI()
-          if(response.status ===200){
-            console.log(response)
-            setFilmData(response.data.results)
-            setIsFilmDataLoading(false)
-          }else{
-            setIsFilmDataLoading(false)
-            console.log(response)
-          }
-       }
+  const { filmData, setFilmData, setIsFilmDataLoading } =
+    useContext(FilmDashboard);
 
 
-
-       useEffect(()=>{
-
-       },[])
-//    console.log(fimData)
-// const filmDash = useMemo(()=>{
-//     return{
-//         eswar,
-//         filmData,
-//         isFilmDataLoading 
-//     }
-// },[ eswar,
-//     filmData,
-//     isFilmDataLoading
-// ]);
   return (
-    // <FilmDashboard.Provider value={filmDash}>
 
     <div className="sidebar">
       <Drawer variant="permanent">
@@ -71,7 +34,7 @@ function DashboardLayout({ children }) {
           <Card component={Link} to="/dashboard">
             <div className="logo">
               <div>
-                <Typography  varaiant="secondary">Star Wars</Typography>
+                <Typography varaiant="secondary">Star Wars</Typography>
               </div>
             </div>
           </Card>
@@ -86,13 +49,33 @@ function DashboardLayout({ children }) {
                 </div>
                 <Typography>Films</Typography>
               </AccordionSummary>
-              <Box className="accord_menu" component={Link} to="/films">
-                <AccordionDetails >
+                 <Box className="accord_menu" component={Link} to="/films">
+                 <AccordionDetails>
+                   <div className="option_icon">
+                     <Icon>play_circle</Icon>
+                   </div>
+                   <div className="option_name">
+                     <Typography>Films Name</Typography>
+                   </div>
+                 </AccordionDetails>
+                </Box>
+            </Accordion>
+          </div>
+          <div className="accord_option">
+            <Accordion>
+              <AccordionSummary expandIcon={<Icon>expand_more</Icon>}>
+                <div className="accord_icon">
+                  <Icon>folder</Icon>
+                </div>
+                <Typography>People</Typography>
+              </AccordionSummary>
+              <Box className="accord_menu" component={Link} to="/people">
+                <AccordionDetails>
                   <div className="option_icon">
-                    <Icon>play_circle</Icon>
+                    <Icon>groups</Icon>
                   </div>
                   <div className="option_name">
-                    <Typography onClick={getFilms}>Films Name</Typography>
+                    <Typography>People Name</Typography>
                   </div>
                 </AccordionDetails>
               </Box>
@@ -104,29 +87,9 @@ function DashboardLayout({ children }) {
                 <div className="accord_icon">
                   <Icon>folder</Icon>
                 </div>
-                <Typography>People</Typography>
-              </AccordionSummary>
-              <div className="accord_menu">
-                <AccordionDetails>
-                  <div className="option_icon">
-                    <Icon>groups</Icon>
-                  </div>
-                  <div className="option_name">
-                    <Typography>People Name</Typography>
-                  </div>
-                </AccordionDetails>
-              </div>
-            </Accordion>
-          </div>
-          <div className="accord_option">
-            <Accordion>
-              <AccordionSummary expandIcon={<Icon>expand_more</Icon>}>
-                <div className="accord_icon">
-                  <Icon>folder</Icon>
-                </div>
                 <Typography>Planets</Typography>
               </AccordionSummary>
-              <div className="accord_menu">
+              <Box className="accord_menu" component={Link} to="/planets">
                 <AccordionDetails>
                   <div className="option_icon">
                     <Icon>public</Icon>
@@ -135,7 +98,7 @@ function DashboardLayout({ children }) {
                     <Typography>Planets Name</Typography>
                   </div>
                 </AccordionDetails>
-              </div>
+              </Box>
             </Accordion>
           </div>
           <div className="accord_option">
@@ -146,7 +109,7 @@ function DashboardLayout({ children }) {
                 </div>
                 <Typography>Species</Typography>
               </AccordionSummary>
-              <div className="accord_menu">
+              <Box className="accord_menu" component={Link} to="/species">
                 <AccordionDetails>
                   <div className="option_icon">
                     <Icon>emoji_nature</Icon>
@@ -155,7 +118,7 @@ function DashboardLayout({ children }) {
                     <Typography>Species Name</Typography>
                   </div>
                 </AccordionDetails>
-              </div>
+              </Box>
             </Accordion>
           </div>
           <div className="accord_option">
@@ -166,7 +129,7 @@ function DashboardLayout({ children }) {
                 </div>
                 <Typography>Starships</Typography>
               </AccordionSummary>
-              <div className="accord_menu">
+              <Box className="accord_menu" component={Link} to="/starships">
                 <AccordionDetails>
                   <div className="option_icon">
                     <Icon>flight_takeoff</Icon>
@@ -175,7 +138,7 @@ function DashboardLayout({ children }) {
                     <Typography>Starships Name</Typography>
                   </div>
                 </AccordionDetails>
-              </div>
+              </Box>
             </Accordion>
           </div>
           <div className="accord_option">
@@ -184,26 +147,24 @@ function DashboardLayout({ children }) {
                 <div className="accord_icon">
                   <Icon>folder</Icon>
                 </div>
-                <Typography>Spaceships</Typography>
+                <Typography>Vehicles</Typography>
               </AccordionSummary>
-              <div className="accord_menu">
+              <Box className="accord_menu" component={Link} to="/vehicles">
                 <AccordionDetails>
                   <div className="option_icon">
                     <Icon>rocket</Icon>
                   </div>
                   <div className="option_name">
-                    <Typography>Spaceships Name</Typography>
+                    <Typography>Vehicles Name</Typography>
                   </div>
                 </AccordionDetails>
-              </div>
+              </Box>
             </Accordion>
           </div>
-        
         </List>
       </Drawer>
       <div style={{ marginLeft: "15%" }}>{children}</div>
     </div>
-    // </FilmDashboard.Provider>
   );
 }
 

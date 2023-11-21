@@ -1,21 +1,49 @@
-
-.filmPage{
-    background-color: rgb(17, 0, 65);
-    height:100vh;
-    .viewSelect{
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        .viewButton{
-          display: flex;
+.filmPage {
+  background-color: rgb(17, 0, 65);
+  height: 100vh;
+  padding: 25px;
+  .searchField {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 5px;
+    .searchBar {
+      width: 200px;
+    }
+    .searchBtn{
+        width: 30px;
+        height: 100%;
+        margin: 5px;
+        padding: 5px;
+        .searchIcon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
     }
-    .FilmPage_Container{
-        display: flex;
-        flex-wrap: wrap;
-        flex: 1;
-        align-items: center;
-        justify-content: space-between;
+  }
+  .viewSelect {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    .pageHeading {
+      color: white;
     }
-   
+    .viewButton {
+      display: flex;
+    }
+  }
+  .filmPageContainer{
+
+    .MuiContainer-root{
+          min-height: '100vh';
+          
+          .FilmPage_Container {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+            }
+        }
+  }
 }

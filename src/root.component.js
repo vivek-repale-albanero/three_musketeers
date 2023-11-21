@@ -28,6 +28,7 @@ import CsvPageAssess from "./Assessment/CsvPageAssess";
 import MapPage from "./Pages/Map/MapPage";
 import DashboardHome from "./FilmDashboard/DashboardHome";
 import FilmPage from "./FilmDashboard/Pages/FilmPage";
+import PeoplePage from "./FilmDashboard/Pages/PeoplePage";
 
 
 
@@ -45,7 +46,8 @@ export default function Root() {
 {/*****************************FilmDashboard******************************/}
   const [filmData,setFilmData] = useState([])
   const [isFilmDataLoading,setIsFilmDataLoading] = useState(false)
-
+  const [peopleData,setPeopleData] = useState([])
+  const [renderData,setRenderData] = useState([])
 
 
 {/*****************************FilmDashboard******************************/}
@@ -70,7 +72,7 @@ export default function Root() {
 
   const fetchAllUsers=async () => {
     const { response, error } = await fetchUsers();
-    setUsers(response.data);
+    setUsers(response?.data);
   }
 
   useEffect(() => {
@@ -93,13 +95,21 @@ export default function Root() {
         filmData,
         setFilmData,
         isFilmDataLoading,
-        setIsFilmDataLoading 
+        setIsFilmDataLoading,
+        peopleData,
+        setPeopleData, 
+        renderData,
+        setRenderData,
     }
 },[
     filmData,
     setFilmData,
     isFilmDataLoading,
-    setIsFilmDataLoading
+    setIsFilmDataLoading,
+    peopleData,
+    setPeopleData,
+    renderData,
+    setRenderData,
 ]);
 
   {/*********************** */}
@@ -141,6 +151,12 @@ export default function Root() {
           <Route exact path="/map" render={()=> <MapPage/>}/>
           <Route exact path="/dashboard" render={()=> <DashboardHome/>} />
           <Route exact path="/films" render={()=> <FilmPage/>}/>
+          <Route exact path="/people" render={()=> <FilmPage/>}/>
+          <Route exact path="/planets" render={()=> <FilmPage/>}/>
+          <Route exact path="/species" render={()=> <FilmPage/>}/>
+          <Route exact path="/starships" render={()=> <FilmPage/>}/>
+          <Route exact path="/vehicles" render={()=> <FilmPage/>}/>
+
         </Switch>
       </React.Suspense>
         </PermissionContext.Provider>
