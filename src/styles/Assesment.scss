@@ -1,8 +1,99 @@
-.MainAss{
-    font-family: sans-serif;
-    // border: 1px solid blue;
-    height: 900px;
-    padding: 10px;
-    width: 80%;
-    margin: auto;
+// .MainAss {
+//     font-family: sans-serif;
+//     // border: 1px solid blue;
+//     height: 900px;
+//     padding: 10px;
+//     width: 80%;
+//     margin: auto;
+
+// }
+
+.WidgetDivArrow {
+    position: fixed;
+    left: 98vw;
+    color: white;
+    top: 97%;
+    z-index: 100;
+
+
+
+    .material-icons .MuiIcon-root {
+        color: white;
+        background-color: white;
+        background-color: #263541;
+        border-radius: 30%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+
+
 }
+
+
+.widgetHelpDiv {
+    position: fixed;
+    left: 93%;
+    color: white;
+    top: 93%;
+    z-index: 100;
+    border-radius: 50%;
+    width: 90px;
+    justify-content: space-evenly;
+    border: 2px solid #555;
+    border-radius: 100px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    align-items: center;
+    background-color: #263541;
+
+    .material-icons .MuiIcon-root {
+        color: white;
+        background-color: white;
+        background-color: #263541;
+        display: "block"
+    }
+
+    .helpIconDiv {
+        display: flex;
+        justify-content: space-evenly;
+        cursor: pointer;
+        padding: 10px
+    }
+
+    .helpText {
+        display: block;
+    }
+
+    .formDiv {
+        padding: 20px;
+    }
+
+    .resetAndSubmitButton {
+        text-align: center;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+}
+
+// .fileUploader{
+//     border: 1px solid red;
+//     .file-uploader{
+//         border: 1px solid blue;
+
+//         width: 50%
+//     }
+//     .file-uploader__body{
+//         width: 50%
+
+//     }
+//     .file-uploader__body__dropzone{
+//         width: 50%
+
+//     }
+//     .file-uploader__body__dropzone__center{
+//         width: 50%;
+//     }
+
+// }

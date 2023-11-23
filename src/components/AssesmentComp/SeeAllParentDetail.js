@@ -53,6 +53,7 @@ function SeeAllParentDetail({ data }) {
 
   //It handle parent checked if we checked the parent 
   const handleParentChange = (parent) => {
+    event.stopPropagation();
     const newChecked = { ...checked };
     newChecked[parent.id] = !newChecked[parent.id];
 
@@ -75,7 +76,7 @@ function SeeAllParentDetail({ data }) {
               <Checkbox
                 checked={checked[parent.id] || false}
                 indeterminate={!allChildrenChecked(parent) && parent.child.some((item) => checked[item.id])}
-                onChange={() => handleParentChange(parent)}
+                onChange={(ev) => handleParentChange(event,parent)}
               />
               {parent.parentName}
             </div>

@@ -7,6 +7,7 @@ import data from "../Pages/ORGdata.json";
 import "../styles/MissingPage.scss";
 import * as list from '@platform/service-ui-libraries'
 import { DialogTitle } from "@platform/service-ui-libraries";
+import ParacticeStyling from "../components/AssesmentComp/ParacticeStyling";
 function ShoaibCompoPractice() {
   const [orgdata, setorgdata] = useState(data);
   const [singleorg, setsingleorg] = useState([]);
@@ -28,6 +29,7 @@ function ShoaibCompoPractice() {
           {/* <DialogTitle>Organization Details</DialogTitle> */}
           <div className="PlatformTableDiv">
             <CustomTable />
+            <ParacticeStyling />
           </div>
         </dov>
     </Layout>

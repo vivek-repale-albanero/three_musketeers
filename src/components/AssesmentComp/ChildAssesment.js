@@ -16,8 +16,7 @@ function ChildAss({ data }) {
   const { ParentList, SetParentList } = data;
   const [selectedItems, setSelectedItems] = useState([]);
   const { defaultVal, setDefaultVal } = useContext(PermissionContext);
-  // const[defaultVal, setDefaultVal] = useState([])
-  const [child, setchild] = useState({name:""});
+  const [child, setchild] = useState({id:"",name:""});
   const [toggle, settoggle] = useState(false);
   const childRef = useRef({});
   const Childtext = useRef({});
@@ -59,29 +58,26 @@ function ChildAss({ data }) {
   useEffect(() => {}, []);
 
   const handleAddNewChild = () => {
-    console.log(child)
     if (Childtext.current.childChild.checkValidation()) {
       let NewParentList = ParentList.map((item) => {
-        if (item.id === selectedItems[0].id) {
+        if (item.id === defaultVal[0].id) {
           return { ...item, child: [...item.child, {...child}] };
         } else {
           return item;
         }
       });
+
+
+
       SetParentList(NewParentList);
-      let NewDefaultValue = defaultVal.map((item,index) => {
-      return {...item,child:[...item.child,child]}
-
-      });
-      console.log(NewDefaultValue,'def')
-      // console.log(NewDefaultValue,"NewDefaultValue")
-
-      // setDefaultVal(defaultvalue);
-      setchild("");
+      setDefaultVal(prevDefaultVal => {
+        return prevDefaultVal.map(item => ({ ...item, child: [...item.child, child] }));
+      })
+     
+      setchild({id:"",name:""});
     }
   };
-  //   console.log("singleParent", singleParent, ParentList);
-
+  
   return (
     <div>
       {/* <div

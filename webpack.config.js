@@ -36,6 +36,7 @@ module.exports = (config, options) => ({
       "@shared": path.resolve(__dirname, "src/shared"),
     },
   },
+  
   module: {
     rules: [
       {
